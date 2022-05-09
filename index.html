@@ -1,57 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="black">
     <title>MUO - INICIO</title>
+    <link rel="preload" href="./css/style.css" as="style">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
+
     <header class="header">
-        <div class="header__menu"></div>
-        <div class="header__logo"></div>
+        <img src="./img/icons/hamburguer.svg" alt="menu" class="header__menu">
+        <img src="./img/logo/logo-mobile.svg" alt="Logo de MUO" title="MUO" class="header__logo">
 
         <nav class="nav">
+            <div class="nav__closeMenu"></div>
             <ul>
                 <div class="nav__btns">
-                   <li class="nav__item--btns"><a href="#">Registrate</a></li>
-                   <li class="nav__item--btns"><a href="#">Iniciar Sesion</a></li>
+                    <li class="nav__item--btns"><a href="#">Registrate</a></li>
+                    <li class="nav__item--btns"><a href="#">Iniciar Sesion</a></li>
                 </div>
                 <div class="nav__links">
                     <li class="nav__item">
-                        <div class="nav__item--icon">
-                            <div class="item__icon"></div>
-                            <p>Home</p>
+                        <div class="item__icon">
+                            <img src="./img/icons/Home.svg" alt="">
+                            <p>Inicio</p>
                         </div>
                     </li>
                     <li class="nav__item">
-                        <div class="nav__item--icon">
-                            <div class="item__icon"></div>
-                            <p>About</p>
+                        <div class="item__icon">
+                            <img src="./img/icons/about.svg" alt="">
+                            <p>Sobre Nosotros</p>
                         </div>
                     </li>
                     <li class="nav__item">
-                        <div class="nav__item--icon">
-                            <div class="item__icon"></div>
-                            <p>Museums</p>
+                        <div class="item__icon">
+                            <img src="./img/icons/museum.svg" alt="">
+                            <p>Museos</p>
                         </div>
                     </li>
                 </div>
             </ul>
         </nav>
+        <div class="header__blackScreen"></div>
     </header>
+
     <footer class="footer">
         <div class="footer__container">
-            <div class="footer__logo"></div>
-            <p class="footer__text">MUO - Todos los derechos reservados</p>
+            <div>
+                <img src="./img/logo/logo-mobile-bw.svg" alt="Logo de MUO En negro" title="MUO-LOGO" class="footer__logo">
+            </div>
+
+            <div>
+                <p class="footer__text">MUO - Todos los derechos reservados</p>
+            </div>
+
             <div class="footer__socials">
-                <div class="footer__socials--fb"></div>
-                <div class="footer__socials--tw"></div>
-                <div class="footer__socials--ig"></div>
+                <a href="#">
+                    <div class="socials__icon">
+                        <img src="./img/icons/facebook.svg" alt="Facebook" title="Facebook" class="footer__socials--img">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="socials__icon">
+                        <img src="./img/icons/twitter.svg" alt="Twitter" title="Twitter" class="footer__socials--img">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="socials__icon">
+                        <img src="./img/icons/ig.svg" alt="Instagram" title="Instagram" class="footer__socials--img">
+                    </div>
+                </a>
+
             </div>
         </div>
     </footer>
-    
+    <script src="./js/app.js"></script>
 </body>
+
 </html>
