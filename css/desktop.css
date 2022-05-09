@@ -65,7 +65,7 @@ input{
     border-style: solid;
     border-color: transparent;
     display: block;
-    transition: ease 250ms;
+    transition: ease-in-out 250ms;
 }
 
 .nav__links{
