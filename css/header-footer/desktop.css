@@ -1,0 +1,52 @@
+
+@import url("./tablet.css");
+
+
+.header__logo{
+    width: 94px;
+}
+
+
+/*Quitar las imagenes antes era el texto ahora las imagenes*/
+.item__icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.item__icon img{
+    border-top: 5px solid transparent;
+}
+.item__icon p{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 5px;
+    border-style: solid;
+    border-color: transparent;
+    display: block;
+    transition: ease-in-out 250ms;
+}
+
+.nav__links{
+    font-size: clamp(16px, 1.6vw, 22px);
+    justify-content: center;
+    gap: 3rem;
+    height: 10rem;
+    width: clamp(40rem ,42vw, 90rem);
+}
+
+.nav__item:nth-child(3) p::after{
+    content: "";
+}
+.nav__item:hover p{
+
+border-bottom: 5px;
+border-color: var(--clr-blanco);
+border-style: solid;
+
+}
+
+.nav__btns a li{
+    width: min(15vw, 20rem);
+}
