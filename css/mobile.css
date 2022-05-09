@@ -120,6 +120,9 @@ input{
     transition: ease-in 200ms;
     transform: translateX(-100%);
 }
+.nav::-webkit-scrollbar{
+    display: none;
+}
 .header__blackScreen{
     display: none;
 }

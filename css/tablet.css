@@ -72,7 +72,7 @@ header{
     border-bottom: 1px solid var(--clr-blanco);
     display: grid;
     grid-template-columns: 0.2fr 1fr;
-    padding: 1rem;
+    padding: 2rem 1rem;
     align-items: center;
     position: sticky;
     top: 0;
@@ -89,15 +89,30 @@ header{
     align-items: center;
     justify-content: space-between;
     border-radius: 1rem;
-    width: clamp(15rem ,35vw, 50rem);
+    width: clamp(15rem ,36vw, 50rem);
+    
+    height: 6rem;
     justify-self: center;
     border-color: var(--clr-blanco);
     border-width: 1px;
     border-style: solid;
 }
+
 .item__icon{
-    padding: .5rem 2rem;
+    display: flex;
+    align-items: center;
+    margin: 0rem 1.5rem;
+    transition: ease-in-out 100ms;
+    padding: .5rem;
+    background-color: var(--clr-negro);
 }
+
+.item__icon:active{
+    filter: invert();
+
+    border-radius: 10px;
+}
+
 .nav ul{
     display: grid;
     grid-template-columns: 1fr 0.5fr;
@@ -120,6 +135,7 @@ header{
     border-radius: 3.2rem;
     background-color: var(--clr-negro);
 }
+
 .nav__item--btn2{
     border-color: var(--clr-azul);
 }

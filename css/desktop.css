@@ -58,21 +58,30 @@ input{
     background-color: black;
 }
 .item__icon p{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 5px;
+    border-style: solid;
+    border-color: transparent;
     display: block;
+    transition: ease 250ms;
 }
 
 .nav__links{
-    font-size: clamp(16px, 1.5vw, 24px);
+    font-size: clamp(16px, 1.6vw, 22px);
     justify-content: center;
     gap: 3rem;
-    width: clamp(35rem ,40vw, 320rem);
+    width: clamp(40rem ,42vw, 90rem);
 }
-.nav__item{
 
-}
 .nav__item:nth-child(3) p::after{
     content: "";
 }
 .nav__item:hover p{
-    border-bottom: 1px solid var(--clr-blanco);
+
+border-bottom: 5px;
+border-color: var(--clr-blanco);
+border-style: solid;
+
 }
