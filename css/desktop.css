@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+@import url("./tablet.css");
+:root{
+    /*Colores*/
+    --clr-blanco: hsl(0, 0%, 100%);
+    --clr-negro: hsl(0, 0%, 0%);
+    --clr-gris: hsl(0, 2%, 61%);
+    --clr-grisClaro: hsla(0, 0%, 77%, 0.286);
+    --clr-grisOscuro: hsl(0, 0%, 18%);
+    --clr-azul: hsl(202, 100%, 51%);
+    --clr-amarillo: hsl(43, 100%, 51%);
+    /*Anchura De la Fuente*/
+    --fw-regular: 400;
+    --fw-black: 900;
+    --fw-bold: 800;
+    --fw-semiBold: 700;
+    --fw-medium: 500;
+    /*Tamaño de la fuente*/
+    --fs-regular: 1.6rem;
+    --fs-medium: 2rem;
+    --fs-mediumLarge: 3.2rem;
+    --fs-big: 4.8rem;
+}
+/*Selectore globales*/
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*1rem = 10px*/
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
+    position: relative;
+}
+a{
+    text-decoration: none;
+    color: var(--clr-blanco);
+}
+img{
+    max-width: 100%;
+}
+ul,ol{
+    list-style-type: none;
+}
+input{
+    border: none;
+    outline: none;
+}
+/*Quitar las imagenes antes era el texto ahora las imagenes*/
+.item__icon img{
+    display: none;
+    background-color: black;
+}
+.item__icon p{
+    display: block;
+}
+
+.nav__links{
+    font-size: clamp(16px, 1.5vw, 24px);
+    justify-content: center;
+    gap: 3rem;
+    width: clamp(35rem ,40vw, 320rem);
+}
+.nav__item{
+
+}
+.nav__item:nth-child(3) p::after{
+    content: "";
+}
+.nav__item:hover p{
+    border-bottom: 1px solid var(--clr-blanco);
+}

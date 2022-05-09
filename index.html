@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="black">
     <title>MUO - INICIO</title>
-    <link rel="preload" href="./css/style.css" as="style">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preload" href="./css/mobile.css" as="style">
+    <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
+    <link rel="stylesheet" href="./css/tablet.css" media="(min-width: 769px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="./css/desktop.css" media="(min-width: 1024px)">
 </head>
 
 <body>
@@ -21,27 +23,33 @@
             <div class="nav__closeMenu"></div>
             <ul>
                 <div class="nav__btns">
-                    <li class="nav__item--btns"><a href="#">Registrate</a></li>
-                    <li class="nav__item--btns"><a href="#">Iniciar Sesion</a></li>
+                    <a href="#" class="nav__item--active"> <li class="nav__item--btn1">Registrate</li></a>
+                    <a href="#" class="nav__item--active"><li class="nav__item--btn2">Iniciar Sesion</li></a>
                 </div>
                 <div class="nav__links">
                     <li class="nav__item">
-                        <div class="item__icon">
-                            <img src="./img/icons/Home.svg" alt="">
-                            <p>Inicio</p>
-                        </div>
+                        <a href="#">
+                            <div class="item__icon">
+                                <img src="./img/icons/Home.svg" alt="">
+                                <p>Inicio</p>
+                            </div>
+                        </a>
                     </li>
                     <li class="nav__item">
-                        <div class="item__icon">
-                            <img src="./img/icons/about.svg" alt="">
-                            <p>Sobre Nosotros</p>
-                        </div>
+                        <a href="#">
+                            <div class="item__icon">
+                                <img src="./img/icons/about.svg" alt="">
+                                <p>Sobre Nosotros</p>
+                            </div>
+                        </a>
                     </li>
                     <li class="nav__item">
-                        <div class="item__icon">
-                            <img src="./img/icons/museum.svg" alt="">
-                            <p>Museos</p>
-                        </div>
+                        <a href="#">
+                            <div class="item__icon">
+                                <img src="./img/icons/museum.svg" alt="">
+                                <p>Museos</p>
+                            </div>
+                        </a>
                     </li>
                 </div>
             </ul>

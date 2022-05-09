@@ -55,7 +55,8 @@ input{
 /*---Header---*/
 .header{
     padding: 1rem 0;
-    background-color: var(--clr-grisOscuro) ;
+    background-color: var(--clr-negro) ;
+    border-bottom: 1px solid var(--clr-blanco);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
@@ -83,13 +84,11 @@ input{
 /* Pantalla Negra */
 .header__blackScreen{
     position: absolute;
-    width: 24px;
-    aspect-ratio: 1;
+    height: 100vh;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    width: 100vw;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.32);
 }
@@ -100,7 +99,7 @@ input{
     top: 0;
     left: 0;
     bottom: 0;
-    right: 40vw;
+    right: 20%;
     background-color: var(--clr-negro);
     z-index: 999;
     overflow-y: scroll;
@@ -127,36 +126,45 @@ input{
 
 /*Nav botonos de logeo y registro*/
 
-.nav__item--btns{
+.nav__item--btn1, .nav__item--btn2{
     padding: 1rem;
     margin-top: 1rem;
     border: 1px solid var(--clr-amarillo);
     border-radius: 3.2rem;
     text-align: center;
     font-weight: var(--fw-semiBold);
+    background-color: var(--clr-negro);
 }
-.nav__item--btns:nth-child(2){
+.nav__item--btn2{
     border-color: var(--clr-azul);
     margin-bottom: 6rem;
 }
+.nav__item--active:active{
+    filter: invert();
+}
 .nav li{
-    max-width: 17rem;
-    margin-left: 2.5rem;
+    max-width: 20rem;
+    margin-left: 2rem;
 }
 /*Nav Iconos*/
 .item__icon{
     display: flex;
     gap: 3rem;
     align-items: center;
-    margin-top: 2rem;
+    padding: 1rem;
+    margin-top: 1rem;
 }
 .item__icon p{
-    letter-spacing: .4rem;
+
     font-weight: var(--fw-semiBold);
 }
 .item__icon img{
     aspect-ratio: 1;
     width: 32px;
+}
+.item__icon:active{
+    background-color: var(--clr-negro);
+    filter: invert();
 }
 .nav__item:last-child{
     /* border: 1px solid yellow; */
@@ -181,6 +189,9 @@ input{
 .footer__logo {
     width: 7rem;
     aspect-ratio: 1;
+}
+.footer__text{
+    text-align: center;
 }
 .footer__socials{
     display: flex;
