@@ -28,6 +28,9 @@ showMenu()
 closeHamburguer.addEventListener("click", ()=>{
 quitMenu()
 })
+blackScreen.addEventListener("click", ()=>{
+    quitMenu();
+})
 
 //Tablet BreakPoint
 let icono = document.querySelector(".header__logo")

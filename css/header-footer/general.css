@@ -14,6 +14,7 @@
     --fw-semiBold: 600;
     --fw-medium: 500;
     /*Tamaño de la fuente*/
+    --fs-tiny: 1.2rem;
     --fs-regular: 1.6rem;
     --fs-medium: 2rem;
     --fs-mediumLarge: 3.2rem;
@@ -30,6 +31,7 @@ html{
     font-size: 62.5%;
 }
 body{
+
     font-size: 1.6rem;
     font-family: "Poppins", sans-serif;
     background-color: var(--clr-negro);

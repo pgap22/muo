@@ -12,12 +12,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    font-size: clamp(16px, 1.3vw, 1.8rem);
 }
 .item__icon img{
     border-top: 5px solid transparent;
 }
 .item__icon p{
+    text-align: center;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
@@ -29,11 +30,11 @@
 }
 
 .nav__links{
-    font-size: clamp(16px, 1.6vw, 22px);
     justify-content: center;
     gap: 3rem;
-    height: 10rem;
+    height: 8rem;
     width: clamp(40rem ,42vw, 90rem);
+    overflow: hidden;
 }
 
 .nav__item:nth-child(3) p::after{
