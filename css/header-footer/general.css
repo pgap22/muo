@@ -52,3 +52,6 @@ input{
     border: none;
     outline: none;
 }
+header{
+    background-color: var(--clr-negro);
+}

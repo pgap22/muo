@@ -38,3 +38,8 @@
     src: url("./Poppins-ExtraLight.ttf");
     font-weight: 200;
 }
+@font-face {
+    font-family: 'Dancing Script', cursive;
+    src: url("./DancingScript-Bold.ttf");
+    font-weight: 700;
+}
