@@ -18,17 +18,28 @@
     --fs-regular: 1.6rem;
     --fs-medium: 2rem;
     --fs-mediumLarge: 3.2rem;
-    --fs-big: 4.8rem;
+    --fs-big: 4.8rem; 
+
+    --ff-cursive: 'Dancing Script', cursive;
 }
+
 /*Selectore globales*/
 *{
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-width: none;
 }
+/*Quitar scroll bar / barra de navegacion*/
+::-webkit-scrollbar{
+    display: none;
+}
+
+/*Moz Scroll bar quitar*/
 /*1rem = 10px*/
 html{
     font-size: 62.5%;
+    scrollbar-width: none;
 }
 body{
 
@@ -37,6 +48,7 @@ body{
     background-color: var(--clr-negro);
     color: var(--clr-blanco);
     position: relative;
+
 }
 a{
     text-decoration: none;

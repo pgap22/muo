@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="black">
+    <meta name="description" content="Un sitio web de museos">
     <title>MUO - INICIO</title>
 
     <!--Font-->
@@ -13,8 +14,8 @@
     <link rel="stylesheet" href="fonts/font.css">
 
     <!--Custom Properties-->
-    <link rel="preload" href="./css/header-footer/general.css" as="style">
-    <link rel="stylesheet" href="./css/header-footer/general.css">
+    <link rel="preload" href="./css/general/general.css" as="style">
+    <link rel="stylesheet" href="./css/general/general.css">
 
     <!--General Styles for responsive Header-->
     <link rel="preload" href="./css/header-footer/mobile.css" as="style">
@@ -25,79 +26,116 @@
     <link rel="stylesheet" href="./css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
     <link rel="stylesheet" href="./css/header-footer/desktop.css" media="(min-width: 1024px)">
 
+    <!--Home Style-->
+    <link rel="preload" href="./css/home/style.css" as="style">
+    <link rel="stylesheet" href="./css/home/style.css">
 
 </head>
 
 <body>
 
-        <header class="header">
-            <img src="./img/icons/hamburguer.svg" alt="menu" class="header__menu">
-            <img src="./img/logo/logo-mobile.svg" alt="Logo de MUO" title="MUO" class="header__logo">
-    
-            <nav class="nav">
-                <div class="nav__closeMenu"></div>
-                <ul>
-                    <div class="nav__btns">
-                        <a href="#" class="nav__item--active">
-                            <li class="nav__item--btn1">Registrate</li>
+    <header class="header">
+        <img src="./img/icons/hamburguer.svg" alt="menu" class="header__menu">
+        <a href="index.html" class="header__logo"><img src="./img/logo/logo-mobile.svg" alt="Logo de MUO" title="MUO"
+                class="header__logo"></a>
+
+        <nav class="nav">
+            <div class="nav__closeMenu"></div>
+            <ul>
+                <div class="nav__btns">
+                    <a href="#" class="nav__item--active">
+                        <li class="nav__item--btn1">Registrate</li>
+                    </a>
+                    <a href="#" class="nav__item--active">
+                        <li class="nav__item--btn2">Iniciar Sesion</li>
+                    </a>
+                </div>
+                <div class="nav__links">
+                    <li class="nav__item">
+                        <a href="#">
+                            <div class="item__icon">
+                                <img src="./img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
+                                <p>Inicio</p>
+                            </div>
                         </a>
-                        <a href="#" class="nav__item--active">
-                            <li class="nav__item--btn2">Iniciar Sesion</li>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#">
+                            <div class="item__icon">
+                                <img src="./img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
+                                <p>Sobre Nosotros</p>
+                            </div>
                         </a>
-                    </div>
-                    <div class="nav__links">
-                        <li class="nav__item">
-                            <a href="#">
-                                <div class="item__icon">
-                                    <img src="./img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
-                                    <p>Inicio</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#">
-                                <div class="item__icon">
-                                    <img src="./img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
-                                    <p>Sobre Nosotros</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#">
-                                <div class="item__icon">
-                                    <img src="./img/icons/museum.svg" alt="Icono Museos" title="Museos">
-                                    <p>Museos</p>
-                                </div>
-                            </a>
-                        </li>
-                    </div>
-                </ul>
-            </nav>
-            <div class="header__blackScreen"></div>
-        </header>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#">
+                            <div class="item__icon">
+                                <img src="./img/icons/museum.svg" alt="Icono Museos" title="Museos">
+                                <p>Museos</p>
+                            </div>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+        <div class="header__blackScreen"></div>
+    </header>
 
 
     <section class="hero">
-        <div class="hero__title"></div>
-        <div class="hero__wrapper">
-            <img src="" alt="arrowLeft">
-            <div class="hero__card">
-                <img src="./img/hero/escultura.png" alt="Escultura" title="Escultura">
-                <p><span>@Camaro27</span></p>
+        <div class="hero__title">
+            <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem, alias.</h1>
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__arrow">
+                <img src="./img/icons/arrowLeft.svg" alt="" onclick="leftScroll()">
             </div>
-            <div class="hero__card">
-                <img src="./img/hero/sombrero.png" alt="Sombrero" title="Sombrero">
-                <p><span>@Camaro27</span></p>
+            <div class="hero__wrapper">
+                <div class="hero__card">
+                    <div class="card__img">
+                        <img src="./img/hero/escultura.png" alt="Escultura" title="Escultura">
+                    </div>
+
+
+                    <div class="card__description">
+                        <p>Imagen por<span> @Camaro27</span></p>
+                    </div>
+                </div>
+                <div class="hero__card">
+                    <div class="card__img">
+                        <img src="./img/hero/sombrero.png" alt="Sombrero" title="Sombrero">
+                    </div>
+
+
+                    <div class="card__description">
+                        <p>Imagen por<span> @Camaro27</span></p>
+                    </div>
+                </div>
+                <div class="hero__card">
+                    <div class="card__img">
+                        <img src="./img/hero/cara.png" alt="Cara Indigena" title="Cara Indigena">
+                    </div>
+
+
+                    <div class="card__description">
+                        <p>Imagen por<span> @Camaro27</span></p>
+                    </div>
+                </div>
+                <div class="hero__card">
+                    <div class="card__img">
+                        <img src="./img/hero/tren.png" alt="Tren" title="Tren">
+                    </div>
+
+                    <div class="card__description">
+                        <p>Imagen por<span> @Camaro27</span></p>
+                    </div>
+                </div>
             </div>
-            <div class="hero__card">
-                <img src="./img/hero/cara.png" alt="Cara Indigena" title="Cara Indigena">
-                <p><span>@Camaro27</span></p>
+            <div class="hero__arrow">
+                <img src="./img/icons/arrowRight.svg" alt="" onclick="rightScroll()">
             </div>
-            <div class="hero__card">
-                <img src="./img/hero/tren.png" alt="Tren" title="Tren">
-                <p><span></span></p>
-            </div>
-            <img src=""alt="arrowRight"></div>
+        </div>
     </section>
 
     <footer class="footer">

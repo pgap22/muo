@@ -1,3 +1,9 @@
+//Carusel Slider
+let mycaruselItems = document.getElementsByClassName("hero__card");
+
+let caruselCurrentItem = 0;
+
+mycaruselItems[0].scrollIntoView({ behavior: 'smooth', block: 'end'})
 //Hamburguer Menu Responsive Mobile
 
 let hamburguerMenu = document.querySelector(".header__menu");
@@ -51,4 +57,28 @@ window.addEventListener("resize", () => {
             menuNav.style.transition = "ease-in 200ms"
         }, 100)
     }
+
+    //Carusel default for avoid bugs :)
+    (!caruselCurrentItem) ? caruselCurrentItem = 0 : caruselCurrentItem = caruselCurrentItem;
+    mycaruselItems[caruselCurrentItem].scrollIntoView({ behavior: 'smooth', block: 'end'})
 })
+
+///Carusel Slider
+
+function rightScroll() {
+    if(caruselCurrentItem < 3){
+        caruselCurrentItem++
+    }
+    mycaruselItems[caruselCurrentItem].scrollIntoView({ behavior: 'smooth', block: 'end'})
+
+     console.log(caruselCurrentItem)
+}
+
+function leftScroll() {
+    if(caruselCurrentItem > 0){
+        caruselCurrentItem--
+    }
+    mycaruselItems[caruselCurrentItem].scrollIntoView({ behavior: 'smooth', block: 'end'})
+    console.log(caruselCurrentItem);
+}
+

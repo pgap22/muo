@@ -47,7 +47,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    width: 50vw;
+    width: 60vw;
     background-color: var(--clr-negro);
     z-index: 999;
     overflow-y: scroll;
