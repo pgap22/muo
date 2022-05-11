@@ -27,8 +27,10 @@
     <link rel="stylesheet" href="./css/header-footer/desktop.css" media="(min-width: 1024px)">
 
     <!--Home Style-->
-    <link rel="preload" href="./css/home/style.css" as="style">
-    <link rel="stylesheet" href="./css/home/style.css">
+    <link rel="preload" href="./css/home/mobile-table/style.css" as="style">
+    <link rel="stylesheet" href="./css/home/mobile-table/style.css" media="(max-width: 1023px)">
+
+    <link rel="stylesheet" href="./css/home/desktop/style.css " media="(min-width: 1024px)">
 
 </head>
 
@@ -92,7 +94,8 @@
                 <img src="./img/icons/arrowLeft.svg" alt="" onclick="leftScroll()">
             </div>
             <div class="hero__wrapper">
-                <div class="hero__card">
+
+                <div class="hero__card up">
                     <div class="card__img">
                         <img src="./img/hero/escultura.png" alt="Escultura" title="Escultura">
                     </div>
@@ -102,7 +105,8 @@
                         <p>Imagen por<span> @Camaro27</span></p>
                     </div>
                 </div>
-                <div class="hero__card">
+
+                <div class="hero__card down">
                     <div class="card__img">
                         <img src="./img/hero/sombrero.png" alt="Sombrero" title="Sombrero">
                     </div>
@@ -112,7 +116,8 @@
                         <p>Imagen por<span> @Camaro27</span></p>
                     </div>
                 </div>
-                <div class="hero__card">
+
+                <div class="hero__card up" >
                     <div class="card__img">
                         <img src="./img/hero/cara.png" alt="Cara Indigena" title="Cara Indigena">
                     </div>
@@ -122,7 +127,8 @@
                         <p>Imagen por<span> @Camaro27</span></p>
                     </div>
                 </div>
-                <div class="hero__card">
+
+                <div class="hero__card down">
                     <div class="card__img">
                         <img src="./img/hero/tren.png" alt="Tren" title="Tren">
                     </div>
@@ -131,6 +137,7 @@
                         <p>Imagen por<span> @Camaro27</span></p>
                     </div>
                 </div>
+
             </div>
             <div class="hero__arrow">
                 <img src="./img/icons/arrowRight.svg" alt="" onclick="rightScroll()">

@@ -1,9 +1,12 @@
 //Carusel Slider
-let mycaruselItems = document.getElementsByClassName("hero__card");
+let heroCards = document.getElementsByClassName("hero__card");
 
 let caruselCurrentItem = 0;
 
-mycaruselItems[0].scrollIntoView({ behavior: 'smooth', block: 'end'})
+heroCards[0].scrollIntoView({
+    behavior: 'smooth',
+    block: 'end'
+})
 //Hamburguer Menu Responsive Mobile
 
 let hamburguerMenu = document.querySelector(".header__menu");
@@ -48,7 +51,7 @@ window.addEventListener("resize", () => {
         console.log("menu mostrado TABLET/DESKTOP");
         showMenu();
         hamburguerMenu.style.display = "none";
-        blackScreen.style.display = "none";  
+        blackScreen.style.display = "none";
         menuNav.style.transition = "none";
     } else {
         // console.log("menu ocultado SMARTPHONE");
@@ -59,26 +62,35 @@ window.addEventListener("resize", () => {
     }
 
     //Carusel default for avoid bugs :)
-    (!caruselCurrentItem) ? caruselCurrentItem = 0 : caruselCurrentItem = caruselCurrentItem;
-    mycaruselItems[caruselCurrentItem].scrollIntoView({ behavior: 'smooth', block: 'end'})
+    (!caruselCurrentItem) ? caruselCurrentItem = 0: caruselCurrentItem = caruselCurrentItem;
+    heroCards[caruselCurrentItem].scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+    })
 })
 
 ///Carusel Slider
 
 function rightScroll() {
-    if(caruselCurrentItem < 3){
+    if (caruselCurrentItem < 3) {
         caruselCurrentItem++
     }
-    mycaruselItems[caruselCurrentItem].scrollIntoView({ behavior: 'smooth', block: 'end'})
+    heroCards[caruselCurrentItem].scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+    })
 
-     console.log(caruselCurrentItem)
+    console.log(caruselCurrentItem)
 }
 
 function leftScroll() {
-    if(caruselCurrentItem > 0){
+    if (caruselCurrentItem > 0) {
         caruselCurrentItem--
     }
-    mycaruselItems[caruselCurrentItem].scrollIntoView({ behavior: 'smooth', block: 'end'})
+    heroCards[caruselCurrentItem].scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+    })
     console.log(caruselCurrentItem);
 }
 

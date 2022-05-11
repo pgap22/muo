@@ -1,0 +1,77 @@
+/*Mantener algunas propiedades de la tablet/mobile*/
+.hero__title{
+    /* border: 1px solid red; */
+    margin: 1rem 2.5rem;
+    text-align: center;
+    font-size: clamp(1.6rem, 2.6vw, 2.8rem);
+}
+.hero__card{
+    color: var(--clr-gris);
+    background-color: var(--clr-grisOscuro);
+    padding: 2rem;
+    border-radius: 3rem;
+    aspect-ratio: 1;
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25rem;
+}
+
+
+/*Quitar Arrows (No las necesitamos)*/
+.hero__arrow{
+    display: none;
+}
+.hero{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 5rem 0rem;
+    align-items: center;
+
+}
+.hero__wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+.card__description span{
+    color: var(--clr-blanco);
+}
+.hero__card{
+    transition: ease-out 500ms;
+}
+.hero__card:nth-child(2n){
+    justify-self: start;
+}
+.hero__card:nth-child(2n-1){
+    justify-self: end;
+
+}
+.up{
+
+    animation: floating infinite 4s;
+    z-index: -1;
+}
+.down{
+    animation-delay: 250ms;
+    animation: floating-down infinite 4s;
+    z-index: -1;
+}
+@keyframes floating {
+
+    0%{transform: translateY(0rem);}
+    50%{transform: translateY(-2.5rem);}
+    100%{transform: translateY(0rem);}
+    
+}
+@keyframes floating-down {
+
+    0%{transform: translateY(0rem);}
+    50%{transform: translateY(2.5rem);}
+    100%{transform: translateY(0rem);}
+    
+}
