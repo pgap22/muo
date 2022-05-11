@@ -17,7 +17,9 @@
     justify-content: center;
     width: clamp(19rem, 20vw, 21rem); 
 }
-
+.hero__card:hover{
+    background-color: rgba(194, 194, 194, 0.501);
+}
 
 /*Quitar Arrows (No las necesitamos)*/
 .hero__arrow{
@@ -32,11 +34,13 @@
 }
 .hero__wrapper{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 21rem);
     grid-template-rows: 1fr 1fr;
     align-items: center;
     justify-content: center;
     gap: 8rem;
+    position: relative;
+
 }
 .card__description{
     text-align: center;
@@ -45,11 +49,12 @@
     color: var(--clr-blanco);
 }
 .hero__card{
-    transition: ease-out 500ms;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: ease-out 150ms;
 }
+
 .hero__card:nth-child(2n){
     justify-self: start;
 }
@@ -60,12 +65,12 @@
 .up{
 
     animation: floating infinite 4s;
-    z-index: -1;
+    z-index: 1;
 }
 .down{
     animation-delay: 250ms;
     animation: floating-down infinite 4s;
-    z-index: -1;
+    z-index: 1;
 }
 @keyframes floating {
 
@@ -80,4 +85,31 @@
     50%{transform: translateY(2.5rem);}
     100%{transform: translateY(0rem);}
     
+}
+/*Link for our photographer :)*/
+
+.hero__card .card__tooltip:hover  .tooltip__description {
+    opacity: 1;
+    transition: all 0.5s ease;
+    visibility: visible;
+}
+.hero__card .card__tooltip .tooltip__description {
+    background-color: var(--clr-grisOscuro);
+    color: var(--clr-blanco);
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: -2.8rem;
+    right: 5rem;
+    overflow:hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    opacity: 0;
+    padding: .2rem;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+}
+
+.card__tooltip {
+    position: relative;
 }

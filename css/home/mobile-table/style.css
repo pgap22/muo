@@ -70,3 +70,6 @@
 .card__description span{
     color:  var(--clr-negro);
 }
+.tooltip__description {
+    display: none;
+}

@@ -1,6 +1,6 @@
 :root{
     /*Colores*/
-    --clr-blanco: hsl(0, 0%, 100%);
+    --clr-blanco: #F9F9F9;
     --clr-negro: hsl(0, 0%, 0%);
     --clr-gris: hsl(0, 2%, 61%);
     --clr-grisClaro: hsla(0, 0%, 77%, 0.286);
@@ -65,5 +65,6 @@ input{
     outline: none;
 }
 header{
+    z-index: 999999;
     background-color: var(--clr-negro);
 }

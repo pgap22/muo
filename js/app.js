@@ -94,3 +94,11 @@ function leftScroll() {
     console.log(caruselCurrentItem);
 }
 
+//Link for our photographer
+let toolTips = document.getElementsByClassName("tooltip__description");
+
+for (let i = 0; i < toolTips.length; i++) {
+    toolTips[i].addEventListener("click", ()=>{
+        window.open("https://www.flickr.com/people/camaro27", "_blank");
+    })
+}
