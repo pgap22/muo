@@ -45,7 +45,7 @@
 }
 .hero__card{
     color: var(--clr-gris);
-    background-color: var(--clr-grisOscuro);
+    background-color: var(--clr-blanco);
     padding: 2rem;
     border-radius: 3rem;
     aspect-ratio: 1;
@@ -64,8 +64,9 @@
 }
 .card__description{
     text-align: center;
+    color:  var(--clr-negro);
+    font-weight: var(--fw-bold);
 }
-.hero__description span{
-    color:  white;
-    font-family: var(--ff-cursive);
+.card__description span{
+    color:  var(--clr-negro);
 }
