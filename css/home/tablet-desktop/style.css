@@ -4,17 +4,27 @@
     justify-content: space-between;
     margin: 5rem 0
 }
-.hero__title{
-    margin-left: 3rem;
+.cta__title{
     text-align: start;
-    font-size: var(--fs-big);
+    font-size: var(--fs-mediumLarge);
+}
+.cta__btn a{
+    width: 35rem;
+}
+@media (min-width: 1024px) {
+  .cta__title{
+      font-size: var(--fs-big);
+  }
+}
+.cta__btn {
+    justify-content: start;
 }
 .grid{
     max-width: 90rem;
     /* border: 1px solid red; */
 }
 .grid__text{
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 2px solid transparent;
     transition: ease-in-out 50ms;
 }
