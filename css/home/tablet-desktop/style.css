@@ -1,13 +1,13 @@
 @import url("../mobile/style.css");
 .hero{
     flex-direction: row;
-    justify-content: baseline;
-    width: clamp(72rem, 70vw, 200rem);
-    margin: 5rem auto;
+    justify-content: space-between;
+    margin: 5rem 0
 }
 .hero__title{
-    margin: 0;
+    margin-left: 3rem;
     text-align: start;
+    font-size: var(--fs-big);
 }
 .grid{
     max-width: 90rem;
