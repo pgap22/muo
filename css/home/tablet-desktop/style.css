@@ -1,0 +1,53 @@
+@import url("../mobile/style.css");
+.hero{
+    flex-direction: row;
+    justify-content: baseline;
+    width: clamp(72rem, 70vw, 200rem);
+    margin: 5rem auto;
+}
+.hero__title{
+    margin: 0;
+    text-align: start;
+}
+.grid{
+    max-width: 90rem;
+    /* border: 1px solid red; */
+}
+.grid__text{
+    font-size: 1.6rem;
+    border: 2px solid transparent;
+    transition: ease-in-out 50ms;
+}
+.tooltip__description{
+display: block;
+}
+
+.grid__text:hover .tooltip__description {
+    opacity: 1;
+    transition: all 0.5s ease;
+    visibility: visible;
+}
+.grid__text  .tooltip__description {
+    background-color: var(--clr-grisOscuro);
+    color: var(--clr-blanco);
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: -2.8rem;
+    right: 5rem;
+    overflow:hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    opacity: 0;
+    padding: .2rem;
+    border: 1px solid var(--clr-negro);
+    z-index: 99999;
+    visibility: hidden;
+}
+.grid__text a{
+    color: var(--clr-blanco);
+    text-decoration: none;
+}
+.grid__text {
+    position: relative;
+
+}

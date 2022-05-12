@@ -1,12 +1,3 @@
-//Carusel Slider
-let heroCards = document.getElementsByClassName("hero__card");
-
-let caruselCurrentItem = 0;
-
-heroCards[0].scrollIntoView({
-    behavior: 'smooth',
-    block: 'end'
-})
 //Hamburguer Menu Responsive Mobile
 
 let hamburguerMenu = document.querySelector(".header__menu");
@@ -45,6 +36,39 @@ blackScreen.addEventListener("click", () => {
 //Tablet BreakPoint
 let icono = document.querySelector(".header__logo");
 
+
+//Restore Breakpoints Styles
+function restoreChanges(params) {
+    if (window.innerWidth >= 742) {
+        console.log("menu mostrado TABLET/DESKTOP");
+        showMenu();
+        hamburguerMenu.style.display = "none";
+        blackScreen.style.display = "none";
+        menuNav.style.transition = "none";
+
+        //Eliminar Ancla
+        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        for (let i = 0; i < myToolTips.length; i++) {
+            myToolTips[i].removeAttribute("href")
+        }
+
+    } else {
+        // console.log("menu ocultado SMARTPHONE");
+
+        quitMenu()
+        setTimeout(() => {
+            menuNav.style.transition = "ease-in 200ms"
+        }, 100)
+
+        //Añadir Ancla
+        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        for (let i = 0; i < myToolTips.length; i++) {
+            myToolTips[i].setAttribute("href", 'https://www.flickr.com/people/camaro27')
+        }
+
+    }
+}
+restoreChanges();
 window.addEventListener("resize", () => {
     // console.log(window.innerWidth);
     if (window.innerWidth >= 742) {
@@ -53,52 +77,36 @@ window.addEventListener("resize", () => {
         hamburguerMenu.style.display = "none";
         blackScreen.style.display = "none";
         menuNav.style.transition = "none";
+
+        //Eliminar Ancla
+        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        for (let i = 0; i < myToolTips.length; i++) {
+            myToolTips[i].removeAttribute("href")
+        }
+
     } else {
         // console.log("menu ocultado SMARTPHONE");
+
         quitMenu()
         setTimeout(() => {
             menuNav.style.transition = "ease-in 200ms"
         }, 100)
+
+        //Añadir Ancla
+        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        for (let i = 0; i < myToolTips.length; i++) {
+            myToolTips[i].setAttribute("href", "https://www.flickr.com/people/camaro27")
+        }
+
     }
 
-    //Carusel default for avoid bugs :)
-    (!caruselCurrentItem) ? caruselCurrentItem = 0: caruselCurrentItem = caruselCurrentItem;
-    heroCards[caruselCurrentItem].scrollIntoView({
-        behavior: 'smooth',
-        block: 'end'
-    })
+
 })
-
-///Carusel Slider
-
-function rightScroll() {
-    if (caruselCurrentItem < 3) {
-        caruselCurrentItem++
-    }
-    heroCards[caruselCurrentItem].scrollIntoView({
-        behavior: 'smooth',
-        block: 'end'
-    })
-
-    console.log(caruselCurrentItem)
-}
-
-function leftScroll() {
-    if (caruselCurrentItem > 0) {
-        caruselCurrentItem--
-    }
-    heroCards[caruselCurrentItem].scrollIntoView({
-        behavior: 'smooth',
-        block: 'end'
-    })
-    console.log(caruselCurrentItem);
-}
-
-//Link for our photographer
+//Atribution for our photographer
 let toolTips = document.getElementsByClassName("tooltip__description");
 
 for (let i = 0; i < toolTips.length; i++) {
-    toolTips[i].addEventListener("click", ()=>{
+    toolTips[i].addEventListener("click", () => {
         window.open("https://www.flickr.com/people/camaro27", "_blank");
     })
 }
