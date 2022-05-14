@@ -1,27 +1,26 @@
 @import url("../mobile/style.css");
-.hero{
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 5rem 0
-}
-.cta__title{
-    text-align: start;
-    font-size: var(--fs-mediumLarge);
-}
-.cta__btn a{
-    width: 35rem;
-}
-@media (min-width: 1024px) {
-  .cta__title{
-      font-size: var(--fs-big);
-  }
-}
-.cta__btn {
-    justify-content: start;
-}
-.grid{
-    max-width: 90rem;
-    /* border: 1px solid red; */
+
+@media (min-width: 1023px) {
+    .hero{
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 5rem 0
+    }
+    .cta__title{
+        text-align: start;
+    }
+    .cta__btn a{
+        width: 35rem;
+    }
+    .cta__btn {
+        justify-content: start;
+    }
+    .grid{
+        max-width: 90rem;
+        /* border: 1px solid red; */
+    }
+
+    
 }
 .grid__text{
     font-size: 1rem;
@@ -29,9 +28,8 @@
     transition: ease-in-out 50ms;
 }
 .tooltip__description{
-display: block;
+    display: block;
 }
-
 .grid__text:hover .tooltip__description {
     opacity: 1;
     transition: all 0.5s ease;
@@ -59,5 +57,33 @@ display: block;
 }
 .grid__text {
     position: relative;
+}
+.grid__card figcaption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+
+
+
+/*
+MAIN
+*/
+.why-us__title{
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.why-us__container{
+    max-width: 150rem;
+}
+.why-us__advantage{
+   flex-direction: row;
+}
+.why-us__advantage section{
+    border-right: 5px solid var(--clr-negro);
+    border-radius: 5px;
+}
+.why-us__advantage section:last-child{
+    border-color: transparent;
 }
