@@ -4,7 +4,7 @@
     .hero{
         flex-direction: row;
         justify-content: space-between;
-        margin: 5rem 0
+        margin: 10rem 0;
     }
     .cta__title{
         text-align: start;

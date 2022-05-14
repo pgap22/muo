@@ -1,7 +1,7 @@
 /**
 HERO
 **/
-/*Hero*/
+
 .hero{
     display: flex;
     flex-direction: column;
@@ -91,9 +91,6 @@ HERO
     100%{transform: translateY(0rem);}
     
 }
-/* .hero{
-    display: none;
-} */
 
 /*
 MAIN
@@ -112,7 +109,7 @@ MAIN
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 .why-us__container{
     margin: 3rem;

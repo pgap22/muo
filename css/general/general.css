@@ -74,3 +74,83 @@ h1{font-size: 4.8rem;}
 h2{font-size: 3.6rem;}
 h3{font-size: 2.8rem;}
 h4{font-size: 2.0rem;}
+
+
+/*
+Preloader
+*/
+
+.preloader{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 99999999;
+    background: var(--clr-negro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.preloader__logo{
+    animation: loader 2s infinite;
+    aspect-ratio: 1;
+}
+.hide{
+    animation: vanish 1s forwards;
+}
+@keyframes vanish {
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+@keyframes loader {
+    0%{transform:scale(1)}
+    50%{transform: scale(1.5)}
+    100%{transform: scale(1)}
+}
+
+/*Footer Later i will change that*/
+/*Footer*/
+.footer__container{
+    margin-top: 4rem;
+    padding: 2rem 0rem;
+    background-color: var(--clr-grisOscuro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer__container .footer__socials{
+    /* border: 1px solid red; */
+    gap: 5rem;
+    margin-top: 1rem;
+}
+.footer__logo {
+    width: 7rem;
+    aspect-ratio: 1;
+}
+.footer__text{
+    text-align: center;
+}
+.footer__socials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer__socials--img{
+
+ border-radius: 50%;
+ width: 32px;
+ aspect-ratio: 1;
+
+}
+.socials__icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--clr-grisClaro);
+    border-radius: 50%;
+}
+.footer__text{
+    color: var(--clr-gris);
+}
