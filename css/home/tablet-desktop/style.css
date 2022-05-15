@@ -85,7 +85,7 @@ MAIN
    flex-direction: row;
 }
 .why-us__advantage section{
-    border-right: 5px solid var(--clr-negro);
+    border-right: 5px solid var(--clr-blanco);
     border-radius: 5px;
     border-bottom: none;
 }
