@@ -51,3 +51,9 @@ border-style: solid;
 .nav__btns a li{
     width: min(15vw, 20rem);
 }
+.nav__item--btn1{
+    max-width: 25rem;
+}
+.nav__item--btn2{
+    max-width: 25rem;
+}
