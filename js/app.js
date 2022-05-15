@@ -85,7 +85,7 @@ window.addEventListener("resize", () => {
         blackScreen.style.display = "none";
         menuNav.style.transition = "none";
 
-        //Eliminar Ancla
+        //quit the link
         let myToolTips = document.getElementsByClassName("grid__tooltip")
         for (let i = 0; i < myToolTips.length; i++) {
             myToolTips[i].removeAttribute("href")
@@ -99,7 +99,7 @@ window.addEventListener("resize", () => {
             menuNav.style.transition = "ease-in 200ms"
         }, 100)
 
-        //Añadir Ancla
+        //added a link
         let myToolTips = document.getElementsByClassName("grid__tooltip")
         for (let i = 0; i < myToolTips.length; i++) {
             myToolTips[i].setAttribute("href", "https://www.flickr.com/people/camaro27")

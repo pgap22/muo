@@ -3,8 +3,11 @@
 @media (min-width: 1023px) {
     .hero{
         flex-direction: row;
-        justify-content: space-between;
-        margin: 10rem 0;
+        justify-content: space-evenly;
+        margin: 2rem 0rem;
+    }
+    .cta{
+        max-width: 80rem;
     }
     .cta__title{
         text-align: start;
@@ -22,6 +25,7 @@
 
     
 }
+
 .grid__text{
     font-size: 1rem;
     border: 2px solid transparent;
@@ -83,7 +87,11 @@ MAIN
 .why-us__advantage section{
     border-right: 5px solid var(--clr-negro);
     border-radius: 5px;
+    border-bottom: none;
 }
 .why-us__advantage section:last-child{
     border-color: transparent;
+}
+.why-us__cards{
+    background-color: transparent;
 }
