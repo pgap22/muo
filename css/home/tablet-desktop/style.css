@@ -3,7 +3,7 @@
 @media (min-width: 1023px) {
     .hero{
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-between;
         margin: 2rem 0rem;
     }
     .cta{
@@ -99,6 +99,16 @@ MAIN
 /*
 Our-Content
 */
-.our-content__explaination{
-    flex-direction: row;
+.our-content__wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.our-content__title.militar{
+    grid-column: 2/3;
+    grid-row: 2;
+}
+.our-content__card.militar{
+    grid-column: 1/2;
+    grid-row: 2;
 }

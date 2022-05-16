@@ -26,7 +26,7 @@ HERO
     border: 1px solid var(--clr-negro);
     border-radius: 3.2rem;
     text-align: center;
-    font-weight: var(--fw-bold);
+    font-weight: var(--fw-medium);
     background-color: var(--clr-naranja);
     max-width: 25rem;
     color: var(--clr-blanco);
@@ -193,20 +193,13 @@ MAIN: OUR-CONTENT
     margin: 0 2.2rem;
 }
 
-.our-content__explaination{
+.our-content__wrapper{
     display: flex;
     flex-direction: column;
     gap: 2rem;
     align-items: center;
-    justify-content: space-evenly;
-    width: 90vw;
-    overflow: hidden;
-
 }
 .our-content__carusel img{
-    padding: 2rem;
-    background-color: var(--clr-naranjaCard);
-    border-radius: 1rem;
     width: calc(100% / 4);
 }
 .our-content__carusel{
@@ -235,11 +228,27 @@ MAIN: OUR-CONTENT
 }
 .our-content__container-carusel{
     /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
     max-width: 50rem;
     overflow: hidden;
+    border: 2.5rem solid var(--clr-naranjaCard);
+    background-color: var(--clr-naranjaCard);
 }
 .our-content__card{
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    position: relative;
+    justify-self: center;
+}
+.our-content__author{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.our-content__author img{
+    /* border: 1px solid black; */
+    width: clamp(10rem, 15vw, 25rem);
+    
 }

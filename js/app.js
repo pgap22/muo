@@ -113,16 +113,25 @@ window.addEventListener("resize", () => {
 
 //Carusel :DDDDD
 
-let checkedFirst = document.querySelector(".our-content__btns").children[0].checked=true;
-function firstScroll(params) {
-    document.querySelector(".our-content__carusel").style.transform = "translateX(-0%)";
+//Arte
+document.querySelector(".art .our-content__btns").children[0].checked=true;
+document.querySelector(".militar .our-content__btns").children[0].checked=true;
+document.querySelector(".ciencia .our-content__btns").children[0].checked=true;
+
+function firstScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-0%)";
 }
-function secondScroll(params) {
-    document.querySelector(".our-content__carusel").style.transform = "translateX(-25%)";
+
+function secondScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-25%)";
 }
-function thirdScroll(params) {
-    document.querySelector(".our-content__carusel").style.transform = "translateX(-50%)";
+function thirdScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-50%)";
 }
-function fourthScroll(params) {
-    document.querySelector(".our-content__carusel").style.transform = "translateX(-75%)";
+function fourthScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-75%)";
 }
