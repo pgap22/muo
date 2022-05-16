@@ -99,11 +99,16 @@ MAIN
 /*
 Our-Content
 */
+
 .our-content__wrapper{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 125rem;
+    justify-content: space-evenly;
 }
+
 .our-content__title.militar{
     grid-column: 2/3;
     grid-row: 2;

@@ -28,7 +28,7 @@ HERO
     text-align: center;
     font-weight: var(--fw-medium);
     background-color: var(--clr-naranja);
-    max-width: 25rem;
+    width: 15rem;
     color: var(--clr-blanco);
     transition: all 250ms ease-in-out;
 }
@@ -183,6 +183,7 @@ MAIN
 /*
 MAIN: OUR-CONTENT
 */
+
 .our-content{
     /* border: 1px solid red; */
     text-align: center;
@@ -230,7 +231,6 @@ MAIN: OUR-CONTENT
     /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
-    max-width: 50rem;
     overflow: hidden;
     border: 2.5rem solid var(--clr-naranjaCard);
     background-color: var(--clr-naranjaCard);
@@ -241,6 +241,8 @@ MAIN: OUR-CONTENT
     gap: 2rem;
     position: relative;
     justify-self: center;
+    max-width: 50rem;
+
 }
 .our-content__author{
     display: flex;
