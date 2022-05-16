@@ -54,7 +54,7 @@ function restoreChanges(params) {
         menuNav.style.transition = "none";
 
         //Eliminar Ancla
-        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        let myToolTips = document.getElementsByClassName("tooltip")
         for (let i = 0; i < myToolTips.length; i++) {
             myToolTips[i].removeAttribute("href")
         }
@@ -68,7 +68,7 @@ function restoreChanges(params) {
         }, 100)
 
         //Añadir Ancla
-        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        let myToolTips = document.getElementsByClassName("tooltip")
         for (let i = 0; i < myToolTips.length; i++) {
             myToolTips[i].setAttribute("href", 'https://www.flickr.com/people/camaro27')
         }
@@ -86,7 +86,7 @@ window.addEventListener("resize", () => {
         menuNav.style.transition = "none";
 
         //quit the link
-        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        let myToolTips = document.getElementsByClassName("tooltip")
         for (let i = 0; i < myToolTips.length; i++) {
             myToolTips[i].removeAttribute("href")
         }
@@ -100,7 +100,7 @@ window.addEventListener("resize", () => {
         }, 100)
 
         //added a link
-        let myToolTips = document.getElementsByClassName("grid__tooltip")
+        let myToolTips = document.getElementsByClassName("tooltip")
         for (let i = 0; i < myToolTips.length; i++) {
             myToolTips[i].setAttribute("href", "https://www.flickr.com/people/camaro27")
         }
@@ -109,11 +109,20 @@ window.addEventListener("resize", () => {
 
 
 })
-//Atribution for our photographer
-let toolTips = document.getElementsByClassName("tooltip__description");
 
-for (let i = 0; i < toolTips.length; i++) {
-    toolTips[i].addEventListener("click", () => {
-        window.open("https://www.flickr.com/people/camaro27", "_blank");
-    })
+
+//Carusel :DDDDD
+
+let checkedFirst = document.querySelector(".our-content__btns").children[0].checked=true;
+function firstScroll(params) {
+    document.querySelector(".our-content__carusel").style.transform = "translateX(-0%)";
+}
+function secondScroll(params) {
+    document.querySelector(".our-content__carusel").style.transform = "translateX(-25%)";
+}
+function thirdScroll(params) {
+    document.querySelector(".our-content__carusel").style.transform = "translateX(-50%)";
+}
+function fourthScroll(params) {
+    document.querySelector(".our-content__carusel").style.transform = "translateX(-75%)";
 }

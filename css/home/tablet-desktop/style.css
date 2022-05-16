@@ -26,20 +26,20 @@
     
 }
 
-.grid__text{
+.tooltip{
     font-size: 1rem;
     border: 2px solid transparent;
     transition: ease-in-out 50ms;
 }
-.tooltip__description{
+.tooltip__link{
     display: block;
 }
-.grid__text:hover .tooltip__description {
+.tooltip:hover .tooltip__link {
     opacity: 1;
     transition: all 0.5s ease;
     visibility: visible;
 }
-.grid__text  .tooltip__description {
+.tooltip  .tooltip__link {
     background-color: var(--clr-grisOscuro);
     color: var(--clr-blanco);
     font-size: 1.5rem;
@@ -55,11 +55,11 @@
     z-index: 99999;
     visibility: hidden;
 }
-.grid__text a{
+.tooltip a{
     color: var(--clr-blanco);
     text-decoration: none;
 }
-.grid__text {
+.tooltip {
     position: relative;
 }
 .grid__card figcaption {
@@ -94,4 +94,11 @@ MAIN
 }
 .why-us__cards{
     background-color: transparent;
+}
+
+/*
+Our-Content
+*/
+.our-content__explaination{
+    flex-direction: row;
 }
