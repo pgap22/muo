@@ -74,46 +74,7 @@
 /*
 MAIN
 */
-.why-us__title{
+.why-us__container{
     flex-direction: row;
     justify-content: space-evenly;
-}
-.why-us__container{
-    max-width: 150rem;
-}
-.why-us__advantage{
-   flex-direction: row;
-}
-.why-us__advantage section{
-    border-right: 5px solid var(--clr-blanco);
-    border-radius: 5px;
-    border-bottom: none;
-}
-.why-us__advantage section:last-child{
-    border-color: transparent;
-}
-.why-us__cards{
-    background-color: transparent;
-}
-
-/*
-Our-Content
-*/
-
-.our-content__wrapper{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 125rem;
-    justify-content: space-evenly;
-}
-
-.our-content__title.militar{
-    grid-column: 2/3;
-    grid-row: 2;
-}
-.our-content__card.militar{
-    grid-column: 1/2;
-    grid-row: 2;
 }
