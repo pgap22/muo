@@ -114,24 +114,27 @@ window.addEventListener("resize", () => {
 //Carusel :DDDDD
 
 
-// document.querySelector(".art .our-content__btns").children[0].checked=true;
-// document.querySelector(".militar .our-content__btns").children[0].checked=true;
-// document.querySelector(".ciencia .our-content__btns").children[0].checked=true;
+let art = document.querySelector(".our-content__btns.art ").children[0]
+let miliar = document.querySelector(".our-content__btns.militar").children[0]
+let ciencia = document.querySelector(".our-content__btns.ciencia").children[0]
 
-// function firstScroll(e) {
-//     console.log();
-//     e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-0%)";
-// }
+art.checked = true;
+miliar.checked = true;
+ciencia.checked = true;
+function firstScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-0%)";
+}
 
-// function secondScroll(e) {
-//     console.log();
-//     e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-25%)";
-// }
-// function thirdScroll(e) {
-//     console.log();
-//     e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-50%)";
-// }
-// function fourthScroll(e) {
-//     console.log();
-//     e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-75%)";
-// }
+function secondScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-25%)";
+}
+function thirdScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-50%)";
+}
+function fourthScroll(e) {
+    console.log();
+    e.parentElement.parentElement.children[0].children[0].style.transform = "translateX(-75%)";
+}

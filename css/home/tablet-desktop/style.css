@@ -3,7 +3,7 @@
 @media (min-width: 1023px) {
     .hero{
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-evenly;
         margin: 2rem 0rem;
     }
     .cta{
@@ -13,7 +13,7 @@
         text-align: start;
     }
     .cta__btn a{
-        width: 35rem;
+        width: 25rem;
     }
     .cta__btn {
         justify-content: start;
@@ -77,4 +77,47 @@ MAIN
 .why-us__container{
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+
+.our-content__article{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.our-content__text{
+    max-width: 70rem;
+    margin: 0 auto;
+    justify-self: center;
+}
+.our-content__text h2{
+    margin: 1rem;
+    text-align: start;
+}
+.our-content__text p{
+    display: block;
+    margin: 1rem;
+}
+.our-content__article{
+    flex-direction: row;
+}
+.our-content__img{
+    margin: 0;
+    max-width: 60rem;
+    justify-self: end;
+}
+.our-content--grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.our-content--grid:nth-child(3) .our-content__text{
+ grid-column: 2/3;
+ grid-row: 1;
+ margin: 0;
+ /* border: 1px solid red; */
+ justify-self: start;
+}
+.our-content--grid:nth-child(3) .our-content__img{
+    justify-self: start;
 }

@@ -96,7 +96,10 @@ HERO
 MAIN
 */
 main{
+    display: flex;
+    flex-direction: column;
     margin-top: 2.5rem;
+    gap: 5rem;
 }
 /*
 WHY-US
@@ -111,6 +114,7 @@ WHY-US
 .why-us__heading{
     /* border: 1px solid green; */
     text-align: center;
+    margin: 0 2rem;
 }
 .why-us__card{
     border: 5px solid var(--clr-blanco);
@@ -145,7 +149,77 @@ WHY-US
 }
 
 
-
 /*
 MAIN: OUR-CONTENT
 */
+
+.our-content{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+}
+.our-content__heading{
+    text-align: center;
+}
+.our-content__article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.our-content__title{
+    text-align: center;
+    margin: 0 .6rem;
+}
+.our-content__autor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    filter: invert();
+}
+.our-content__autor img{
+    width: clamp(8rem, 25vw, 17rem);
+}
+.our-content__img{
+    /* border: 1px solid red; */
+    background-color: var(--clr-naranjaCard);
+    margin: 0 1.4rem;
+    border: 2rem solid var(--clr-naranjaCard);
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 40rem;    
+}
+
+.our-content__text p{
+    display: none;
+    font-weight: 300;
+}
+.our-content__btns{
+    display: flex;
+    justify-content: center;
+}
+.our-content__btns input{
+    visibility: hidden;
+}
+.our-content__btns label{
+    width: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid var(--clr-negro);
+}
+.our-content__btns input:checked + label{
+    background-color: var(--clr-negro);
+}
+.our-content__carrusel{
+    display: flex;
+    width: 400%;
+    transition: all 350ms ease-in;
+}
+.our-content__carrusel img{
+    width: calc(100%/4);
+}
