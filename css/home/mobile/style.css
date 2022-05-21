@@ -99,8 +99,20 @@ main{
     display: flex;
     flex-direction: column;
     margin-top: 2.5rem;
-    gap: 5rem;
 }
+.main{
+    border: 5px solid var(--clr-naranja);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.main section{
+    margin: 0;
+    padding: 5rem 0;
+    border-bottom: 5px solid var(--clr-naranja);
+}
+
 /*
 WHY-US
 */

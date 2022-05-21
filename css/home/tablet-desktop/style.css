@@ -74,6 +74,7 @@
 /*
 MAIN
 */
+
 .why-us__container{
     flex-direction: row;
     justify-content: space-evenly;
@@ -85,11 +86,11 @@ MAIN
     display: flex;
     justify-content: space-between;
     width: 100%;
+    max-width: 120rem;
 }
 .our-content__text{
-    max-width: 70rem;
-    margin: 0 auto;
-    justify-self: center;
+    max-width: 50rem;
+    justify-self: end;
 }
 .our-content__text h2{
     margin: 1rem;
