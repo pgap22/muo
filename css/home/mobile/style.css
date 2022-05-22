@@ -11,10 +11,19 @@ HERO
 .cta{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin: 2.5rem;
     /* text-align: center; */
     /* border: 1px solid red; */
+}
+
+.cta__title{
+    text-align: center;
+
+}
+.cta__description{
+    text-align: center;
+
 }
 .cta__btn {
     display: flex;
@@ -201,7 +210,6 @@ MAIN: OUR-CONTENT
     background-color: var(--clr-naranjaCard);
     margin: 0 1.4rem;
     border: 2rem solid var(--clr-naranjaCard);
-    border-radius: 1.5rem;
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -238,3 +246,70 @@ MAIN: OUR-CONTENT
     width: calc(100%/4);
 }
 
+/*
+CTA 2
+*/
+section.cta-two{
+    border: none;
+}
+.cta-two{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.cta-two__container{
+    position: relative;
+}
+.cta-two__circle{
+    width: 12rem;
+    aspect-ratio: 1;
+    border: 10px solid var(--clr-naranjaCard);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-blanco);
+    border-radius: 50%;
+    z-index: 999;
+    margin-bottom: -5rem;
+    position: sticky;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cta-two__circle svg{
+    width: 6rem;
+    fill: var(--clr-naranjaCard);
+    /* aspect-ratio: 1; */
+}
+
+.cta-two__content{
+    /* max-width: 47rem; */
+    color: var(--clr-negro);
+    background-color: var(--clr-naranjaCard);
+    padding: 5rem 0rem;
+    margin: 0rem 2rem;
+    border-radius: 1.5rem;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+}
+.cta-two__text{
+    margin: .5rem;
+}
+.cta-two__container a{
+    /* color: var(--clr-negro); */
+    font-weight: var(--fw-semibold);
+    padding: 1rem 3.5rem;
+    background-color: var(--clr-negro);
+    border: 1px solid var(--clr-blanco);
+    border-radius: 3.2rem;
+}
+.cta-two__btn{
+    transition: ease-in 150ms;
+}
+.cta-two__btn:hover{
+    filter: invert();
+}
