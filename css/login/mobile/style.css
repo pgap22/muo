@@ -81,7 +81,10 @@ main{
     padding: 0;
     margin: 0;
     border-radius: 0;
-    max-width: 22rem;
+    min-width: 22rem;
+}
+.form__password img{
+    cursor: pointer;
 }
 .form__field input::placeholder{
     font-family: 'Poppins', sans-serif;
