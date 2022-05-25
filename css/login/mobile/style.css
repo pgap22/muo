@@ -1,0 +1,118 @@
+/*
+Header
+*/
+body{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.header{
+    padding: 1rem;
+}
+
+.header__container{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.header__logo{
+   justify-self: center;
+   /* border: 1px solid red; */
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+.main__container{
+    max-width: 40rem;
+}
+.main__text{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 1.5rem;
+    font-size: 1.2rem;
+}
+.main__form{
+    margin: 2.5rem;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.form__inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.form__field{
+    display: flex;
+    flex-direction: column;
+}
+.form__field label{
+    font-weight: bold;
+}
+.form__field input {
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
+    border: 5px solid var(--clr-blanco);
+    padding: 1.5rem;
+    margin: .5rem 0rem;
+    border-radius: 1rem;
+}   
+.form__password{
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
+    border: 5px solid var(--clr-blanco);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin: .5rem 0rem;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    gap: 1rem;
+}
+.form__password input{
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    max-width: 22rem;
+}
+.form__field input::placeholder{
+    font-family: 'Poppins', sans-serif;
+    color: var(--clr-gris);
+}
+.form__forget{
+    font-size: 1.1rem;
+    margin: 0px .5rem;
+    text-decoration: underline;
+}
+.form__submit{
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding: .5rem 0rem;
+    background-color:  var(--clr-blanco);
+    font-weight: 900;
+    font-family: "Poppins", sans-serif;
+    font-size: 2.5rem;
+    border-radius: 2.5rem;
+}
+.form__no-account{
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: underline;
+}
+.footer{
+    height: 100%;
+    font-size: 1.2rem;
+    color: var(--clr-gris);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
