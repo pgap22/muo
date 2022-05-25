@@ -31,7 +31,10 @@
             <div class="header__back">
                 <a class="header__back" href="../html/index.html"><img src="../img/icons/arrowLeft.svg" alt=""></a>
             </div>
-            <img class="header__logo" src="../img/logo/logo-mobile.svg" alt="">
+            <picture class="header__logo">
+                <source srcset="../img/logo/logo.svg" media="(min-width:741px)">
+                <img src="../img/logo/logo-mobile.svg" alt="">
+            </picture>
         </div>
     </header>
     <main class="main">
@@ -67,6 +70,9 @@
             </div>
         </div>
     </main>
+
+    <img src="../img/login/bg.jpg" alt="" class="img">
+
     <footer class="footer">
         <p class="footer__text">MUO - Todos los derechos reservados</p>
     </footer>

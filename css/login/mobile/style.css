@@ -18,8 +18,8 @@ body{
 }
 
 .header__logo{
-   justify-self: center;
-   /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
 }
 main{
     display: flex;
@@ -63,6 +63,7 @@ main{
     padding: 1.5rem;
     margin: .5rem 0rem;
     border-radius: 1rem;
+    min-width: 12rem;
 }   
 .form__password{
     background-color: var(--clr-negro);
@@ -81,7 +82,7 @@ main{
     padding: 0;
     margin: 0;
     border-radius: 0;
-    min-width: 22rem;
+
 }
 .form__password img{
     cursor: pointer;
@@ -119,4 +120,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+.img{
+    display: none;
 }

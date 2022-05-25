@@ -1,1 +1,32 @@
 @import url("../mobile/style.css");
+
+.img{
+    display: block;
+}
+body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3,fit-content);
+}
+.header{
+    grid-row: 1;
+    grid-column: 1/2;
+}
+.main{
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.footer{
+    grid-row: 3/4;
+    grid-column: 1/2;
+}
+.img{
+    grid-column: 2/3;
+    grid-row: 1/4;
+    height: 100%;
+    object-fit: cover;
+}
+
+*{
+    font-size: 1.6rem;
+}
