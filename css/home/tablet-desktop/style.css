@@ -32,6 +32,12 @@ HERO
 
     
 }
+.card__img{
+    max-height: 20vh;
+}
+.our-content__carrusel{
+    max-height: 50vh;
+}
 
 .tooltip{
     font-size: 1rem;
@@ -118,7 +124,7 @@ OUR-CONTENT
 }
 .our-content__img{
     margin: 0;
-    max-width: 57rem;
+    max-width: 43rem;
     justify-self: end;
 }
 .our-content--grid{
@@ -174,3 +180,4 @@ CTA 2
     width: 100%;
     max-width: 40rem;
 }
+
