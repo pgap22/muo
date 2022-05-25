@@ -87,7 +87,7 @@
     background-color: var(--clr-negro);
 }
 .nav__item--btn2{
-    border-color: var(--clr-azul);
+    border-color: var(--clr-blanco);
     margin-bottom: 6rem;
 }
 .nav__item--active:active{

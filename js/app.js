@@ -1,8 +1,8 @@
 //Preload
-let loader = document.querySelector(".preloader");
-window.addEventListener("load", ()=>{
-    loader.classList.add("hide")
-})
+// let loader = document.querySelector(".preloader");
+// window.addEventListener("load", ()=>{
+//     loader.classList.add("hide")
+// })
 
 
 //Hamburguer Menu Responsive Mobile
@@ -54,7 +54,7 @@ function restoreChanges(params) {
         hamburguerMenu.style.display = "none";
         blackScreen.style.display = "none";
         menuNav.style.transition = "none";
-        footerIcon.src = "./img/logo/logo-bw.svg"
+        footerIcon.src = "../img/logo/logo-bw.svg"
         //Eliminar Ancla
         let myToolTips = document.getElementsByClassName("tooltip")
         for (let i = 0; i < myToolTips.length; i++) {
@@ -74,6 +74,8 @@ function restoreChanges(params) {
         for (let i = 0; i < myToolTips.length; i++) {
             myToolTips[i].setAttribute("href", 'https://www.flickr.com/people/camaro27')
         }
+		//Add footer img mobil
+		footerIcon.src = "../img/logo/logo-mobile-bw.svg"
 
     }
 }
