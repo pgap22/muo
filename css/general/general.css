@@ -67,6 +67,9 @@ input{
     outline: none;
     font-family: "Poppins", sans-serif;
 }
+input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0 30px var(--clr-blanco) inset;
+}
 header{
     z-index: 999999;
     background-color: var(--clr-negro);
