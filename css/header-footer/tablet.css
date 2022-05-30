@@ -55,7 +55,7 @@ header{
     background-color: var(--clr-negro);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .item__icon:hover{
         background-color: var(--clr-negro);
         filter: invert();
