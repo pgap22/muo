@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="black">
+        <meta name="description" content="Un sitio web de museos">
+        <title>MUO - INICIO</title>
+        <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+
+        <!--Font-->
+        <link rel="preload" href="../fonts/font.css" as="style">
+        <link rel="stylesheet" href="../fonts/font.css">
+
+        <!--Custom Properties-->
+        <link rel="preload" href="../css/general/general.css" as="style">
+        <link rel="stylesheet" href="../css/general/general.css">
+
+        <!--General Styles for responsive Header-->
+        <link rel="preload" href="../css/header-footer/mobile.css" as="style">
+        <link rel="preload" href="../css/header-footer/tablet.css" as="style">
+        <link rel="preload" href="../css/header-footer/desktop.css" as="style">
+
+        <link rel="stylesheet" href="../css/header-footer/mobile.css" media="(max-width: 741px)">
+        <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
+        <link rel="stylesheet" href="../css/header-footer/desktop.css" media="(min-width: 1024px)">
+
+        <!--About us styles-->
+        <link rel="preload" href="../css/nosotros/mobile/style.css" as="style">
+        <link rel="stylesheet" href="../css/nosotros/mobile/style.css" media="(max-width: 741px)">
+    </head>
+
+    <body>
+        <!--CLASES METODOLOGIA BEM-->
+        <header class="header">
+      
+            <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
+            <a href="/" class="header__logo"><img src="../img/logo/logo-mobile.svg" alt="Logo de MUO" title="MUO"
+                    class="header__logo"></a>
+    
+            <nav class="nav">
+                <div class="nav__closeMenu"></div>
+                <ul>
+                    <li class="nav__btns--center">
+                        <div class=" nav__btns">
+                            <a href="register.html" class="  nav__item--active ">
+                                <p class="nav__item--btn1">Registrate</p>
+                            </a>
+                            <a href="login.html" class="  nav__item--active ">
+                                <p class="nav__item--btn2">Inicia Sesion</p>
+                            </a>
+                        </div>
+                    </li>
+    
+                    <li class="nav__links">
+                        <div class="nav__item">
+                            <a href="#">
+                                <div class="item__icon">
+                                    <img src="../img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
+                                    <p>Inicio</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="nav__item">
+                            <a href="#">
+                                <div class="item__icon">
+                                    <img src="../img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
+                                    <p>Sobre Nosotros</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="nav__item">
+                            <a href="#">
+                                <div class="item__icon">
+                                    <img src="../img/icons/museum.svg" alt="Icono Museos" title="Museos">
+                                    <p>Museos</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+    
+                </ul>
+            </nav>
+            <div class="header__blackScreen"></div>
+        </header>
+
+        <main class="main">
+            
+            <section class="main__principal">
+                <h1 class="main__title">Sobre Nosotros</h1>
+            
+                <div class="main__img-container">
+                    <img src="../img/nosotros/about-us.jpg" alt="about-us-imagen" class="main__img">
+                </div>
+    
+                <p class="main__paragraph">Phasellus suscipit varius justo, ut consequat tellus. Mauris pretium, tellus vel malesuada molestie, est nisi commodo lacus, sit amet consequat eros felis et odio. Donec nec scelerisque quam. Nulla maximus leo eget diam vehicula, eu pellentesque lacus dignissim.</p>
+            </section>
+            
+
+            <section class="main__personal">
+                <h2>Nuestro personal</h2>
+                <div class="main__personal-container">
+                    <div class="main__second-container">
+                        <h4>Levi</h4>
+                        <p>Designer UX/UI</p>
+                    </div>
+                    <div class="main__second-container">
+                        <h4>Happy</h4>
+                        <p>Founder</p>
+                    </div>
+                    <div class="main__second-container">
+                        <h4>Saz</h4>
+                        <p>CEO</p>
+                    </div>
+                </div>
+            </section>
+
+
+        </main> 
+
+    </body>
+
+</html>

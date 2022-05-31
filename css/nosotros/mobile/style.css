@@ -1,0 +1,50 @@
+.main__title{
+    /* border: 1px solid lightblue; */
+    text-align: center;
+    /* background-color: red; */
+    padding: 35px;
+}
+.main__img-container{
+   /* border: 1px solid lightblue; */
+   margin: 0px 35px;
+}
+.main__paragraph{
+    margin: 0 35px;
+}
+
+.main__personal{
+    margin-top: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.main__second-container{
+    background-color: rgb(52, 52, 52);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+.main__personal-container{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 100px 100px 100px;
+    /* grid-template-rows: 100px 100px 100px; */
+}
+
+
+
+    /*Por defecto display flex
+    /*trae flex-direction: row; */
+   
+    /*Cuando esta en modo row, Align-Items(Funciona de forma vertical)*/
+    /*Cuando esta en modo row Justify-content(Funciona de forma horizontal)*/
+
+        /*Para poner los hijos de forma vertical*/
+    /*Se usa Flex-Direction: column*/
+
+        /*Cuando esta en modo column es alreves xd,*/
+    /*Cuando esta en modo column es alreves xd*/
+
