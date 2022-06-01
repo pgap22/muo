@@ -44,49 +44,52 @@
                 <p class="main__description">Descubre la cultura que nos rodea</p>
             </section>
         </div>
-        <div clss="main__forms">
+        <div class="main__forms">
             <form action="/" class="form">
                 <div class="form__inputs">
-                    <div class="form__stred">
-                        <label for="name_register">Nombre</label>
-                        <input type="Nombre" name="user_name" id="user_name" required autocomplete="Nombre">
+                    <div class="form__aligned">
+                        <div class="form__staan">
+                            <label for="name_register">Nombre</label>
+                            <input type="Nombre" name="user_name" id="user_name" required autocomplete="Nombre">
+                        </div>
+                        <div class="form__staan">
+                            <label for="surname_register">Apellido</label>
+                            <input type="Apellido" name="surname_register" id="surname_register" required
+                                autocomplete="Apellido">
+                        </div>
                     </div>
                     <div class="form__stred">
-                        <label for="surname_register">Apellido</label>
-                        <input type="Apellido" name="surname_register" id="surname_register" required
-                            autocomplete="Apellido">
-                    </div>
-                    <div class="form__field">
                         <label for="email_register">Email</label>
                         <input type="email" name="email_register" id="email_register" required autocomplete="email">
                     </div>
-                    <div class="form__field">
-                        <label for="password_login">Contraseña</label>
-                        <div class="form__password">
-                            <input type="password" name="password_login" id="password_login" required
-                                autocomplete="current-password">
-                        </div>
+                    <div class="form__stred">
+                        <label for="Paswordd_register">Contraseña</label>
+                        <input type="Paswordd" name="Paswordd_register" id="Paswordd_register" required
+                            autocomplete="pasword">
                     </div>
-                    <div class="form__field">
-                        <label for="password_login"> Confirmar Contraseña</label>
-                        <div class="form__password">
-                            <input type="password" name="password_login" id="password_login" required
-                                autocomplete="current-password">
-                        </div>
+                    <div class="form__stred">
+                        <label for="Paswordd_register">Confirmar Contraseña</label>
+                        <input type="Paswordd" name="Paswordd_register" id="Paswordd_register" required
+                            autocomplete="pasword">
                     </div>
-
-
-
-
                 </div>
 
+                <input class="form__regist" type="submit" name="form__regist" value="Registrarte">
+                <a href="login.html" class="form_quest">¿Ya tienes cuenta?</a>
 
             </form>
         </div>
 
     </main>
 
+    <img src="../img/login/bg.jpg" alt="" class="img">
 
+    <footer class="footer">
+        <p class="footer__text">MUO - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="../js/login.js"></script>
+    <script src="../js/general.js"></script>
 
 </body>
 

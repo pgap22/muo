@@ -1,51 +1,137 @@
 /*
 Header
 */
-body{
+body {
     /* background-color: red; */
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
-.header{
+
+.header {
     padding: 1rem;
 }
 
-.header__container{
+.header__container {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.header__logo{
+.header__logo {
     display: flex;
     justify-content: center;
 }
-main{
+
+main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     align-items: center;
 }
-.main__container{
+
+.main__container {
     max-width: 40rem;
 }
-.main__text{
+
+.main__text {
     display: flex;
     flex-direction: column;
     text-align: center;
     margin: 1.5rem;
     font-size: 1.2rem;
 }
-.main__form{
+
+.main__forms {
     margin: 2.5rem;
 }
-.form{
+
+.form {
     display: flex;
     flex-direction: column;
 }
-.form__inputs{
+
+.form__inputs {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.form__stred {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form__stred label {
+    font-weight: bold;
+}
+
+.form__stred input {
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
+    border: 5px solid var(--clr-blanco);
+    padding: 1.5rem;
+    margin: .5rem 0rem;
+    border-radius: 1rem;
+    min-width: 12rem;
+}
+
+.form__staan label {
+    font-weight: bold;
+}
+
+.form__staan input {
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
+    border: 5px solid var(--clr-blanco);
+    padding: 1.5rem;
+    margin: .5rem 0rem;
+    border-radius: 1rem;
+    min-width: 12rem;
+    display: flex;
+
+
+}
+
+.main form .form__aligned {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.form__staan input {
+    margin-left: 2px;
+    margin-right: 15px;
+}
+
+.form__regist {
+    margin-top: 10rem;
+    margin-bottom: 1rem;
+    padding: .5rem 0rem;
+    background-color: var(--clr-blanco);
+    font-weight: 900;
+    font-family: "Poppins", sans-serif;
+    font-size: 2.5rem;
+    border-radius: 2.5rem;
+}
+
+.form_quest {
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: underline
+}
+
+.footer {
+    height: 100%;
+    font-size: 1.2rem;
+    color: var(--clr-gris);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.img {
+    display: none;
 }
