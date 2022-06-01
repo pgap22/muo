@@ -1,96 +1,94 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="black">
+        <meta name="description" content="Registro para crear una cuenta en MUO">
+        <title>MUO - REGISTRO</title>
+        <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+        <!--Js-->
+        <link rel="preload" href="../js/app.js" as="script">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="black">
-    <meta name="description" content="Un sitio web de museos">
-    <title>MUO - REGISTRO</title>
-    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-    <!--Font-->
-    <link rel="preload" href="../fonts/font.css" as="style">
-    <link rel="stylesheet" href="../fonts/font.css">
+        <!--Font-->
+        <link rel="preload" href="../fonts/font.css" as="style">
+        <link rel="stylesheet" href="../fonts/font.css">
 
-    <!--Custom Properties-->
-    <link rel="preload" href="../css/general/general.css" as="style">
-    <link rel="stylesheet" href="../css/general/general.css">
+        <!--Custom Properties-->
+        <link rel="preload" href="../css/general/general.css" as="style">
+        <link rel="stylesheet" href="../css/general/general.css">
 
-    <!--LOGIN STYLE-->
-    <link rel="preload" href="../css/register/mobile/style.css" as="style">
-    <link rel="preload" href="../css/login/tablet-desktop/style.css" as="style">
-    <link rel="stylesheet" href="../css/register/mobile/style.css" media="(max-width: 741px)">
-    <link rel="stylesheet" href="../css/login/tablet-desktop/style.css" media="(min-width: 742px)">
-</head>
+        <!--Register Styles-->
+        <link rel="preload" href="../css/register/mobile/style.css" as="style">
+        <link rel="preload" href="../css/register/tablet-desktop/style.css" as="style">
 
+        <link rel="stylesheet" href="../css/register/mobile/style.css" media="(max-width: 741px)">
+        <link rel="stylesheet" href="../css/register/tablet-desktop/style.css" media="(min-width: 742px)"> 
 
-<body>
-    <header class="header">
-        <div class="header__container">
-            <div class="header__back">
-                <a class="header__back" href="../html/index.html"><img src="../img/icons/arrowLeft.svg" alt=""></a>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="header__back">
+                    <a class="header__back" href="../html/index.html"><img src="../img/icons/arrowLeft.svg" alt=""></a>
+                </div>
+                <picture class="header__logo">
+                    <source srcset="../img/logo/logo.svg" media="(min-width:741px)">
+                    <img src="../img/logo/logo-mobile.svg" alt="">
+                </picture>
             </div>
-            <picture class="header__logo">
-                <source srcset="../img/logo/logo.svg" media="(min-width:741px)">
-                <img src="../img/logo/logo-mobile.svg" alt="">
-            </picture>
-        </div>
-    </header>
-    <main class="main">
-        <div class="main__container">
-            <section class="main__text">
-                <h1 class="main__title">Registro</h1>
-                <p class="main__description">Descubre la cultura que nos rodea</p>
-            </section>
-        </div>
-        <div class="main__forms">
-            <form action="/" class="form">
-                <div class="form__inputs">
-                    <div class="form__aligned">
-                        <div class="form__staan">
-                            <label for="name_register">Nombre</label>
-                            <input type="Nombre" name="user_name" id="user_name" required autocomplete="Nombre">
-                        </div>
-                        <div class="form__staan">
-                            <label for="surname_register">Apellido</label>
-                            <input type="Apellido" name="surname_register" id="surname_register" required
-                                autocomplete="Apellido">
-                        </div>
+        </header>
+        <main class="main">
+           <div class="main__text-container">
+                <div class="main__title">
+                    <h1>Registrate</h1>
+                </div>
+                <div class="main__description">
+                    <p>
+                        Descubre la cultura que nos rodea
+                    </p>
+                </div>
+           </div>
+           <form action="/" class="form">
+                <div class="form__input-names">
+                    <div class="form__input form__input--two-columns">
+                        <label for="new_name">Nombre</label>
+                        <input type="text" class="form__name" id="new_name" name="new_name" autocomplete="given-name" placeholder="Nombre">
                     </div>
-                    <div class="form__stred">
-                        <label for="email_register">Email</label>
-                        <input type="email" name="email_register" id="email_register" required autocomplete="email">
-                    </div>
-                    <div class="form__stred">
-                        <label for="Paswordd_register">Contraseña</label>
-                        <input type="Paswordd" name="Paswordd_register" id="Paswordd_register" required
-                            autocomplete="pasword">
-                    </div>
-                    <div class="form__stred">
-                        <label for="Paswordd_register">Confirmar Contraseña</label>
-                        <input type="Paswordd" name="Paswordd_register" id="Paswordd_register" required
-                            autocomplete="pasword">
+                    <div class="form__input form__input--two-columns">
+                        <label for="new_last-name">Apellido</label>
+                        <input type="text" class="form__last-name" id="new_last-name" name="new_last-name" autocomplete="family-name" placeholder="Apellido">
                     </div>
                 </div>
+                <div class="form__input form__input--one-column">
+                    <label for="new_email">Email</label>
+                    <input type="email" class="form__email" id="new__email" name="new__email" autocomplete="email" placeholder="Ingresa tu email" required>
+                </div>
+                <div class="form__input form__input--one-column">
+                    <div class="form__icon-show">
+                        <label for="new_password">Contraseña</label>
+                        <img src="../img/icons/eye.svg" width="30" alt="">
+                    </div>
+                    <input type="password" class="form__password" id="new__password" name="new__password"  placeholder="Ingresa tu contraseña" required>
+                </div>
+                <div class="form__input form__input--one-column">
+                    <label for="confirm_password">Confirmar contraseña</label>
+                    <input type="password" class="form__confirm" id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required>
+                </div>
+                <div class="form__buttons">
+                    <input type="submit" value="Registrate" class="form__submit"> 
+                    <a href="#" class="form__account">¿Ya tienes cuenta?</a>
+                </div>
+           </form>
+        </main>
 
-                <input class="form__regist" type="submit" name="form__regist" value="Registrarte">
-                <a href="login.html" class="form_quest">¿Ya tienes cuenta?</a>
 
-            </form>
-        </div>
+            <img class="background" src="../img/register/bg.jpg" alt="fondo-register">
 
-    </main>
 
-    <img src="../img/login/bg.jpg" alt="" class="img">
-
-    <footer class="footer">
+        <footer class="footer">
         <p class="footer__text">MUO - Todos los derechos reservados</p>
-    </footer>
-
-    <script src="../js/login.js"></script>
-    <script src="../js/general.js"></script>
-
-</body>
-
+        </footer>
+    </body> 
 </html>

@@ -1,128 +1,105 @@
-/*
-Header
-*/
-body {
+body{
     /* background-color: red; */
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
-
-.header {
+.header{
     padding: 1rem;
+    margin-bottom: .5rem;
 }
 
-.header__container {
+.header__container{
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.header__logo {
+.header__logo{
     display: flex;
     justify-content: center;
 }
-
-main {
+.main{
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 2rem;
+}
+.main__text-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main__description{
+    text-align: center;
+}
+.form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 50rem;
+    gap: 1.5rem;
+    margin: 0rem 2rem;
+}
+.form__input{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+.form__input input{
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
+    border: 5px solid var(--clr-blanco);
+    padding: .8rem 1.5rem;
+    margin: .5rem 0rem;
+    border-radius: 1rem;
+}
+.form__input--two-columns input{
+    width: 100%;
+}
+.form__input-names{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.form__input--one-column{
+    width: 100%;
+}
+.form__icon-show{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
-
-.main__container {
-    max-width: 40rem;
+.form__icon-show img{
+    margin-right: 1rem;
 }
-
-.main__text {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 1.5rem;
-    font-size: 1.2rem;
-}
-
-.main__forms {
-    margin: 2.5rem;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form__inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.form__stred {
-    display: flex;
-    flex-direction: column;
-
-}
-
-.form__stred label {
-    font-weight: bold;
-}
-
-.form__stred input {
-    background-color: var(--clr-negro);
-    color: var(--clr-blanco);
-    border: 5px solid var(--clr-blanco);
-    padding: 1.5rem;
-    margin: .5rem 0rem;
-    border-radius: 1rem;
-    min-width: 12rem;
-}
-
-.form__staan label {
-    font-weight: bold;
-}
-
-.form__staan input {
-    background-color: var(--clr-negro);
-    color: var(--clr-blanco);
-    border: 5px solid var(--clr-blanco);
-    padding: 1.5rem;
-    margin: .5rem 0rem;
-    border-radius: 1rem;
-    min-width: 12rem;
-    display: flex;
-
-
-}
-
-.main form .form__aligned {
-    display: flex;
-    flex-wrap: wrap;
-
-}
-
-.form__staan input {
-    margin-left: 2px;
-    margin-right: 15px;
-}
-
-.form__regist {
-    margin-top: 10rem;
+.form__submit{
+    margin-top: 2.5rem;
     margin-bottom: 1rem;
-    padding: .5rem 0rem;
-    background-color: var(--clr-blanco);
+    padding: 1rem;
+    background-color:  var(--clr-blanco);
     font-weight: 900;
     font-family: "Poppins", sans-serif;
     font-size: 2.5rem;
     border-radius: 2.5rem;
+    width: 100%;
 }
-
-.form_quest {
-    font-size: 1.1rem;
+.form__buttons{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.form__buttons a{
+    font-size: 1.2rem;
     text-align: center;
-    text-decoration: underline
+    text-decoration: underline;
 }
-
-.footer {
+.form__icon-show img{
+    cursor: pointer;
+}
+.footer{
+    margin-top: 5rem;
     height: 100%;
     font-size: 1.2rem;
     color: var(--clr-gris);
@@ -131,7 +108,6 @@ main {
     flex-direction: column;
     justify-content: flex-end;
 }
-
-.img {
+.background{
     display: none;
 }
