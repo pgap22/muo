@@ -16,4 +16,78 @@
     <!--Custom Properties-->
     <link rel="preload" href="../css/general/general.css" as="style">
     <link rel="stylesheet" href="../css/general/general.css">
+
+    <!--LOGIN STYLE-->
+    <link rel="preload" href="../css/register/mobile/style.css" as="style">
+    <link rel="preload" href="../css/login/tablet-desktop/style.css" as="style">
+    <link rel="stylesheet" href="../css/register/mobile/style.css" media="(max-width: 741px)">
+    <link rel="stylesheet" href="../css/login/tablet-desktop/style.css" media="(min-width: 742px)">
 </head>
+
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__back">
+                <a class="header__back" href="../html/index.html"><img src="../img/icons/arrowLeft.svg" alt=""></a>
+            </div>
+            <picture class="header__logo">
+                <source srcset="../img/logo/logo.svg" media="(min-width:741px)">
+                <img src="../img/logo/logo-mobile.svg" alt="">
+            </picture>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main__container">
+            <section class="main__text">
+                <h1 class="main__title">Registro</h1>
+                <p class="main__description">Descubre la cultura que nos rodea</p>
+            </section>
+        </div>
+        <div clss="main__forms">
+            <form action="/" class="form">
+                <div class="form__inputs">
+                    <div class="form__stred">
+                        <label for="name_register">Nombre</label>
+                        <input type="Nombre" name="user_name" id="user_name" required autocomplete="Nombre">
+                    </div>
+                    <div class="form__stred">
+                        <label for="surname_register">Apellido</label>
+                        <input type="Apellido" name="surname_register" id="surname_register" required
+                            autocomplete="Apellido">
+                    </div>
+                    <div class="form__field">
+                        <label for="email_register">Email</label>
+                        <input type="email" name="email_register" id="email_register" required autocomplete="email">
+                    </div>
+                    <div class="form__field">
+                        <label for="password_login">Contraseña</label>
+                        <div class="form__password">
+                            <input type="password" name="password_login" id="password_login" required
+                                autocomplete="current-password">
+                        </div>
+                    </div>
+                    <div class="form__field">
+                        <label for="password_login"> Confirmar Contraseña</label>
+                        <div class="form__password">
+                            <input type="password" name="password_login" id="password_login" required
+                                autocomplete="current-password">
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+            </form>
+        </div>
+
+    </main>
+
+
+
+</body>
+
+</html>

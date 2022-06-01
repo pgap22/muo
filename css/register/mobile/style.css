@@ -1,0 +1,51 @@
+/*
+Header
+*/
+body{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.header{
+    padding: 1rem;
+}
+
+.header__container{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.header__logo{
+    display: flex;
+    justify-content: center;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+.main__container{
+    max-width: 40rem;
+}
+.main__text{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 1.5rem;
+    font-size: 1.2rem;
+}
+.main__form{
+    margin: 2.5rem;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.form__inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
