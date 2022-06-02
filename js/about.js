@@ -1,8 +1,10 @@
-let contentMision = document.querySelector(".mision")
-contentMision.style.display = "flex";
+let contentMision = document.querySelector(".mision");
 let contentVision = document.querySelector(".vision")
 let contentPersonal = document.querySelector(".personal")
 let allContent = document.querySelector(".our__content").children;
+
+(window.screen.availWidth >= 742) ? contentMision.style.display = "grid" : contentMision.style.display = "flex";
+contentMision.classList.add("current")
 
 function showContent(element) {
     switch (element.id) {
@@ -20,10 +22,22 @@ function hideOthers(currentContent) {
             const element = allContent[i];
             if(currentContent.className != element.className){
                 element.style.display = "none";
-                console.log(element)
+                element.classList.remove("current");
             } 
             else{
-                element.style.display = "flex";
+                element.classList.add("current");
+                (window.screen.availWidth > 741) ? element.style.display = "grid" : element.style.display = "flex";
             }
-        }
+       }
 }
+
+//Restore Breakpoints Styles
+function restoreChanges(params) {
+    if (window.innerWidth >= 742) {
+        document.querySelector(".current").style.display = "grid";
+    } else {
+        document.querySelector(".current").style.display = "flex";
+    }
+}
+restoreChanges();
+window.addEventListener("resize", restoreChanges)

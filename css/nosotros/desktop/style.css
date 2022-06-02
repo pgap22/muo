@@ -10,7 +10,13 @@
         font-size: 6rem;
     }
 }
-
+.item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    
+}
 .about__wrapper{
     align-items: flex-start;
 }
