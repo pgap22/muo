@@ -1,0 +1,133 @@
+:root{
+    --spaceBetweenSections: 10rem;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spaceBetweenSections);
+}
+.about{
+    padding-top: 1rem;
+    border-bottom: 3px solid var(--clr-blanco);
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.about__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.2rem;
+
+    margin: 0rem 2.5rem;
+}
+.about__img-container{
+    background-color: var(--clr-naranjaCard);
+    padding: 2rem;
+    margin-bottom: 4rem;
+    max-width: 40rem;
+}
+.about__autor{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    justify-content: center;
+}
+.about__autor p{
+    font-size: min(3.2vw, 1.6rem)
+}
+.about__description p{
+    /* border: 1px solid red; */
+    text-align: center;
+}
+.about__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.our{
+    width: 100%;
+    border-bottom: 3px solid var(--clr-blanco);
+}
+
+.our__wrapper{
+    margin: 0rem 3rem;
+    padding-bottom: var(--spaceBetweenSections);
+}
+
+.our__options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 5px solid var(--clr-blanco);
+    margin-bottom: 1rem;
+}
+
+
+.our__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in 250ms;
+}
+.our__btn h2{
+    font-weight: var(--fw-bold);
+    font-size: clamp(1.2rem, 4vw, 3rem);
+    padding: 2rem clamp(.5rem, 3vw, 99rem);
+}
+
+.our__options input{
+    display: none;
+}
+
+
+
+.our__options input:checked + label div{
+    background-color: var(--clr-naranjaCard);
+}
+.our__options input:checked + label div p{
+    border-color: var(--clr-naranjaCard);
+}
+
+.our__content>section{
+    display: none;
+}
+.our__btn{
+    cursor: pointer;
+    user-select: none;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    
+}
+
+.item__img{
+    padding: 2.5rem;
+    background-color: var(--clr-naranjaCard);
+    border-radius: 1.2rem;
+    aspect-ratio: 1;
+    width: clamp(11rem, 20vw, 34rem);
+}
+.item__text{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.footer__container{
+    margin: 0;
+}
+.footer{
+    position: relative;
+    z-index: 2;
+}
