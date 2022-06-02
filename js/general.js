@@ -56,8 +56,7 @@ blackScreen.addEventListener("click", () => {
     quitMenu();
 })
 
-//Tablet BreakPoint
-let icono = document.querySelector(".header__logo");
+
 //Footer icon breakpoint
 let footerIcon = document.querySelector(".footer__logo")
 
