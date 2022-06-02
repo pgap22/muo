@@ -1,50 +1,175 @@
-.main__title{
-    /* border: 1px solid lightblue; */
-    text-align: center;
-    /* background-color: red; */
-    padding: 35px;
-}
-.main__img-container{
-   /* border: 1px solid lightblue; */
-   margin: 0px 35px;
-}
-.main__paragraph{
-    margin: 0 35px;
-}
-
-.main__personal{
-    margin-top: 25px;
-    text-align: center;
+.main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 3rem;
 }
-.main__second-container{
-    background-color: rgb(52, 52, 52);
+.about{
+    padding-top: 1rem;
+    border-bottom: 3px solid var(--clr-blanco);
+    text-align: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+.about__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.2rem;
+
+    margin: 0rem 2.5rem;
+}
+.about__img-container{
+    background-color: var(--clr-naranjaCard);
+    padding: 2rem;
+    margin-bottom: 4rem;
+    max-width: 40rem;
+}
+.about__autor{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    justify-content: center;
+}
+.about__autor p{
+    font-size: min(3.2vw, 1.6rem)
+}
+.about__description p{
+    /* border: 1px solid red; */
+    text-align: center;
+}
+.about__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.our{
+    width: 100%;
+    border-bottom: 3px solid var(--clr-blanco);
+    padding-bottom: 5rem;
+}
+
+.our__wrapper{
+    margin: 0rem 3rem;
+}
+
+.our__options{
+    display: flex;
     justify-content: space-between;
-    gap: 30px;
-}
-.main__personal-container{
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 100px 100px 100px;
-    /* grid-template-rows: 100px 100px 100px; */
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 3px solid var(--clr-blanco);
+    margin-bottom: 1rem;
 }
 
 
+.our__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in 250ms;
+}
+.our__btn p{
+    font-weight: var(--fw-bold);
+    font-size: clamp(1.2rem, 4vw, 3rem);
+    padding: 2rem clamp(.5rem, 3vw, 99rem);
+}
 
-    /*Por defecto display flex
-    /*trae flex-direction: row; */
-   
-    /*Cuando esta en modo row, Align-Items(Funciona de forma vertical)*/
-    /*Cuando esta en modo row Justify-content(Funciona de forma horizontal)*/
+.our__options input{
+    display: none;
+}
 
-        /*Para poner los hijos de forma vertical*/
-    /*Se usa Flex-Direction: column*/
 
-        /*Cuando esta en modo column es alreves xd,*/
-    /*Cuando esta en modo column es alreves xd*/
 
+.our__options input:checked + label div{
+    background-color: var(--clr-naranjaCard);
+}
+.our__options input:checked + label div p{
+    border-color: var(--clr-naranjaCard);
+}
+
+.our__content>section{
+    display: none;
+}
+.our__btn{
+    cursor: pointer;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    
+}
+.item__description{
+    margin: 0rem 3rem;
+}
+.item img{
+    padding: 2.5rem;
+    background-color: var(--clr-naranjaCard);
+    border-radius: 1.2rem;
+    max-height: 10rem;
+}
+.item__text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo__icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.logo__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5rem;
+}
+.logo__cta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.logo__text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    text-align: center;
+}
+.logo__border{
+    border: 5px solid var(--clr-blanco);
+    border-bottom: none;
+    margin: -2rem 3rem;
+    padding: 1rem;
+    padding-bottom: 6rem;
+    position: relative;
+    z-index: 0;
+    border-radius: 2.1rem;
+}
+.logo__btn{
+    background-color: var(--clr-naranjaCard);
+    border-radius: 2rem;
+    width: 100%;
+    padding: 1rem;
+    max-width: 20rem;
+    text-align: center;
+}
+.footer__container{
+    margin: 0;
+}
+.footer{
+    position: relative;
+    z-index: 2;
+}
