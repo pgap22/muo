@@ -46,42 +46,7 @@ HERO
     max-height: 50vh;
 }
 
-.tooltip{
-    font-size: 1rem;
-    border: 2px solid transparent;
-    transition: ease-in-out 50ms;
-}
-.tooltip__link{
-    display: block;
-}
-.tooltip:hover .tooltip__link {
-    opacity: 1;
-    transition: all 0.5s ease;
-    visibility: visible;
-}
-.tooltip  .tooltip__link {
-    background-color: var(--clr-grisOscuro);
-    color: var(--clr-blanco);
-    font-size: 1.5rem;
-    position: absolute;
-    bottom: -2.8rem;
-    right: 5rem;
-    overflow:hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    opacity: 0;
-    padding: .2rem;
-    border: 1px solid var(--clr-negro);
-    z-index: 99999;
-    visibility: hidden;
-}
-.tooltip a{
-    color: var(--clr-blanco);
-    text-decoration: none;
-}
-.tooltip {
-    position: relative;
-}
+
 .grid__card figcaption {
     display: flex;
     flex-direction: column;
@@ -91,6 +56,7 @@ HERO
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 
