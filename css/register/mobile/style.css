@@ -50,9 +50,12 @@ body{
     background-color: var(--clr-negro);
     color: var(--clr-blanco);
     border: 5px solid var(--clr-blanco);
-    padding: .8rem 1.5rem;
+    padding: 1.5rem;
     margin: .5rem 0rem;
     border-radius: 1rem;
+}
+.form__icon-show img{
+    aspect-ratio: 1;
 }
 .form__input--two-columns input{
     width: 100%;

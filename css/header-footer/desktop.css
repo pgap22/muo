@@ -3,7 +3,8 @@
 
 
 .header__logo{
-    width: 94px;
+    width: 200px;
+    aspect-ratio: unset;
 }
 
 

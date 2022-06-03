@@ -5,9 +5,11 @@ password_toggle.addEventListener("click", ()=>{
     if(password.type == "password" || confirmPassword.type == "password"){
         password.type = "text";
         confirmPassword.type = "text";
+        password_toggle.src = "../img/icons/eye.svg";
     }
     else{
         password.type = "password";
         confirmPassword.type = "password";
+        password_toggle.src = "../img/icons/eye-off.svg";
     }
 })

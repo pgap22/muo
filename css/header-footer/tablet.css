@@ -28,7 +28,7 @@ header{
 .header__logo{
     align-self: center;
     justify-self: center;
-    width: 64px;
+    width: 76px;
     aspect-ratio: 1;
 }
 .nav__links{

@@ -102,7 +102,7 @@
     user-select: none;
 }
 
-.item{
+.details{
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -110,14 +110,14 @@
     
 }
 
-.item__img{
+.details__img{
     padding: 2.5rem;
     background-color: var(--clr-naranjaCard);
     border-radius: 1.2rem;
     aspect-ratio: 1;
     width: clamp(11rem, 20vw, 34rem);
 }
-.item__text{
+.details__text{
     display: flex;
     flex-direction: column;
 
