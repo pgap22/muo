@@ -17,13 +17,14 @@ document.querySelector(".preloader").appendChild(myDivLogo)
 document.querySelector(".preloader__logo").appendChild(myImgLogo);
 let loader = document.querySelector(".preloader");
 window.addEventListener("load", ()=>{
-    loader.classList.add("hide")
+    setTimeout(()=>{loader.classList.add("hide")}, 500)
 })
 
 
 //Hamburguer Menu Responsive Mobile
 
-let hamburguerMenu = document.querySelector(".header__menu");
+if(document.querySelector("nav")){
+    let hamburguerMenu = document.querySelector(".header__menu");
 let menuNav = document.querySelector(".nav");
 let closeHamburguer = document.querySelector(".nav__closeMenu");
 let blackScreen = document.querySelector(".header__blackScreen");
@@ -85,3 +86,4 @@ function restoreChanges(params) {
 }
 restoreChanges();
 window.addEventListener("resize", restoreChanges)
+}
