@@ -17,7 +17,7 @@ document.querySelector(".preloader").appendChild(myDivLogo)
 document.querySelector(".preloader__logo").appendChild(myImgLogo);
 let loader = document.querySelector(".preloader");
 window.addEventListener("load", ()=>{
-    setTimeout(()=>{loader.classList.add("hide")}, 500)
+    loader.classList.add("hide")
 })
 
 
