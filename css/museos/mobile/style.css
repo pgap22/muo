@@ -60,6 +60,7 @@
 }
 
 .Gallery_Img {
+   
     margin: 1.8rem;
 }
 
@@ -91,7 +92,7 @@
 }
 
 .Museum_Img {
-    width: 375px;
+    width: 400px;
 }
 
 
@@ -138,12 +139,6 @@
     color: var(--clr-blanco);
     border-color: var(--clr-blanco);
 
-}
-
-.Flecha_Buttom {
-    width: 30px;
-    height: 30px;
-    align-items: center;
 }
 
 .Museum_Information_Additional {
