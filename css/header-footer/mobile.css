@@ -53,14 +53,14 @@
     overflow-y: scroll;
 }
 .nav ul {
-    padding-top: 7rem;
+    padding-top: 9rem;
 }
 .nav__closeMenu{
     background: url("../../img/icons/cancel.svg");
     width: 27px;
     aspect-ratio: 1;
     position: absolute;
-    top: 2.31rem;
+    top: 3.31rem;
     left: 2rem;
     z-index: 999;
 }
@@ -165,4 +165,16 @@
 }
 .footer__text{
     color: var(--clr-gris);
+}
+.showMenu{
+    transform: translate(0%);
+}
+.showBlackScreen{
+    display: block;
+}
+.hideIcon{
+    visibility: hidden;
+}
+.showCloseMenu{
+    visibility: visible;
 }
