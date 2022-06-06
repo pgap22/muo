@@ -1,0 +1,38 @@
+.wrapper{
+    height: 400px;
+    width: auto;
+
+}
+
+.Front{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+.principal{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10rem;
+}
+
+.principal h1{
+    text-align: start;
+    max-width: 1px;
+}
+
+.Gallery_principal{
+    display: flex;
+    gap: 30px;
+    align-items: flex-end;
+
+
+}
+
+.Gallery_Img img{
+    border-radius: 20px;
+    height: 300px;
+    aspect-ratio: 3 / 5;  
+}
