@@ -1,0 +1,19 @@
+@import url("../tablet/style.css");
+
+.main__card-container{
+    flex-direction: row;
+}
+.hero__wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+.hero__img-wrapper{
+    height: 40rem;
+}
+.hero__img{
+    height: 30rem;
+}
+
+h2 {
+    font-size: max(1.9rem, 1.54vw);
+}

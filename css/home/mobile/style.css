@@ -240,7 +240,7 @@ MAIN: OUR-CONTENT
 .our-content__carrusel{
     display: flex;
     width: 400%;
-    transition: cubic-bezier(0, 1.81, 0.58, 1) 2s;
+    transition: ease-in-out 500ms;
 }
 .our-content__carrusel img{
     width: calc(100%/4);
