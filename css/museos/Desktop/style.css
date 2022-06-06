@@ -1,0 +1,7 @@
+@import url(../mobile/style.css);
+
+.main__card-container{
+    flex-direction: row;
+    
+
+}

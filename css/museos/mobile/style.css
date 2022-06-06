@@ -1,0 +1,62 @@
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.main__container-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.main__card{
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    border-radius: 2.5rem;
+    border: 5px solid var(--clr-blanco);
+    gap:4rem;
+    padding: 1rem;
+    margin: 0rem 1rem;
+
+}
+
+.main__card-img img{
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+   
+}
+
+.main__container{
+    display: flex;
+    align-items: center;
+}
+
+.main__card-container{
+    display: flex;
+    flex-direction: column;
+    gap:3rem;
+    width: auto;
+}
+
+.main__card-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+}
+
+.main__wrapp{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem
+}
+
+.main__artist {
+display: grid;
+grid-template-columns: 1fr 1fr ;
+align-items: center;
+
+}

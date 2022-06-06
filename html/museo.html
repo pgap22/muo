@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="black">
+    <meta name="description" content="Un sitio web de museos">
+    <title>MUO - INICIO</title>
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <!--Js-->
+    <link rel="preload" href="../js/app.js" as="script">
+
+    <!--Font-->
+    <link rel="preload" href="../fonts/font.css" as="style">
+    <link rel="stylesheet" href="../fonts/font.css">
+
+    <!--Custom Properties-->
+    <link rel="preload" href="../css/general/general.css" as="style">
+    <link rel="stylesheet" href="../css/general/general.css">
+
+    <!--General Styles for responsive Header-->
+    <link rel="preload" href="../css/header-footer/mobile.css" as="style">
+    <link rel="preload" href="../css/header-footer/tablet.css" as="style">
+    <link rel="preload" href="../css/header-footer/desktop.css" as="style">
+
+    <link rel="stylesheet" href="../css/header-footer/mobile.css" media="(max-width: 741px)">
+    <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/header-footer/desktop.css" media="(min-width: 1024px)">
+
+    <!--Styles for museums-->
+    <link rel="stylesheet" href="../css/museos/Desktop/style.css" media="(min-width: 742px)">
+    <link rel="stylesheet" href="../css/museos/mobile/style.css" media="(max-width: 741px)">
+
+
+</head>
+<body>
+<header class="header">
+
+    <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
+    <a href="index.html" class="header__logo"><img src="../img/logo/logo-mobile.svg" alt="Logo de MUO" title="MUO"
+            class="header__logo"></a>
+
+    <nav class="nav">
+        <div class="nav__closeMenu"></div>
+        <ul>
+            <li class="nav__btns--center">
+                <div class=" nav__btns">
+                    <a href="register.html" class="  nav__item--active ">
+                        <p class="nav__item--btn1">Registrate</p>
+                    </a>
+                    <a href="login.html" class="  nav__item--active ">
+                        <p class="nav__item--btn2">Inicia Sesion</p>
+                    </a>
+                </div>
+            </li>
+
+            <li class="nav__links">
+                <div class="nav__item">
+                    <a href="#">
+                        <div class="item__icon">
+                            <img src="../img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
+                            <p>Inicio</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="nav__item">
+                    <a href="./nosotros.html">
+                        <div class="item__icon">
+                            <img src="../img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
+                            <p>Sobre Nosotros</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="nav__item">
+                    <a href="#">
+                        <div class="item__icon">
+                            <img src="../img/icons/museum.svg" alt="Icono Museos" title="Museos">
+                            <p>Museos</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="header__blackScreen"></div>
+</header>
+
+<main class="main">
+
+    <div class="main__wrapp">
+        <div class="main__container-text">
+            <h1 class="main__title">Museos</h1>
+
+            <p class="main__description">Descubre nuestras exhibiciones</p>
+        </div>
+
+        <div class="main__card-container">
+            <div class="main__card">
+                
+                <div class="main__card-img">
+                    <img src="/img/museos/antropologia.png" alt="">
+                </div>
+
+                <div class="main__card-text">
+                    <h2>Museo de Antropologia</h2>
+                    <div class="main__artist">
+                        <p>imagen por</p><img src="/img/home/firma.svg" alt=@Camaro27">
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+            <div class="main__card">
+                
+                <div class="main__card-img">
+                    <img src="/img/museos/marte.png" alt="">
+                </div>
+
+                <div class="main__card-text">
+                    <h2>Museo de arte de El salvador</h2>
+                    <div class="main__artist">
+                        <p>imagen por</p><img src="/img/home/firma.svg"  alt=@Camaro27">
+                    </div>
+                    
+
+                </div>
+
+
+
+            </div>
+
+            <div class="main__card">
+                
+                <div class="main__card-img">
+                    <img src="/img/museos/hawking.png" alt="">
+                </div>
+
+                <div class="main__card-text">
+                    <h2>Museo de Ciencia 
+                        Stephen Hawking</h2>
+                        <div class="main__artist">
+                            <p>imagen por</p>
+                            <img src="/img/home/firma.svg"  alt=@Camaro27">
+                        </div>
+                    
+
+                </div>
+   
+
+            </div>
+
+
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__icon">
+            <img src="../img/logo/logo-mobile-bw.svg" alt="Logo de MUO En negro" title="MUO-LOGO"
+                class="footer__logo">
+        </div>
+
+        <div class="footer__text">
+            <p>MUO - Todos los derechos reservados</p>
+        </div>
+
+        <div class="footer__socials">
+            <a href="#">
+                <div class="socials__icon">
+                    <img src="../img/icons/facebook.svg" alt="Facebook" title="Facebook"
+                        class="footer__socials--img">
+                </div>
+            </a>
+            <a href="#">
+                <div class="socials__icon">
+                    <img src="../img/icons/twitter.svg" alt="Twitter" title="Twitter" class="footer__socials--img">
+                </div>
+            </a>
+            <a href="#">
+                <div class="socials__icon">
+                    <img src="../img/icons/ig.svg" alt="Instagram" title="Instagram" class="footer__socials--img">
+                </div>
+            </a>
+
+        </div>
+    </div>
+</footer>
+<script src="../js/app.js"></script>
+<script src="../js/general.js"></script>
+<!--Termine el home :D-->
+<!--ola-->
+
+
+
+
+</body>
+
+</html>
+
+
+
+<!--
+    <div class="about__img-container">
+                        <img src="../img/nosotros/about-us.jpg" alt="Imagen referente a un museo">
+                        <div class="about__autor">
+                            <p>Imagen por</p>
+                            <img src="../img/home/firma.svg" alt="Firma del fotografo (@Camaro27)">
+                        </div>
+                    </div>
+-->
