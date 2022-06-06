@@ -1,35 +1,19 @@
-@import url("../mobile/style.css");
+@import url("../tablet/style.css");
+
+.main__card-container{
+    flex-direction: row;
+}
 .hero__wrapper{
-    padding-top: 7rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 109rem;
+    grid-template-columns: 1fr 1fr
+}
+.hero__img-wrapper{
+    height: 40rem;
 }
 .hero__img{
-    height: 25rem;
+    height: 30rem;
 }
-.hero__img-container{
-    gap: 4rem;
-}
-@keyframes up {
-    0%{
-        transform: translateY(0%);
-    }
-    50%{
-        transform: translateY(-15%);
-    }
-    100%{
-        transform: translate(0%);
-    }
-}
-@keyframes down {
-    0%{
-        transform: translateY(0%);
-    }
-    50%{
-        transform: translateY(15%);
-    }
-    100%{
-        transform: translate(0%);
-    }
+
+h2 {
+    font-size: max(1.9rem, 1.54vw);
 }
