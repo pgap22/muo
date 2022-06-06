@@ -42,8 +42,13 @@
     <header class="header">
 
         <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
-        <a href="index.html" class="header__logo"><img src="../img/logo/logo-mobile.svg" alt="Logo de MUO" title="MUO"
-                class="header__logo"></a>
+        <a href="index.html" class="header__logo">
+           <picture>
+                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1023px)">
+
+                <img src="../img/logo/logo.svg" alt="Logo de MUO" title="MUO"class="header__logo">
+           </picture>
+        </a>
 
         <nav class="nav">
             <div class="nav__closeMenu"></div>
@@ -61,7 +66,7 @@
 
                 <li class="nav__links">
                     <div class="nav__item">
-                        <a href="#">
+                        <a href="index.html">
                             <div class="item__icon">
                                 <img src="../img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
                                 <p>Inicio</p>
@@ -77,7 +82,7 @@
                         </a>
                     </div>
                     <div class="nav__item">
-                        <a href="#">
+                        <a href="museos.html">
                             <div class="item__icon">
                                 <img src="../img/icons/museum.svg" alt="Icono Museos" title="Museos">
                                 <p>Museos</p>
@@ -97,8 +102,8 @@
             <h1 class="cta__title">
                 Empieza a ver la espectacular cultura que nos rodea
             </h1>
-            <p class="cta__description">Para conocer más sobre la cultura y los diferentes museos te invito a unirte en
-                esta gran aventura.</p>
+            <!--No se si agregar esto  Las buenas cosas solo están vivas cuando se recuerdan, no dejemos morir la cultura de El Salvador.-->
+            <p class="cta__description">Explora diferentes ilustraciones de arte, conocimiento humano, historia y mucho más. Muchas personas no conocen acerca de la cultura que rodea a El Salvador, ¿Qué esperas para que tú la conozcas?</p>
             <div class="cta__btn">
                 <a href="register.html">Culturizate ya!</a>
             </div>
@@ -164,9 +169,9 @@
                         <h3>Calidad</h3>
                     </div>
                     <div class="why-us__description">
-                        La exposición de nuestros rasgos históricos ha sido tomada con la merecida y digna seriedad que
-                        representa nuestro trayecto civil.
-
+                        <p>
+                            La información que nosotros brindamos a nuestros usuarios son de fuentes fiables. Nosotros sabemos lo que nuestra cultura vale.
+                        </p>
                     </div>
                 </div>
                 <div class="why-us__card">
@@ -177,8 +182,9 @@
                         <h3>Digital</h3>
                     </div>
                     <div class="why-us__description">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis, ullam. Quam, quis soluta
-                        suscipit maiores dolores dolore at dolor quibusdam.
+                        <p>
+                            Sabemos lo difícil lo que puede ser ir a museo en estos tiempos, así que ofrecemos nuestro contenido de manera digital con la finalidad que sea fácil de acceder.
+                        </p>
                     </div>
                 </div>
                 <div class="why-us__card">
@@ -189,8 +195,9 @@
                         <h3>Gratis</h3>
                     </div>
                     <div class="why-us__description">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis, ullam. Quam, quis soluta
-                        suscipit maiores dolores dolore at dolor quibusdam.
+                        <p>
+                            El contenido que nosotros vamos a ofrecer es gratuito, con tan solo una cuenta registrada en MUO tendras acceso a todo lo que ofrecemos.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -200,7 +207,7 @@
             <h2 class="our-content__heading">Revive la experiencia de un museo</h2>
             <article class="our-content__article our-content--grid">
                 <div class="our-content__text">
-                    <h3 class="our-content__title">Museo de Arte </h3>
+                    <h3 class="our-content__title">Descubriendo el arte que expresa la cultura salvadoreña</h3>
                     <p class="our-content__description">Encontraremos diversas piezas creativas donde lo que se busca es
                         la conservación y exposición de obras de arte de diferentes modalidades, como lo pueden ser:
                         pintura, dibujo, esculturas y otras.</p>
@@ -237,7 +244,7 @@
             </article>
             <article class="our-content__article our-content--grid">
                 <div class="our-content__text">
-                    <h3 class="our-content__title">Museo Militar de El Salvador(El Mozoto).</h3>
+                    <h3 class="our-content__title">Los diferentes sucesos militares que marcaron una nacion</h3>
                     <p class="our-content__description">Descubriremos diferentes sucesos que fueron ocurridos en nuestro
                         país en los siglos XVIII,XIX y SXX, dicho museo cuenta con 10 salas de exhibición donde
                         encontraremos: armas, uniformes e monumentos .</p>
@@ -274,7 +281,7 @@
             </article>
             <article class="our-content__article our-content--grid">
                 <div class="our-content__text">
-                    <h3 class="our-content__title">Museo de Historia Natural de El Salvador (MUHNES). </h3>
+                    <h3 class="our-content__title">Diversos descubrimientos cientificos en un solo lugar</h3>
                     <p class="our-content__description">
                         Dicho museo de historia natral es una institución científica el cual su objetivo es investigar y
                         mostrar la diversidad biológica e paleontológica del país.
@@ -323,7 +330,7 @@
                 </div>
                 <div class="cta-two__content">
                     <h3 class="cta-two__text">Que esperas para visualizar nuestra cultura de una forma digital ?</h3>
-                    <a class="cta-two__btn" href="#">Culturizate Ya !</a>
+                    <a class="cta-two__btn" href="register.html">Crear una cuenta !</a>
                 </div>
             </div>
 
@@ -332,10 +339,10 @@
 
     <footer class="footer">
         <div class="footer__container">
-            <div class="footer__icon">
-                <img src="../img/logo/logo-mobile-bw.svg" alt="Logo de MUO En negro" title="MUO-LOGO"
-                    class="footer__logo">
-            </div>
+            <picture class="footer__icon">
+                <source srcset="../img/logo/logo-bw.svg" media="(min-width:741px)">
+                <img src="../img/logo/logo-mobile-bw.svg" alt="Logo de MUO En negro" title="MUO-LOGO" class="footer__logo">
+            </picture>
 
             <div class="footer__text">
                 <p>MUO - Todos los derechos reservados</p>

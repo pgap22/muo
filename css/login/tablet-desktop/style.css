@@ -16,6 +16,9 @@ body{
     grid-column: 1/2;
     grid-row: 2/3;
 }
+.form__submit{
+    padding: 1rem;
+}
 .footer{
     grid-row: 3/4;
     grid-column: 1/2;

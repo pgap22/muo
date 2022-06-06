@@ -37,11 +37,17 @@
 
 <body>
 
+
     <header class="header">
 
         <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
-        <a href="index.html" class="header__logo"><img src="../img/logo/logo-mobile.svg" alt="Logo de MUO" title="MUO"
-                class="header__logo"></a>
+        <a href="index.html" class="header__logo">
+            <picture>
+                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1023px)">
+
+                <img src="../img/logo/logo.svg" alt="Logo de MUO" title="MUO" class="header__logo">
+            </picture>
+        </a>
 
         <nav class="nav">
             <div class="nav__closeMenu"></div>
@@ -59,7 +65,7 @@
 
                 <li class="nav__links">
                     <div class="nav__item">
-                        <a href="#">
+                        <a href="index.html">
                             <div class="item__icon">
                                 <img src="../img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
                                 <p>Inicio</p>
@@ -97,8 +103,8 @@
                 <div class="about__container">
                     <div class="about__description">
                         <p>
-                            Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante
-                            ipsum primis in faucibus.
+                            En Muo, además de ser un grupo, somos tus aliados e socios donde te enseñaremos una
+                            información de calidad y segura.
                         </p>
                     </div>
                     <div class="about__img-container">
@@ -116,7 +122,8 @@
                 <div class="our__options">
 
 
-                    <input class="our__input-mision" type="radio" name="option" onclick="showContent(this)" id="mision" checked>
+                    <input class="our__input-mision" type="radio" name="option" onclick="showContent(this)" id="mision"
+                        checked>
                     <label for="mision">
                         <div class="our__btn">
                             <h2>Mision</h2>
@@ -130,7 +137,8 @@
                         </div>
                     </label>
 
-                    <input class="our__input-personal" type="radio" name="option" onclick="showContent(this)" id="personal">
+                    <input class="our__input-personal" type="radio" name="option" onclick="showContent(this)"
+                        id="personal">
                     <label for="personal">
                         <div class="our__btn">
                             <h2>Personal</h2>
@@ -142,42 +150,61 @@
 
                 <div class="our__content">
 
-                    <section class="item mision">
-                        <div class="item__text">
-                            <div class="item__title">
-                            <h3>¿Cual es nuestra mision?</h3>
-                        </div>
-                        <div class="item__description">
-                            <p>Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non velit felis. Phasellus ultricies, nisi vel efficitur varius, metus ante convallis sem, et tempus odio ipsum id urna.  </p>
-                        </div>
+                    <section class="details mision">
+                        <div class="details__text">
+                            <div class="details__title">
+                                <h3>¿Cual es nuestra mision?</h3>
+                            </div>
+                            <div class="details__description">
+                                <p>Somos una Página Web que se destaca por nuestros servicios y la forma del trato al
+                                    cliente de una manera efectiva, por lo tanto, las características que encontramos en
+                                    nuestra página web son: Amigabilidad, Objetividad y Confianza. Con dichas
+                                    características nos dirigimos a ser una página Web Eficaz; tenemos el objetivo de
+                                    informar de los museos salvadoreños a nuestros clientes, ofreciendo información e
+                                    imágenes confiables para el cliente.</p>
+                            </div>
                         </div>
 
-                        <img src="../img/icons/mision.svg" width="130" alt="mision icono">
+                        <img class="details__img" src="../img/icons/mision.svg" alt="mision icono">
 
                     </section>
-                    <section class="item vision">
-                        <div class="item__text">
-                            <div class="item__title">
-                            <h3>¿Cual es nuestra Vision?</h3>
-                        </div>
-                        <div class="item__description">
-                            <p>Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non velit felis. Phasellus ultricies, nisi vel efficitur varius, metus ante convallis sem, et tempus odio ipsum id urna. </p>
-                        </div>
+                    <section class="details vision">
+                        <div class="details__text">
+                            <div class="details__title">
+                                <h3>¿Cual es nuestra Vision?</h3>
+                            </div>
+                            <div class="details__description">
+                                <p>Ser a nivel internacional una empresa que se diferencia por: La Innovación y
+                                    amigabilidad que encontramos en nuestra Información. Además, contamos con un sitio
+                                    web donde ayudara a la expansión de información de los diferentes museos del país.
+                                    Por lo tanto, buscamos Facilitar dicha información acerca de lo museos, que ayudara
+                                    a la desculturización de la población. </p>
+                            </div>
                         </div>
 
-                        <img src="../img/icons/vision.svg" width="130" alt="vision-icono">
+                        <img class="details__img" src="../img/icons/vision.svg" alt="vision-icono">
                     </section>
-                    <section class="item personal">
-                        <div class="item__text">
-                            <div class="item__title">
-                            <h3>Nuestro Personal</h3>
-                        </div>
-                        <div class="item__description">
-                            <p>Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non velit felis. Phasellus ultricies, nisi vel efficitur varius, metus ante convallis sem, et tempus odio ipsum id urna. </p>
-                        </div>
+                    <section class="details personal">
+                        <div class="details__text">
+                            <div class="details__title">
+                                <h3>Nuestro Personal</h3>
+                            </div>
+                            <div class="details__description">
+                                <p>El Personal de Muo tiene características muy importantes el cual son: respeto,
+                                    responsabilidad y un ambiente Agradable, Dónde encontraremos a tres personas
+                                    Importantes de dicho grupo de trabajo las cuales son:
+                                    <br>
+                                    <br>
+
+                                    Gerardo Rafael Bonilla Saz (Ceo).<br>
+                                    Juan José Galdamez Soto (Ceo).<br>
+                                    Cristhian Levi González Castro(Ceo).<br>
+
+                                </p>
+                            </div>
                         </div>
 
-                        <img src="../img/icons/personal.svg" width="130" alt="personal-icono">
+                        <img class="details__img" src="../img/icons/personal.svg" alt="personal-icono">
                     </section>
 
                 </div>
@@ -186,36 +213,7 @@
             </div>
         </section>
         <section class="logo">
-            <div class="logo__wrapper">
-                <div class="logo__icon">
-                    <picture >
-                        <source srcset="../img/logo/logo-big.svg" media="(min-width:742px)">
-                        <img src="../img/logo/logo.svg" alt="Logo de MUO">
-                    </picture>
-                    <div class="logo__typo">
-                        <img src="../img/logo/letra.svg" alt="Tipografia de MUO">
-                    </div>
-                </div>
-                <div class="logo__border">
-                    <div class="logo__cta">
-                        <div class="logo__text">
-                            <div class="logo__title">
-                                <h2>
-                                    Nuestros servicios aun solo click
-                                </h2>
-                            </div>
-                            <div class="logo__description">
-                                <p>
-                                    Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non velit felis.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="logo__btn">
-                            <a href="#">Culturizate Ya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </section>
     </main>
 

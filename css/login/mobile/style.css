@@ -87,6 +87,7 @@ main{
 .form__password img{
     cursor: pointer;
     width: 3rem;
+    aspect-ratio: 1;
 }
 .form__field input::placeholder{
     font-family: 'Poppins', sans-serif;
