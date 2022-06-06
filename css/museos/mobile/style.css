@@ -1,199 +1,59 @@
-.Front {
+
+.main{
+    margin:1rem;
+}
+.main_wrapp{
+    padding:3rem;
+}
+.main__title{
+    text-align: center;
+    font-size: 32px;
+}
+.main__description{
+    text-align: center;
+    font-size: 16px;  
+}
+.main_card{
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    gap: 8rem;
+  
 }
-
-.Principal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2.5rem;
-}
-
-.Principal_Tittle {
-    margin: 3rem;
-    text-align: center;
-}
-
-.Principal_Text {
-    margin-bottom: 3rem;
-    text-align: center;
-    font-size: 26px;
-}
-
-.Principal_buttom {
-    margin-bottom: 3rem;
-    display: flex;
-    justify-content: center;
-}
-
-.Principal_buttom a {
-    padding: 1rem;
-    margin-top: 1rem;
-    border: 1px solid var(--clr-negro);
-    border-radius: 3.2rem;
-    text-align: center;
-    font-weight: var(--fw-medium);
-    background-color: var(--clr-naranja);
-    width: 15rem;
-    color: var(--clr-blanco);
-    transition: all 250ms ease-in-out;
-
-}
-
-.Principal_buttom a:hover {
-    background-color: var(--clr-negro);
-    color: var(--clr-blanco);
-    border-color: var(--clr-blanco);
-}
-
-.Gallery_principal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 3rem;
-    margin-bottom: 10rem;
-
-
-}
-
-.Gallery_Img {
+.main_card-conteiner{
    
-    margin: 1.8rem;
+    border: 5px solid var(--clr-blanco);
+    border-radius: 1rem;
+   
 }
 
-.Museum_Tittle {
-    margin: 3rem;
-    text-align: start;
-    font-family: 'Poppins';
-    font-size: 60px;
-    font-weight: bold;
-    line-height: 115.38%;
-
+.main_card__img{
+    width: 375px;
+    height: 390px;
+    border-radius: 7rem;
+    padding: 5rem;
+    align-items: center;
+   
+    
 }
-
-.Museum_line {
-    width: 90%;
-    height: 7px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 40px;
-    background-color: rgb(255, 255, 255);
-}
-
-.Museum_Img_Principal {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 3rem;
-    margin-bottom: 5rem;
-
-}
-
-.Museum_Img {
-    width: 400px;
-}
-
-
-.Museum__Img_Information {
-    max-width: 50rem;
-    justify-self: start;
-    padding: 4rem;
-}
-
-.Museum_Img_Artist {
-    margin-top: 24rem;
-    font-size: 30px;
-    font-weight: Bold;
-}
-
-.Museum_Img_Name {
-    font-size: 20px;
-    font-family: Medium Italic;
-}
-
-.Buttom_Img_Name {
-
-    display: flex;
-    justify-content: center;
-
-}
-
-.Buttom_Img_Name {
-    padding: 1rem;
-    margin-top: 10.8rem;
-    border: 1px solid var(--clr-negro);
-    border-radius: 0.5rem;
-    text-align: center;
-    font-weight: var(--fw-medium);
-    background-color: var(--clr-naranja);
-    width: 15rem;
-    color: var(--clr-blanco);
-    transition: all 250ms ease-in-out;
-
-}
-
-.Buttom_Img_Name a:hover {
-    background-color: var(--clr-negro);
-    color: var(--clr-blanco);
-    border-color: var(--clr-blanco);
-
-}
-
-.Museum_Information_Additional {
-    margin: 4rem;
-}
-
-.Museum_Sample {
-    font-family: 'Poppins';
-    font-size: 20px;
-}
-
-.Museum_Sample_Artist {
-    padding-left: 87%;
-    font-size: 20px;
-    font-weight: Bold;
-}
-
-.Museum_Dividing_Line {
-
-    height: 7px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 40px;
-    background-color: rgb(255, 255, 255);
-}
-
-.Museum_other_content {
-    text-align: justify;
-    margin-bottom: 10rem;
-}
-
-.Museum_Galery {
-    margin: 3rem;
-}
-
-.Museum_Gallery_SubTittle {
-    font-size: 32px;
-    font-weight: Bold;
-}
-
-.Museum_Galery_Description {
-    font-size: 20px;
-}
-
-.Museum_Galery_target{
-    margin: 10rem;
-}
-.Museum_Galery_Img{
-    border-radius: 20px;
-    margin-bottom: 15px;
-}
-.Museum_Galery_Img_Name{
+.main_card_tittle{
 
     text-align: center;
-    font-size: 32px;
-    font-weight: Bold;
-    margin-bottom: 35px;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  
 }
+.main_card_{
+    font-size: clamp(1rem, 2vw, 1rem);
+    text-align: center;
+    color: var(--clr-gris);
+    font-size: 16px; 
+}
+.main_card_ a{
+    color: var(--clr-blanco);
+    text-decoration: underline;
+   
+}
+
+
