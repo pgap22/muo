@@ -1,7 +1,7 @@
 
 //     <div class="preloader">
 //     <div class="preloader__logo">
-//         <img src="../img/logo/logo.svg" alt="">
+//         <img src="../img/logo/logo.svg" alt=""> 
 //     </div>
 // </div>
 
