@@ -74,6 +74,8 @@ h2{
 /*Styles*/
 .main__wrapper{
     margin: 0rem 2rem;
+    display: flex;
+    justify-content: center;
 }
 .main__card-container{
     margin-top: 5rem;
@@ -115,13 +117,11 @@ h2{
     justify-content: center;
 }
 .main__scroll{
-
     overflow: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
 }
 .main__scroll::-webkit-scrollbar{
-  color: red;
   display: block;
   background-color: var(--clr-grisOscuro);
 }
@@ -131,11 +131,12 @@ h2{
 }
 .main__scroll{
     scrollbar-width: auto;
+    max-width: 40rem;
 }
 
 .main__card-container{
     flex-direction: row;
-    width: 300%;
+    width: 280%;
 }
 .main__card{
     width: calc(100%/3);
