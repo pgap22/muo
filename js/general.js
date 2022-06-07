@@ -32,7 +32,7 @@ document.querySelector("body").insertBefore(myDiv, document.querySelector("body"
 
 let loader = document.querySelector(".preloader");
 window.addEventListener("load", ()=>{
-    loader.classList.add("hidae")
+    loader.classList.add("hide")
 })
 
 
