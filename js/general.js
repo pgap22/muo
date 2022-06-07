@@ -8,16 +8,31 @@
 //Preload
 myDiv = document.createElement("div");
 myDiv.classList.add("preloader");
-myDivLogo = document.createElement("div")
-myDivLogo.classList.add("preloader__logo");
+
+myPicture = document.createElement("picture")
+myPicture.classList.add("preloader__logo")
+
 myImgLogo = document.createElement("img")
-myImgLogo.src = "../img/logo/logo.svg";
+myImgLogo.setAttribute("src", "../img/logo/logo.svg") 
+
+
+myImgBreakPoint = document.createElement("source")
+myImgBreakPoint.setAttribute("srcset", "../img/logo/logo-mobile.svg");
+myImgBreakPoint.setAttribute("media", "(max-width: 768px)");
+
+myPicture.appendChild(myImgBreakPoint)
+myPicture.appendChild(myImgLogo)
+
+myDiv.appendChild(myPicture)
+
+
+console.log(myDiv)
+
 document.querySelector("body").insertBefore(myDiv, document.querySelector("body").firstChild);
-document.querySelector(".preloader").appendChild(myDivLogo)
-document.querySelector(".preloader__logo").appendChild(myImgLogo);
+
 let loader = document.querySelector(".preloader");
 window.addEventListener("load", ()=>{
-    loader.classList.add("hide")
+    loader.classList.add("hidae")
 })
 
 
