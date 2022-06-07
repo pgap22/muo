@@ -2,3 +2,6 @@
 .main__card{
     max-width: 50rem;
 }
+.main__card-container{
+    gap: 5rem;
+}

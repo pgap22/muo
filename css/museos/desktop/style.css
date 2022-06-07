@@ -2,6 +2,7 @@
 
 .main__card-container{
     flex-direction: row;
+    gap: 3rem;
 }
 .hero__wrapper{
     display: grid;
