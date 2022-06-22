@@ -26,8 +26,8 @@ window.addEventListener("load", ()=>{
 
     let hamburguerMenu = document.querySelector(".header__menu");
     let menuNav = document.querySelector(".nav");
-    let closeHamburguer = document.querySelector(".nav__closeMenu");
-    let blackScreen = document.querySelector(".header__blackScreen");
+    let closeHamburguer = document.querySelector(".nav__close-menu");
+    let blackScreen = document.querySelector(".header__black-screen");
 
     function showMenu() {
         hamburguerMenu.classList.add("hideIcon");

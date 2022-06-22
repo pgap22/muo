@@ -29,7 +29,7 @@
 
 
 /* Pantalla Negra */
-.header__blackScreen{
+.header__black-screen{
     position: absolute;
     height: 100vh;
     top: 0;
@@ -55,7 +55,7 @@
 .nav ul {
     padding-top: 9rem;
 }
-.nav__closeMenu{
+.nav__close-menu{
     background: url("../../img/icons/cancel.svg");
     width: 27px;
     aspect-ratio: 1;
@@ -71,7 +71,7 @@
 .nav::-webkit-scrollbar{
     display: none;
 }
-.header__blackScreen{
+.header__black-screen{
     display: none;
 }
 

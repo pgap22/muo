@@ -29,7 +29,7 @@
     <header class="header">
         <div class="header__container">
             <div class="header__back">
-                <img src="../img/icons/arrowLeft.svg" alt="" class="header__back--button" onclick="history.back()">
+                <a href="/"><img src="../img/icons/arrowLeft.svg" alt="" class="header__back--button"></a>
             </div>
             <a href="../html/index.html">
                 <picture class="header__logo">
@@ -70,7 +70,7 @@
                     <input class="form__submit" type="submit" name="submit_login" value="Entrar">
 
                     <div class="form__no-account">
-                        <a href="register.html">¿No tienes cuenta?</a>
+                        <a href="register.php">¿No tienes cuenta?</a>
                     </div>
                 </form>
             </div>

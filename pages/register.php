@@ -31,7 +31,7 @@
         <header class="header">
             <div class="header__container">
                 <div class="header__back">
-                    <img src="../img/icons/arrowLeft.svg" alt="" class="header__back--button" onclick="history.back()">
+                    <a href="/"><img src="../img/icons/arrowLeft.svg" alt="" class="header__back--button"></a>
                 </div>
                 <a href="../html/index.html">
                     <picture class="header__logo">
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form__buttons">
                     <input type="submit" value="Registrate" class="form__submit"> 
-                    <a href="login.html" class="form__account">¿Ya tienes cuenta?</a>
+                    <a href="login.php" class="form__account">¿Ya tienes cuenta?</a>
                 </div>
            </form>
         </main>

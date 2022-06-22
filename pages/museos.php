@@ -36,62 +36,8 @@
 
 </head>
 <body>
-    <header class="header">
-
-        <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
-        <a href="index.html" class="header__logo">
-           <picture>
-                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1023px)">
-
-                <img src="../img/logo/logo.svg" alt="Logo de MUO" title="MUO"class="header__logo">
-           </picture>
-        </a>
-
-        <nav class="nav">
-            <div class="nav__closeMenu"></div>
-            <ul>
-                <li class="nav__btns--center">
-                    <div class=" nav__btns">
-                        <a href="register.html" class="  nav__item--active ">
-                            <p class="nav__item--btn1">Registrate</p>
-                        </a>
-                        <a href="login.html" class="  nav__item--active ">
-                            <p class="nav__item--btn2">Inicia Sesion</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li class="nav__links">
-                    <div class="nav__item">
-                        <a href="index.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
-                                <p>Inicio</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="nav__item">
-                        <a href="nosotros.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
-                                <p>Sobre Nosotros</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="nav__item">
-                        <a href="museos.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/museum.svg" alt="Icono Museos" title="Museos">
-                                <p>Museos</p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
-            </ul>
-        </nav>
-        <div class="header__blackScreen"></div>
-    </header>
+    
+    <?php  include "../includes/templates/header.php" ?>
 
     <section class="hero line">
         <div class="hero__wrapper">
@@ -158,38 +104,8 @@
     </main>
 
 
-    <footer class="footer">
-        <div class="footer__container">
-            <picture class="footer__icon">
-                <source srcset="../img/logo/logo-bw.svg" media="(min-width:741px)">
-                <img src="../img/logo/logo-mobile-bw.svg" alt="Logo de MUO En negro" title="MUO-LOGO" class="footer__logo">
-            </picture>
 
-            <div class="footer__text">
-                <p>MUO - Todos los derechos reservados</p>
-            </div>
-
-            <div class="footer__socials">
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/facebook.svg" alt="Facebook" title="Facebook"
-                            class="footer__socials--img">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/twitter.svg" alt="Twitter" title="Twitter" class="footer__socials--img">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/ig.svg" alt="Instagram" title="Instagram" class="footer__socials--img">
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </footer>
+    <?php  include "../includes/templates/footer.php"?>
 
     <script src="../js/general.js"></script>
 </body>
