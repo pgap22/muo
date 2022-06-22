@@ -29,12 +29,14 @@
     <header class="header">
         <div class="header__container">
             <div class="header__back">
-                <a class="header__back" href="../html/index.html"><img src="../img/icons/arrowLeft.svg" alt=""></a>
+                <img src="../img/icons/arrowLeft.svg" alt="" class="header__back--button" onclick="history.back()">
             </div>
-            <picture class="header__logo">
-                <source srcset="../img/logo/logo.svg" media="(min-width:1023px)">
-                <img src="../img/logo/logo-mobile.svg" alt="">
-            </picture>
+            <a href="../html/index.html">
+                <picture class="header__logo">
+                    <source srcset="../img/logo/logo.svg" media="(min-width:1023px)">
+                    <img src="../img/logo/logo-mobile.svg" alt="">
+                </picture>
+            </a>
         </div>
     </header>
     <main class="main">

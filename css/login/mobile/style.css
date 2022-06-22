@@ -10,7 +10,9 @@ body{
 .header{
     padding: 1rem;
 }
-
+.header__back--button{
+    cursor: pointer;
+}
 .header__container{
     display: grid;
     align-items: center;
