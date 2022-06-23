@@ -25,29 +25,32 @@ window.addEventListener("load", ()=>{
 
 
     let hamburguerMenu = document.querySelector(".header__menu");
-    let menuNav = document.querySelector(".nav");
-    let closeHamburguer = document.querySelector(".nav__close-menu");
-    let blackScreen = document.querySelector(".header__black-screen");
-
-    function showMenu() {
-        hamburguerMenu.classList.add("hideIcon");
-        menuNav.classList.add("showMenu");
-        closeHamburguer.classList.add("showCloseMenu")
-        blackScreen.classList.add("showBlackScreen")
+    if(hamburguerMenu){
+        let menuNav = document.querySelector(".nav");
+        let closeHamburguer = document.querySelector(".nav__close-menu");
+        let blackScreen = document.querySelector(".header__black-screen");
+    
+        function showMenu() {
+            hamburguerMenu.classList.add("hideIcon");
+            menuNav.classList.add("showMenu");
+            closeHamburguer.classList.add("showCloseMenu")
+            blackScreen.classList.add("showBlackScreen")
+        }
+        function quitMenu() {
+            hamburguerMenu.classList.remove("hideIcon");
+            menuNav.classList.remove("showMenu");
+            closeHamburguer.classList.remove("showCloseMenu")
+            blackScreen.classList.remove("showBlackScreen")
+        }
+    
+    hamburguerMenu.addEventListener("click", () => {
+     showMenu();
+    })
+    closeHamburguer.addEventListener("click", () => {
+        quitMenu()
+    })
+    blackScreen.addEventListener("click", () => {
+        quitMenu()
+    })
+    
     }
-    function quitMenu() {
-        hamburguerMenu.classList.remove("hideIcon");
-        menuNav.classList.remove("showMenu");
-        closeHamburguer.classList.remove("showCloseMenu")
-        blackScreen.classList.remove("showBlackScreen")
-    }
-
-hamburguerMenu.addEventListener("click", () => {
- showMenu();
-})
-closeHamburguer.addEventListener("click", () => {
-    quitMenu()
-})
-blackScreen.addEventListener("click", () => {
-    quitMenu()
-})

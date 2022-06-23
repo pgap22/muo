@@ -68,8 +68,10 @@ input{
     font-family: "Poppins", sans-serif;
 }
 input:-webkit-autofill{
-    -webkit-box-shadow: 0 0 0 30px var(--clr-blanco) inset;
+    box-shadow: 0 0 0 30px var(--clr-negro) inset;
+    -webkit-text-fill-color: var(--clr-blanco);
 }
+
 header{
     z-index: 999999;
     background-color: var(--clr-negro);

@@ -31,7 +31,7 @@
             <div class="header__back">
                 <a href="/"><img src="../img/icons/arrowLeft.svg" alt="" class="header__back--button"></a>
             </div>
-            <a href="../html/index.html">
+            <a href="/">
                 <picture class="header__logo">
                     <source srcset="../img/logo/logo.svg" media="(min-width:1023px)">
                     <img src="../img/logo/logo-mobile.svg" alt="">
@@ -47,7 +47,7 @@
                     fronteras</p>
             </section>
             <div class="main__form">
-                <form action="/" class="form">
+                <form action="../includes/validate.php" class="form" method="POST">
                     <div class="form__inputs">
                         <div class="form__field">
                             <label for="email_login">Email</label>

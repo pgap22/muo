@@ -1,3 +1,12 @@
+<?php  
+    session_start();
+    (isset($_SESSION["userData"]) ? $newUser = $_SESSION["userData"] : "");
+    function displayError($errorMessage){   
+            ?>
+        <p class="errorMessage error"><?= $errorMessage ?></p>
+        <?php 
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,12 +37,15 @@
 
     </head>
     <body>
+
+
+
         <header class="header">
             <div class="header__container">
                 <div class="header__back">
                     <a href="/"><img src="../img/icons/arrowLeft.svg" alt="" class="header__back--button"></a>
                 </div>
-                <a href="../html/index.html">
+                <a href="/">
                     <picture class="header__logo">
                         <source srcset="../img/logo/logo.svg" media="(min-width:1023px)">
                         <img src="../img/logo/logo-mobile.svg" alt="">
@@ -52,31 +64,52 @@
                     </p>
                 </div>
            </div>
-           <form action="./index.html" class="form">
+           <form action="/auth/createUser.php" class="form" method="POST">
                 <div class="form__input-names">
                     <div class="form__input form__input--two-columns">
                         <label for="new_name">Nombre</label>
-                        <input autofocus type="text" class="form__name" id="new_name" name="new_name" autocomplete="given-name" placeholder="Nombre">
+                        <?php 
+                        if(isset($_SESSION["messageError"]["name-error"])){
+                            displayError($_SESSION["messageError"]["name-error"]);
+                        }
+                    ?>
+                        <input autofocus type="text" class="form__name <?php (isset($_SESSION["error"]["name-border"]) ? print($_SESSION["error"]["name-border"]) : "")  ?>" id="new_name" name="new_name" required placeholder="Nombre" value="<?php (isset($newUser["name"]) ? print($newUser["name"]) : ""); ?>" >
                     </div>
                     <div class="form__input form__input--two-columns">
                         <label for="new_last-name">Apellido</label>
-                        <input type="text" class="form__last-name" id="new_last-name" name="new_last-name" autocomplete="family-name" placeholder="Apellido">
+                        <?php 
+                        if(isset($_SESSION["messageError"]["last-name-error"])){
+                            displayError($_SESSION["messageError"]["last-name-error"]);
+                        }
+                    ?>
+                        <input type="text" class="form__last-name  <?php (isset($_SESSION["error"]["last-name-border"]) ? print($_SESSION["error"]["last-name-border"]) : "")  ?>" id="new_last-name" name="new_last-name" required placeholder="Apellido" value="<?php (isset($newUser["last-name"]) ? print($newUser["last-name"]) : ""); ?>">
                     </div>
                 </div>
                 <div class="form__input form__input--one-column">
                     <label for="new_email">Email</label>
-                    <input type="email" class="form__email" id="new__email" name="new__email" autocomplete="email" placeholder="Ingresa tu email" required>
+                    <?php 
+                        if(isset($_SESSION["messageError"]["email-error"])){
+                            displayError($_SESSION["messageError"]["email-error"]);
+                        }
+                    ?>
+                    <input type="emaail" class="form__email <?php (isset($_SESSION["error"]["email-border"]) ? print($_SESSION["error"]["email-border"]) : "")  ?>" id="new_email" name="new_email"  placeholder="Ingresa tu email" required value="<?php (isset($newUser["email"]) ? print($newUser["email"]) : ""); ?>">
                 </div>
+            
                 <div class="form__input form__input--one-column">
                     <div class="form__icon-show">
                         <label for="new_password">Contraseña</label>
                         <img src="../img/icons/eye-off.svg" width="30" alt="">
                     </div>
-                    <input type="password" class="form__password" id="new__password" name="new__password"  placeholder="Ingresa tu contraseña" required>
+                    <?php 
+                        if(isset($_SESSION["messageError"]["password-error"])){
+                            displayError($_SESSION["messageError"]["password-error"]);
+                        }
+                    ?>
+                    <input type="password" class="form__password <?php (isset($_SESSION["error"]["password-border"]) ? print($_SESSION["error"]["password-border"]) : "")  ?>" id="new_password" name="new_password"  placeholder="Ingresa tu contraseña" required value="<?php (isset($newUser["password"]) ? print($newUser["password"]) : ""); ?>">
                 </div>
                 <div class="form__input form__input--one-column">
                     <label for="confirm_password">Confirmar contraseña</label>
-                    <input type="password" class="form__confirm" id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required>
+                    <input type="password" class="form__confirm <?php (isset($_SESSION["error"]["password-border"]) ? print($_SESSION["error"]["password-border"]) : "")  ?>" id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required value="<?php (isset($newUser["confirm-password"]) ? print($newUser["confirm-password"]) : ""); ?>">
                 </div>
                 <div class="form__buttons">
                     <input type="submit" value="Registrate" class="form__submit"> 
@@ -90,9 +123,17 @@
 
 
         <footer class="footer">
-        <p class="footer__text">MUO - Todos los derechos reservados</p>
+            <p class="footer__text">MUO - Todos los derechos reservados</p>
         </footer>
         <script src="../js/register.js"></script>
         <script src="../js/general.js"></script>
     </body> 
 </html>
+<?php  
+    // echo '<pre>';
+    // var_dump($_SESSION);
+    // echo '</pre>';
+    unset($_SESSION["userData"]);
+    unset($_SESSION["messageError"]);
+    unset($_SESSION["error"]);
+?>
