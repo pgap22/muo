@@ -47,7 +47,7 @@
                     fronteras</p>
             </section>
             <div class="main__form">
-                <form action="../includes/validate.php" class="form" method="POST">
+                <form action="../auth/validateUser.php" class="form" method="POST">
                     <div class="form__inputs">
                         <div class="form__field">
                             <label for="email_login">Email</label>
