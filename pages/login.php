@@ -1,3 +1,16 @@
+<?php  
+    session_start();
+    (isset($_SESSION["userData"]) ? $userLogin = $_SESSION["userData"] : "");
+    function displayError($errorMessage, $warn = false){   
+                
+            ?>
+            
+        <p class=" <?php (!$warn) ? print("error") : print("warn") ?> errorMessage"><?= $errorMessage ?></p>
+        
+        <?php 
+        }
+    ?>
+    
 <!DOCTYPE html>
 <html lang="es">
 
@@ -46,18 +59,26 @@
                 <p class="main__description">Continua explorando nuestros origenes para dominar la corriente de nuestras
                     fronteras</p>
             </section>
+          
             <div class="main__form">
                 <form action="../auth/validateUser.php" class="form" method="POST">
                     <div class="form__inputs">
                         <div class="form__field">
                             <label for="email_login">Email</label>
-                            <input autofocus type="email" name="email_login" id="email_login" placeholder="Ingresa tu correo"  required autocomplete="email">
+                            <?php
+                                if(isset($_SESSION["messageError"]["login-error"])){
+                                    displayError($_SESSION["messageError"]["login-error"]);
+                                }
+                                else if(isset($_SESSION["messageError"]["login-warning"])){
+                                    displayError($_SESSION["messageError"]["login-warning"], true);
+                                }
+                            ?>                          
+                            <input  <?php  isset($_SESSION["error"]["login-border"]) ?  print("class=".$_SESSION["error"]["login-border"]) : "" ?>  autofocus type="email" name="email_login" id="email_login" placeholder="Ingresa tu correo"  required autocomplete="email" value="<?php (isset($userLogin["email"]) ? print($userLogin["email"]) : ""); ?>">
                         </div>
                         <div class="form__field">
                             <label for="password_login">Contraseña</label>
-                            <div class="form__password">
-                                <input type="password" name="password_login" id="password_login"
-                                    placeholder="Ingresa tu contraseña"  required autocomplete="current-password">
+                            <div class="form__password <?php  isset($_SESSION["error"]["login-border"]) ?  print($_SESSION["error"]["login-border"]) : "" ?>">
+                                <input type="password" name="password_login" id="password_login" placeholder="Ingresa tu contraseña"  required autocomplete="current-password">
                                 <img src="../img/icons/eye-off.svg" width="30" alt="" id="password_see">
                             </div>
                         </div>
@@ -88,3 +109,8 @@
 </body>
 
 </html>
+<?php  
+    unset($_SESSION["messageError"]);
+    unset($_SESSION["error"]);
+    unset($_SESSION["userData"]);
+?>

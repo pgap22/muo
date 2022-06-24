@@ -7,6 +7,7 @@
         <?php 
         }
     ?>
+    
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,9 +38,29 @@
 
     </head>
     <body>
+        <?php  
+        if(isset($_SESSION["messageRegister"])){
+            unset($_SESSION["messageRegister"]);
+             ?>
+            <div class="alert">
+                <div class="alert__message">
+                    <div class="alert__header">
+                        <img src="../img/icons/cancel.svg" alt="Exit Alert">
+                    </div>
+                    <div class="alert__img">
+                        <img width="100" src="../img/icons/quality.svg" alt="Checked Logo">
+                    </div>
 
+                    <p>Gracias por elegir a MUO, estamos felices que te interes nuestra plataforma!. <br><br> Estas a un ultimo paso para completar el registro, checa la bandeja de entrada de tu correo para verficar tu cuenta y disfrutar de MUO ! </p>
+                    <div class="alert__boton">
+                        <div class="boton">Cerrar</div>
+                    </div>
+                </div>
+            </div>
+            <?php 
+        }
 
-
+        ?>
         <header class="header">
             <div class="header__container">
                 <div class="header__back">
@@ -54,6 +75,9 @@
             </div>
         </header>
         <main class="main">
+       
+
+
            <div class="main__text-container">
                 <div class="main__title">
                     <h1>Registrate</h1>

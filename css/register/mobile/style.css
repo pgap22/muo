@@ -128,3 +128,43 @@ body{
 .error{
     display: block;
 }
+
+.alert{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999999;
+    transition: ease-in 350ms;
+    opacity: 1;
+}
+.alert__message{
+    /* width: max-content; */
+    max-width: 500px;
+    margin: 0px 15px;
+    padding: 15px;
+    border: 1px solid var(--clr-naranja);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 2rem;
+}
+.alert__header{
+    display: flex;
+    justify-content: flex-end;
+}
+.alert__img{
+    display: flex;
+    justify-content: center;
+}
+.alert__boton{
+    display: flex;
+    justify-content: center;
+}
+.alert__header > img{
+    cursor: pointer;
+}

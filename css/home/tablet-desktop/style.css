@@ -158,3 +158,11 @@ CTA 2
     max-width: 40rem;
 }
 
+#translate{
+    display: none;
+}
+.translate__nose{
+    width: 20px;
+    aspect-ratio: 1;
+    background-color: blue;
+}

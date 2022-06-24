@@ -1,6 +1,6 @@
 :root{
     /*Colores*/
-    --clr-blanco: #F9F9F9;
+    --clr-blanco: hsl(0, 0%, 97%);
     --clr-negro: hsl(0, 0%, 0%);
     --clr-gris: hsl(0, 2%, 61%);
     --clr-grisClaro: hsla(0, 0%, 77%, 0.286);
@@ -121,4 +121,20 @@ Preloader
     0%{transform:scale(1)}
     50%{transform: scale(1.5)}
     100%{transform: scale(1)}
+}
+.boton{
+    cursor: pointer;
+    user-select: none;
+    padding: 1rem 2.5rem;
+    border-radius: 3.2rem;
+    border: 1px solid var(--clr-naranjaCard);
+    transition: ease-in 250ms;
+    background-color: var(--clr-negro);
+    font-weight: var(--fw-semiBold);
+}
+.boton:hover{
+    user-select: none;
+
+    color: var(--clr-negro);
+    background-color: var(--clr-blanco);
 }
