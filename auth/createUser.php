@@ -2,6 +2,7 @@
 
 include "../includes/db.php";
 include "../includes/functions.php";
+include "../includes/templates/mail.php";
 session_start();
 
 $newUser["name"] = ($_POST["new_name"] );
@@ -52,7 +53,7 @@ $email = $newUser["email"];
 mysqli_stmt_bind_param($stmt,"s",$email);
 mysqli_stmt_execute($stmt);
 
-mysqli_stmt_bind_result($stmt, $id, $matchedEmail, $password, $matchedName, $matchedLastName, $matchedVerified);
+mysqli_stmt_bind_result($stmt, $id, $matchedEmail, $password, $matchedName, $matchedLastName, $matchedVerified, $matchedToken);
 $results = mysqli_stmt_fetch($stmt);
 
 if($results){
@@ -60,19 +61,25 @@ if($results){
     die();
 }
 
-
-$query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario, verified) VALUES(?, ?, ?, ?, ?)";
+$query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario, verified, tokenVerify) VALUES(?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_prepare($db,$query);
 
-mysqli_stmt_bind_param($stmt,"ssssi", $email, $password, $nombre, $apellido, $verified);
+mysqli_stmt_bind_param($stmt,"ssssis", $email, $password, $nombre, $apellido, $verified, $token);
 
 $nombre = $newUser["name"];
 $apellido = $newUser["last-name"];
 $email = $newUser["email"];
 $password = $newUser["password"];
 $verified = 0;
-$stmt = mysqli_stmt_execute($stmt);
+$token = bin2hex(openssl_random_pseudo_bytes(16));
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
 session_unset();
+$url = "http://localhost:3000/auth/verifyEmail.php?verifyToken=".$token;
+$message = templateEmail("Verificar email", $nombre, "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
+
+
+mail($email, "Verificar tu cuenta de email en MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
 $_SESSION["messageRegister"] = "Gracias por elegir a MUO, estamos felices que te interes nuestra plataforma!. <br><br> Estas a un ultimo paso para completar el registro ";
 header("location: /pages/register.php");
 

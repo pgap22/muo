@@ -20,10 +20,10 @@ $email = $userLogin["email"];
 $password = $userLogin["password"];
 
 mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $id, $email, $password, $nombre, $apellido, $verified);
+mysqli_stmt_bind_result($stmt, $id, $email, $password, $nombre, $apellido, $verified, $userToken);
 
 $ok = mysqli_stmt_fetch($stmt);
-
+mysqli_stmt_close($stmt);
 
 if($ok){
     if(!$verified){
