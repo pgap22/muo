@@ -74,7 +74,14 @@
 .header__black-screen{
     display: none;
 }
+.nav__translate{
 
+}
+.nav__translate-icon{
+    max-width:5rem;
+    border-radius: 50%;
+    aspect-ratio: 1;
+}
 /*Nav botonos de logeo y registro*/
 
 .nav__item--btn1, .nav__item--btn2{

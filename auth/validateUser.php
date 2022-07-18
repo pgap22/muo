@@ -26,19 +26,11 @@ $ok = mysqli_stmt_fetch($stmt);
 mysqli_stmt_close($stmt);
 
 if($ok){
-    if(!$verified){
-        sendError("login", "Debes verificar tu correo para continuar !", $userLogin, "login", "warning");
-        exit();
-    }
     $token = openssl_random_pseudo_bytes(16);
     $_SESSION["user_token"] = bin2hex($token);
     header("location: /pages/home.php");
 }else{
-    
     sendError("login", "Tu email o contraseña no son validos !", $userLogin, "login");
-    echo '<pre>';
-    var_dump($_SESSION);
-    echo '</pre>';
 }
 
 

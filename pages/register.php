@@ -37,30 +37,8 @@
         <link rel="stylesheet" href="../css/register/tablet-desktop/style.css" media="(min-width: 742px)"> 
 
     </head>
-    <body>
-        <?php  
-        if(isset($_SESSION["messageRegister"])){
-            unset($_SESSION["messageRegister"]);
-             ?>
-            <div class="alert">
-                <div class="alert__message">
-                    <div class="alert__header">
-                        <img src="../img/icons/cancel.svg" alt="Exit Alert">
-                    </div>
-                    <div class="alert__img">
-                        <img width="100" src="../img/icons/quality.svg" alt="Checked Logo">
-                    </div>
+    <body data-page="register">
 
-                    <p>Gracias por elegir a MUO, estamos felices que te interes nuestra plataforma!. <br><br> Estas a un ultimo paso para completar el registro, checa la bandeja de entrada de tu correo para verficar tu cuenta y disfrutar de MUO ! </p>
-                    <div class="alert__boton">
-                        <div class="boton">Cerrar</div>
-                    </div>
-                </div>
-            </div>
-            <?php 
-        }
-
-        ?>
         <header class="header">
             <div class="header__container">
                 <div class="header__back">
@@ -136,7 +114,11 @@
                     <input type="password" class="form__confirm <?php (isset($_SESSION["error"]["password-border"]) ? print($_SESSION["error"]["password-border"]) : "")  ?>" id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required value="<?php (isset($newUser["confirm-password"]) ? print($newUser["confirm-password"]) : ""); ?>">
                 </div>
                 <div class="form__buttons">
-                    <input type="submit" value="Registrate" class="form__submit"> 
+                    <!-- <input type="submit" value="Registrate" class="form__submit">  -->
+                    <button type="submit" class="form__submit">
+                        <span class="form__submit-text">Registrate</span>
+                        <span class="form__decoration"></span>
+                    </button>
                     <a href="login.php" class="form__account">¿Ya tienes cuenta?</a>
                 </div>
            </form>

@@ -1,0 +1,125 @@
+main{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 0rem .5rem; */
+}
+.verification{
+    text-align: center;
+    font-size: 1rem;
+    border: 5px solid var(--clr-blanco);
+    padding: 1rem;
+    margin: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.verification__logo{
+    /* aspect-ratio: 1; */
+    width: 80px;
+}
+.verification__email{
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--clr-naranja);
+}
+.verification__title{
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+.verification__resend{
+    width: 100%;
+}
+.verification__button{
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding: .5rem 0rem;
+    max-width: 20rem;
+    width: 100%;
+    background-color:  var(--clr-blanco);
+    font-weight: 900;
+    font-family: "Poppins", sans-serif;
+    font-size: 2.3rem;
+    border-radius: 2.5rem;
+    outline: none;
+    border: none;
+}
+.verification__submit-text{
+    font-size: 2.8rem;
+}
+.verification__submit{
+    cursor: pointer;
+}
+.verification__decoration{
+    display: none;
+}
+
+.loading-submit .verification__button-text{
+    visibility: hidden;
+}
+.loading-submit .verification__decoration{
+    display: block;
+}
+.loading-submit{
+    position: relative;
+}
+.loading-submit::after{
+    content: "";
+    width: 25px;
+    z-index: 999;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    background-color:var(--clr-blanco);
+    /* border: 1px solid red; */
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.verification__decoration{
+    content:  "";
+    position: absolute;
+    background-color: var(--clr-negro);
+    overflow: hidden;
+    width: 35px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    z-index:1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.verification__decoration::after{
+    content:  "";
+    position: absolute;
+    background-color: rgb(255, 166, 0);
+    width: 35px;
+    aspect-ratio: 1;
+    z-index:1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: loading ease 1s infinite;
+
+}
+@keyframes loading{
+    to{
+        transform:rotate(0) translate(-50%);
+        
+    }
+    from{
+        transform:rotate(1turn) translate(-50%);
+
+    }
+}
+.underline{
+    text-decoration: underline;
+}

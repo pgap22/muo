@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="../css/museos/desktop/style.css" media="(min-width: 1024px)">
 
 </head>
-<body>
+<body >
     
     <?php  include "../includes/templates/header.php" ?>
 

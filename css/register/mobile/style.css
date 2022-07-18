@@ -168,3 +168,73 @@ body{
 .alert__header > img{
     cursor: pointer;
 }
+.form__submit{
+    cursor: pointer;
+}
+.form__decoration{
+    display: none;
+}
+.loading-submit .form__submit-text{
+    visibility: hidden;
+}
+.loading-submit .form__decoration{
+    display: block;
+}
+.loading-submit{
+    position: relative;
+}
+.loading-submit::after{
+    content: "";
+    width: 25px;
+    z-index: 999;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    background-color:var(--clr-blanco);
+    /* border: 1px solid red; */
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.form__decoration{
+    content:  "";
+    position: absolute;
+    background-color: var(--clr-negro);
+    overflow: hidden;
+    width: 35px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    z-index:1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.form__decoration::after{
+    content:  "";
+    position: absolute;
+    background-color: rgb(255, 166, 0);
+    width: 35px;
+    aspect-ratio: 1;
+    z-index:1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: loading ease 1s infinite;
+
+}
+@keyframes loading{
+    to{
+        transform:rotate(0) translate(-50%);
+        
+    }
+    from{
+        transform:rotate(1turn) translate(-50%);
+
+    }
+}

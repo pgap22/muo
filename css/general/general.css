@@ -138,3 +138,27 @@ Preloader
     color: var(--clr-negro);
     background-color: var(--clr-blanco);
 }
+.translate{
+    position: fixed ;
+    bottom: 0;
+    z-index: 9999999999999999999999;
+    margin: 1rem;
+    opacity: 0.3;
+    transition: ease 200ms;
+}
+.translate:hover{
+    opacity: 1;
+}
+
+.translate:hover .translate__icon{
+    width: 5rem;
+}
+.translate__icon{
+    width: 4.5rem;
+    aspect-ratio: 1;
+    transition: ease 200ms;
+    border: 5px solid var(--clr-blanco);
+    object-fit: cover;
+    border-radius: 50%;
+
+}

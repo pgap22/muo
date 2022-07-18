@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="../css/login/tablet-desktop/style.css" media="(min-width: 742px)">
 </head>
 
-<body>
+<body data-page="login">
     <header class="header">
         <div class="header__container">
             <div class="header__back">
@@ -88,7 +88,10 @@
                         <a href="#" class="form__forget">¿Olvidaste tu contraseña?</a>
                     </div>
 
-                    <input class="form__submit" type="submit" name="submit_login" value="Entrar">
+                    <button type="submit" class="form__submit">
+                        <span class="form__submit-text">Entrar</span>
+                        <span class="form__decoration"></span>
+                    </button>
 
                     <div class="form__no-account">
                         <a href="register.php">¿No tienes cuenta?</a>

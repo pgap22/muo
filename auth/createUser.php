@@ -2,10 +2,10 @@
 
 include "../includes/db.php";
 include "../includes/functions.php";
-include "../includes/templates/mail.php";
 session_start();
 
-$newUser["name"] = ($_POST["new_name"] );
+
+$newUser["name"] = $_POST["new_name"];
 $newUser["last-name"] = $_POST["new_last-name"];
 $newUser["email"] = $_POST["new_email"];
 $newUser["password"] = $_POST["new_password"];
@@ -41,9 +41,7 @@ else if($newUser["confirm-password"] == ""){
 else if($newUser["password"] != $newUser["confirm-password"]){
     sendError("password", "Tus contraseñas no coinciden", $newUser, "register");
 }
-echo '<pre>';
-var_dump($newUser);
-echo '</pre>';
+
 
 // //Check If that email is in the database
 
@@ -74,13 +72,16 @@ $verified = 0;
 $token = bin2hex(openssl_random_pseudo_bytes(16));
 mysqli_stmt_execute($stmt);
 mysqli_stmt_close($stmt);
-session_unset();
-$url = "http://localhost:3000/auth/verifyEmail.php?verifyToken=".$token;
+
+
+$ip = getHostByName(getHostName());
+$url = "http://${ip}/auth/verifyEmail.php?verifyToken=${token}";
 $message = templateEmail("Verificar email", $nombre, "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
 
 
 mail($email, "Verificar tu cuenta de email en MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
-$_SESSION["messageRegister"] = "Gracias por elegir a MUO, estamos felices que te interes nuestra plataforma!. <br><br> Estas a un ultimo paso para completar el registro ";
-header("location: /pages/register.php");
+// $_SESSION["email"] = $email
+$_SESSION["userData"] = $newUser;
+header("location: /pages/verificationEmail.php");
 
 // ?>
