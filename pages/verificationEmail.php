@@ -1,9 +1,9 @@
 <?php  
 session_start();
-if(!isset($_SESSION["userData"])){
+if(!isset($_GET["email"])){
     header("location: /");
 }
-
+$email = $_GET["email"];
 
 ?>
 
@@ -46,7 +46,7 @@ if(!isset($_SESSION["userData"])){
                     Verifica tu correo electronico
                 </h1>
                 <div class="verification__email">
-                    <p><?=$_SESSION["userData"]["email"]?></p>
+                    <p><?=$email?></p>
                 </div>
                 <p class="verification__wrong-mail">Si has escrito mal tu correo has <a class="underline"
                         href="/pages/register.php">click aqui</a> </p>

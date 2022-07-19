@@ -1,9 +1,6 @@
 <?php  
-session_start();
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-if(!isset($_SESSION["email"])){
+
+if(!isset($_GET["email"])){
     header("location: /");
     die();
 }

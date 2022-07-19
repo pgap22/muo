@@ -2,6 +2,7 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 $error = [];
+$error["code"] = [];
 $userLogin = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -32,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("location: /pages/home.php");
     } else {
         $error["login"] = 'Tu email o contraseña no son validos !';
+        $error["code"] = 10;
     }
 }
 ?>

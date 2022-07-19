@@ -107,6 +107,21 @@ window.addEventListener("load", ()=>{
                 
             }
         });
+        
+        
+        let formsErrors = Object.keys(lang_array["register-error"]);
+        let formsErrors_login = Object.keys(lang_array["login-error"]);
+
+        formsErrors.forEach((e)=>{
+            if(document.getElementById(e)){
+                document.getElementById(e).innerHTML = lang_array["register-error"][e];
+            }
+        })
+        formsErrors_login.forEach((e)=>{
+            if(document.getElementById(e)){
+                document.getElementById(e).innerHTML = lang_array["login-error"][e];
+            }
+        })
 
         if(pageTranslate == "register"){
             let placeholder = Object.keys(lang_array["placeholder-register"]);

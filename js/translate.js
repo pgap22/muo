@@ -8,6 +8,12 @@ esp = [];
 
 ingles["index"] = [];
 
+// ingles["titles"]["index"] = "MUO - HOME";
+// ingles["titles"]["nosotros"] = "MUO - About us";
+// ingles["titles"]["nosotros"] = "MUO - About us";
+
+
+
 ingles["general"] = [];
 ingles["general"]["credits"] = "Image by";
 ingles["general"]["nav1"] = "Home";
@@ -73,11 +79,24 @@ ingles["register"]["contrasena"] = "Password";
 ingles["register"]["contrasena2"] = "Confirm password";
 ingles["register"]["boton"] = "Sign Up";
 ingles["register"]["account"] = "¿Already have an account?";
+
+ingles["register-error"] = [];
+ingles["register-error"]["1-e"] = "The name cannot be empty";
+ingles["register-error"]["2-e"] = "The last name cannot be empty";
+ingles["register-error"]["3-e"] = "The name cannot be very long";
+ingles["register-error"]["4-e"] = "The last name cannot be very long";
+ingles["register-error"]["5-e"] = "The email cannot be empty";
+ingles["register-error"]["6-e"] = "The email is invalid";
+ingles["register-error"]["7-e"] = "The password cannot be empty";
+ingles["register-error"]["8-e"] = "The password cannot be empty";
+ingles["register-error"]["9-e"] = "The password cannot be empty";
+ingles["register-error"]["11-e"] = "Email is already in use";
+
 ingles["register"]["footer"] = "MUO - All rights reserved";
 
 ingles["placeholder-register"] = [];
-ingles["placeholder-register"]["new_name"] = "Nombre";
-ingles["placeholder-register"]["new_last-name"] = "Apellido";
+ingles["placeholder-register"]["new_name"] = "Name";
+ingles["placeholder-register"]["new_last-name"] = "Last name";
 ingles["placeholder-register"]["new_email"] = "Enter your email";
 ingles["placeholder-register"]["new_password"] = "Enter your password";
 ingles["placeholder-register"]["confirm_password"] = "Confirm your password";
@@ -94,6 +113,8 @@ ingles["login"]["footer"] = "MUO - All rights reserved";
 ingles["placeholder-login"] = [];
 ingles["placeholder-login"]["email_login"] = "Enter your email";
 ingles["placeholder-login"]["password_login"] = "Enter your password";
+ingles["login-error"] = [];
+ingles["login-error"]["10-e"] = "Your email or password are not valid!";
 
 
 
@@ -169,6 +190,18 @@ esp["register"]["boton"] = "Registrate";
 esp["register"]["account"] = "¿Ya tienes cuenta ?";
 esp["register"]["footer"] = "MUO - Todos los derechos reservados";
 
+esp["register-error"] = [];
+esp["register-error"]["1-e"] = "El nombre no puede estar vacio";
+esp["register-error"]["2-e"] = "El apellido no puede estar vacio";
+esp["register-error"]["3-e"] = "El nombre no puede ser muy largo";
+esp["register-error"]["4-e"] = "El apellido no puede ser muy largo";
+esp["register-error"]["5-e"] = "El email no puede quedar vacio";
+esp["register-error"]["6-e"] = "El email es invalido";
+esp["register-error"]["7-e"] = "La contraseña no puede estar vacia";
+esp["register-error"]["8-e"] = "La contraseña no puede estar vacia";
+esp["register-error"]["9-e"] = "La contraseña no puede estar vacia";
+esp["register-error"]["11-e"] = "El email ya esta en uso";
+
 esp["placeholder-register"] = [];
 esp["placeholder-register"]["new_name"] = "Nombre";
 esp["placeholder-register"]["new_last-name"] = "Apellido";
@@ -188,4 +221,7 @@ esp["login"]["footer"] = "MUO - Todos los derechos reservados";
 esp["placeholder-login"] = [];
 esp["placeholder-login"]["email_login"] = "Ingresa tu correo";
 esp["placeholder-login"]["password_login"] = "Ingresa tu contraseña";
+esp["login-error"] = [];
+esp["login-error"]["10-e"] = "Tu email o contraseña no son validos !";
+
 export {ingles, esp}

@@ -9,7 +9,8 @@ function debugear($e){
 
 function getError($error, $type){
     if(isset($error[$type])){
-        echo "<p class='errorMessage error'>$error[$type]</p>";
+        $errorCode = $error["code"];
+        echo "<p class='errorMessage error' id='$errorCode-e'>$error[$type]</p>";
     }
 }
 
