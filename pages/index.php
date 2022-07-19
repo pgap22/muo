@@ -147,7 +147,6 @@
                 </div>
             </div>
         </section>
-
         <section class="our-content">
             <h2 class="our-content__heading" id="revive">Revive la experiencia de un museo</h2>
             <article class="our-content__article our-content--grid">
@@ -280,14 +279,12 @@
 
         </section>
     </main>
-    <div class="translate">
-        <img src="../img/translate/en.webp" alt="" class="translate__icon">
-    </div>
+
     <?php  include "../includes/templates/footer.php"?>
     
 
     <script src="../js/app.js"></script>
-    <script src="../js/general.js" type="module"></script>
+
     <!--Termine el home :D-->
     <!--ola-->
 </body>

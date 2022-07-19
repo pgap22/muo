@@ -1,12 +1,96 @@
 <?php  
-    session_start();
-    (isset($_SESSION["userData"]) ? $newUser = $_SESSION["userData"] : "");
-    function displayError($errorMessage){   
-            ?>
-        <p class="errorMessage error"><?= $errorMessage ?></p>
-        <?php 
+    include "../includes/functions.php";
+    include "../includes/db.php";
+    $error = [];
+    $newUser = [];
+    // debugear($_SERVER);
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $error = [];
+        $newUser = [];
+
+        $newUser["name"] = $_POST["new_name"];
+        $newUser["last-name"] = $_POST["new_last-name"];
+        $newUser["email"] = $_POST["new_email"];
+        $newUser["password"] = $_POST["new_password"];
+        $newUser["confirm-password"] = $_POST["confirm_password"];
+
+        if($newUser["name"] == ""){
+           $error["name"]  = "El nombre no puede estar vacio";
         }
-    ?>
+        else if($newUser["last-name"] == ""){
+            $error["last-name"]  = "El apellido no puede estar vacio";
+
+        } 
+        else if(strlen($newUser["name"]) > 30){
+            $error["name"]  = "El nombre no puede ser muy largo";
+
+        }
+        else if(strlen($newUser["last-name"]) > 30){
+            $error["last-name"]  = "El apellido no puede ser muy largo";
+
+        }
+        else if($newUser["email"] == ""){
+            $error["email"]  = "El email no puede quedar vacio";
+
+        }
+        else if(!filter_var($newUser["email"], FILTER_VALIDATE_EMAIL)){
+            $error["email"]  = "El email es invalido";
+
+        }
+        else if($newUser["password"] == ""){
+            $error["password"]  = "La contraseña no puede estar vacia";
+
+        }
+        else if($newUser["confirm-password"] == ""){
+            $error["password"]  = "La contraseña no puede estar vacia";
+
+        }
+        else if($newUser["password"] != $newUser["confirm-password"]){
+            $error["password"]  = "Las contraseñas no coinciden";
+
+        }
+
+        $query = "SELECT * FROM usuarios WHERE email = ?";
+        $stmt = mysqli_prepare($db, $query);
+        $email = $newUser["email"];
+        mysqli_stmt_bind_param($stmt, "s", $email);
+        mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_fetch($stmt);
+
+        if($results){
+            $error["email"] = "El email ya esta en uso";
+        }
+
+        if(!$error){
+            $query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario, verified, tokenVerify) VALUES(?, ?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($db,$query);
+
+            mysqli_stmt_bind_param($stmt,"ssssis", $email, $password, $nombre, $apellido, $verified, $token);
+
+            $nombre = $newUser["name"];
+            $apellido = $newUser["last-name"];
+            $email = $newUser["email"];
+            $password = $newUser["password"];
+            $verified = 0;
+            $token = bin2hex(openssl_random_pseudo_bytes(16));
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
+
+            $ip = getHostByName(getHostName());
+            $url = "http://${ip}/auth/verifyEmail.php?verifyToken=${token}";
+            $message = templateEmail("Verificar email", $nombre, "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
+
+
+            mail($email, "Verificar tu cuenta de email en MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
+            // $_SESSION["email"] = $email
+            $_SESSION["userData"] = $newUser;
+            header("location: /pages/verificationEmail.php");
+        }
+        
+       
+    }
+?>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -53,93 +137,71 @@
             </div>
         </header>
         <main class="main">
-       
-
-
            <div class="main__text-container">
                 <div class="main__title">
-                    <h1>Registrate</h1>
+                    <h1 id="title" >Registrate</h1>
                 </div>
                 <div class="main__description">
-                    <p>
+                    <p id="descripcion">
                         Descubre la cultura que nos rodea
                     </p>
                 </div>
            </div>
-           <form action="/auth/createUser.php" class="form" method="POST">
+           <form action="register.php" class="form" method="POST">
                 <div class="form__input-names">
                     <div class="form__input form__input--two-columns">
-                        <label for="new_name">Nombre</label>
-                        <?php 
-                        if(isset($_SESSION["messageError"]["name-error"])){
-                            displayError($_SESSION["messageError"]["name-error"]);
-                        }
-                    ?>
-                        <input autofocus type="text" class="form__name <?php (isset($_SESSION["error"]["name-border"]) ? print($_SESSION["error"]["name-border"]) : "")  ?>" id="new_name" name="new_name" required placeholder="Nombre" value="<?php (isset($newUser["name"]) ? print($newUser["name"]) : ""); ?>" >
+                        <label for="new_name" id="nombre">Nombre</label>
+                    <!-- Set errors -->
+                    <?php  getError($error, "name") ?>
+            
+                        <input autofocus type="text" class="form__name <?= getColorError($error, "name")?> " id="new_name" name="new_name" required placeholder="Nombre" value="<?=restoreFormData($newUser, "name")?>" >
                     </div>
                     <div class="form__input form__input--two-columns">
-                        <label for="new_last-name">Apellido</label>
-                        <?php 
-                        if(isset($_SESSION["messageError"]["last-name-error"])){
-                            displayError($_SESSION["messageError"]["last-name-error"]);
-                        }
-                    ?>
-                        <input type="text" class="form__last-name  <?php (isset($_SESSION["error"]["last-name-border"]) ? print($_SESSION["error"]["last-name-border"]) : "")  ?>" id="new_last-name" name="new_last-name" required placeholder="Apellido" value="<?php (isset($newUser["last-name"]) ? print($newUser["last-name"]) : ""); ?>">
+                        <label for="new_last-name" id="apellido">Apellido</label>
+                        <!-- Set errors -->
+                        <?php  getError($error, "last-name") ?>
+                       
+                        <input type="text" class="form__last-name <?= getColorError($error, "last-name")?>  " id="new_last-name" name="new_last-name" required placeholder="Apellido" value="<?=restoreFormData($newUser, "last-name")?>">
                     </div>
                 </div>
                 <div class="form__input form__input--one-column">
                     <label for="new_email">Email</label>
-                    <?php 
-                        if(isset($_SESSION["messageError"]["email-error"])){
-                            displayError($_SESSION["messageError"]["email-error"]);
-                        }
-                    ?>
-                    <input type="emaail" class="form__email <?php (isset($_SESSION["error"]["email-border"]) ? print($_SESSION["error"]["email-border"]) : "")  ?>" id="new_email" name="new_email"  placeholder="Ingresa tu email" required value="<?php (isset($newUser["email"]) ? print($newUser["email"]) : ""); ?>">
+                        <!-- Set errors -->
+                        <?php  getError($error, "email") ?>
+                     
+                    <input type="email" class="form__email <?= getColorError($error, "email")?> " id="new_email" name="new_email"  placeholder="Ingresa tu email" required value="<?=restoreFormData($newUser,"email")?>">
                 </div>
-            
+                
                 <div class="form__input form__input--one-column">
-                    <div class="form__icon-show">
-                        <label for="new_password">Contraseña</label>
+                    
+                    <div class="form__icon-show ">
+                        <label for="new_password" id="contrasena">Contraseña</label>
                         <img src="../img/icons/eye-off.svg" width="30" alt="">
                     </div>
-                    <?php 
-                        if(isset($_SESSION["messageError"]["password-error"])){
-                            displayError($_SESSION["messageError"]["password-error"]);
-                        }
-                    ?>
-                    <input type="password" class="form__password <?php (isset($_SESSION["error"]["password-border"]) ? print($_SESSION["error"]["password-border"]) : "")  ?>" id="new_password" name="new_password"  placeholder="Ingresa tu contraseña" required value="<?php (isset($newUser["password"]) ? print($newUser["password"]) : ""); ?>">
+                     <!-- Set errors -->
+                     <?php  getError($error, "password") ?>
+                
+                    <input type="password" class="form__password <?= getColorError($error, "password")?> " id="new_password" name="new_password"  placeholder="Ingresa tu contraseña" required value="<?=restoreFormData($newUser, "password")?>">
                 </div>
                 <div class="form__input form__input--one-column">
-                    <label for="confirm_password">Confirmar contraseña</label>
-                    <input type="password" class="form__confirm <?php (isset($_SESSION["error"]["password-border"]) ? print($_SESSION["error"]["password-border"]) : "")  ?>" id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required value="<?php (isset($newUser["confirm-password"]) ? print($newUser["confirm-password"]) : ""); ?>">
+                    <label for="confirm_password" id="contrasena2">Confirmar contraseña</label>
+                    <input type="password" class="form__confirm <?= getColorError($error, "password")?> " id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required value="<?=restoreFormData($newUser, "confirm-password")?>">
                 </div>
                 <div class="form__buttons">
                     <!-- <input type="submit" value="Registrate" class="form__submit">  -->
                     <button type="submit" class="form__submit">
-                        <span class="form__submit-text">Registrate</span>
+                        <span class="form__submit-text" id="boton">Registrate</span>
                         <span class="form__decoration"></span>
                     </button>
-                    <a href="login.php" class="form__account">¿Ya tienes cuenta?</a>
+                    <a href="login.php" class="form__account" id="account">¿Ya tienes cuenta?</a>
                 </div>
            </form>
         </main>
-
-
-            <img class="background" src="../img/register/bg.jpg" alt="fondo-register">
-
-
+        <img class="background" src="../img/register/bg.jpg" alt="fondo-register">
         <footer class="footer">
-            <p class="footer__text">MUO - Todos los derechos reservados</p>
+            <p class="footer__text" id="footer">MUO - Todos los derechos reservados</p>
         </footer>
         <script src="../js/register.js"></script>
-        <script src="../js/general.js"></script>
+        <script src="../js/general.js" type="module"></script>
     </body> 
 </html>
-<?php  
-    // echo '<pre>';
-    // var_dump($_SESSION);
-    // echo '</pre>';
-    unset($_SESSION["userData"]);
-    unset($_SESSION["messageError"]);
-    unset($_SESSION["error"]);
-?>

@@ -6,7 +6,7 @@
             </picture>
 
             <div class="footer__text">
-                <p>MUO - Todos los derechos reservados</p>
+                <p id="footer-text">MUO - Todos los derechos reservados</p>
             </div>
 
             <div class="footer__socials">
@@ -30,3 +30,4 @@
             </div>
         </div>
     </footer>
+    <script src="../js/general.js" type="module"></script>

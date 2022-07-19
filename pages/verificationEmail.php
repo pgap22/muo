@@ -32,42 +32,42 @@ if(!isset($_SESSION["userData"])){
     <link rel="stylesheet" href="../css/verificationEmail/mobile/style.css" media="(max-width: 741px)">
     <link rel="stylesheet" href="../css/verificationEmail/desktop/style.css " media="(min-width: 742px)">
 </head>
+
 <body>
 
-<main>
-    <div class="verification">
-        <picture class="verification__logo">
-            <source srcset="../img/logo/logo.svg" media="(min-width: 742px)" >
-            <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
-        </picture>
-        <div class="verification__text">
-            <h1 class="verification__title">
-                Verifica tu correo electronico
-            </h1>
-            <div class="verification__email">
-                <p><?=$_SESSION["userData"]["email"]?></p>
+    <main>
+        <div class="verification">
+            <picture class="verification__logo">
+                <source srcset="../img/logo/logo.svg" media="(min-width: 742px)">
+                <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
+            </picture>
+            <div class="verification__text">
+                <h1 class="verification__title">
+                    Verifica tu correo electronico
+                </h1>
+                <div class="verification__email">
+                    <p><?=$_SESSION["userData"]["email"]?></p>
+                </div>
+                <p class="verification__wrong-mail">Si has escrito mal tu correo has <a class="underline"
+                        href="/pages/register.php">click aqui</a> </p>
             </div>
-            <p class="verification__wrong-mail">Si has escrito mal tu correo has <a class="underline" href="/pages/register.php">click aqui</a> </p>    
-        </div>
-        <div class="verification__img">
-            <img src="../img/icons/mail.svg" alt="Mail Icon">
-        </div>
+            <div class="verification__img">
+                <img src="../img/icons/mail.svg" alt="Mail Icon">
+            </div>
 
-        <div class="verification__resend">
-         
+            <div class="verification__resend">
+
                 <button type="submit" class="verification__button">
                     <span class="verification__button-text">Reenviar</span>
                     <span class="verification__decoration"></span>
                 </button>
-       
-        
-        <!-- </form> -->
-            <p>¿No recibiste nuestro correo electrónico?</p>
-        </div>
+                <p>¿No recibiste nuestro correo electrónico?</p>
+            </div>
 
-    </div>
-</main>
-<script src="../js/general.js"></script>
-<script src="../js/verificationEmail.js"></script>
+        </div>
+    </main>
+    <script src="../js/general.js"></script>
+    <script src="../js/verificationEmail.js"></script>
 </body>
+
 </html>

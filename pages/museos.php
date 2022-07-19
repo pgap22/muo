@@ -35,17 +35,17 @@
     <link rel="stylesheet" href="../css/museos/desktop/style.css" media="(min-width: 1024px)">
 
 </head>
-<body >
+<body data-page="museos" >
     
     <?php  include "../includes/templates/header.php" ?>
 
     <section class="hero line">
         <div class="hero__wrapper">
             <div class="hero__text">
-                <h1 class="hero__title">
+                <h1 class="hero__title" id="titulo">
                     Museos de El Salvador
                 </h1>
-                <p class="hero__description">
+                <p class="hero__description" id="description">
                     Descubre los diferentes museos que hacen posible MUO
                 </p>
             </div>
@@ -56,7 +56,7 @@
                     <img src="../img/museos/main-3.jpg" alt="" class="hero__img">
                 </div>
                 <div class="hero__autor">
-                    <p>Imagen por</p>
+                    <p id="credits">Imagen por</p>
                     <img src="../img/home/firma-grey.svg" alt="">
                         
                 </div>
@@ -103,10 +103,6 @@
         </div>
     </main>
 
-
-
     <?php  include "../includes/templates/footer.php"?>
-
-    <script src="../js/general.js"></script>
 </body>
 </html>

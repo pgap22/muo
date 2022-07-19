@@ -1,16 +1,41 @@
-<?php  
+<?php
+include "../includes/db.php";
+include "../includes/functions.php";
+$error = [];
+$userLogin = [];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+
+    $userLogin = [];
+    $userLogin["email"] = $_POST["email_login"];
+    $userLogin["password"] = $_POST["password_login"];
+
     session_start();
-    (isset($_SESSION["userData"]) ? $userLogin = $_SESSION["userData"] : "");
-    function displayError($errorMessage, $warn = false){   
-                
-            ?>
-            
-        <p class=" <?php (!$warn) ? print("error") : print("warn") ?> errorMessage"><?= $errorMessage ?></p>
-        
-        <?php 
-        }
-    ?>
-    
+
+    $query = "SELECT * FROM usuarios WHERE email = ? and password = ?";
+    $stmt = mysqli_prepare($db, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+
+
+    $email = $userLogin["email"];
+    $password = $userLogin["password"];
+
+    mysqli_stmt_execute($stmt);
+
+
+    $ok = mysqli_stmt_fetch($stmt);
+
+
+    if ($ok) {
+        $token = openssl_random_pseudo_bytes(16);
+        $_SESSION["user_token"] = bin2hex($token);
+        header("location: /pages/home.php");
+    } else {
+        $error["login"] = 'Tu email o contraseña no son validos !';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -55,46 +80,43 @@
     <main class="main">
         <div class="main__container">
             <section class="main__text">
-                <h1 class="main__title">Iniciar Sesion</h1>
-                <p class="main__description">Continua explorando nuestros origenes para dominar la corriente de nuestras
+                <h1 class="main__title" id="title">Iniciar Sesion</h1>
+
+                <p class="main__description" id="descripcion">Continua explorando nuestros origenes para dominar la corriente de nuestras
                     fronteras</p>
             </section>
-          
+
             <div class="main__form">
-                <form action="../auth/validateUser.php" class="form" method="POST">
+                <form action="login.php" class="form" method="POST">
                     <div class="form__inputs">
                         <div class="form__field">
+                          
                             <label for="email_login">Email</label>
                             <?php
-                                if(isset($_SESSION["messageError"]["login-error"])){
-                                    displayError($_SESSION["messageError"]["login-error"]);
-                                }
-                                else if(isset($_SESSION["messageError"]["login-warning"])){
-                                    displayError($_SESSION["messageError"]["login-warning"], true);
-                                }
-                            ?>                          
-                            <input  <?php  isset($_SESSION["error"]["login-border"]) ?  print("class=".$_SESSION["error"]["login-border"]) : "" ?>  autofocus type="email" name="email_login" id="email_login" placeholder="Ingresa tu correo"  required autocomplete="email" value="<?php (isset($userLogin["email"]) ? print($userLogin["email"]) : ""); ?>">
+                                getError($error, "login");
+                            ?>
+                            <input autofocus type="email" name="email_login" class=" <?= getColorError($error, "login")?>" id="email_login" placeholder="Ingresa tu correo" required autocomplete="email" value="<?=restoreFormData($userLogin, "email")?>">
                         </div>
                         <div class="form__field">
-                            <label for="password_login">Contraseña</label>
-                            <div class="form__password <?php  isset($_SESSION["error"]["login-border"]) ?  print($_SESSION["error"]["login-border"]) : "" ?>">
-                                <input type="password" name="password_login" id="password_login" placeholder="Ingresa tu contraseña"  required autocomplete="current-password">
+                            <label for="password_login" id="contrasena">Contraseña</label>
+                            <div class="form__password <?= getColorError($error, "login")?>">
+                                <input type="password" name="password_login" id="password_login" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
                                 <img src="../img/icons/eye-off.svg" width="30" alt="" id="password_see">
                             </div>
                         </div>
                     </div>
 
                     <div>
-                        <a href="#" class="form__forget">¿Olvidaste tu contraseña?</a>
+                        <a href="#" class="form__forget" id="olvidar">¿Olvidaste tu contraseña?</a>
                     </div>
 
                     <button type="submit" class="form__submit">
-                        <span class="form__submit-text">Entrar</span>
+                        <span class="form__submit-text" id="boton">Entrar</span>
                         <span class="form__decoration"></span>
                     </button>
 
                     <div class="form__no-account">
-                        <a href="register.php">¿No tienes cuenta?</a>
+                        <a href="register.php" id="no-acc">¿No tienes cuenta?</a>
                     </div>
                 </form>
             </div>
@@ -104,16 +126,14 @@
     <img src="../img/login/bg.jpg" alt="" class="img">
 
     <footer class="footer">
-        <p class="footer__text">MUO - Todos los derechos reservados</p>
+        <p class="footer__text" id="footer">MUO - Todos los derechos reservados</p>
     </footer>
 
     <script src="../js/login.js"></script>
-    <script src="../js/general.js"></script>
+    <script src="../js/general.js" type="module"></script>
 </body>
 
 </html>
-<?php  
-    unset($_SESSION["messageError"]);
-    unset($_SESSION["error"]);
-    unset($_SESSION["userData"]);
+<?php
+
 ?>

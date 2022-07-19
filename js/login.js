@@ -51,3 +51,9 @@ for (let i = 0; i < inputs.length; i++) {
     })
 }
 
+let submitButton = document.querySelector(".form__submit");
+let form  = document.querySelector(".form")
+form.addEventListener("submit", ()=>{
+    submitButton.disabled = true;
+    submitButton.classList.add("loading-submit");
+})

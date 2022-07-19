@@ -1,19 +1,27 @@
 <?php 
-function sendError($label, $messageError, $newUser, $type, $color = "red" ){
-    if($color == "red"){
-        $_SESSION["messageError"]["${label}-error"] =  $messageError;
-        $_SESSION["error"]["${label}-border"] = "errorBorder"; 
-        $_SESSION["userData"] = $newUser;
-    }
-    else{
-        $_SESSION["messageError"]["${label}-warning"] =  $messageError;
-        $_SESSION["error"]["${label}-border"] = "warningBorder"; 
-        $_SESSION["userData"] = $newUser;
-    }
-    header("location: ../pages/${type}.php");
-    die();
+
+
+function debugear($e){
+    echo '<pre>';
+    var_dump($e);
+    echo '</pre>';
 }
 
+function getError($error, $type){
+    if(isset($error[$type])){
+        echo "<p class='errorMessage error'>$error[$type]</p>";
+    }
+}
+
+function getColorError($error, $type){
+    if(isset($error[$type])){
+        return "errorBorder";
+    }
+    return "";
+}
+function restoreFormData($newUser,$data){
+    return $newUser[$data] ?? "";
+}
 
 function templateEmail($title, $usuario, $texto, $url, $botonNombre){
     

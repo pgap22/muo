@@ -44,19 +44,18 @@
     <main class="main">
         <section class="about">
             <div class="about__wrapper">
-                <h1 class="about__heading">Sobre Nosotros</h1>
+                <h1 class="about__heading" id="title">Sobre Nosotros</h1>
 
                 <div class="about__container">
                     <div class="about__description">
-                        <p>
-                            Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante
-                            ipsum primis in faucibus.
+                        <p id="description">
+                            MUO es una sitio web que mantiene la cultura de El Salvador y la intenta mantener para las futuras generaciones.
                         </p>
                     </div>
                     <div class="about__img-container">
                         <img src="../img/nosotros/about-us.jpg" alt="Imagen referente a un museo">
                         <div class="about__autor">
-                            <p>Imagen por</p>
+                            <p id="credits">Imagen por</p>
                             <img src="../img/home/firma.svg" alt="Firma del fotografo (@Camaro27)">
                         </div>
                     </div>
@@ -97,10 +96,10 @@
                     <section class="details mision">
                         <div class="details__text">
                             <div class="details__title">
-                            <h3>¿Cual es nuestra mision?</h3>
+                            <h3 id="our-mision">¿Cual es nuestra mision?</h3>
                         </div>
                         <div class="details__description">
-                            <p>Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non velit felis. Phasellus ultricies, nisi vel efficitur varius, metus ante convallis sem, et tempus odio ipsum id urna.  </p>
+                            <p id="our-mision-text">Nuestra mision es mantener y transmitir la cultura de El Salvador para que las siguientes generaciones no esten desinformadas de nuestras raices culturales </p>
                         </div>
                         </div>
 
@@ -110,10 +109,10 @@
                     <section class="details vision">
                         <div class="details__text">
                             <div class="details__title">
-                            <h3>¿Cual es nuestra Vision?</h3>
+                            <h3 id="our-vision">¿Cual es nuestra Vision?</h3>
                         </div>
                         <div class="details__description">
-                            <p>Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non velit felis. Phasellus ultricies, nisi vel efficitur varius, metus ante convallis sem, et tempus odio ipsum id urna. </p>
+                            <p id="our-vision-text">Ser un sitio web nacionalmente reconocido ademas ofrecer la informacion culturar mas acertada y veridica </p>
                         </div>
                         </div>
 
@@ -122,10 +121,10 @@
                     <section class="details personal">
                         <div class="details__text">
                             <div class="details__title">
-                            <h3>Nuestro Personal</h3>
+                            <h3 id="our-personal">Nuestro Personal</h3>
                         </div>
                         <div class="details__description">
-                            <p>Donec feugiat turpis vitae odio malesuada pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla non velit felis. Phasellus ultricies, nisi vel efficitur varius, metus ante convallis sem, et tempus odio ipsum id urna. </p>
+                            <p id="our-personal-text">Grupo 5 - Creaj - Primer Año Seccion B Desarollo de Software </p>
                         </div>
                         </div>
 
@@ -144,7 +143,6 @@
 
 
     <?php  include "../includes/templates/footer.php"?>
-    <script src="../js/general.js"></script>
     <script src="../js/about.js"></script>
 </body>
 

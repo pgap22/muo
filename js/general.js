@@ -56,7 +56,13 @@ window.addEventListener("load", ()=>{
     }
 
     //Translate
-
+    let divTranslate = document.createElement("div");
+    let imgTransalte = document.createElement("img");
+    divTranslate.classList.add("translate");
+    imgTransalte.src = "../img/translate/en.webp";
+    imgTransalte.classList.add("translate__icon");
+    divTranslate.appendChild(imgTransalte);
+    document.querySelector("body").insertBefore(divTranslate, document.querySelector("main"));
 
     let translateClick = document.querySelector(".translate img");
     let translateIcon = document.querySelector(".translate");
@@ -71,12 +77,14 @@ window.addEventListener("load", ()=>{
         sessionStorage.setItem("lang", "en");
         lang = "en"
         translate(ingles, pageTranslate);
+        translate(ingles, "general");
         translateClick.src = "../img/translate/es.webp"
     }
     else if(lang == "es"){
         sessionStorage.setItem("lang", "es");
         lang = "es"
         translate(esp, pageTranslate);
+        translate(esp, "general");
         translateClick.src = "../img/translate/en.webp"
 
     }
@@ -86,29 +94,56 @@ window.addEventListener("load", ()=>{
         let words = Object.keys(lang_array[pageTranslate]);
         words.forEach(element => {
             if(element == "credits"){
-                document.querySelectorAll("#credits").forEach(e =>{
-                    e.innerHTML = lang_array[pageTranslate][element];
-                })
+                if(document.querySelector('#credits')){
+                    document.querySelectorAll("#credits").forEach(e =>{
+                        e.innerHTML = lang_array[pageTranslate][element];
+                    })
+                }
+             
             }else{
-                document.getElementById(element).innerHTML = lang_array[pageTranslate][element];
+                if(document.getElementById(element)){
+                    document.getElementById(element).innerHTML = lang_array[pageTranslate][element];
+                }
+                
             }
-            console.log(element)
         });
+
+        if(pageTranslate == "register"){
+            let placeholder = Object.keys(lang_array["placeholder-register"]);
+            placeholder.forEach(e =>{
+                document.getElementById(e).placeholder = lang_array['placeholder-register'][e];
+            })
+        }
+        else if(pageTranslate == "login"){
+            let placeholder = Object.keys(lang_array["placeholder-login"]);
+            placeholder.forEach(e =>{
+                document.getElementById(e).placeholder = lang_array['placeholder-login'][e];
+            })
+        }
     }
 
 
     translateIcon.addEventListener("click", ()=>{
+        
         if(lang == "es"){
             sessionStorage.setItem("lang", "en");
             lang = "en"
             translate(ingles, pageTranslate);
+            translate(ingles, "general");
+            
             translateClick.src = "../img/translate/es.webp"
         }
         else if(lang == "en"){
             sessionStorage.setItem("lang", "es");
             lang = "es"
             translate(esp, pageTranslate);
+            translate(esp, "general");
+
             translateClick.src = "../img/translate/en.webp"
 
         }
     })
+
+//     <div class="translate">
+//     <img src="../img/translate/en.webp" alt="" class="translate__icon">
+// </div>
