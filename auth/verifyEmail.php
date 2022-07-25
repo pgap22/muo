@@ -1,6 +1,6 @@
 <?php  
 include "../includes/db.php";
-include "../includes/functions.php";
+
 if(isset($_GET["verifyToken"])){
 
 $tokenToVerify = $_GET["verifyToken"];
@@ -9,7 +9,7 @@ $query = "SELECT * FROM noverifieduser WHERE verifyToken = ?";
 $stmt = mysqli_prepare($db,$query);
 mysqli_stmt_bind_param($stmt, "s", $tokenToVerify);
 mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt,$id,$name, $last_name, $password,$email,$verifyToken,$disponiible_resend);
+mysqli_stmt_bind_result($stmt,$id,$name, $last_name, $password,$email,$verifyToken,$disponiible_resend,$eToken);
 $ok = mysqli_stmt_fetch($stmt);
 
 mysqli_stmt_close($stmt);

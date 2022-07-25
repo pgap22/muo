@@ -7,5 +7,5 @@ function autoload($clase){
 spl_autoload_register("autoload");
 
 $db = new User();
-debugear($db->getUsers());
+// debugear($db->getUsers());
 ?>

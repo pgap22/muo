@@ -31,20 +31,32 @@ main{
 }
 .verification__resend{
     width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
+
 .verification__button{
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    color: black;
     padding: .5rem 0rem;
-    max-width: 20rem;
+    max-width: 25rem;
     width: 100%;
     background-color:  var(--clr-blanco);
     font-weight: 900;
     font-family: "Poppins", sans-serif;
-    font-size: 2.3rem;
+    font-size: 2.6rem;
     border-radius: 2.5rem;
     outline: none;
     border: none;
+    cursor: pointer;
+}
+.verification__button--submit{
+    padding: 0.6rem 5rem;
+}
+.verification__button:disabled{
+    color: var(--clr-gris);
+    cursor: default;
 }
 .verification__submit-text{
     font-size: 2.8rem;
@@ -110,6 +122,14 @@ main{
     animation: loading ease 1s infinite;
 
 }
+.verification__timer{
+    width: 200px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-around;
+    color: var(--clr-naranja);
+}
+
 @keyframes loading{
     to{
         transform:rotate(0) translate(-50%);
@@ -122,4 +142,12 @@ main{
 }
 .underline{
     text-decoration: underline;
+}
+.verification__error{
+    filter: invert(1);
+    aspect-ratio: 1;
+    width: 10rem;
+}
+.hidden{
+    display: none;
 }

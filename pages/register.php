@@ -3,6 +3,7 @@
     include "../includes/db.php";
     $error = [];
     $newUser = [];
+    $emailToken = bin2hex(openssl_random_pseudo_bytes(8));
     // debugear($_SERVER);
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $error = [];
@@ -64,16 +65,17 @@
         }
 
         if(!$error){
-            $query = "INSERT INTO noverifieduser(name, last_name, password, email, verifyToken, disponible_resend) VALUES(?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO noverifieduser(name, last_name, password, email, verifyToken, disponible_resend, emailToken) VALUES(?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($db,$query);
 
-            mysqli_stmt_bind_param($stmt,"ssssss", $nombre, $apellido, $password, $email, $token, $disponible_resend);
+            mysqli_stmt_bind_param($stmt,"sssssss", $nombre, $apellido, $password, $email, $token, $disponible_resend, $emailToken);
 
             $nombre = $newUser["name"];
             $apellido = $newUser["last-name"];
             $email = $newUser["email"];
             $password = $newUser["password"];
-            $disponible_resend = new DateTime();
+            $timeZone = new DateTimeZone("GMT-6");
+            $disponible_resend = new DateTime("now", $timeZone);
             $disponible_resend = (array) $disponible_resend;
             $disponible_resend = $disponible_resend["date"];
             $token = bin2hex(openssl_random_pseudo_bytes(16));
@@ -87,7 +89,7 @@
 
 
             mail($email, "Verificar tu cuenta de email en MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
-            header("location: /pages/verificationEmail.php?email=".$email);
+            header("location: /pages/verificationEmail.php?email=".$email . "&eToken=". $emailToken);
         }
         
        
@@ -197,7 +199,8 @@
                     </button>
                     <a href="login.php" class="form__account" id="account">¿Ya tienes cuenta?</a>
                 </div>
-           </form>
+                </form>
+                <input type="text" value="<?=$emailToken?>" name="emailToken" hidden>
         </main>
         <img class="background" src="../img/register/bg.jpg" alt="fondo-register">
         <footer class="footer">

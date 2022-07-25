@@ -118,12 +118,12 @@ body{
     display: none;
 }
 .errorBorder{
-    border-color: hsl(0, 100%, 47%)!important;
+    border-color: var(--clr-error)!important;
 }
 .errorMessage{
     display: none;
     font-size: 1.2rem;
-    color: hsl(0, 100%, 42%);
+    color: var(--clr-errorOscuro);
 }
 .error{
     display: block;
