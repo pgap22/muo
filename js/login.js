@@ -16,12 +16,6 @@ for (let i = 0; i < inputs.length; i++) {
     const element = inputs[i];
     element.addEventListener("keypress", ()=>{
         let errors = document.querySelectorAll(".error")
-        if(document.querySelector(".warn")){
-            document.querySelector(".warn").classList.remove("warn")
-        }
-        if(document.querySelector(".warningBorder")){
-        document.querySelectorAll(".warningBorder").forEach(e => e.classList.remove("warningBorder"))
-        }
         errors.forEach((e)=>{
             e.classList.remove("error")
         })
@@ -33,13 +27,6 @@ for (let i = 0; i < inputs.length; i++) {
     element.addEventListener("keydown", (e)=>{
         if(e.key == "Backspace"){
             let errors = document.querySelectorAll(".error")
-            if(document.querySelector(".warn")){
-                document.querySelector(".warn").classList.remove("warn")
-            }
-            if(document.querySelector(".warningBorder")){
-
-            document.querySelectorAll(".warningBorder").forEach(e => e.classList.remove("warningBorder"))
-            }
             errors.forEach((e)=>{
                 e.classList.remove("error")
             })

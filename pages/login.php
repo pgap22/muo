@@ -13,19 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     session_start();
 
-    $query = "SELECT * FROM usuarios WHERE email = ? and password = ?";
+    $query = "SELECT password FROM usuarios WHERE email = ?";
     $stmt = mysqli_prepare($db, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+    mysqli_stmt_bind_param($stmt, "s", $email);
 
 
     $email = $userLogin["email"];
-    $password = $userLogin["password"];
-
     mysqli_stmt_execute($stmt);
 
 
-    $ok = mysqli_stmt_fetch($stmt);
-
+    $ok = mysqli_stmt_get_result($stmt);
+    $ok = mysqli_fetch_assoc($ok);
+    
+    $ok = password_verify($userLogin["password"], $ok["password"]);
 
     if ($ok) {
         $token = openssl_random_pseudo_bytes(16);
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <div>
-                        <a href="#" class="form__forget" id="olvidar">¿Olvidaste tu contraseña?</a>
+                        <a href="/pages/recoverPassword.php" class="form__forget" id="olvidar">¿Olvidaste tu contraseña?</a>
                     </div>
 
                     <button type="submit" class="form__submit">

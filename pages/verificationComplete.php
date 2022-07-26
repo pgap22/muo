@@ -1,3 +1,10 @@
+<?php  
+session_start();
+if(!isset($_SESSION["verification"])){
+    header("location: ../error/errorVerification.php");
+}
+session_unset();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,23 +41,23 @@
             </picture>
             <div class="verification__text">
                 <h1 class="verification__title">
-                    Error en la verificacion
+                    Verificacion completada
                 </h1>
-                <p class="verification__wrong-mail">El email es incorrecto o el email ya esta verificado</p>
+                <p>Tu email ha sido verificado correctamente</p>
+                <p class="verification__close-window">Puedes cerrar esta ventana o inciar sesion</p>
             </div>
             <div class="verification__img">
-                <img src="../img/icons/error.svg" alt="error Icon" class="verification__error">
+                <img src="../img/icons/quality.svg" alt="Checked Icon" class="verification__icon">
             </div>
             
-            <a href="/" class="verification__button">
-                        <span class="verification__button-text">Volver al inicio</span>
+            <a href="/pages/login.php" class="verification__button">
+                        <span class="verification__button-text">Iniciar sesion</span>
                         <span class="verification__decoration"></span>
             </a>
           
         </div>
     </main>
-    <script src="../js/general.js"></script>
-    <script src="../js/verificationEmail.js"></script>
+    <script src="../js/general.js" type="module"></script>
 </body>
 
 </html>

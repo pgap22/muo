@@ -1,9 +1,5 @@
 import {ingles, esp} from "./translate.js";
-//     <div class="preloader">
-//     <div class="preloader__logo">
-//         <img src="../img/logo/logo.svg" alt="">
-//     </div>
-// </div>
+
 
 //Preload
 let myDiv, myDivLogo, myImgLogo;
@@ -22,8 +18,6 @@ window.addEventListener("load", ()=>{
 })
 
 //Hamburguer Menu Responsive Mobile
-
-
     let hamburguerMenu = document.querySelector(".header__menu");
     if(hamburguerMenu){
         let menuNav = document.querySelector(".nav");
@@ -63,10 +57,12 @@ window.addEventListener("load", ()=>{
     imgTransalte.classList.add("translate__icon");
     divTranslate.appendChild(imgTransalte);
     document.querySelector("body").insertBefore(divTranslate, document.querySelector("main"));
+    
 
     let translateClick = document.querySelector(".translate img");
     let translateIcon = document.querySelector(".translate");
     let pageTranslate = document.querySelector("body").dataset.page;
+
     let lang = sessionStorage.getItem("lang");
     if(!lang){
         sessionStorage.setItem("lang", "es");

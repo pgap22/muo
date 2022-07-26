@@ -19,7 +19,10 @@ if($ok){
     $query = mysqli_query($db,$query);
     $query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario) VALUES('$email', '$password', '$name', '$last_name')";
     $query = mysqli_query($db,$query);
-    echo  "email verificado";
+
+    session_start();
+    $_SESSION["verification"] = true;
+    header("location: /pages/verificationComplete.php");
 }
 else{
     echo "error en la verificacion";

@@ -73,7 +73,7 @@
             $nombre = $newUser["name"];
             $apellido = $newUser["last-name"];
             $email = $newUser["email"];
-            $password = $newUser["password"];
+            $password = password_hash($newUser["password"], PASSWORD_DEFAULT);
             $timeZone = new DateTimeZone("GMT-6");
             $disponible_resend = new DateTime("now", $timeZone);
             $disponible_resend = (array) $disponible_resend;

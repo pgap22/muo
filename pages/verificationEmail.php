@@ -18,7 +18,7 @@ $result = mysqli_stmt_get_result($stmt);
 
 $result = mysqli_fetch_assoc($result);
 if(!$result){
-    header("location: /pages/errorVerification.php");
+    header("location: /error/errorVerification.php");
 }
 ?>
 
@@ -102,7 +102,7 @@ if(!$result){
 
         </div>
     </main>
-    <script src="../js/general.js"></script>
+    <script src="../js/general.js" type="module"></script>
     <script src="../js/resend.js"></script>
 </body>
 

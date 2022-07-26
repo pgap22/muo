@@ -221,6 +221,7 @@ esp["login"]["footer"] = "MUO - Todos los derechos reservados";
 esp["placeholder-login"] = [];
 esp["placeholder-login"]["email_login"] = "Ingresa tu correo";
 esp["placeholder-login"]["password_login"] = "Ingresa tu contraseña";
+
 esp["login-error"] = [];
 esp["login-error"]["10-e"] = "Tu email o contraseña no son validos !";
 
