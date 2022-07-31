@@ -90,6 +90,11 @@ h4{font-size: 1.6rem;}
     h4{font-size: 2.0rem;}
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /*
 Preloader
@@ -161,5 +166,11 @@ Preloader
     border: 5px solid var(--clr-blanco);
     object-fit: cover;
     border-radius: 50%;
-
+}
+.notification__message{
+    color: var(--clr-amarillo);
+    font-size: 14px;
+}
+.quit-padding-up{
+    padding: 0 5rem;
 }

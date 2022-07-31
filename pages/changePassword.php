@@ -1,24 +1,77 @@
 <?php  
 include "../includes/db.php";
+include "../includes/functions.php";
+
 
 if(!isset($_GET["token"])){
-    header("location: /error/errorPassCode.php");
-    die();
+    header("location: /pages/recoverPassword.php");
 }
+$error = [];
 $token = $_GET["token"];
+$code = [];
 
-$query = "SELECT * FROM passwordCode where passToken = ?";
-$stmt = mysqli_prepare($db, $query);
+for ($i=0; $i < 5; $i++)
+{ 
+    if(isset($_GET["code-".($i+1)])){
+        $code[$i] = $_GET["code-".($i+1)];
+    }
+} 
+$code = join("", $code);
 
-mysqli_stmt_bind_param($stmt, "s", $token);
-mysqli_stmt_execute($stmt);
+$query = "SELECT * FROM passwordCode WHERE passToken = ?";
+$result = checkToken($db, $query, $token);
+$userId = $result["user_id"];
+if(!$result){
+    header("location: /pages/recoverPassword.php");
+}
 
-$result = mysqli_stmt_get_result($stmt);
-$result = mysqli_fetch_assoc($result);
+if(isset($_GET["form-submited"])){
+    $now = new DateTime("now", TIMEZONE_GMT6);
+    $limit = date_create($result["limit_time"]);
 
-echo '<pre>';
-var_dump($result);
-echo '</pre>';
+    $now = date_timestamp_get($now)-GMT_6;
+    $limit = date_timestamp_get($limit);
+
+
+    if(!$code){
+        echo "El codigo esta vacio";
+        $error["resend-code"] = "El codigo esta vacio";
+        $error["code"] = 13;
+    }
+    else if(strlen($code) != 5){
+        echo "El codigo es invalido";
+        $error["resend-code"] = "El codigo es invalido";
+        $error["code"] = 14;
+    }
+    else if($limit<$now){
+        echo "El codigo ya ha expirado";
+        $error["resend-code"] = "El codigo ya ha expirado";
+        $error["code"] = 15;
+    }
+    else{
+        $query = "SELECT * FROM passwordcode WHERE passToken = ? AND code = ?";
+
+        $stmt = mysqli_prepare($db, $query);
+        mysqli_stmt_bind_param($stmt, "ss", $token, $code); 
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        $res = mysqli_fetch_assoc($res);
+      
+        if($res){
+         echo "ok";
+         mysqli_query($db, "UPDATE passwordcode SET verified = 1 WHERE passToken = '$token'");
+         header("location: /pages/setNewPassword.php?token=".$token);
+        }
+        else{
+         echo "codigo incorrecto";
+         $error["resend-code"] = "Codigo incorrecto";
+         $error["code"] = 16;
+        }
+    }
+
+
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -64,15 +117,55 @@ echo '</pre>';
             <div class="verification__img">
                 <img src="../img/icons/key.svg" alt="key Icon" class="verification__error">
             </div>
-            
-            <a href="/" class="verification__button">
-                        <span class="verification__button-text">Volver al inicio</span>
-                        <span class="verification__decoration"></span>
-            </a>
+            <div class="verification__timer hidden">
+                <p class="verification__counterdown">0:00</p>
+                <p class="verification__timer-error">Proximo reenvio</p>
+            </div>
+
+            <div class="verification__error-message">
+                <?php  
+                    getError($error, "resend-code");
+                ?>
+            </div>
+
+            <form action="changePassword.php" class="verification__form" method="GET" name="passwordCode" required>
+                <div class="verification__code-reset">
+                    <div class="verification__input-code">
+                        <input type="number" class="verification__code <?=getColorError($error, 'resend-code')?>" required autocomplete="off" min=0 max=9 pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" name="code-1">
+                    </div> 
+                    <div class="verification__input-code">
+                        <input type="number" class="verification__code <?=getColorError($error, 'resend-code')?>" required autocomplete="off" min=0 max=9 pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" name="code-2">
+                    </div> 
+                    <div class="verification__input-code">
+                        <input type="number" class="verification__code <?=getColorError($error, 'resend-code')?>" required autocomplete="off" min=0 max=9  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" name="code-3">
+                    </div> 
+                    <div class="verification__input-code">
+                        <input type="number" class="verification__code <?=getColorError($error, 'resend-code')?>" required autocomplete="off" min=0 max=9 pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" name="code-4" >
+                    </div> 
+                    <div class="verification__input-code">
+                        <input type="number" class="verification__code <?=getColorError($error, 'resend-code')?>" required autocomplete="off" min=0 max=9 pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" name="code-5">
+                    </div> 
+                </div>
+
+                <input type="text" hidden value="<?=$token?>" name="token" class="token-passcode">
+                <input type="text" hidden value="<?=$userId?>" class="user-id">
+                <input type="text" hidden name="form-submited" value="true" >
+
+                <a href="/auth/resendPassCode.php?token=<?=$token?>" class="verification__resend-code" id="resend-pass-code">Reenviar codigo</a>
+
+                <button type="submit" class="verification__button">
+                        <span class="verification__button-text">Verificar codigo</span>
+                        <span class="verification__decoration"></span> 
+                </button>
+            </form>
+
+           
           
         </div>
     </main>
-    <script src="../js/general.js" type="module"></script>
+    <!-- <script src="../js/general.js" type="module"></script> -->
+    <script src="../js/passCode.js"></script>
+    <script src="../js/button.js"></script>
 </body>
 
 </html>

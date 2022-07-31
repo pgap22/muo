@@ -185,3 +185,78 @@ main{
 .hidden{
     display: none;
 }
+
+.verification__code{
+    background-color: transparent;
+    border: 5px solid var(--clr-blanco);
+    border-radius: 5px;
+    width: clamp(33px, 15vw, 55px);
+    color: var(--clr-blanco);
+    text-align: center;
+    padding: 1rem .5rem;
+    font-size: 25px;
+}
+.verification__code-reset{
+    display: flex;
+    gap: 10px;
+}
+.verification__resend-code{
+    background-color: transparent;
+    color: var(--clr-blanco);
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.verification__error-message{
+    /* border: 1px solid red; */
+    width: 60%;
+    display: flex;
+    justify-content: start;
+}
+.errorBorder{
+    border-color: var(--clr-error)!important;
+}
+.errorMessage{
+    display: none;
+    font-size: 1.4rem;
+    color: var(--clr-errorOscuro);
+}
+.error{
+    display: block;
+}   
+
+.testing{
+    border: 1px solid red;
+}
+
+.form__password{
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
+    border: 5px solid var(--clr-blanco);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: .5rem 0rem;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    gap: 1rem;
+}
+.form__password input{
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+
+}
+.form__label{
+    place-self: start;
+}
+.form__password img{
+    cursor: pointer;
+    width: 3rem;
+    aspect-ratio: 1;
+}
+.flex-center{
+    display: grid;
+    justify-content: center;
+}

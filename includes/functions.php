@@ -1,5 +1,13 @@
 <?php 
-
+define("GMT_6", 21600);
+define("TIMEZONE_GMT6", (new DateTimeZone("GMT-6")));
+function checkToken($db, $query, $token){
+    $stmt = mysqli_prepare($db, $query);
+    mysqli_stmt_bind_param($stmt, "s", $token);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    return mysqli_fetch_assoc($result);
+}
 
 function debugear($e){
     echo '<pre>';
@@ -7,10 +15,14 @@ function debugear($e){
     echo '</pre>';
 }
 
-function sendMessage($message, $bool = false){
+function sendMessage($message, $bool, $id_translate){
     if($bool){
-        return "<p class='notification__message'>${message}</p>";
+        return "<p class='notification__message' id=$id_translate>${message}</p>";
     }
+}
+
+function getInputValue($value){
+    return $value ?? "";
 }
 
 function getError($error, $type){

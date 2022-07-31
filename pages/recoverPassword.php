@@ -2,19 +2,19 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 
+
+$wrongEmail = false;
+$emptyEmail = false;
+$email = '';
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
+    $email = $_POST["email-recover"];
     $query = "SELECT * FROM usuarios WHERE email = ?";
-    $stmt = mysqli_prepare($db, $query);
 
-    mysqli_stmt_bind_param($stmt, "s", $_POST["email-recover"]);
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-
-    $result = mysqli_fetch_assoc($result);
+    $result = checkToken($db, $query, $email);
 
     if($result){
+        $wrongEmail = false;
         $code = rand(10000, 99999);
         $code= intval($code);
 
@@ -29,8 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $time = date_timestamp_get($time);
 
 
-        $time_limit = gmdate("Y/m/d h:i:s", ($time-$GMT_6)+900);
-        $resend = gmdate("Y/m/d h:i:s", ($time-$GMT_6)+300 );
+        $time_limit = gmdate("Y/m/d H:i:s", ($time-$GMT_6)+900);
+        $resend = gmdate("Y/m/d H:i:s", ($time-$GMT_6));
 
         $time_limit = new DateTime($time_limit);
         $resend = new DateTime($resend);
@@ -44,15 +44,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $passToken = bin2hex(openssl_random_pseudo_bytes(8));
 
 
-        $query = "INSERT INTO passwordCode(code, user_id, limit_time, resend_code, passToken) VALUES($code, $id, '$time_limit', '$resend', '$passToken')";
+        $query = "INSERT INTO passwordCode(code, user_id, limit_time, resend_code, passToken, verified) VALUES($code, $id, '$time_limit', '$resend', '$passToken', 0)";
         $message = templateEmailNoButton("Recuperar Contraseña", $result["nombre_usuario"], "Este es tu codigo para restablecer tu contraseña", $code);        
         echo $query;
         $ok = mysqli_query($db, $query);
+        
         if($ok){
+            $message= templateEmailNoButton("Recuperar contraseña", $result["nombre"], "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $code);
+            mail($result["email"], "Recuperar contraseña de MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
             header("location: /pages/changePassword.php?token=$passToken");    
         }
 
     }
+    else{
+
+        if(empty($email)){
+            $emptyEmail = true;
+        }
+        else{
+            $wrongEmail = true;
+            $email = $_POST["email-recover"];
+        }
+
+    }
+
 }
 
 ?>
@@ -104,7 +119,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <form class="verification__form" action="recoverPassword.php" method="POST">
                 <div class="form__input">
                     <label for="email-recover">Email</label>
-                    <input type="email" name="email-recover" id="email-recover" required placeholder="Ingresa tu email">
+                    
+                    <?= sendMessage("El email no esta registrado con una cuenta en MUO", $wrongEmail, "wrong-email")?>
+                    <?= sendMessage("El email esta vacio", $emptyEmail, "empty-email")?>
+
+                    <input type="email" name="email-recover" id="email-recover" required placeholder="Ingresa tu email"  value=<?= getInputValue($email);?>>
                 </div>
                 <button type="submit" class="verification__button verification__button--submit">
                         <span class="verification__button-text">Reenviar</span>
