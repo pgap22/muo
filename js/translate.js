@@ -88,7 +88,7 @@ ingles["register"]["5-e"] = "The email cannot be empty";
 ingles["register"]["6-e"] = "The email is invalid";
 ingles["register"]["7-e"] = "The password cannot be empty";
 ingles["register"]["8-e"] = "The password cannot be empty";
-ingles["register"]["9-e"] = "The password cannot be empty";
+ingles["register"]["9-e"] = "Passwords do not match";
 ingles["register"]["11-e"] = "Email is already in use";
 
 ingles["register"]["footer"] = "MUO - All rights reserved";
@@ -253,8 +253,6 @@ esp["register"]["contrasena2"] = "Confirmar contraseña";
 esp["register"]["boton"] = "Registrate";
 esp["register"]["account"] = "¿Ya tienes cuenta ?";
 esp["register"]["footer"] = "MUO - Todos los derechos reservados";
-
-esp["register"] = [];
 esp["register"]["1-e"] = "El nombre no puede estar vacio";
 esp["register"]["2-e"] = "El apellido no puede estar vacio";
 esp["register"]["3-e"] = "El nombre no puede ser muy largo";
@@ -263,7 +261,7 @@ esp["register"]["5-e"] = "El email no puede quedar vacio";
 esp["register"]["6-e"] = "El email es invalido";
 esp["register"]["7-e"] = "La contraseña no puede estar vacia";
 esp["register"]["8-e"] = "La contraseña no puede estar vacia";
-esp["register"]["9-e"] = "La contraseña no puede estar vacia";
+esp["register"]["9-e"] = "Las contraseñas no coinciden";
 esp["register"]["11-e"] = "El email ya esta en uso";
 
 esp["placeholder-register"] = [];

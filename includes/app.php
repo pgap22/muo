@@ -1,11 +1,18 @@
-<?php  
-include "functions.php";
+<?php
+
+use MUO\NoVerifiedUser;
+use MUO\User;
+require "db.php";
+require "functions.php";
+
 function autoload($clase){
-    include '../clases/'.$clase.".php";
+    $clase = explode("\\", $clase);
+    include   '../clases/' . $clase[1]. ".php";
 }
 
 spl_autoload_register("autoload");
 
-$db = new User();
-// debugear($db->getUsers());
+
+User::setDB($databases);
+
 ?>

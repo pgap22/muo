@@ -1,22 +1,16 @@
 <?php
-include "../includes/db.php";
-include "../includes/functions.php";
-session_start();
+
+use MUO\NoVerifiedUser;
+
+include "../includes/app.php";
+
 
 $email = $_GET["email"];
 $eToken = $_GET["eToken"];
 
-$query = "SELECT * FROM noverifieduser WHERE email = ? AND emailToken = ? ";
+$result = NoVerifiedUser::getEmailToken($email, $eToken);
 
-$stmt = mysqli_prepare($db, $query);
 
-mysqli_stmt_bind_param($stmt, "ss", $email, $eToken);
-
-mysqli_stmt_execute($stmt);
-
-$result = mysqli_stmt_get_result($stmt);
-
-$result = mysqli_fetch_assoc($result);
 if (!$result) {
     header("location: /error/errorVerification.php");
 }

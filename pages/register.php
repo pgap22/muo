@@ -1,101 +1,43 @@
-<?php  
-    include "../includes/functions.php";
-    include "../includes/db.php";
+<?php
+
+    use MUO\NoVerifiedUser;
+
+    include "../includes/app.php";
+    
+    //Inicializar los arreglos
     $error = [];
     $newUser = [];
     $emailToken = bin2hex(openssl_random_pseudo_bytes(8));
     // debugear($_SERVER);
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $error = [];
-        $newUser = [];
+        
 
+
+        //Llenado de variables a un arreglo
+        
         $newUser["name"] = $_POST["new_name"];
-        $newUser["last-name"] = $_POST["new_last-name"];
+        $newUser["lastName"] = $_POST["new_last-name"];
         $newUser["email"] = $_POST["new_email"];
         $newUser["password"] = $_POST["new_password"];
         $newUser["confirm-password"] = $_POST["confirm_password"];
-
-        if($newUser["name"] == ""){
-           $error["name"]  = "El nombre no puede estar vacio";
-           $error["code"] = 1;
-        }
-        else if($newUser["last-name"] == ""){
-            $error["last-name"]  = "El apellido no puede estar vacio";
-            $error["code"] = 2;
-        } 
-        else if(strlen($newUser["name"]) > 30){
-            $error["name"]  = "El nombre no puede ser muy largo";
-            $error["code"] = 3;
-        }
-        else if(strlen($newUser["last-name"]) > 30){
-            $error["last-name"]  = "El apellido no puede ser muy largo";
-            $error["code"] = 4;
-        }
-        else if($newUser["email"] == ""){
-            $error["email"]  = "El email no puede quedar vacio";
-            $error["code"] = 5;
-        }
-        else if(!filter_var($newUser["email"], FILTER_VALIDATE_EMAIL)){
-            $error["email"]  = "El email es invalido";
-            $error["code"] = 6;
-        }
-        else if($newUser["password"] == ""){
-            $error["password"]  = "La contraseña no puede estar vacia";
-            $error["code"] = 7;
-        }
-        else if($newUser["confirm-password"] == ""){
-            $error["password"]  = "La contraseña no puede estar vacia";
-            $error["code"] = 8;
-        }
-        else if($newUser["password"] != $newUser["confirm-password"]){
-            $error["password"]  = "Las contraseñas no coinciden";
-            $error["code"] = 9;
-        }
-   
-        $query = "SELECT * FROM usuarios WHERE email = ?";
-        $stmt = mysqli_prepare($db, $query);
-        $email = $newUser["email"];
-        mysqli_stmt_bind_param($stmt, "s", $email);
-        mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_fetch($stmt);
-
-        if($results){
-            $error["email"] = "El email ya esta en uso";
-            $error["code"]  = 11;
-        }
-
-        if(!$error){
-            $query = "INSERT INTO noverifieduser(name, last_name, password, email, verifyToken, disponible_resend, emailToken) VALUES(?, ?, ?, ?, ?, ?, ?)";
-            $stmt = mysqli_prepare($db,$query);
-
-            mysqli_stmt_bind_param($stmt,"sssssss", $nombre, $apellido, $password, $email, $token, $disponible_resend, $emailToken);
-
-            $nombre = $newUser["name"];
-            $apellido = $newUser["last-name"];
-            $email = $newUser["email"];
-            $password = password_hash($newUser["password"], PASSWORD_DEFAULT);
-            $timeZone = new DateTimeZone("GMT-6");
-            $disponible_resend = new DateTime("now", $timeZone);
-            $disponible_resend = (array) $disponible_resend;
-            $disponible_resend = $disponible_resend["date"];
-            $token = bin2hex(openssl_random_pseudo_bytes(16));
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_close($stmt);
+        $newUser["emailToken"] = $emailToken;
 
         
 
-            $ip = getHostByName(getHostName());
-            $url = "http://${ip}/auth/verifyEmail.php?verifyToken=${token}";
-            
-            $message["title-es"] ="Verificar tu cuenta de email en MUO";
-            $message["title-en"] ="Verify your email account in MUO";
 
-            $message["message-es"] =templateEmail("Verificar email", $nombre, "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
-            $message["message-en"] =templateEmail( "Verify Email", $nombre, "Click on the button to verify your email !",$url,"Verify your account", "en");
+        $unVerifiedUser = new NoVerifiedUser($newUser);       
+        $isEmailUsing = $unVerifiedUser->getDuplicateEmail();
 
-            sendMail($email, $message);
+ 
 
-            header("location: /pages/verificationEmail.php?email=".$email . "&eToken=". $emailToken);
+        $unVerifiedUser->getDetectError();
+        $error = NoVerifiedUser::$errors;
+
+        if(!$error){
+            $unVerifiedUser->saveUser();
+
+            $unVerifiedUser->sendVerification();
+            header("location: /pages/verificationEmail.php?email=".$unVerifiedUser->email . "&eToken=". $unVerifiedUser->emailToken);
         }
         
        
@@ -171,7 +113,7 @@
                         <!-- Set errors -->
                         <?php  getError($error, "last-name") ?>
                        
-                        <input type="text" class="form__last-name <?= getColorError($error, "last-name")?>  " id="new_last-name" name="new_last-name" required placeholder="Apellido" value="<?=restoreFormData($newUser, "last-name")?>">
+                        <input type="text" class="form__last-name <?= getColorError($error, "last-name")?>  " id="new_last-name" name="new_last-name" required placeholder="Apellido" value="<?=restoreFormData($newUser, "lastName")?>">
                     </div>
                 </div>
                 <div class="form__input form__input--one-column">
