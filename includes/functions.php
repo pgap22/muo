@@ -88,10 +88,10 @@ function sendMail($email,$mailMessage){
     }
 
     if($_SESSION["lang"] == "es"){
-        submitMail($email, $mailMessage["title-es"],$mailMessage["message-es"]);
+        mail($email, $mailMessage["title-es"],$mailMessage["message-es"], "Content-Type: text/html; charset=utf-8\r\n");
     }
     elseif($_SESSION["lang"] == "en"){
-        submitMail($email, $mailMessage["title-en"],$mailMessage["message-en"]);
+        mail($email, $mailMessage["title-en"],$mailMessage["message-en"], "Content-Type: text/html; charset=utf-8\r\n");
     }
 
 

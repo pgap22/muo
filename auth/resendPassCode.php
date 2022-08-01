@@ -45,7 +45,7 @@ $message["message-es"] = templateEmailNoButton($message["title-es"], $userData["
 $message["message-en"] = templateEmailNoButton($message["title-en"], $userData["nombre_usuario"], "Hello, copy and paste this verification code where you are indicated\n\n<b>Remember that in 15 minutes the code will expire", $code);
 
 
-sendMail($email, $message);
+sendMail($userData["email"], $message);
 header("location: /pages/changePassword.php?token=".$token  );    
 
 }
