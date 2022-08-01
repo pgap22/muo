@@ -73,20 +73,35 @@ window.addEventListener("load", ()=>{
         sessionStorage.setItem("lang", "en");
         lang = "en"
         translate(ingles, pageTranslate);
-        translate(ingles, "general");
         translateClick.src = "../img/translate/es.webp"
     }
     else if(lang == "es"){
         sessionStorage.setItem("lang", "es");
         lang = "es"
         translate(esp, pageTranslate);
-        translate(esp, "general");
         translateClick.src = "../img/translate/en.webp"
 
     }
 
+    function exceptionTranslate(lang_array, pageTranslate) {
+        let exceptWords = Object.keys(lang_array[pageTranslate]);
+        exceptWords.forEach((e)=>{
+            if (document.getElementById(e)) {
+                document.getElementById(e).innerHTML = lang_array[pageTranslate][e];
+            }
+        })
+    }
 
-    function translate(lang_array, pageTranslate) {
+    function placeHolderTranslate(lang_array, pageTranslate, placeholder){
+        if(document.querySelector("body").dataset.page == pageTranslate){
+            let inputPlaceholder = Object.keys(lang_array[placeholder]);
+            inputPlaceholder.forEach(e =>{
+                document.getElementById(e).placeholder = lang_array[placeholder][e];
+            })
+        }
+    }
+   async function translate(lang_array, pageTranslate) {
+
         let words = Object.keys(lang_array[pageTranslate]);
         words.forEach(element => {
             if(element == "credits"){
@@ -104,33 +119,18 @@ window.addEventListener("load", ()=>{
             }
         });
         
+
+        exceptionTranslate(lang_array, "general")
+
+
+        placeHolderTranslate(lang_array, "register", "placeholder-register");
+        placeHolderTranslate(lang_array, "login", "placeholder-login");
+        placeHolderTranslate(lang_array, "recover-pass", "recover-pass-placeholder");
+        placeHolderTranslate(lang_array, "set-new-password", "new-password-placeholder");
+
+        await fetch("http://localhost/api/changeLanguage.php?lang="+lang);
         
-        let formsErrors = Object.keys(lang_array["register-error"]);
-        let formsErrors_login = Object.keys(lang_array["login-error"]);
 
-        formsErrors.forEach((e)=>{
-            if(document.getElementById(e)){
-                document.getElementById(e).innerHTML = lang_array["register-error"][e];
-            }
-        })
-        formsErrors_login.forEach((e)=>{
-            if(document.getElementById(e)){
-                document.getElementById(e).innerHTML = lang_array["login-error"][e];
-            }
-        })
-
-        if(pageTranslate == "register"){
-            let placeholder = Object.keys(lang_array["placeholder-register"]);
-            placeholder.forEach(e =>{
-                document.getElementById(e).placeholder = lang_array['placeholder-register'][e];
-            })
-        }
-        else if(pageTranslate == "login"){
-            let placeholder = Object.keys(lang_array["placeholder-login"]);
-            placeholder.forEach(e =>{
-                document.getElementById(e).placeholder = lang_array['placeholder-login'][e];
-            })
-        }
     }
 
 
@@ -140,16 +140,12 @@ window.addEventListener("load", ()=>{
             sessionStorage.setItem("lang", "en");
             lang = "en"
             translate(ingles, pageTranslate);
-            translate(ingles, "general");
-            
             translateClick.src = "../img/translate/es.webp"
         }
         else if(lang == "en"){
             sessionStorage.setItem("lang", "es");
             lang = "es"
             translate(esp, pageTranslate);
-            translate(esp, "general");
-
             translateClick.src = "../img/translate/en.webp"
 
         }

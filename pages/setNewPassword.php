@@ -4,19 +4,21 @@ include "../includes/functions.php";
 $error = [];
 if(!isset($_GET["token"])){
     header("location: /pages/recoverPassword.php");
+    die();
 }
 $token = $_GET["token"];
 $query = "SELECT * FROM passwordcode WHERE passToken = ?";
 $result = checkToken($db, $query, $token);
 if(!$result || $result["verified"] == 0){
     header("location: /pages/recoverPassword.php");
+    die();
 }
 
 if(isset($_GET["renew-password"])){
     $password = $_GET["renew-password"];
     if($password == ""){
         $error["recover-password"]  = "Tu contraseña no puede estar vacia !";
-        $error["code"] = 16;
+        $error["code"] = 17;
     }else{
         $userId = $result["user_id"];
         mysqli_query($db, "DELETE FROM passwordcode WHERE user_id = '$userId' ");
@@ -58,19 +60,26 @@ if(isset($_GET["renew-password"])){
     <link rel="stylesheet" href="../css/emailTemplate/desktop/style.css " media="(min-width: 742px)">
 </head>
 
-<body>
+<body data-page="set-new-password">
 
     <main>
         <div class="verification">
-            <picture class="verification__logo">
-                <source srcset="../img/logo/logo.svg" media="(min-width: 742px)">
-                <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
-            </picture>
+            <div class="verification__top">
+
+                <div class="verification__back">
+                    <a href="/pages/recoverPassword.php"><img src="../img/icons/arrowLeft.svg" alt="Back"></a>
+                </div>
+
+                <picture class="verification__logo">
+                    <source srcset="../img/logo/logo.svg" media="(min-width: 742px)">
+                    <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
+                </picture>
+            </div>
             <div class="verification__text">
-                <h1 class="verification__title">
+                <h1 class="verification__title" id="title">
                     Cambiar contraseña
                 </h1>
-                <p>Listo ahora digita tu nueva contraseña !</p>
+                <p id="text">Listo ahora digita tu nueva contraseña !</p>
             </div>
             <div class="verification__img">
                 <img src="../img/icons/password.svg" alt="password Icon" class="verification__error">
@@ -78,17 +87,17 @@ if(isset($_GET["renew-password"])){
             
             <form class="verification__form" action="setNewPassword.php" method="GET">
                 <div class="form__input flex-center">
-                    <label for="email-recover" class="form__label">Nueva contraseña</label>
+                    <label for="email-recover" class="form__label" id="label">Nueva contraseña</label>
                     <?php  
                     getError($error, "recover-password");
                     ?>
                     <div class="form__password <?= getColorError($error, "recover-password")?>">
-                            <input type="password" name="renew-password" id="password_login" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
+                            <input type="password" name="renew-password" id="password_new" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
                             <img src="../img/icons/eye-off.svg" width="30" alt="" id="password_see">
                     </div>
                 </div>
                 <button type="submit" class="verification__button verification__button--submit">
-                        <span class="verification__button-text">Enviar</span>
+                        <span class="verification__button-text" id="btn">Enviar</span>
                         <span class="verification__decoration"></span> 
                 </button>
                 <input type="hidden" value="<?=$token?>" name="token">

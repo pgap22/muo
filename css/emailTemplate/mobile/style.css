@@ -20,6 +20,10 @@ main{
 .verification__logo{
     /* aspect-ratio: 1; */
     width: 80px;
+    place-self: center;
+}
+.verification__logo img{
+    width: 120px;
 }
 .verification__email{
     font-weight: 700;
@@ -208,10 +212,8 @@ main{
     cursor: pointer;
 }
 .verification__error-message{
-    /* border: 1px solid red; */
-    width: 60%;
-    display: flex;
-    justify-content: start;
+    align-self: flex-start;
+    margin-bottom: 10px;
 }
 .errorBorder{
     border-color: var(--clr-error)!important;
@@ -259,4 +261,25 @@ main{
 .flex-center{
     display: grid;
     justify-content: center;
+}
+.verification__top{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+}
+.verification__back{
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.form__input{
+    max-width: 30rem;
+}
+.verification__main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

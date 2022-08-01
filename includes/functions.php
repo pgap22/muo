@@ -1,6 +1,17 @@
-<?php 
+<?php
+
+require "PHPMailer/PHPMailer.php";
+require "PHPMailer/Exception.php";
+require "PHPMailer/SMTP.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 define("GMT_6", 21600);
 define("TIMEZONE_GMT6", (new DateTimeZone("GMT-6")));
+
+
+
 function checkToken($db, $query, $token){
     $stmt = mysqli_prepare($db, $query);
     mysqli_stmt_bind_param($stmt, "s", $token);
@@ -42,19 +53,69 @@ function restoreFormData($newUser,$data){
     return $newUser[$data] ?? "";
 }
 
-function templateEmail($title, $usuario, $texto, $url, $botonNombre){
+function submitMail($mail, $title, $body){
+    $mail = new PHPMailer();
+    try {
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.office365.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'muo.website@outlook.com';                     //SMTP username
+        $mail->Password   = 'basededatoslevi098';                               //SMTP password
+        $mail->SMTPSecure = "tls";
+        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->CharSet = 'UTF-8';
+        $mail->Encoding = 'base64';
+        //Recipients
+        $mail->setFrom('muo.website@outlook.com', 'MUO Website');
+        $mail->addAddress('gerardo.saz120@gmail.com', "MUO User");     //Add a recipient
     
+    
+        //Content
+        $mail->Subject = $title;
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Body = $body;
+    
+        $mail->send();
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
+function sendMail($email,$mailMessage){
+    // die();z
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    if($_SESSION["lang"] == "es"){
+        submitMail($email, $mailMessage["title-es"],$mailMessage["message-es"]);
+    }
+    elseif($_SESSION["lang"] == "en"){
+        submitMail($email, $mailMessage["title-en"],$mailMessage["message-en"]);
+    }
+
+
+}
+function templateEmail($title, $usuario, $texto, $url, $botonNombre, $lang = "es"){
+    if($lang == "en"){
+        $greeting = "Hi";
+    }
+    else{
+        $greeting = "Hola";
+    }
     $message = "
-    
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            font-family: sans-serif;
-        }
-    </style>
+    <html>
+    <head>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
     <body class='main'>
         <center>
             <table bgcolor='black' width='100%'>
@@ -72,7 +133,7 @@ function templateEmail($title, $usuario, $texto, $url, $botonNombre){
                     <td width='50%' bgcolor='white'>
                         <center><h1>${title}</h1></center>
                         <br><br><br><br>
-                        <p>Hola, <b>${usuario}</b></p>
+                        <p>${greeting} <b>${usuario}</b></p>
                         <br><br>
                         <p>${texto}</p>
                         <br><br><br><br>
@@ -87,23 +148,31 @@ function templateEmail($title, $usuario, $texto, $url, $botonNombre){
             </table>
         </center>
     </body>
+    </html>
     ";
     return $message;
     }
 
-    function templateEmailNoButton($title, $usuario, $texto, $code){
-    
+function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
+        if($lang == "en"){
+            $greeting = "Hi";
+        }
+        else{
+            $greeting = "Hola";
+        }
         $message = "
-        
-        <style>
-            *{
-                margin: 0;
-                padding: 0;
-            }
-            body{
-                font-family: sans-serif;
-            }
-        </style>
+        <html>
+        <head>
+            <style>
+                *{
+                    margin: 0;
+                    padding: 0;
+                }
+                body{
+                    font-family: sans-serif;
+                }
+            </style>
+        </head>
         <body class='main'>
             <center>
                 <table bgcolor='black' width='100%'>
@@ -121,7 +190,7 @@ function templateEmail($title, $usuario, $texto, $url, $botonNombre){
                         <td width='50%' bgcolor='white'>
                             <center><h1>${title}</h1></center>
                             <br><br><br><br>
-                            <p>Hola, <b>${usuario}</b></p>
+                            <p>${greeting} <b>${usuario}</b></p>
                             <br><br>
                             <p>${texto}</p>
                             <br><br><br><br>
@@ -136,6 +205,7 @@ function templateEmail($title, $usuario, $texto, $url, $botonNombre){
                 </table>
             </center>
         </body>
+    </html>
         ";
         return $message;
         }

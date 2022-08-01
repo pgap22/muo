@@ -45,13 +45,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
         $query = "INSERT INTO passwordCode(code, user_id, limit_time, resend_code, passToken, verified) VALUES($code, $id, '$time_limit', '$resend', '$passToken', 0)";
-        $message = templateEmailNoButton("Recuperar Contraseña", $result["nombre_usuario"], "Este es tu codigo para restablecer tu contraseña", $code);        
+        // $message = templateEmailNoButton("Recuperar Contraseña", $result["nombre_usuario"], "Este es tu codigo para restablecer tu contraseña", $code);        
         echo $query;
         $ok = mysqli_query($db, $query);
         
         if($ok){
-            $message= templateEmailNoButton("Recuperar contraseña", $result["nombre"], "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $code);
-            mail($result["email"], "Recuperar contraseña de MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
+            
+            $message["title-es"] = "Recupera Contraseña";
+            $message["title-en"] = "Recover Password";
+
+            $message["message-es"] = templateEmailNoButton($message["title-es"], $result["nombre"], "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $code);
+            $message["message-en"] = templateEmailNoButton($message["title-en"], $result["nombre"], "Hello, copy and paste this verification code where you are indicated\n\n<b>Remember that in 15 minutes the code will expire", $code);
+
+
+            sendMail($email, $message);
             header("location: /pages/changePassword.php?token=$passToken");    
         }
 
@@ -98,19 +105,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="../css/emailTemplate/desktop/style.css " media="(min-width: 742px)">
 </head>
 
-<body>
+<body data-page="recover-pass">
 
     <main>
         <div class="verification">
-            <picture class="verification__logo">
-                <source srcset="../img/logo/logo.svg" media="(min-width: 742px)">
-                <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
-            </picture>
+            <div class="verification__top">
+
+                <div class="verification__back">
+                    <a href="/pages/login.php"><img src="../img/icons/arrowLeft.svg" alt="Back"></a>
+                </div>
+
+                <picture class="verification__logo">
+                    <source srcset="../img/logo/logo.svg" media="(min-width: 742px)">
+                    <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
+                </picture>
+            </div>
             <div class="verification__text">
-                <h1 class="verification__title">
+                <h1 class="verification__title" id="title">
                     Cambiar contraseña
                 </h1>
-                <p>Ingresa tu correo para cambiar la contraseña !</p>
+                <p id="text">Ingresa tu correo para cambiar la contraseña !</p>
             </div>
             <div class="verification__img">
                 <img src="../img/icons/password.svg" alt="password Icon" class="verification__error">
@@ -126,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="email" name="email-recover" id="email-recover" required placeholder="Ingresa tu email"  value=<?= getInputValue($email);?>>
                 </div>
                 <button type="submit" class="verification__button verification__button--submit">
-                        <span class="verification__button-text">Reenviar</span>
+                        <span class="verification__button-text" id="btn">Enviar</span>
                         <span class="verification__decoration"></span> 
                 </button>
             </form>

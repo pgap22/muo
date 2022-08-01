@@ -1,10 +1,6 @@
-<?php  
+<?php
 
-echo "<pre>";
-var_dump($_SERVER);
-echo "</pre>";
+include "../includes/functions.php";
 
-$localIP = gethostbyname(gethostname());
-// Displaying the address 
-echo $localIP;
+submitMail("gerardo.saz120@gmail.com", "Prueba de celular", "XD");
 ?>

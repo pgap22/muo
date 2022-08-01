@@ -82,13 +82,19 @@
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
 
+        
 
             $ip = getHostByName(getHostName());
             $url = "http://${ip}/auth/verifyEmail.php?verifyToken=${token}";
-            $message = templateEmail("Verificar email", $nombre, "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
+            
+            $message["title-es"] ="Verificar tu cuenta de email en MUO";
+            $message["title-en"] ="Verify your email account in MUO";
 
+            $message["message-es"] =templateEmail("Verificar email", $nombre, "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
+            $message["message-en"] =templateEmail( "Verify Email", $nombre, "Click on the button to verify your email !",$url,"Verify your account", "en");
 
-            mail($email, "Verificar tu cuenta de email en MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
+            sendMail($email, $message);
+
             header("location: /pages/verificationEmail.php?email=".$email . "&eToken=". $emailToken);
         }
         

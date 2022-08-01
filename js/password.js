@@ -1,5 +1,5 @@
 let password_toggle = document.querySelector("#password_see");
-let password = document.querySelector("#password_login");
+let password = document.querySelector("#password_new");
 password_toggle.addEventListener("click", ()=>{
     if(password.type == "password"){
         password.type = "text";

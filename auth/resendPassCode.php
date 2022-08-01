@@ -4,12 +4,13 @@ include "../includes/functions.php";
 
 if(!isset($_GET["token"])){
     header("location: /pages/recoverPassword.php");
+    die();
 }
 $token = $_GET["token"];
 
 $query = "SELECT * FROM passwordcode WHERE passToken = ?";
 $result = checkToken($db,$query,$token );
-$userData = checkToken($db, "SELECT email FROM usuarios WHERE id = ?", $result["user_id"]);
+$userData = checkToken($db, "SELECT * FROM usuarios WHERE id = ?", $result["user_id"]);
 
 if(!$result){
     header("location: /pages/recoverPassword.php");
@@ -35,8 +36,16 @@ $timeLimit = gmdate("Y/m/d H:i:s",($timeLimit-GMT_6));
 mysqli_stmt_bind_param($stmt, "ssis", $resendCode, $timeLimit,$code, $token);
 mysqli_stmt_execute($stmt);
 
-$message= templateEmailNoButton("Recuperar contraseña", $result["nombre"], "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $code);
-mail($userData["email"], "Recuperar contraseña de MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
+     
+  
+$message["title-es"] = "Recupera Contraseña";
+$message["title-en"] = "Recover Password";
+
+$message["message-es"] = templateEmailNoButton($message["title-es"], $userData["nombre_usuario"], "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $code);
+$message["message-en"] = templateEmailNoButton($message["title-en"], $userData["nombre_usuario"], "Hello, copy and paste this verification code where you are indicated\n\n<b>Remember that in 15 minutes the code will expire", $code);
+
+
+sendMail($email, $message);
 header("location: /pages/changePassword.php?token=".$token  );    
 
 }

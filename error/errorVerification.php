@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../css/emailTemplate/desktop/style.css " media="(min-width: 742px)">
 </head>
 
-<body>
+<body data-page="verf-error-mail">
 
     <main>
         <div class="verification">
@@ -33,17 +33,17 @@
                 <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
             </picture>
             <div class="verification__text">
-                <h1 class="verification__title">
+                <h1 class="verification__title" id="title">
                     Error en la verificacion
                 </h1>
-                <p class="verification__wrong-mail">El email es incorrecto o el email ya esta verificado</p>
+                <p class="verification__wrong-mail" id="text">Hubo un error con la verificacion o el email ya esta verificado</p>
             </div>
             <div class="verification__img">
                 <img src="../img/icons/error.svg" alt="error Icon" class="verification__error">
             </div>
             
             <a href="/" class="verification__button">
-                        <span class="verification__button-text">Volver al inicio</span>
+                        <span class="verification__button-text" id="button">Volver al inicio</span>
                         <span class="verification__decoration"></span>
             </a>
           

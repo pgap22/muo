@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION["verification"])){
     header("location: ../error/errorVerification.php");
 }
-session_unset();
+unset($_SESSION["verification"]);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,7 +31,7 @@ session_unset();
     <link rel="stylesheet" href="../css/emailTemplate/desktop/style.css " media="(min-width: 742px)">
 </head>
 
-<body>
+<body data-page="verf-complete">
 
     <main>
         <div class="verification">
@@ -40,18 +40,18 @@ session_unset();
                 <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
             </picture>
             <div class="verification__text">
-                <h1 class="verification__title">
+                <h1 class="verification__title" id="title">
                     Verificacion completada
                 </h1>
-                <p>Tu email ha sido verificado correctamente</p>
-                <p class="verification__close-window">Puedes cerrar esta ventana o inciar sesion</p>
+                <p id="text">Tu email ha sido verificado correctamente</p>
+                <p class="verification__close-window" id="close">Puedes cerrar esta ventana o inciar sesion</p>
             </div>
             <div class="verification__img">
                 <img src="../img/icons/quality.svg" alt="Checked Icon" class="verification__icon">
             </div>
             
             <a href="/pages/login.php" class="verification__button">
-                        <span class="verification__button-text">Iniciar sesion</span>
+                        <span class="verification__button-text" id="button">Iniciar sesion</span>
                         <span class="verification__decoration"></span>
             </a>
           

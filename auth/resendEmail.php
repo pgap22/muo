@@ -10,7 +10,7 @@ if(!isset($_POST["email"]) || !isset($_POST["eToken"])){
 $email = $_POST["email"];
 $eToken = $_POST["eToken"];
 
-$query = "SELECT disponible_resend,  verifyToken FROM noverifieduser WHERE email = ? AND emailToken = ?";
+$query = "SELECT * FROM noverifieduser WHERE email = ? AND emailToken = ?";
 $stmt = mysqli_prepare($db, $query);
 mysqli_stmt_bind_param($stmt, "ss", $email, $eToken);
 mysqli_stmt_execute($stmt);
@@ -48,14 +48,30 @@ if($now > $dateAvaible){
 
     mysqli_query($db, "UPDATE noverifieduser SET disponible_resend = '$dateAvaible'  WHERE emailToken = '$eToken' ");
 
+
     $ip = getHostByName(getHostName());
     $token = $result["verifyToken"];
 
     $url = "http://${ip}/auth/verifyEmail.php?verifyToken=${token}";
-    $message = templateEmail("Verificar email", $nombre, "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
-    mail($email, "Verificar tu cuenta de email en MUO", $message, "Content-Type: text/html; charset=UTF-8\r\n");
+    
+    // session_start();
+    // if($_SESSION["lang"] == "es"){
+    //     $titleMail = "Verificar tu cuenta de email en MUO";
+    //     $message = templateEmail("Verificar email", $result["name"], "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
+    // }
+    // elseif ($_SESSION["lang"] == "en") {
+    //     $titleMail = "Verify your email account in MUO";
+    //     $message = templateEmail( "Verify Email", $result["name"], "Click on the button to verify your email !",$url,"Verify your account", "en");
+    // }
+    // mail($email, $titleMail, $message, "Content-Type: text/html; charset=UTF-8\r\n");
+    $message["title-es"] ="Verificar tu cuenta de email en MUO";
+    $message["title-en"] ="Verify your email account in MUO";
+
+    $message["message-es"] = templateEmail("Verificar email", $result["name"], "Haz click en el boton para verificar tu email !",$url,"Verifica tu cuenta");
+    $message["message-en"] = templateEmail( "Verify Email", $result["name"], "Click on the button to verify your email !",$url,"Verify your account", "en");
+
+    sendMail($email, $message);
 
 }
-
 header("location: /pages/verificationEmail.php?email=".$email."&eToken=".$eToken);
 ?>

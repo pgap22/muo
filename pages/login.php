@@ -25,16 +25,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ok = mysqli_stmt_get_result($stmt);
     $ok = mysqli_fetch_assoc($ok);
     
-    $ok = password_verify($userLogin["password"], $ok["password"]);
-
-    if ($ok) {
-        $token = openssl_random_pseudo_bytes(16);
-        $_SESSION["user_token"] = bin2hex($token);
-        header("location: /pages/home.php");
-    } else {
+    if(!$ok){
         $error["login"] = 'Tu email o contraseña no son validos !';
         $error["code"] = 10;
     }
+    else{
+        $ok = password_verify($userLogin["password"], $ok["password"]);
+
+        if ($ok) {
+            $token = openssl_random_pseudo_bytes(16);
+            $_SESSION["user_token"] = bin2hex($token);
+            header("location: /pages/home.php");
+        } else {
+            $error["login"] = 'Tu email o contraseña no son validos !';
+            $error["code"] = 10;
+        }
+    }
+
+   
 }
 ?>
 

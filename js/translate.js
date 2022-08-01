@@ -80,17 +80,16 @@ ingles["register"]["contrasena2"] = "Confirm password";
 ingles["register"]["boton"] = "Sign Up";
 ingles["register"]["account"] = "¿Already have an account?";
 
-ingles["register-error"] = [];
-ingles["register-error"]["1-e"] = "The name cannot be empty";
-ingles["register-error"]["2-e"] = "The last name cannot be empty";
-ingles["register-error"]["3-e"] = "The name cannot be very long";
-ingles["register-error"]["4-e"] = "The last name cannot be very long";
-ingles["register-error"]["5-e"] = "The email cannot be empty";
-ingles["register-error"]["6-e"] = "The email is invalid";
-ingles["register-error"]["7-e"] = "The password cannot be empty";
-ingles["register-error"]["8-e"] = "The password cannot be empty";
-ingles["register-error"]["9-e"] = "The password cannot be empty";
-ingles["register-error"]["11-e"] = "Email is already in use";
+ingles["register"]["1-e"] = "The name cannot be empty";
+ingles["register"]["2-e"] = "The last name cannot be empty";
+ingles["register"]["3-e"] = "The name cannot be very long";
+ingles["register"]["4-e"] = "The last name cannot be very long";
+ingles["register"]["5-e"] = "The email cannot be empty";
+ingles["register"]["6-e"] = "The email is invalid";
+ingles["register"]["7-e"] = "The password cannot be empty";
+ingles["register"]["8-e"] = "The password cannot be empty";
+ingles["register"]["9-e"] = "The password cannot be empty";
+ingles["register"]["11-e"] = "Email is already in use";
 
 ingles["register"]["footer"] = "MUO - All rights reserved";
 
@@ -113,11 +112,76 @@ ingles["login"]["footer"] = "MUO - All rights reserved";
 ingles["placeholder-login"] = [];
 ingles["placeholder-login"]["email_login"] = "Enter your email";
 ingles["placeholder-login"]["password_login"] = "Enter your password";
-ingles["login-error"] = [];
-ingles["login-error"]["10-e"] = "Your email or password are not valid!";
+
+ingles["login"]["10-e"] = "Your email or password are not valid!";
+
+ingles["verification-email"] = [];
+ingles["verification-email"]["title"] = "Verify your email";
+ingles["verification-email"]["wrong-email"] = "If you have written your email badly";
+ingles["verification-email"]["link"] = "click here";
+ingles["verification-email"]["next-send"] = "Next resend";
+ingles["verification-email"]["submit-button"] = "Resend";
+ingles["verification-email"]["no-recive"] = "Didn't you receive our email?";
+
+
+ingles["verf-complete"] =[]
+ingles["verf-complete"]["title"] = "Completed verification";
+ingles["verf-complete"]["text"] = "Your email has been correctly verified";
+ingles["verf-complete"]["close"] = "You can close this window or log in";
+ingles["verf-complete"]["button"] = "Log in";
+
+ingles["verf-error-mail"] = [];
+ingles["verf-error-mail"]["title"] = "Verification error";
+ingles["verf-error-mail"]["text"] = "There was an error with verification or email is already verified";
+ingles["verf-error-mail"]["button"] = "Back to home";
+
+
+ingles["recover-pass"]= [];
+ingles["recover-pass"]["title"] = "Change your password"
+ingles["recover-pass"]["text"] = "Enter your email to change the password!";
+ingles["recover-pass"]["btn"] = "Submit";
+ingles["recover-pass"]["wrong-email"] = "The email is not registered with an account in MUO";
+ingles["recover-pass"]["empty-email"] = "The email is empty";
+
+ingles["recover-pass-placeholder"]= [];
+ingles["recover-pass-placeholder"]["email-recover"] = "Enter your email";
+
+ingles["change-password"] = [];
+ingles["change-password"]["title"] = "Enter the verification code";
+ingles["change-password"]["text"] = "Verify in your mail the verification code that we have sent you";
+ingles["change-password"]["resend"] = "Next resend";
+ingles["change-password"]["resend-pass-code"] = "Resend code";
+ingles["change-password"]["btn"] = "Verify code";
+ingles["change-password"]["13-e"] = "The code is empty";
+ingles["change-password"]["14-e"] = "The code is invalid";
+ingles["change-password"]["15-e"] = "The code has already expired, try to resend the code";
+ingles["change-password"]["16-e"] = "The code is incorrect";
+
+
+ingles["set-new-password"] = [];
+ingles["set-new-password"]["title"] = "Change password";
+ingles["set-new-password"]["text"] = "Now its ready to enter your new password !";
+ingles["set-new-password"]["label"] = "New password";
+ingles["set-new-password"]["btn"] = "Send";
+ingles["set-new-password"]["17-e"] = "Your password cannot be empty!";
+
+
+ingles["new-password-placeholder"] = [];
+ingles["new-password-placeholder"]["password_new"]= "Enter your new password";
+
+ingles["renew-completed"] = [];
+ingles["renew-completed"]["title"] = "Completed verification";
+ingles["renew-completed"]["text"] = "Your password has been restored correctly!";
+ingles["renew-completed"]["close"] = "You can close this window or log in";
+ingles["renew-completed"]["button"] = "Log in";
+
+ingles["error-renew"] = [];
+ingles["error-renew"]["title"] = "Verification code error";
+ingles["error-renew"]["btn"] = "Back to home";
 
 
 
+//Spanish Dictionaty
 
 esp["general"] = [];
 esp["index"] = [];
@@ -190,17 +254,17 @@ esp["register"]["boton"] = "Registrate";
 esp["register"]["account"] = "¿Ya tienes cuenta ?";
 esp["register"]["footer"] = "MUO - Todos los derechos reservados";
 
-esp["register-error"] = [];
-esp["register-error"]["1-e"] = "El nombre no puede estar vacio";
-esp["register-error"]["2-e"] = "El apellido no puede estar vacio";
-esp["register-error"]["3-e"] = "El nombre no puede ser muy largo";
-esp["register-error"]["4-e"] = "El apellido no puede ser muy largo";
-esp["register-error"]["5-e"] = "El email no puede quedar vacio";
-esp["register-error"]["6-e"] = "El email es invalido";
-esp["register-error"]["7-e"] = "La contraseña no puede estar vacia";
-esp["register-error"]["8-e"] = "La contraseña no puede estar vacia";
-esp["register-error"]["9-e"] = "La contraseña no puede estar vacia";
-esp["register-error"]["11-e"] = "El email ya esta en uso";
+esp["register"] = [];
+esp["register"]["1-e"] = "El nombre no puede estar vacio";
+esp["register"]["2-e"] = "El apellido no puede estar vacio";
+esp["register"]["3-e"] = "El nombre no puede ser muy largo";
+esp["register"]["4-e"] = "El apellido no puede ser muy largo";
+esp["register"]["5-e"] = "El email no puede quedar vacio";
+esp["register"]["6-e"] = "El email es invalido";
+esp["register"]["7-e"] = "La contraseña no puede estar vacia";
+esp["register"]["8-e"] = "La contraseña no puede estar vacia";
+esp["register"]["9-e"] = "La contraseña no puede estar vacia";
+esp["register"]["11-e"] = "El email ya esta en uso";
 
 esp["placeholder-register"] = [];
 esp["placeholder-register"]["new_name"] = "Nombre";
@@ -217,12 +281,77 @@ esp["login"]["olvidar"] = "¿Olvidaste tu contraseña?";
 esp["login"]["boton"] = "Entrar";
 esp["login"]["no-acc"] = "¿No tienes cuenta?";
 esp["login"]["footer"] = "MUO - Todos los derechos reservados";
+esp["login"]["10-e"] = "Tu email o contraseña no son validos !";
 
 esp["placeholder-login"] = [];
 esp["placeholder-login"]["email_login"] = "Ingresa tu correo";
 esp["placeholder-login"]["password_login"] = "Ingresa tu contraseña";
 
-esp["login-error"] = [];
-esp["login-error"]["10-e"] = "Tu email o contraseña no son validos !";
+
+
+esp["verification-email"] = [];
+esp["verification-email"]["title"] = "Verifica tu correo electronico";
+esp["verification-email"]["wrong-email"] = "Si has escrito mal tu correo has";
+esp["verification-email"]["link"] = "click aqui";
+esp["verification-email"]["next-send"] = "Proximo reenvio";
+esp["verification-email"]["submit-button"] = "Reenviar";
+esp["verification-email"]["no-recive"] = "¿No recibiste nuestro correo electrónico?";
+
+esp["verf-complete"] =[]
+esp["verf-complete"]["title"] = "Verificacion completada";
+esp["verf-complete"]["text"] = "Tu email ha sido verificado correctamente";
+esp["verf-complete"]["close"] = "Puedes cerrar esta ventana o inciar sesion";
+esp["verf-complete"]["button"] = "Iniciar sesion";
+
+esp["verf-error-mail"] = [];
+esp["verf-error-mail"]["title"] = "Error en la verificacion";
+esp["verf-error-mail"]["text"] = "Hubo un error con la verificacion o el email ya esta verificado";
+esp["verf-error-mail"]["button"] = "Volver al inicio";
+
+esp["recover-pass"]= [];
+esp["recover-pass"]["title"] = "Cambiar contraseña"
+esp["recover-pass"]["text"] = "Ingresa tu correo para cambiar la contraseña !";
+esp["recover-pass"]["btn"] = "Enviar";
+esp["recover-pass"]["wrong-email"] = "El email no esta registrado con una cuenta en MUO";
+esp["recover-pass"]["empty-email"] = "El email esta vacio";
+
+esp["recover-pass-placeholder"] = [];
+esp["recover-pass-placeholder"]["email-recover"] = "Ingresa tu email";
+
+esp["change-password"] = [];
+esp["change-password"]["title"] = "Ingresa el codigo de verificaion";
+esp["change-password"]["text"] = "Verifica en tu correo el codigo de verificacion que te hemos enviado";
+esp["change-password"]["resend"] = "Proximo reenvio";
+esp["change-password"]["resend-pass-code"] = "Reenviar codigo";
+esp["change-password"]["btn"] = "Verificar codigo";
+
+esp["change-password"] = []
+esp["change-password"]["13-e"] = "El codigo esta vacio";
+esp["change-password"]["14-e"] = "El codigo es invalido";
+esp["change-password"]["15-e"] = "El codigo ya ha expirado, intenta reenviar el codigo";
+esp["change-password"]["16-e"] = "El codigo incorrecto";
+
+esp["set-new-password"] = [];
+esp["set-new-password"]["title"] = "Cambiar contraseña";
+esp["set-new-password"]["text"] = "Listo ahora digita tu nueva contraseña !";
+esp["set-new-password"]["label"] = "Nueva contraseña";
+esp["set-new-password"]["btn"] = "Enviar";
+esp["set-new-password"]["17-e"] = "Tu contraseña no puede estar vacia !";
+
+esp["new-password-placeholder"] = [];
+esp["new-password-placeholder"]["password_new"]= "Ingresa tu contraseña";
+
+esp["renew-completed"] = [];
+esp["renew-completed"]["title"] = "Verificacion completada";
+esp["renew-completed"]["text"] = "Tu contraseña ha sido restablecido correctamente !";
+esp["renew-completed"]["close"] = "Puedes cerrar esta ventana o iniciar sesion";
+esp["renew-completed"]["button"] = "Iniciar sesion";
+
+esp["error-renew"] = [];
+esp["error-renew"]["title"] = "Error en el codigo de verificacion";
+esp["error-renew"]["btn"] = "Volver al inicio";
+
+
+
 
 export {ingles, esp}

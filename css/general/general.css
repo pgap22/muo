@@ -73,6 +73,9 @@ input:-webkit-autofill{
     box-shadow: 0 0 0 30px var(--clr-negro) inset;
     -webkit-text-fill-color: var(--clr-blanco);
 }
+input[type=number] {
+    -moz-appearance:textfield;
+}
 
 header{
     z-index: 999999;
@@ -145,12 +148,13 @@ Preloader
     background-color: var(--clr-blanco);
 }
 .translate{
-    position: fixed ;
+    position: fixed;
     bottom: 0;
     z-index: 9999999999999999999999;
     margin: 1rem;
     opacity: 0.3;
     transition: ease 200ms;
+    user-select: none;
 }
 .translate:hover{
     opacity: 1;

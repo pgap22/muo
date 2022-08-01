@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../css/emailTemplate/desktop/style.css " media="(min-width: 742px)">
 </head>
 
-<body>
+<body data-page="error-renew">
 
     <main>
         <div class="verification">
@@ -33,7 +33,7 @@
                 <img src="../img/logo/logo-mobile.svg" alt="logo de MUO">
             </picture>
             <div class="verification__text">
-                <h1 class="verification__title">
+                <h1 class="verification__title" id="title">
                     Error en el codigo de verificacion
                 </h1>
                 <p class="verification__wrong-mail"></p>
@@ -43,7 +43,7 @@
             </div>
             
             <a href="/" class="verification__button">
-                        <span class="verification__button-text">Volver al inicio</span>
+                        <span class="verification__button-text" id="btn">Volver al inicio</span>
                         <span class="verification__decoration"></span>
             </a>
           
