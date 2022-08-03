@@ -85,14 +85,14 @@ inputCodes.forEach((e, i) => {
 let userId = document.querySelector(".user-id").value
 let token = document.querySelector(".token-passcode").value
 async function getTime(){
-    let data =  await fetch("http://localhost/api/checkResend.php?passToken="+token+"&"+"user_id="+userId);
+    let data =  await fetch(document.location.origin+"/api/checkResend.php?passToken="+token+"&"+"user_id="+userId);
     return data.json();
 }
 
 async function updateClientTimer(){
     let time  =  await getTime();
 
-
+    
     let resendCode = new Date(time.resend_code);
     let now = new Date();
     let diffSeconds = Math.ceil((resendCode-now) / 1000 );
@@ -122,6 +122,7 @@ async function updateClientTimer(){
         }
 
     }, 1000);
+
 }
 updateClientTimer();
 

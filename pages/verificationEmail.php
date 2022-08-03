@@ -1,19 +1,20 @@
 <?php
 
-use MUO\NoVerifiedUser;
+    use MUO\NoVerifiedUser;
 
-include "../includes/app.php";
-
-
-$email = $_GET["email"];
-$eToken = $_GET["eToken"];
-
-$result = NoVerifiedUser::getEmailToken($email, $eToken);
+    include "../includes/app.php";
 
 
-if (!$result) {
-    header("location: /error/errorVerification.php");
-}
+    $email = $_GET["email"];
+    $eToken = $_GET["eToken"];
+
+    #Detectar si existe una peticion de creacion de usuario y verificacion de email
+    $result = NoVerifiedUser::detectEmailToken($email, $eToken);
+
+    if (!$result) {
+        header("location: /error/errorVerification.php");
+    }
+
 ?>
 
 <!DOCTYPE html>

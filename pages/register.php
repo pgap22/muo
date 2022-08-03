@@ -4,17 +4,15 @@
 
     include "../includes/app.php";
     
-    //Inicializar los arreglos
+
     $error = [];
     $newUser = [];
+    #Crea un token
     $emailToken = bin2hex(openssl_random_pseudo_bytes(8));
-    // debugear($_SERVER);
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
-
-
-        //Llenado de variables a un arreglo
-        
+        #Recoleccion de datos ingresados por el usuario 
         $newUser["name"] = $_POST["new_name"];
         $newUser["lastName"] = $_POST["new_last-name"];
         $newUser["email"] = $_POST["new_email"];
@@ -22,20 +20,25 @@
         $newUser["confirm-password"] = $_POST["confirm_password"];
         $newUser["emailToken"] = $emailToken;
 
+
+        #Crear el objeto de Usuario no verificado 
+        $unVerifiedUser = new NoVerifiedUser($newUser);
         
-
-
-        $unVerifiedUser = new NoVerifiedUser($newUser);       
-        $isEmailUsing = $unVerifiedUser->getDuplicateEmail();
+        #Checkar si el email del Usuario no verificado ya esta usuado
+        $unVerifiedUser->getDuplicateEmail();
 
  
+        #Detectar si hay errores al validar las informacion del usuario no verificado
+        $unVerifiedUser->validateNewUser();
 
-        $unVerifiedUser->getDetectError();
+        #Si hay errores guardarlos en un arreglo
         $error = NoVerifiedUser::$errors;
 
         if(!$error){
+            #Si no hay errores guardamos el usuario en una tabla de usuarios no verificados (Verificados por su email)
             $unVerifiedUser->saveUser();
 
+            #Enviamos la verificacion por correo
             $unVerifiedUser->sendVerification();
             header("location: /pages/verificationEmail.php?email=".$unVerifiedUser->email . "&eToken=". $unVerifiedUser->emailToken);
         }

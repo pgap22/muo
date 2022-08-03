@@ -128,7 +128,7 @@ window.addEventListener("load", ()=>{
         placeHolderTranslate(lang_array, "recover-pass", "recover-pass-placeholder");
         placeHolderTranslate(lang_array, "set-new-password", "new-password-placeholder");
 
-        await fetch("http://localhost/api/changeLanguage.php?lang="+lang);
+        await fetch(document.location.origin+"/api/changeLanguage.php?lang="+lang);
         
 
     }

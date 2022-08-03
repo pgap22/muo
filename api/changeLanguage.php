@@ -1,4 +1,6 @@
 <?php  
+header("Access-Control-Allow-Origin: *");
+
 if(isset($_GET["lang"])){
    session_start();
    $lang = $_GET["lang"];

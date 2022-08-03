@@ -12,5 +12,4 @@ if(!$db){
 $databases = new mysqli("localhost", "root", "root", "muo-beta");
 
 
-
 ?>

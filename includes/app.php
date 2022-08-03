@@ -2,6 +2,8 @@
 
 use MUO\NoVerifiedUser;
 use MUO\User;
+use MUO\Util;
+
 require "db.php";
 require "functions.php";
 
@@ -13,6 +15,6 @@ function autoload($clase){
 spl_autoload_register("autoload");
 
 
-User::setDB($databases);
+Util::setDB($databases);
 
 ?>

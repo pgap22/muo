@@ -1,36 +1,49 @@
-<?php  
-include "../includes/db.php";
-include "../includes/functions.php";
+<?php
+
+use MUO\Passwordcode;
+use MUO\User;
+use MUO\Util;
+
+include "../includes/app.php";
+
+
 $error = [];
+
 if(!isset($_GET["token"])){
     header("location: /pages/recoverPassword.php");
     die();
 }
+
 $token = $_GET["token"];
-$query = "SELECT * FROM passwordcode WHERE passToken = ?";
-$result = checkToken($db, $query, $token);
-if(!$result || $result["verified"] == 0){
+
+
+#Verificar si la peticion de resetear contraseña existe
+$currentPasswordCode = Passwordcode::getRequestByPassToken($token);
+
+if(!$currentPasswordCode || $currentPasswordCode->verified == 0){
     header("location: /pages/recoverPassword.php");
     die();
 }
 
 if(isset($_GET["renew-password"])){
+
+
     $password = $_GET["renew-password"];
-    if($password == ""){
-        $error["recover-password"]  = "Tu contraseña no puede estar vacia !";
-        $error["code"] = 17;
-    }else{
-        $userId = $result["user_id"];
-        mysqli_query($db, "DELETE FROM passwordcode WHERE user_id = '$userId' ");
+  
+    User::validatePassword($password);
+    $error = User::getErrors();
 
-        $newPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        mysqli_query($db, "UPDATE usuarios SET password = '$newPassword' ");
+    if(!$error){
+        $user = User::getUserById($currentPasswordCode->user_id);
+        $user->setNewPassword($password);
+        $currentPasswordCode->destroyAllUserRequest();
         
         session_start();
         $_SESSION["verification"] = true;
         header("location: /pages/renewPassComplete.php");
     }
+    
+
 }
 
 ?>

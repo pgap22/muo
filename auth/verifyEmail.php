@@ -1,32 +1,30 @@
-<?php  
-include "../includes/db.php";
+<?php
 
-if(isset($_GET["verifyToken"])){
+    use MUO\NoVerifiedUser;
 
-$tokenToVerify = $_GET["verifyToken"];
+    include "../includes/app.php";
 
-$query = "SELECT * FROM noverifieduser WHERE verifyToken = ?";
-$stmt = mysqli_prepare($db,$query);
-mysqli_stmt_bind_param($stmt, "s", $tokenToVerify);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt,$id,$name, $last_name, $password,$email,$verifyToken,$disponiible_resend,$eToken);
-$ok = mysqli_stmt_fetch($stmt);
+    if(isset($_GET["verifyToken"])){
 
-mysqli_stmt_close($stmt);
+        $tokenToVerify = $_GET["verifyToken"];
 
-if($ok){
-    $query = "DELETE FROM noverifieduser WHERE email = '$email' ";
-    $query = mysqli_query($db,$query);
-    $query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario) VALUES('$email', '$password', '$name', '$last_name')";
-    $query = mysqli_query($db,$query);
+        $user = NoVerifiedUser::getUserByVerifyToken($tokenToVerify);
 
-    session_start();
-    $_SESSION["verification"] = true;
-    header("location: /pages/verificationComplete.php");
-}
-else{
-    echo "error en la verificacion";
-}
+        if($user){
+                
+            #Poner el usuario en la tabla de usuarios ya que esta verificado
+            $user->setUser();
+
+            #Borrar al usuario de la tabla de no verificados
+            $user->destroy();
+
+            session_start();
+            $_SESSION["verification"] = true;
+            header("location: /pages/verificationComplete.php");
+        }
+        else{
+            header("location: /error/errorVerification.php");
+        }
 
 }
 ?>

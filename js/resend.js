@@ -5,7 +5,7 @@ let eToken = document.getElementById("eToken").value
 let email = document.getElementById("email").value
 
 async function getTimeResend(){
-    let time = await fetch("http://localhost/api/checkResend.php?email="+email+"&emailToken="+eToken);
+    let time = await fetch(document.location.origin+"/api/checkResend.php?email="+email+"&emailToken="+eToken);
     return time.json();
 }
 

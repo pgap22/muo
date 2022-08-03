@@ -3,13 +3,13 @@ namespace MUO;
 
 use DateTime;
 
-class NoVerifiedUser extends User{
+class NoVerifiedUser {
 
-
+    public static $errors;
 
     public $id;
     public $name;
-    public $lastName;
+    public $last_name;
     public $password;
     public $confirmPassword;
     public $email;
@@ -17,24 +17,27 @@ class NoVerifiedUser extends User{
     public $disponible_resend;
     public $emailToken;
 
-    
+    public static function createObjFromArray($array){
+        $newObj = new self($array);
+        return $newObj;
+    }
 
     public function __construct($user = [])
     {
         $this->id = $user["id"] ?? '';
         $this->name = $user["name"] ?? '';
-        $this->lastName = $user["lastName"] ?? '';
+        $this->last_name = $user["last_name"] ?? '';
         $this->password = $user["password"] ?? '';
         $this->confirmPassword = $user["confirm-password"] ?? '';
         $this->email = $user["email"] ?? '';
-        $this->verifyToken = $user["verifyToken"] ?? self::generateToken();
-        $this->disponible_resend = $user["disponible_resend"] ?? self::createDate()["obj"]->format("Y/m/d H:i:s");
+        $this->verifyToken = $user["verifyToken"] ?? Util::generateToken();
+        $this->disponible_resend = $user["disponible_resend"] ?? Util::createDate()["obj"]->format("Y/m/d H:i:s");
         $this->emailToken = $user["emailToken"] ?? '';
     }
 
     public function getDuplicateEmail() {
         $query = "SELECT * FROM usuarios WHERE email = ?";
-        $stmt = self::$db->prepare($query);
+        $stmt = Util::$db->prepare($query);
         $stmt->bind_param("s", $this->email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -46,19 +49,19 @@ class NoVerifiedUser extends User{
         
     }
 
-    public static function getEmailToken($email, $emailToken){
+    public static function detectEmailToken($email, $emailToken){
         $query = "SELECT * FROM noverifieduser WHERE email = ? AND emailToken = ?";
-        $stmt = self::$db->prepare($query);
+        $stmt = Util::$db->prepare($query);
         $stmt->bind_param("ss", $email, $emailToken);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc();
-    
+        if($result->fetch_assoc()) return true;
+        return false;
     }
     
     public function saveUser(){
         $query = "INSERT INTO noverifieduser(name, last_name, password, email, verifyToken, disponible_resend, emailToken) VALUES(?, ?, ?, ?, ?, ?, ?)";
-        $stmt = self::$db->prepare($query);
+        $stmt = Util::$db->prepare($query);
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
         
@@ -80,7 +83,7 @@ class NoVerifiedUser extends User{
         sendMail($this->email, $message);
     }
 
-    public function getDetectError(){
+    public function validateNewUser(){
        
         if($this->name == ""){
            self::$errors["name"]  = "El nombre no puede estar vacio";
@@ -121,7 +124,7 @@ class NoVerifiedUser extends User{
     }
 
     public function isTimeToResend(){
-        $now = self::createDate();
+        $now = Util::createDate();
         $now = $now["obj"]->getTimestamp()-GMT_6;
 
         $dateForResend = $this->disponible_resend;
@@ -132,7 +135,7 @@ class NoVerifiedUser extends User{
     }
 
     public function resendEmail(){
-        $this->disponible_resend = self::addTimeFromNow(60);
+        $this->disponible_resend = Util::addTimeFromNow(60);
         $this->disponible_resend = $this->disponible_resend->format("Y/m/d H:i:s");
         $this->setNewTime();
         $this->sendVerification();
@@ -140,7 +143,28 @@ class NoVerifiedUser extends User{
 
     public function setNewTime(){
        $query = "UPDATE noverifieduser SET disponible_resend = '$this->disponible_resend'  WHERE emailToken = '$this->emailToken' ";
-       self::$db->query($query);
+       Util::$db->query($query);
+    }
+
+    public static function getUserByVerifyToken($token){
+        $query = "SELECT * FROM noverifieduser WHERE verifyToken = ?";
+        $stmt = Util::$db->prepare($query);
+        $stmt->bind_param("s", $token);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = $result->fetch_assoc();
+        if($result) return self::createObjFromArray($result);
+        return false;
+    }
+
+    public function destroy(){
+        $query = "DELETE FROM noverifieduser WHERE email = '$this->email' ";
+        Util::$db->query($query);
+    }
+
+    public function setUser(){
+        $query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario) VALUES('$this->email', '$this->password', '$this->name', '$this->lastName')";
+        Util::$db->query($query);
     }
 }
 

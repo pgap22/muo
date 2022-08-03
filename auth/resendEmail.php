@@ -7,10 +7,12 @@ if(!isset($_POST["email"]) || !isset($_POST["eToken"])){
     header("location: /");
     die();
 }
+
 $email = $_POST["email"];
 $eToken = $_POST["eToken"];
 
-$result = NoVerifiedUser::getEmailToken($email, $eToken);
+#Detectar si existe un usuario que se quiera verificar.
+$result = NoVerifiedUser::detectEmailToken($email, $eToken);
 
 if(!$result){
     header("location: /");
@@ -19,9 +21,14 @@ if(!$result){
 
 $unVerifiedUser = new NoVerifiedUser($result);
 
+#Ver si el tiempo es adecuado para reenviar el email (Evitar el spam)
 $isTime = $unVerifiedUser->isTimeToResend();
+
 if($isTime){
+
+   #Reenviar el email
    $unVerifiedUser->resendEmail();
 }
+
 header("location: /pages/verificationEmail.php?email=".$email."&eToken=".$eToken);
 ?>

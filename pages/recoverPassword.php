@@ -1,80 +1,47 @@
-<?php  
-include "../includes/db.php";
-include "../includes/functions.php";
+<?php
 
+use MUO\Passwordcode;
+use MUO\User;
+
+include "../includes/app.php";
+
+$errors = [];
 
 $wrongEmail = false;
 $emptyEmail = false;
 $email = '';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    #Recolectar el email digitado por el usuario
     $email = $_POST["email-recover"];
-    $query = "SELECT * FROM usuarios WHERE email = ?";
 
-    $result = checkToken($db, $query, $email);
-
-    if($result){
-        $wrongEmail = false;
-        $code = rand(10000, 99999);
-        $code= intval($code);
-
-        $id = $result["id"];
-        $id = intval($id);
-
-        $emailSended = true;
-
-        $timeZone = new DateTimeZone("GMT-6");
-        $time = new DateTime("now", $timeZone);
-        $GMT_6 = 21600;
-        $time = date_timestamp_get($time);
-
-
-        $time_limit = gmdate("Y/m/d H:i:s", ($time-$GMT_6)+900);
-        $resend = gmdate("Y/m/d H:i:s", ($time-$GMT_6));
-
-        $time_limit = new DateTime($time_limit);
-        $resend = new DateTime($resend);
-
-        $time_limit = (array) $time_limit;
-        $time_limit = $time_limit["date"];
-
-        $resend = (array) $resend;
-        $resend = $resend["date"];
+    #Validar si el email digitado existe en la BD (Por si esta registrado a la pagina)
+    $user = Passwordcode::validateEmail($email);
+    
+    #Si la validacion da errores se guardan en un arreglo
+    $errors = Passwordcode::getErrors();
+    
+    if(!$errors){
+        #Recolectar Datos para instanciar el objeto
         
-        $passToken = bin2hex(openssl_random_pseudo_bytes(8));
+        $passCode["user_id"] = $user->id; //Este objeto solo necesita el user id para instanciarlo
 
-
-        $query = "INSERT INTO passwordCode(code, user_id, limit_time, resend_code, passToken, verified) VALUES($code, $id, '$time_limit', '$resend', '$passToken', 0)";
-        // $message = templateEmailNoButton("Recuperar Contraseña", $result["nombre_usuario"], "Este es tu codigo para restablecer tu contraseña", $code);        
-        echo $query;
-        $ok = mysqli_query($db, $query);
+        #Si no hay errores se instancia un objeto para crear una peticion
+        $passCode = new Passwordcode($passCode);
         
-        if($ok){
-            
-            $message["title-es"] = "Recupera Contraseña";
-            $message["title-en"] = "Recover Password";
-
-            $message["message-es"] = templateEmailNoButton($message["title-es"], $result["nombre"], "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $code);
-            $message["message-en"] = templateEmailNoButton($message["title-en"], $result["nombre"], "Hello, copy and paste this verification code where you are indicated\n\n<b>Remember that in 15 minutes the code will expire", $code);
-
-
-            sendMail($email, $message);
-            header("location: /pages/changePassword.php?token=$passToken");    
-        }
-
+        #Esa peticion se guarda en la base de datos
+        $passCode->saveRequest();
+        
+        #Se envia el codigo de para completar la peticion de cambio de contraseña
+        $passCode->sendCode();
+        
+        header("location: /pages/changePassword.php?token=$passCode->passToken");
+    }else{
+        #Si hay errores en el arreglo se le da valor y si no existe ese determinado error se guardar falso por determinado
+        $wrongEmail = $errors["wrongEmail"] ?? false;
+        $emptyEmail = $errors["emptyEmail"] ?? false;
     }
-    else{
-
-        if(empty($email)){
-            $emptyEmail = true;
-        }
-        else{
-            $wrongEmail = true;
-            $email = $_POST["email-recover"];
-        }
-
-    }
-
 }
 
 ?>

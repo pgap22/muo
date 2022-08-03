@@ -152,8 +152,6 @@ ingles["change-password"]["text"] = "Verify in your mail the verification code t
 ingles["change-password"]["resend"] = "Next resend";
 ingles["change-password"]["resend-pass-code"] = "Resend code";
 ingles["change-password"]["btn"] = "Verify code";
-ingles["change-password"]["13-e"] = "The code is empty";
-ingles["change-password"]["14-e"] = "The code is invalid";
 ingles["change-password"]["15-e"] = "The code has already expired, try to resend the code";
 ingles["change-password"]["16-e"] = "The code is incorrect";
 
@@ -322,10 +320,6 @@ esp["change-password"]["text"] = "Verifica en tu correo el codigo de verificacio
 esp["change-password"]["resend"] = "Proximo reenvio";
 esp["change-password"]["resend-pass-code"] = "Reenviar codigo";
 esp["change-password"]["btn"] = "Verificar codigo";
-
-esp["change-password"] = []
-esp["change-password"]["13-e"] = "El codigo esta vacio";
-esp["change-password"]["14-e"] = "El codigo es invalido";
 esp["change-password"]["15-e"] = "El codigo ya ha expirado, intenta reenviar el codigo";
 esp["change-password"]["16-e"] = "El codigo incorrecto";
 

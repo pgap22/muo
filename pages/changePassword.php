@@ -1,78 +1,44 @@
-<?php  
-include "../includes/db.php";
-include "../includes/functions.php";
+<?php
 
+use MUO\Passwordcode;
+
+include "../includes/app.php";
 
 if(!isset($_GET["token"])){
     header("location: /pages/recoverPassword.php");
     die();
 }
+
 $error = [];
-$token = $_GET["token"];
-$code = [];
+$passToken = $_GET["token"];
 
-for ($i=0; $i < 5; $i++)
-{ 
-    if(isset($_GET["code-".($i+1)])){
-        $code[$i] = $_GET["code-".($i+1)];
-    }
-} 
-$code = join("", $code);
+#Obtener el codigo que el usuario digito a traves del metodo GET
+$code = Passwordcode::convert_GET_InCode();
 
-$query = "SELECT * FROM passwordCode WHERE passToken = ?";
-$result = checkToken($db, $query, $token);
-$userId = $result["user_id"];
-if(!$result){
+#Verificar si la peticion de resetear contraseña existe
+$currentPasswordCode = Passwordcode::getRequestByPassToken($passToken);
+
+if(!$currentPasswordCode){
     header("location: /pages/recoverPassword.php");
     die();
 }
 
 if(isset($_GET["form-submited"])){
-    $now = new DateTime("now", TIMEZONE_GMT6);
-    $limit = date_create($result["limit_time"]);
-
-    $now = date_timestamp_get($now)-GMT_6;
-    $limit = date_timestamp_get($limit);
 
 
-    if(!$code){
-        // echo "El codigo esta vacio";
-        $error["resend-code"] = "El codigo esta vacio";
-        $error["code"] = 13;
-    }
-    else if(strlen($code) != 5){
-        // echo "El codigo es invalido";
-        $error["resend-code"] = "El codigo es invalido";
-        $error["code"] = 14;
-    }
-    else if($limit<$now){
-        // echo "El codigo ya ha expirado";
-        $error["resend-code"] = "El codigo ya ha expirado, intenta reenviar el codigo";
-        $error["code"] = 15;
-    }
-    else{
-        $query = "SELECT * FROM passwordcode WHERE passToken = ? AND code = ?";
+        $isVerify = Passwordcode::verifyCode($code, $passToken);
+        
+        if($isVerify){
+            
+            if($currentPasswordCode->isTimeAvailable()){
+                $currentPasswordCode->setVerified();
 
-        $stmt = mysqli_prepare($db, $query);
-        mysqli_stmt_bind_param($stmt, "ss", $token, $code); 
-        mysqli_stmt_execute($stmt);
-        $res = mysqli_stmt_get_result($stmt);
-        $res = mysqli_fetch_assoc($res);
-      
-        if($res){
-         echo "ok";
-         mysqli_query($db, "UPDATE passwordcode SET verified = 1 WHERE passToken = '$token'");
-         header("location: /pages/setNewPassword.php?token=".$token);
-        }
-        else{
-        //  echo "codigo incorrecto";
-         $error["resend-code"] = "Codigo incorrecto";
-         $error["code"] = 16;
-        }
-    }
+                header("location: /pages/setNewPassword.php?token=".$passToken);
+            }
+           
+        }    
 
-
-
+    $error = Passwordcode::getErrors();
 }
 
 ?>
@@ -158,11 +124,11 @@ if(isset($_GET["form-submited"])){
                     </div>
             </div>
 
-                <input type="text" hidden value="<?=$token?>" name="token" class="token-passcode">
+                <input type="text" hidden value="<?=$passToken?>" name="token" class="token-passcode">
                 <input type="text" hidden value="<?=$userId?>" class="user-id">
                 <input type="text" hidden name="form-submited" value="true" >
 
-                <a href="/auth/resendPassCode.php?token=<?=$token?>" class="verification__resend-code" id="resend-pass-code">Reenviar codigo</a>
+                <a href="/auth/resendPassCode.php?token=<?=$passToken?>" class="verification__resend-code" id="resend-pass-code">Reenviar codigo</a>
 
                 <button type="submit" class="verification__button">
                         <span class="verification__button-text" id="btn">Verificar codigo</span>

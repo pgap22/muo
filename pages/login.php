@@ -1,48 +1,28 @@
 <?php
-include "../includes/db.php";
-include "../includes/functions.php";
+
+use MUO\User;
+use MUO\Util;
+
+include "../includes/app.php";
+
 $error = [];
 $error["code"] = [];
 $userLogin = [];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    #Recoleccion de Datos
+    $userLogin["email"] = $_POST["email_login"] ?? '';
+    $userLogin["password"] = $_POST["password_login"] ?? '';
 
-    $userLogin = [];
-    $userLogin["email"] = $_POST["email_login"];
-    $userLogin["password"] = $_POST["password_login"];
-
-    session_start();
-
-    $query = "SELECT password FROM usuarios WHERE email = ?";
-    $stmt = mysqli_prepare($db, $query);
-    mysqli_stmt_bind_param($stmt, "s", $email);
-
-
-    $email = $userLogin["email"];
-    mysqli_stmt_execute($stmt);
-
-
-    $ok = mysqli_stmt_get_result($stmt);
-    $ok = mysqli_fetch_assoc($ok);
+    #Crear el Objeto de Login que maneja la logica de Autentificacion
+    $user = new User($userLogin);
     
-    if(!$ok){
-        $error["login"] = 'Tu email o contraseña no son validos !';
-        $error["code"] = 10;
-    }
-    else{
-        $ok = password_verify($userLogin["password"], $ok["password"]);
+    #Validar la informacion del usuario y marca errores
+    $user->validate();
 
-        if ($ok) {
-            $token = openssl_random_pseudo_bytes(16);
-            $_SESSION["user_token"] = bin2hex($token);
-            header("location: /pages/home.php");
-        } else {
-            $error["login"] = 'Tu email o contraseña no son validos !';
-            $error["code"] = 10;
-        }
-    }
-
-   
+    #Detectar Errores marcados y los guarda en un arreglo que nos sirve para detectarlos en el frontend
+    $error = Util::getErrors();
 }
 ?>
 
@@ -144,6 +124,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
-<?php
-
-?>
