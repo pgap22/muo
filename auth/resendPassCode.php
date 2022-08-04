@@ -23,9 +23,7 @@ $user = User::getUserById($userId);
 #Detectar si se el tiempo es el adecuado para reenviar el codigo
 $isTimeResend = $currentPasswordCode->isTimeResend();
 
-// debugear($isTimeResend);
 
-// die();
 if(!$user){
     header("location: /pages/recoverPassword.php");
     die();
@@ -34,10 +32,13 @@ if(!$user){
 
 if($isTimeResend){
 
+    #Cambia el tiempo para volver a enviar el codigo y para su expiracion
     $currentPasswordCode->changeTimes();
 
+    #Se cambia a un nuevo codigo
     $currentPasswordCode->setNewCode();
      
+    #Se envia ese nuevo codigo
     $currentPasswordCode->sendCode();
   
     header("location: /pages/changePassword.php?token=".$currentPasswordCode->passToken);    

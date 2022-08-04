@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user->validate();
 
     #Detectar Errores marcados y los guarda en un arreglo que nos sirve para detectarlos en el frontend
-    $error = Util::getErrors();
+    $error = User::getErrors();
 }
 ?>
 
