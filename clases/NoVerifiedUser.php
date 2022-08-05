@@ -55,7 +55,10 @@ class NoVerifiedUser {
         $stmt->bind_param("ss", $email, $emailToken);
         $stmt->execute();
         $result = $stmt->get_result();
-        if($result->fetch_assoc()) return true;
+        $result = $result->fetch_assoc();
+        if($result) {
+            return self::createObjFromArray($result);           
+        }
         return false;
     }
     
@@ -125,10 +128,10 @@ class NoVerifiedUser {
 
     public function isTimeToResend(){
         $now = Util::createDate();
-        $now = $now["obj"]->getTimestamp()-GMT_6;
-
+        $now = $now["obj"]->getTimestamp();
+        
         $dateForResend = $this->disponible_resend;
-        $dateForResend = strtotime($dateForResend);
+        $dateForResend = strtotime($dateForResend)+GMT_6;
 
         if($now > $dateForResend) return true;
         return false;

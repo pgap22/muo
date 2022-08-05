@@ -12,14 +12,13 @@ $email = $_POST["email"];
 $eToken = $_POST["eToken"];
 
 #Detectar si existe un usuario que se quiera verificar.
-$result = NoVerifiedUser::detectEmailToken($email, $eToken);
+$unVerifiedUser = NoVerifiedUser::detectEmailToken($email, $eToken);
 
-if(!$result){
+
+if(!$unVerifiedUser){
     header("location: /");
     die();
 }
-
-$unVerifiedUser = new NoVerifiedUser($result);
 
 #Ver si el tiempo es adecuado para reenviar el email (Evitar el spam)
 $isTime = $unVerifiedUser->isTimeToResend();
