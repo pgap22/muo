@@ -1,6 +1,6 @@
 :root{
     /*Colores*/
-    --clr-blanco: #F9F9F9;
+    --clr-blanco: hsl(0, 0%, 97%);
     --clr-negro: hsl(0, 0%, 0%);
     --clr-gris: hsl(0, 2%, 61%);
     --clr-grisClaro: hsla(0, 0%, 77%, 0.286);
@@ -9,6 +9,8 @@
     --clr-amarillo: hsl(43, 100%, 51%);
     --clr-naranja: hsl(37, 100%, 50%);
     --clr-naranjaCard: hsl(39, 94%, 53%);
+    --clr-error: hsl(0, 100%, 47%);
+    --clr-errorOscuro: hsl(0, 100%, 42%);
     /*Anchura De la Fuente*/
     --fw-regular: 400;
     --fw-black: 900;
@@ -76,8 +78,13 @@ input{
     font-family: "Poppins", sans-serif;
 }
 input:-webkit-autofill{
-    -webkit-box-shadow: 0 0 0 30px var(--clr-blanco) inset;
+    box-shadow: 0 0 0 30px var(--clr-negro) inset;
+    -webkit-text-fill-color: var(--clr-blanco);
 }
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
 header{
     z-index: 999999;
     background-color: var(--clr-negro);
@@ -94,7 +101,11 @@ h4{font-size: 1.6rem;}
     h4{font-size: 2.0rem;}
 }
 
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /*
 Preloader
@@ -127,4 +138,51 @@ Preloader
     0%{transform:scale(1)}
     50%{transform: scale(1.5)}
     100%{transform: scale(1)}
+}
+.boton{
+    cursor: pointer;
+    user-select: none;
+    padding: 1rem 2.5rem;
+    border-radius: 3.2rem;
+    border: 1px solid var(--clr-naranjaCard);
+    transition: ease-in 250ms;
+    background-color: var(--clr-negro);
+    font-weight: var(--fw-semiBold);
+}
+.boton:hover{
+    user-select: none;
+
+    color: var(--clr-negro);
+    background-color: var(--clr-blanco);
+}
+.translate{
+    position: fixed;
+    bottom: 0;
+    z-index: 9999999999999999999999;
+    margin: 1rem;
+    opacity: 0.3;
+    transition: ease 200ms;
+    user-select: none;
+}
+.translate:hover{
+    opacity: 1;
+}
+
+.translate:hover .translate__icon{
+    width: 5rem;
+}
+.translate__icon{
+    width: 4.5rem;
+    aspect-ratio: 1;
+    transition: ease 200ms;
+    border: 5px solid var(--clr-blanco);
+    object-fit: cover;
+    border-radius: 50%;
+}
+.notification__message{
+    color: var(--clr-amarillo);
+    font-size: 14px;
+}
+.quit-padding-up{
+    padding: 0 5rem;
 }

@@ -37,75 +37,20 @@
 
 </head>
 
-<body>
+<body data-page="index">
 
-    <header class="header">
-
-        <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
-        <a href="index.html" class="header__logo">
-           <picture>
-                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1023px)">
-
-                <img src="../img/logo/logo.svg" alt="Logo de MUO" title="MUO"class="header__logo">
-           </picture>
-        </a>
-
-        <nav class="nav">
-            <div class="nav__closeMenu"></div>
-            <ul>
-                <li class="nav__btns--center">
-                    <div class=" nav__btns">
-                        <a href="register.html" class="  nav__item--active ">
-                            <p class="nav__item--btn1">Registrate</p>
-                        </a>
-                        <a href="login.html" class="  nav__item--active ">
-                            <p class="nav__item--btn2">Inicia Sesion</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li class="nav__links">
-                    <div class="nav__item">
-                        <a href="index.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
-                                <p>Inicio</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="nav__item">
-                        <a href="nosotros.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
-                                <p>Sobre Nosotros</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="nav__item">
-                        <a href="museos.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/museum.svg" alt="Icono Museos" title="Museos">
-                                <p>Museos</p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
-            </ul>
-        </nav>
-        <div class="header__blackScreen"></div>
-    </header>
+    <?php  include "../includes/templates/header.php" ?>
 
 
     <section class="hero">
         <div class="cta">
-            <h1 class="cta__title">
+            <h1 class="cta__title" id="h1-hero">
                 Empieza a ver la espectacular cultura que nos rodea
             </h1>
             <!--No se si agregar esto  Las buenas cosas solo están vivas cuando se recuerdan, no dejemos morir la cultura de El Salvador.-->
-            <p class="cta__description">Explora diferentes ilustraciones de arte, conocimiento humano, historia y mucho más. Muchas personas no conocen acerca de la cultura que rodea a El Salvador, ¿Qué esperas para que tú la conozcas?</p>
+            <p class="cta__description" id="text-hero">Explora diferentes ilustraciones de arte, conocimiento humano, historia y mucho más. Muchas personas no conocen acerca de la cultura que rodea a El Salvador, ¿Qué esperas para que tú la conozcas?</p>
             <div class="cta__btn">
-                <a href="register.html">Culturizate ya!</a>
+                <a href="register.php" id="btn-hero">Culturizate ya!</a>
             </div>
         </div>
         <div class="grid">
@@ -113,7 +58,7 @@
                 <figure class="grid__card">
                     <img src="../img/hero/escultura.webp" alt="Tren" title="Tren" class="card__img">
                     <figcaption>
-                        <p class="grid__text ">Imagen por <a href="https://www.flickr.com/people/camaro27"
+                        <p class="grid__text"><span id="credits">Imagen por</span> <a href="https://www.flickr.com/people/camaro27"
                                 target="_blank">@Camaro27</a>
                         </p>
                     </figcaption>
@@ -124,7 +69,7 @@
                 <figure class="grid__card">
                     <img src="../img/hero/sombrero.webp" alt="Tren" title="Tren" class="card__img">
                     <figcaption>
-                        <p class="grid__text ">Imagen por <a href="https://www.flickr.com/people/camaro27"
+                        <p  class="grid__text "><span id="credits">Imagen por</span> <a href="https://www.flickr.com/people/camaro27"
                                 target="_blank">@Camaro27 </a>
                         </p>
                     </figcaption>
@@ -135,7 +80,7 @@
                 <figure class="grid__card">
                     <img src="../img/hero/cara.webp" alt="Tren" title="Tren" class="card__img">
                     <figcaption>
-                        <p class="grid__text ">Imagen por <a href="https://www.flickr.com/people/camaro27"
+                        <p  class="grid__text "><span id="credits">Imagen por</span> <a href="https://www.flickr.com/people/camaro27"
                                 target="_blank">@Camaro27</a>
                         </p>
                     </figcaption>
@@ -146,7 +91,7 @@
                 <figure class="grid__card">
                     <img src="../img/hero/tren.webp" alt="Tren" title="Tren" class="card__img">
                     <figcaption>
-                        <p class="grid__text ">Imagen por <a href="https://www.flickr.com/people/camaro27"
+                        <p  class="grid__text "><span id="credits">Imagen por</span> <a href="https://www.flickr.com/people/camaro27"
                                 target="_blank">@Camaro27</a>
                         </p>
                     </figcaption>
@@ -158,7 +103,7 @@
     <main class="main">
         <section class="why-us">
             <div class="why-us__heading">
-                <h2>Que nos diferencia de un museo tradicional ?</h2>
+                <h2 id="question">¿Que nos diferencia de un museo tradicional ?</h2>
             </div>
             <div class="why-us__container">
                 <div class="why-us__card">
@@ -166,10 +111,10 @@
                         <img src="../img/icons/quality.svg" alt="Calidad" title="Calidad">
                     </div>
                     <div class="why-us__title">
-                        <h3>Calidad</h3>
+                        <h3 id="quality-title">Calidad</h3>
                     </div>
                     <div class="why-us__description">
-                        <p>
+                        <p id="quality-text">
                             La información que nosotros brindamos a nuestros usuarios son de fuentes fiables. Nosotros sabemos lo que nuestra cultura vale.
                         </p>
                     </div>
@@ -179,10 +124,10 @@
                         <img src="../img/icons/digital.svg" alt="Digital" title="Digital">
                     </div>
                     <div class="why-us__title">
-                        <h3>Digital</h3>
+                        <h3 id="digital-title">Digital</h3>
                     </div>
                     <div class="why-us__description">
-                        <p>
+                        <p id="digital-text">
                             Sabemos lo difícil lo que puede ser ir a museo en estos tiempos, así que ofrecemos nuestro contenido de manera digital con la finalidad que sea fácil de acceder.
                         </p>
                     </div>
@@ -192,23 +137,23 @@
                         <img src="../img/icons/free.svg" alt="Gratis" title="Gratis">
                     </div>
                     <div class="why-us__title">
-                        <h3>Gratis</h3>
+                        <h3 id="free-title">Gratis</h3>
                     </div>
                     <div class="why-us__description">
-                        <p>
+                        <p id="free-text">
                             El contenido que nosotros vamos a ofrecer es gratuito, con tan solo una cuenta registrada en MUO tendras acceso a todo lo que ofrecemos.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
-
         <section class="our-content">
-            <h2 class="our-content__heading">Revive la experiencia de un museo</h2>
+            <h2 class="our-content__heading" id="revive">Revive la experiencia de un museo</h2>
             <article class="our-content__article our-content--grid">
                 <div class="our-content__text">
-                    <h3 class="our-content__title">Descubriendo el arte que expresa la cultura salvadoreña</h3>
-                    <p class="our-content__description">Encontraremos diversas piezas creativas donde lo que se busca es
+                    <h3 class="our-content__title" id="revive-title">Descubriendo el arte que expresa la cultura salvadoreña</h3>
+
+                    <p class="our-content__description" id="revive-text">Encontraremos diversas piezas creativas donde lo que se busca es
                         la conservación y exposición de obras de arte de diferentes modalidades, como lo pueden ser:
                         pintura, dibujo, esculturas y otras.</p>
                 </div>
@@ -223,7 +168,7 @@
                         </div>
                     </div>
                     <div class="our-content__autor">
-                        <p>Imagen por</p>
+                        <p id="credits">Imagen por</p>
                         <img src="../img/home/firma.svg" alt="">
                     </div>
                     <div class="our-content__btns art">
@@ -244,10 +189,8 @@
             </article>
             <article class="our-content__article our-content--grid">
                 <div class="our-content__text">
-                    <h3 class="our-content__title">Los diferentes sucesos militares que marcaron una nacion</h3>
-                    <p class="our-content__description">Descubriremos diferentes sucesos que fueron ocurridos en nuestro
-                        país en los siglos XVIII,XIX y SXX, dicho museo cuenta con 10 salas de exhibición donde
-                        encontraremos: armas, uniformes e monumentos .</p>
+                    <h3 class="our-content__title" id="revive1-title">Los diferentes sucesos militares que marcaron una nacion</h3>
+                    <p class="our-content__description" id="revive1-text">Descubriremos diferentes sucesos que fueron ocurridos en nuestro país en los siglos XVIII,XIX y SXX, dicho museo cuenta con 10 salas de exhibición donde encontraremos: armas, uniformes e monumentos.</p>
                 </div>
 
                 <div class="our-content__img">
@@ -260,7 +203,7 @@
                         </div>
                     </div>
                     <div class="our-content__autor">
-                        <p>Imagen por</p>
+                        <p id="credits">Imagen por</p>
                         <img src="../img/home/firma.svg" alt="">
                     </div>
                     <div class="our-content__btns militar">
@@ -281,9 +224,9 @@
             </article>
             <article class="our-content__article our-content--grid">
                 <div class="our-content__text">
-                    <h3 class="our-content__title">Diversos descubrimientos cientificos en un solo lugar</h3>
-                    <p class="our-content__description">
-                        Dicho museo de historia natral es una institución científica el cual su objetivo es investigar y
+                    <h3 class="our-content__title" id="revive2-title">Diversos descubrimientos cientificos en un solo lugar</h3>
+                    <p class="our-content__description" id="revive2-text">
+                    Dicho museo de historia natral es una institución científica el cual su objetivo es investigar y
                         mostrar la diversidad biológica e paleontológica del país.
                     </p>
                 </div>
@@ -298,7 +241,7 @@
                         </div>
                     </div>
                     <div class="our-content__autor">
-                        <p>Imagen por</p>
+                        <p id="credits">Imagen por</p>
                         <img src="../img/home/firma.svg" alt="">
                     </div>
                     <div class="our-content__btns ciencia">
@@ -329,48 +272,19 @@
                     </svg>
                 </div>
                 <div class="cta-two__content">
-                    <h3 class="cta-two__text">Que esperas para visualizar nuestra cultura de una forma digital ?</h3>
-                    <a class="cta-two__btn" href="register.html">Crear una cuenta !</a>
+                    <h3 class="cta-two__text" id="cta2-title">Que esperas para visualizar nuestra cultura de una forma digital ?</h3>
+                    <a class="cta-two__btn" href="register.php" id="cta2-text">Crear una cuenta !</a>
                 </div>
             </div>
 
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer__container">
-            <picture class="footer__icon">
-                <source srcset="../img/logo/logo-bw.svg" media="(min-width:741px)">
-                <img src="../img/logo/logo-mobile-bw.svg" alt="Logo de MUO En negro" title="MUO-LOGO" class="footer__logo">
-            </picture>
+    <?php  include "../includes/templates/footer.php"?>
+    
 
-            <div class="footer__text">
-                <p>MUO - Todos los derechos reservados</p>
-            </div>
-
-            <div class="footer__socials">
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/facebook.svg" alt="Facebook" title="Facebook"
-                            class="footer__socials--img">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/twitter.svg" alt="Twitter" title="Twitter" class="footer__socials--img">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/ig.svg" alt="Instagram" title="Instagram" class="footer__socials--img">
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </footer>
     <script src="../js/app.js"></script>
-    <script src="../js/general.js"></script>
+
     <!--Termine el home :D-->
     <!--ola-->
 </body>

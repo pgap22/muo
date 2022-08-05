@@ -8,7 +8,9 @@ body{
     padding: 1rem;
     margin-bottom: .5rem;
 }
-
+.header__back--button{
+    cursor: pointer;
+}
 .header__container{
     display: grid;
     align-items: center;
@@ -63,6 +65,7 @@ body{
 .form__input-names{
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     gap: 2rem;
 }
 .form__input--one-column{
@@ -113,4 +116,125 @@ body{
 }
 .background{
     display: none;
+}
+.errorBorder{
+    border-color: var(--clr-error)!important;
+}
+.errorMessage{
+    display: none;
+    font-size: 1.2rem;
+    color: var(--clr-errorOscuro);
+}
+.error{
+    display: block;
+}
+
+.alert{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999999;
+    transition: ease-in 350ms;
+    opacity: 1;
+}
+.alert__message{
+    /* width: max-content; */
+    max-width: 500px;
+    margin: 0px 15px;
+    padding: 15px;
+    border: 1px solid var(--clr-naranja);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 2rem;
+}
+.alert__header{
+    display: flex;
+    justify-content: flex-end;
+}
+.alert__img{
+    display: flex;
+    justify-content: center;
+}
+.alert__boton{
+    display: flex;
+    justify-content: center;
+}
+.alert__header > img{
+    cursor: pointer;
+}
+.form__submit{
+    cursor: pointer;
+}
+.form__decoration{
+    display: none;
+}
+.loading-submit .form__submit-text{
+    visibility: hidden;
+}
+.loading-submit .form__decoration{
+    display: block;
+}
+.loading-submit{
+    position: relative;
+}
+.loading-submit::after{
+    content: "";
+    width: 25px;
+    z-index: 999;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    background-color:var(--clr-blanco);
+    /* border: 1px solid red; */
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.form__decoration{
+    content:  "";
+    position: absolute;
+    background-color: var(--clr-negro);
+    overflow: hidden;
+    width: 35px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    z-index:1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.form__decoration::after{
+    content:  "";
+    position: absolute;
+    background-color: rgb(255, 166, 0);
+    width: 35px;
+    aspect-ratio: 1;
+    z-index:1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: loading ease 1s infinite;
+
+}
+@keyframes loading{
+    to{
+        transform:rotate(0) translate(-50%);
+        
+    }
+    from{
+        transform:rotate(1turn) translate(-50%);
+
+    }
 }

@@ -1,0 +1,17 @@
+@import url("../mobile/style.css");
+.verification{
+    font-size: 1.5rem;
+    padding: 2rem;
+}
+.verification__email{
+    font-size: 2.5rem;
+}
+.verification__title{
+    font-size: 2.8rem;
+}
+.verification__logo{
+    width: 212px;
+}
+.verification__logo img{
+    width: 212px;
+}

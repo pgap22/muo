@@ -35,71 +35,17 @@
     <link rel="stylesheet" href="../css/museos/desktop/style.css" media="(min-width: 1024px)">
 
 </head>
-<body>
-    <header class="header">
-
-        <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
-        <a href="index.html" class="header__logo">
-           <picture>
-                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1023px)">
-
-                <img src="../img/logo/logo.svg" alt="Logo de MUO" title="MUO"class="header__logo">
-           </picture>
-        </a>
-
-        <nav class="nav">
-            <div class="nav__closeMenu"></div>
-            <ul>
-                <li class="nav__btns--center">
-                    <div class=" nav__btns">
-                        <a href="register.html" class="  nav__item--active ">
-                            <p class="nav__item--btn1">Registrate</p>
-                        </a>
-                        <a href="login.html" class="  nav__item--active ">
-                            <p class="nav__item--btn2">Inicia Sesion</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li class="nav__links">
-                    <div class="nav__item">
-                        <a href="index.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/Home.svg" alt="Icono Inicio" title="Inicio">
-                                <p>Inicio</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="nav__item">
-                        <a href="nosotros.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
-                                <p>Sobre Nosotros</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="nav__item">
-                        <a href="museos.html">
-                            <div class="item__icon">
-                                <img src="../img/icons/museum.svg" alt="Icono Museos" title="Museos">
-                                <p>Museos</p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
-            </ul>
-        </nav>
-        <div class="header__blackScreen"></div>
-    </header>
+<body data-page="museos" >
+    
+    <?php  include "../includes/templates/header.php" ?>
 
     <section class="hero line">
         <div class="hero__wrapper">
             <div class="hero__text">
-                <h1 class="hero__title">
+                <h1 class="hero__title" id="titulo">
                     Museos de El Salvador
                 </h1>
-                <p class="hero__description">
+                <p class="hero__description" id="description">
                     Descubre los diferentes museos que hacen posible MUO
                 </p>
             </div>
@@ -110,7 +56,7 @@
                     <img src="../img/museos/main-3.jpg" alt="" class="hero__img">
                 </div>
                 <div class="hero__autor">
-                    <p>Imagen por</p>
+                    <p id="credits">Imagen por</p>
                     <img src="../img/home/firma-grey.svg" alt="">
                         
                 </div>
@@ -157,41 +103,6 @@
         </div>
     </main>
 
-
-
-    <footer class="footer">
-        <div class="footer__container">
-            <picture class="footer__icon">
-                <source srcset="../img/logo/logo-bw.svg" media="(min-width:741px)">
-                <img src="../img/logo/logo-mobile-bw.svg" alt="Logo de MUO En negro" title="MUO-LOGO" class="footer__logo">
-            </picture>
-
-            <div class="footer__text">
-                <p>MUO - Todos los derechos reservados</p>
-            </div>
-
-            <div class="footer__socials">
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/facebook.svg" alt="Facebook" title="Facebook"
-                            class="footer__socials--img">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/twitter.svg" alt="Twitter" title="Twitter" class="footer__socials--img">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="socials__icon">
-                        <img src="../img/icons/ig.svg" alt="Instagram" title="Instagram" class="footer__socials--img">
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </footer>
-
-    <script src="../js/general.js"></script>
+    <?php  include "../includes/templates/footer.php"?>
 </body>
 </html>
