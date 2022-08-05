@@ -14,7 +14,7 @@
         
         #Recoleccion de datos ingresados por el usuario 
         $newUser["name"] = $_POST["new_name"];
-        $newUser["lastName"] = $_POST["new_last-name"];
+        $newUser["last_name"] = $_POST["new_last-name"];
         $newUser["email"] = $_POST["new_email"];
         $newUser["password"] = $_POST["new_password"];
         $newUser["confirm-password"] = $_POST["confirm_password"];
@@ -45,6 +45,8 @@
         
        
     }
+
+  
 ?>
     
 <!DOCTYPE html>
@@ -116,7 +118,7 @@
                         <!-- Set errors -->
                         <?php  getError($error, "last-name") ?>
                        
-                        <input type="text" class="form__last-name <?= getColorError($error, "last-name")?>  " id="new_last-name" name="new_last-name" required placeholder="Apellido" value="<?=restoreFormData($newUser, "lastName")?>">
+                        <input type="text" class="form__last-name <?= getColorError($error, "last-name")?>  " id="new_last-name" name="new_last-name" required placeholder="Apellido" value="<?=restoreFormData($newUser, "last_name")?>">
                     </div>
                 </div>
                 <div class="form__input form__input--one-column">

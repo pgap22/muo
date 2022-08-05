@@ -65,7 +65,7 @@ class NoVerifiedUser {
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
         
-        $stmt->bind_param("sssssss", $this->name, $this->lastName,$hashedPassword,$this->email, $this->verifyToken, $this->disponible_resend, $this->emailToken);
+        $stmt->bind_param("sssssss", $this->name, $this->last_name,$hashedPassword,$this->email, $this->verifyToken, $this->disponible_resend, $this->emailToken);
 
         $stmt->execute();
     }
@@ -89,7 +89,7 @@ class NoVerifiedUser {
            self::$errors["name"]  = "El nombre no puede estar vacio";
            self::$errors["code"] = 1;
         }
-        else if($this->lastName == ""){
+        else if($this->last_name == ""){
             self::$errors["last-name"]  = "El apellido no puede estar vacio";
             self::$errors["code"] = 2;
         } 
@@ -97,7 +97,7 @@ class NoVerifiedUser {
             self::$errors["name"]  = "El nombre no puede ser muy largo";
             self::$errors["code"] = 3;
         }
-        else if(strlen($this->lastName) > 30){
+        else if(strlen($this->last_name) > 30){
             self::$errors["last-name"]  = "El apellido no puede ser muy largo";
             self::$errors["code"] = 4;
         }
@@ -163,7 +163,7 @@ class NoVerifiedUser {
     }
 
     public function setUser(){
-        $query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario) VALUES('$this->email', '$this->password', '$this->name', '$this->lastName')";
+        $query = "INSERT INTO usuarios(email, password, nombre_usuario, apellido_usuario) VALUES('$this->email', '$this->password', '$this->name', '$this->last_name')";
         Util::$db->query($query);
     }
 }
