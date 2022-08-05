@@ -33,7 +33,7 @@ function sendMessage($message, $bool, $id_translate){
 }
 
 function getInputValue($value){
-    return $value ?? "";
+    return htmlspecialchars($value) ?? "";
 }
 
 function getError($error, $type){
@@ -53,27 +53,28 @@ function restoreFormData($newUser,$data){
     return $newUser[$data] ?? "";
 }
 
+//Only if laragon email is not working or avaible
 function submitMail($mail, $title, $body){
     $mail = new PHPMailer();
     try {
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.office365.com';                     //Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'muo.website@outlook.com';                     //SMTP username
-        $mail->Password   = 'basededatoslevi098';                               //SMTP password
+        $mail->SMTPDebug = 0;                      
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.office365.com';                     
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = 'muo.website@outlook.com';                     
+        $mail->Password   = 'basededatoslevi098';                               
         $mail->SMTPSecure = "tls";
-        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Port       = 587;                                   
         $mail->CharSet = 'UTF-8';
         $mail->Encoding = 'base64';
         //Recipients
         $mail->setFrom('muo.website@outlook.com', 'MUO Website');
-        $mail->addAddress('gerardo.saz120@gmail.com', "MUO User");     //Add a recipient
+        $mail->addAddress('gerardo.saz120@gmail.com', "MUO User");     
     
     
         //Content
         $mail->Subject = $title;
-        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->isHTML(true);                                  
         $mail->Body = $body;
     
         $mail->send();
@@ -81,6 +82,7 @@ function submitMail($mail, $title, $body){
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+
 function sendMail($email,$mailMessage){
     // die();z
     if(!isset($_SESSION)){

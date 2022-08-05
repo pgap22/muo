@@ -23,6 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     #Detectar Errores marcados y los guarda en un arreglo que nos sirve para detectarlos en el frontend
     $error = User::getErrors();
+
+    if(!$error){
+        $user->startSession();
+    }
 }
 ?>
 

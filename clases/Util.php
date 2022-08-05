@@ -5,10 +5,7 @@ use DateTime;
 
 class Util{
     public static $db;
-    public static $errors;
     
-
-
     public static function setDB($db){
         self::$db = $db;
     }
@@ -28,10 +25,6 @@ class Util{
         $dateToAdd = (self::createDate()["timestamp"]+$seconds)-GMT_6;
         $dateToAdd = date("Y/m/d H:i:s", $dateToAdd);
         return DateTime::createFromFormat("Y/m/d H:i:s", $dateToAdd, TIMEZONE_GMT6);
-    }
-
-    public static function getErrors(){
-        return self::$errors;
     }
 
     public static function checkRecord($query, $Record, $type = "s"){

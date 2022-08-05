@@ -51,7 +51,7 @@ class User{
         session_start();
         $token = openssl_random_pseudo_bytes(16);
         $_SESSION["user_token"] = bin2hex($token);
-        header("location: /pages/home.php");
+        header("location: /home");
     }
 
     public function validate(){
@@ -65,14 +65,12 @@ class User{
         else{
 
             $passwordVerification = $this->verifyPasswordUser();
-
-
-            if ($passwordVerification) {
-                $this->startSession();
-            } else {
+             
+            if (!$passwordVerification) {
                 self::$errors["login"] = 'Tu email o contraseña no son validos !';
                 self::$errors["code"] = 10;
             }
+
         }
     }
 
