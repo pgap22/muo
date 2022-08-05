@@ -8,116 +8,67 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema muo
+-- Schema muo-beta
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema muo
+-- Schema muo-beta
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `muo` DEFAULT CHARACTER SET latin1 ;
-USE `muo` ;
+CREATE SCHEMA IF NOT EXISTS `muo-beta` DEFAULT CHARACTER SET utf8 ;
+USE `muo-beta` ;
 
 -- -----------------------------------------------------
--- Table `muo`.`admin`
+-- Table `muo-beta`.`noverifieduser`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo`.`admin` (
-  `id` INT(5) NOT NULL AUTO_INCREMENT,
-  `pass` VARCHAR(25) NOT NULL,
-  `user` VARCHAR(25) NOT NULL,
+CREATE TABLE IF NOT EXISTS `muo-beta`.`noverifieduser` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(35) NOT NULL,
+  `last_name` VARCHAR(35) NOT NULL,
+  `password` VARCHAR(60) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `verifyToken` VARCHAR(60) NOT NULL,
+  `disponible_resend` DATETIME NOT NULL,
+  `emailToken` VARCHAR(16) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `muo`.`museos`
+-- Table `muo-beta`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo`.`museos` (
+CREATE TABLE IF NOT EXISTS `muo-beta`.`usuarios` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `museo` VARCHAR(11) NOT NULL,
-  `museo_descripcion` TEXT NOT NULL,
+  `email` VARCHAR(80) NULL DEFAULT NULL,
+  `password` VARCHAR(60) NULL DEFAULT NULL,
+  `nombre_usuario` VARCHAR(45) NULL DEFAULT NULL,
+  `apellido_usuario` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = latin1;
+AUTO_INCREMENT = 25
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `muo`.`exposiciones`
+-- Table `muo-beta`.`passwordcode`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo`.`exposiciones` (
+CREATE TABLE IF NOT EXISTS `muo-beta`.`passwordcode` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `titulo` VARCHAR(55) NOT NULL,
-  `descripcion` TEXT NOT NULL,
-  `imagen` VARCHAR(55) NOT NULL,
-  `museo_id` INT(11) NOT NULL,
+  `code` INT(6) NOT NULL,
+  `user_id` INT(11) NOT NULL,
+  `limit_time` DATETIME NULL DEFAULT NULL,
+  `resend_code` DATETIME NULL DEFAULT NULL,
+  `passToken` VARCHAR(16) NULL DEFAULT NULL,
+  `verified` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `museo_id` (`museo_id` ASC),
-  CONSTRAINT `museo_fk`
-    FOREIGN KEY (`museo_id`)
-    REFERENCES `muo`.`museos` (`id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 12
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `muo`.`usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo`.`usuarios` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(55) NOT NULL,
-  `contraseña` VARCHAR(55) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `email` (`email` ASC),
-  UNIQUE INDEX `contraseña` (`contraseña` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `muo`.`comentarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo`.`comentarios` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `usuario_id` INT(11) NOT NULL,
-  `comentario` VARCHAR(255) NOT NULL,
-  `exposicion_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `usuario_id` (`usuario_id` ASC),
-  INDEX `exposicion_id` (`exposicion_id` ASC),
-  CONSTRAINT `exposicion_fk1`
-    FOREIGN KEY (`exposicion_id`)
-    REFERENCES `muo`.`exposiciones` (`id`),
-  CONSTRAINT `usuario_fk1`
-    FOREIGN KEY (`usuario_id`)
-    REFERENCES `muo`.`usuarios` (`id`))
+  INDEX `fk_password_code` (`user_id` ASC),
+  CONSTRAINT `fk_password_code`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `muo-beta`.`usuarios` (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `muo`.`favoritos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo`.`favoritos` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `exposicion_id` INT(11) NOT NULL,
-  `usuario_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `exposicion_id` (`exposicion_id` ASC),
-  INDEX `usuario_id` (`usuario_id` ASC),
-  CONSTRAINT `exposicion_fk`
-    FOREIGN KEY (`exposicion_id`)
-    REFERENCES `muo`.`exposiciones` (`id`),
-  CONSTRAINT `usuario_fk`
-    FOREIGN KEY (`usuario_id`)
-    REFERENCES `muo`.`usuarios` (`id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 9
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
