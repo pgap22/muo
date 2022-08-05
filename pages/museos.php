@@ -71,7 +71,7 @@
                     <section class="main__card main-1">
                         <img src="../img/museos/main-1.jpg" alt="Imagen del Museo MARTE">
                         <div class="main__card-text">
-                            <h2>MUSEO EL NIÑO FELIZ</h2>
+                            <h2>MUSEO DE ARTE DE EL SALVADOR</h2>
                         </div>
                         <div class="main__card-autor">
                             <p>Imagen por: </p>
@@ -81,7 +81,7 @@
                     <section class="main__card main-2 " >
                         <img src="../img/museos/main-2.jpg" alt="Imagen del Museo MARTE">
                         <div class="main__card-text">
-                            <h2>MUSEO EL NIÑO FELIZ</h2>
+                            <h2>MUSEO DE HISTORIA NATURAL .</h2>
                         </div>
                         <div class="main__card-autor">
                             <p>Imagen por: </p>
@@ -91,7 +91,7 @@
                     <section class="main__card main-3">
                         <img src="../img/museos/main-3.jpg" alt="Imagen del Museo MARTE">
                         <div class="main__card-text">
-                            <h2>MUSEO EL NIÑO FELIZ</h2>
+                            <h2>MUSEO MILITAR DE LA FUERZA ARMADA .</h2>
                         </div>
                         <div class="main__card-autor">
                             <p>Imagen por: </p>

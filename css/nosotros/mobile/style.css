@@ -60,12 +60,16 @@
 }
 
 .our__options{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 30rem;
     gap: 2rem;
-    border-bottom: 5px solid var(--clr-blanco);
+
+
+}
+.our__border-bottom{
     margin-bottom: 1rem;
+    border-bottom: 5px solid var(--clr-blanco);
 }
 
 

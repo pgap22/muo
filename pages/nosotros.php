@@ -41,6 +41,7 @@
 
 <?php  include "../includes/templates/header.php" ?>
 
+
     <main class="main">
         <section class="about">
             <div class="about__wrapper">
@@ -64,31 +65,35 @@
         </section>
         <section class="our">
             <div class="our__wrapper">
-                <div class="our__options">
+                <div class="our__border-bottom">
+                    <div class="our__options">
 
 
-                    <input class="our__input-mision" type="radio" name="option" onclick="showContent(this)" id="mision" checked>
-                    <label for="mision">
-                        <div class="our__btn">
-                            <h2>Mision</h2>
-                        </div>
-                    </label>
-
-                    <input class="our__input-vision" type="radio" name="option" onclick="showContent(this)" id="vision">
-                    <label for="vision">
-                        <div class="our__btn">
-                            <h2>Vision</h2>
-                        </div>
-                    </label>
-
-                    <input class="our__input-personal" type="radio" name="option" onclick="showContent(this)" id="personal">
-                    <label for="personal">
-                        <div class="our__btn">
-                            <h2>Personal</h2>
-                        </div>
-                    </label>
-
-
+                        <input class="our__input-mision" type="radio" name="option" onclick="showContent(this)" id="mision"
+                            checked>
+                        <label for="mision">
+                            <div class="our__btn">
+                                <h2>Mision</h2>
+                            </div>
+                        </label>
+    
+                        <input class="our__input-vision" type="radio" name="option" onclick="showContent(this)" id="vision">
+                        <label for="vision">
+                            <div class="our__btn">
+                                <h2>Vision</h2>
+                            </div>
+                        </label>
+    
+                        <input class="our__input-personal" type="radio" name="option" onclick="showContent(this)"
+                            id="personal">
+                        <label for="personal">
+                            <div class="our__btn">
+                                <h2>Personal</h2>
+                            </div>
+                        </label>
+    
+    
+                    </div>
                 </div>
 
                 <div class="our__content">
@@ -137,7 +142,7 @@
             </div>
         </section>
         <section class="logo">
-           
+
         </section>
     </main>
 

@@ -131,6 +131,7 @@ h2{
 }
 .main__scroll{
     scrollbar-width: auto;
+	scrollbar-color: var(--clr-naranja) var(--clr-grisOscuro);
     max-width: 40rem;
 }
 
