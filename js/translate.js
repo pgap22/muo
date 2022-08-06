@@ -241,14 +241,14 @@ esp["museos"]["titulo"] = "Museos de El Salvador";
 esp["museos"]["description"] = "Descubre los diferentes museos que hacen posible MUO";
 
 esp["register"] = [];
-esp["register"]["title"] = "Registrate";
+esp["register"]["title"] = "Regístrate";
 esp["register"]["descripcion"] = "Descubre la cultura que nos rodea";
 esp["register"]["nombre"] = "Nombre";
 esp["register"]["apellido"] = "Apellido";
 esp["register"]["correo"] = "Email";
 esp["register"]["contrasena"] = "Contraseña";
 esp["register"]["contrasena2"] = "Confirmar contraseña";
-esp["register"]["boton"] = "Registrate";
+esp["register"]["boton"] = "Regístrate";
 esp["register"]["account"] = "¿Ya tienes cuenta?";
 esp["register"]["footer"] = "MUO - Todos los derechos reservados";
 esp["register"]["1-e"] = "El nombre no puede estar vacío";
