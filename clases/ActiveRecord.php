@@ -97,6 +97,7 @@ class ActiveRecord {
     }
 
     public function save(){
+        if(!$this->id){
         //Obtener las columnas y los valores para el query
         $data = static::getAttributes();
         //Guardando en memoria los arreglos convertidos a string
@@ -114,6 +115,35 @@ class ActiveRecord {
         $query .= ")";
 
         self::$db->query($query);
+        }
+        else{
+            //Obtener las columnas y los valores para el query
+            $data = static::getAttributes();
+            
+            $value = $data['arr-1'];
+            $atr = $data['arr-2'];
+
+            
+            //Construyendo el query
+            $query = "UPDATE " . static::$table;
+            $query .= " SET ";
+            $lastData = count($value);
+
+            foreach($value as $key =>$values){
+                if($lastData == $key){
+                    $query .= $atr[$key] . "=" . self::getSqlValue($values);
+                }
+                else{
+                    $query .= $atr[$key] . "=" . self::getSqlValue($values) .", ";
+                }
+            }
+
+            //Asignando a la consulta quien se va actualizar
+            $query .= " WHERE id = $this->id";
+
+            //Ejecutar query
+            self::$db->query($query);
+        }
      
     }
 
@@ -158,40 +188,6 @@ class ActiveRecord {
 
     }
 
-    public function update(){
-        if(!$this->id){
-            throw new \Exception("No existe ese registro en la bd", 1);
-            return false;
-        }
-
-        //Obtener las columnas y los valores para el query
-        $data = static::getAttributes();
-        
-        $value = $data['arr-1'];
-        $atr = $data['arr-2'];
-
-        
-        //Construyendo el query
-        $query = "UPDATE " . static::$table;
-        $query .= " SET ";
-        $lastData = count($value);
-
-        foreach($value as $key =>$values){
-            if($lastData == $key){
-                $query .= $atr[$key] . "=" . self::getSqlValue($values);
-            }
-            else{
-                $query .= $atr[$key] . "=" . self::getSqlValue($values) .", ";
-            }
-        }
-
-        //Asignando a la consulta quien se va actualizar
-        $query .= " WHERE id = $this->id";
-
-        //Ejecutar query
-        self::$db->query($query);
-        
-    }
 
     public static function getSqlValue($data){
          //Obtener que tipo de valor es

@@ -76,7 +76,7 @@ class Passwordcode extends ActiveRecord{
     
     public function verify(){
         $this->setData("verified", 1);
-        $this->update();
+        $this->save();
     }
 
     public function isExpired(){

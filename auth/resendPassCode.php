@@ -44,7 +44,7 @@ if($isTimeResend){
     $currentPasswordCode->setData("code", $newCode);
 
     #Lo Actualizamos en la base de datos
-    $currentPasswordCode->update();
+    $currentPasswordCode->save();
 
     #Se envia ese nuevo codigo
     $currentPasswordCode->sendCode();
