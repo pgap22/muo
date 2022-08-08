@@ -49,8 +49,7 @@ class User{
 
     public function startSession(){
         session_start();
-        $token = openssl_random_pseudo_bytes(16);
-        $_SESSION["user_token"] = bin2hex($token);
+        $_SESSION["user_id"] = $this->id;
         header("location: /home");
     }
 

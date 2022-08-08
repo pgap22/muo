@@ -25,6 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = User::getErrors();
 
     if(!$error){
+        #Obtener todos los datos de nuestro usuarios
+        $user = User::getUserByEmail($user->email);
         $user->startSession();
     }
 }

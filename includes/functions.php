@@ -50,7 +50,10 @@ function getColorError($error, $type){
     return "";
 }
 function restoreFormData($newUser,$data){
-    return $newUser[$data] ?? "";
+    if(isset($newUser[$data])){
+        return htmlspecialchars($newUser[$data]);
+    }
+    return "";
 }
 
 //Only if laragon email is not working or avaible
@@ -212,6 +215,39 @@ function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
         return $message;
         }
         
-    
+    function showHeader(){
+        
+        if(!isset($_SESSION)){
+            session_start();
+        }
 
+     
+        if(isset($_SESSION['user_id'])){
+            include "../includes/templates/headerLogged.php";
+        }
+        else{
+            include "../includes/templates/header.php";
+        }
+    }
+
+    function protegerIndex(){
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if(isset($_SESSION["user_id"])){
+            header("location: /home");
+        }
+    }
+    
+    function protegerHome(){
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        if(!isset($_SESSION["user_id"])){
+            header("location: /pages");
+        }
+
+
+    }
 ?>

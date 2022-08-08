@@ -1,3 +1,12 @@
+    <!--General Styles for responsive Header-->
+    <link rel="preload" href="../css/header-footer/mobile.css" as="style">
+    <link rel="preload" href="../css/header-footer/tablet.css" as="style">
+    <link rel="preload" href="../css/header-footer/desktop.css" as="style">
+
+    <link rel="stylesheet" href="../css/header-footer/mobile.css" media="(max-width: 741px)">
+    <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/header-footer/desktop.css" media="(min-width: 1024px)">
+
 <header class="header">
 
         <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">

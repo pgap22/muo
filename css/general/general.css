@@ -9,7 +9,7 @@
     --clr-amarillo: hsl(43, 100%, 51%);
     --clr-naranja: hsl(37, 100%, 50%);
     --clr-naranjaCard: hsl(39, 94%, 53%);
-    --clr-error: hsl(0, 100%, 47%);
+    --clr-error: #f00000;
     --clr-errorOscuro: hsl(0, 100%, 42%);
     /*Anchura De la Fuente*/
     --fw-regular: 400;

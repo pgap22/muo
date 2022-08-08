@@ -1,6 +1,6 @@
 <?php
 
-    use MUO\NoVerifiedUser;
+    use MUO\Usuarios;
 
     include "../includes/app.php";
 
@@ -9,17 +9,17 @@
         #Detectar el token de verificacion
         $tokenToVerify = $_GET["verifyToken"];
 
-        #Detectar usuario por su codigo de verificacion
-        $user = NoVerifiedUser::getUserByVerifyToken($tokenToVerify);
+        $user = Usuarios::where("verifyToken", $tokenToVerify);
 
+        debugear($user);
 
         if($user){
-                
-            #Poner el usuario en la tabla de usuarios ya que esta verificado
-            $user->setUser();
+            $user->setData("verified", 1);    
 
-            #Borrar al usuario de la tabla de no verificados
-            $user->destroy();
+            $user->update();
+
+            #Borrar todos los emails que no son verificados
+            Usuarios::executeSQL("DELETE FROM usuarios WHERE email = '$user->email' AND verified = 0");
 
             session_start();
             $_SESSION["verification"] = true;

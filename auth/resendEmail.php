@@ -1,34 +1,33 @@
 <?php
 include "../includes/app.php";
 
-use MUO\NoVerifiedUser;
+use MUO\Usuarios;
 
-if(!isset($_POST["email"]) || !isset($_POST["eToken"])){
+if(!isset($_POST["eToken"])){
     header("location: /");
     die();
 }
 
-$email = $_POST["email"];
 $eToken = $_POST["eToken"];
 
 #Detectar si existe un usuario que se quiera verificar.
-$result = NoVerifiedUser::detectEmailToken($email, $eToken);
+$user = Usuarios::checkValidation($eToken);
 
-if(!$result){
+
+if(!$user){
     header("location: /");
     die();
 }
 
-$unVerifiedUser = new NoVerifiedUser($result);
-
 #Ver si el tiempo es adecuado para reenviar el email (Evitar el spam)
-$isTime = $unVerifiedUser->isTimeToResend();
+$isTime = $user->isTimeToResend();
+
 
 if($isTime){
 
    #Reenviar el email
-   $unVerifiedUser->resendEmail();
+   $user->resendEmail();
 }
 
-header("location: /pages/verificationEmail.php?email=".$email."&eToken=".$eToken);
+header("location: /pages/verificationEmail.php?eToken=".$eToken);
 ?>

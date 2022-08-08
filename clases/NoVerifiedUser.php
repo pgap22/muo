@@ -55,12 +55,13 @@ class NoVerifiedUser {
         $stmt->bind_param("ss", $email, $emailToken);
         $stmt->execute();
         $result = $stmt->get_result();
-        if($result->fetch_assoc()) return true;
+        $result = $result->fetch_assoc();
+        if($result) return self::createObjFromArray($result);
         return false;
     }
     
     public function saveUser(){
-        $query = "INSERT INTO noverifieduser(name, last_name, password, email, verifyToken, disponible_resend, emailToken) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO   (name, last_name, password, email, verifyToken, disponible_resend, emailToken) VALUES(?, ?, ?, ?, ?, ?, ?)";
         $stmt = Util::$db->prepare($query);
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
@@ -125,13 +126,12 @@ class NoVerifiedUser {
 
     public function isTimeToResend(){
         $now = Util::createDate();
-        $now = $now["obj"]->getTimestamp()-GMT_6;
+        $now = $now["obj"]->getTimestamp();
 
         $dateForResend = $this->disponible_resend;
-        $dateForResend = strtotime($dateForResend);
+        $dateForResend = strtotime($dateForResend)+GMT_6;
 
-        if($now > $dateForResend) return true;
-        return false;
+        return $now > $dateForResend;
     }
 
     public function resendEmail(){
