@@ -18,13 +18,44 @@ CREATE SCHEMA IF NOT EXISTS `muo-db` DEFAULT CHARACTER SET utf8 ;
 USE `muo-db` ;
 
 -- -----------------------------------------------------
+-- Table `muo-db`.`museos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`museos` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `muo-db`.`exposiciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`exposiciones` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `informacion` VARCHAR(45) NULL DEFAULT NULL,
+  `id_museos` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_museosId_idx` (`id_museos` ASC),
+  CONSTRAINT `fk_museosId`
+    FOREIGN KEY (`id_museos`)
+    REFERENCES `muo-db`.`museos` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `muo-db`.`roles`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `muo-db`.`roles` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre_rol` VARCHAR(45) NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre_rol` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -36,20 +67,65 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`usuarios` (
   `password` VARCHAR(60) NULL DEFAULT NULL,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `last_name` VARCHAR(45) NULL DEFAULT NULL,
-  `verifyToken` VARCHAR(45) NULL,
-  `disponible_resend` DATETIME NULL,
-  `emailToken` VARCHAR(16) NULL,
-  `id_rol` INT NOT NULL,
-  `verified` TINYINT(1) NULL,
+  `verifyToken` VARCHAR(45) NULL DEFAULT NULL,
+  `disponible_resend` DATETIME NULL DEFAULT NULL,
+  `emailToken` VARCHAR(16) NULL DEFAULT NULL,
+  `id_rol` INT(11) NOT NULL,
+  `verified` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_rol_idx` (`id_rol` ASC),
   CONSTRAINT `fk_rol`
     FOREIGN KEY (`id_rol`)
-    REFERENCES `muo-db`.`roles` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT)
+    REFERENCES `muo-db`.`roles` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 29
+AUTO_INCREMENT = 39
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `muo-db`.`comentarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`comentarios` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `contenido` VARCHAR(255) NULL DEFAULT NULL,
+  `id_exposicion` INT(11) NULL DEFAULT NULL,
+  `id_usuarios` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_exposicion_idx` (`id_exposicion` ASC),
+  INDEX `fk_usuario_idx` (`id_usuarios` ASC),
+  CONSTRAINT `fk_exposicion`
+    FOREIGN KEY (`id_exposicion`)
+    REFERENCES `muo-db`.`exposiciones` (`id`),
+  CONSTRAINT `fk_usuario`
+    FOREIGN KEY (`id_usuarios`)
+    REFERENCES `muo-db`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `muo-db`.`favoritosusuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`favoritosusuarios` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT(11) NULL DEFAULT NULL,
+  `id_exposicion` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_usuario_idx` (`id_usuario` ASC),
+  INDEX `fk_exposicion_idx` (`id_exposicion` ASC),
+  CONSTRAINT `fk_exposicion_id`
+    FOREIGN KEY (`id_exposicion`)
+    REFERENCES `muo-db`.`exposiciones` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_id`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `muo-db`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -71,82 +147,6 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`passwordcode` (
     REFERENCES `muo-db`.`usuarios` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `muo-db`.`museos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo-db`.`museos` (
-  `id` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NULL,
-  `descripcion` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `muo-db`.`exposiciones`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo-db`.`exposiciones` (
-  `id` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NULL,
-  `informacion` VARCHAR(45) NULL,
-  `id_museos` INT(11) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_museosId_idx` (`id_museos` ASC),
-  CONSTRAINT `fk_museosId`
-    FOREIGN KEY (`id_museos`)
-    REFERENCES `muo-db`.`museos` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `muo-db`.`comentarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo-db`.`comentarios` (
-  `id` INT(11) NOT NULL,
-  `contenido` VARCHAR(255) NULL,
-  `id_exposicion` INT(11) NULL,
-  `id_usuarios` INT(11) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_exposicion_idx` (`id_exposicion` ASC),
-  INDEX `fk_usuario_idx` (`id_usuarios` ASC),
-  CONSTRAINT `fk_exposicion`
-    FOREIGN KEY (`id_exposicion`)
-    REFERENCES `muo-db`.`exposiciones` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT,
-  CONSTRAINT `fk_usuario`
-    FOREIGN KEY (`id_usuarios`)
-    REFERENCES `muo-db`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `muo-db`.`favoritosUsuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo-db`.`favoritosUsuarios` (
-  `id` INT(11) NOT NULL,
-  `id_usuario` INT(11) NULL,
-  `id_exposicion` INT(11) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_usuario_idx` (`id_usuario` ASC),
-  INDEX `fk_exposicion_idx` (`id_exposicion` ASC),
-  CONSTRAINT `fk_usuario`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `muo-db`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_exposicion`
-    FOREIGN KEY (`id_exposicion`)
-    REFERENCES `muo-db`.`exposiciones` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
