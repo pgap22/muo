@@ -1,3 +1,8 @@
+<?php
+include "../includes/functions.php";
+session_start();
+protegerIndex();
+?>
 <!DOCTYPE html>
 <html lang="es">
 

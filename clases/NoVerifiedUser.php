@@ -63,7 +63,7 @@ class NoVerifiedUser {
     }
     
     public function saveUser(){
-        $query = "INSERT INTO noverifieduser(name, last_name, password, email, verifyToken, disponible_resend, emailToken) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO   (name, last_name, password, email, verifyToken, disponible_resend, emailToken) VALUES(?, ?, ?, ?, ?, ?, ?)";
         $stmt = Util::$db->prepare($query);
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
@@ -133,8 +133,7 @@ class NoVerifiedUser {
         $dateForResend = $this->disponible_resend;
         $dateForResend = strtotime($dateForResend)+GMT_6;
 
-        if($now > $dateForResend) return true;
-        return false;
+        return $now > $dateForResend;
     }
 
     public function resendEmail(){

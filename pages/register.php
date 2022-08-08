@@ -1,52 +1,53 @@
 <?php
 
     use MUO\NoVerifiedUser;
-
+    use MUO\Usuarios;
+    
     include "../includes/app.php";
     
 
     $error = [];
     $newUser = [];
-    #Crea un token
+
+    #Crea un token para tener guardada una sesion
     $emailToken = bin2hex(openssl_random_pseudo_bytes(8));
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         #Recoleccion de datos ingresados por el usuario 
-        $newUser["name"] = $_POST["new_name"];
-        $newUser["last_name"] = $_POST["new_last-name"];
-        $newUser["email"] = $_POST["new_email"];
-        $newUser["password"] = $_POST["new_password"];
-        $newUser["confirm-password"] = $_POST["confirm_password"];
-        $newUser["emailToken"] = $emailToken;
+        $newUser["name"] = htmlentities($_POST["new_name"]);
+        $newUser["last_name"] = htmlentities($_POST["new_last-name"]);
+        $newUser["email"] = htmlentities($_POST["new_email"]);
+        $newUser["password"] = htmlentities($_POST["new_password"]);
+        $newUser["confirmPassword"] = htmlentities($_POST["confirm_password"]);
+        $newUser["emailToken"] = htmlentities($emailToken);
 
 
         #Crear el objeto de Usuario no verificado 
-        $unVerifiedUser = new NoVerifiedUser($newUser);
-        
-        #Checkar si el email del Usuario no verificado ya esta usuado
-        $unVerifiedUser->getDuplicateEmail();
+        $user = new Usuarios($newUser);
 
- 
-        #Detectar si hay errores al validar las informacion del usuario no verificado
-        $unVerifiedUser->validateNewUser();
+        #Detectar si el email ya esta en uso
+        $user->checkDuplicateEmail();
 
-        #Si hay errores guardarlos en un arreglo
-        $error = NoVerifiedUser::$errors;
+        #Validar lo que el usuario digito
+        $user->validateRegister();
+
+        #Detectar errores
+        $error = Usuarios::getErrors();
 
         if(!$error){
-            #Si no hay errores guardamos el usuario en una tabla de usuarios no verificados (Verificados por su email)
-            $unVerifiedUser->saveUser();
+            #Guardamos al usuario en la base de datos
+            $user->save();
 
-            #Enviamos la verificacion por correo
-            $unVerifiedUser->sendVerification();
-            header("location: /pages/verificationEmail.php?email=".$unVerifiedUser->email . "&eToken=". $unVerifiedUser->emailToken);
+            #Enviamos por correo la verificacion de cuenta
+            $user->sendVerification();
+
+            header("location: /pages/verificationEmail.php?eToken=". $user->emailToken);
         }
-        
-       
     }
 
-  
+
+
 ?>
     
 <!DOCTYPE html>
@@ -142,7 +143,7 @@
                 </div>
                 <div class="form__input form__input--one-column">
                     <label for="confirm_password" id="contrasena2">Confirmar contraseña</label>
-                    <input type="password" class="form__confirm <?= getColorError($error, "password")?> " id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required value="<?=restoreFormData($newUser, "confirm-password")?>">
+                    <input type="password" class="form__confirm <?= getColorError($error, "password")?> " id="confirm_password" name="confirm_password"  placeholder="Confirma tu contraseña" required value="<?=restoreFormData($newUser, "confirmPassword")?>">
                 </div>
                 <div class="form__buttons">
                     <!-- <input type="submit" value="Registrate" class="form__submit">  -->

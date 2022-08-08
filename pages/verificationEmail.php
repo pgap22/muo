@@ -1,17 +1,16 @@
 <?php
 
     use MUO\NoVerifiedUser;
+use MUO\Usuarios;
 
     include "../includes/app.php";
 
-
-    $email = $_GET["email"];
     $eToken = $_GET["eToken"];
 
-    #Detectar si existe una peticion de creacion de usuario y verificacion de email
-    $result = NoVerifiedUser::detectEmailToken($email, $eToken);
+    #Detectar si existe un usuario que se quiera verificar.
+    $user = Usuarios::checkValidation($eToken);
 
-    if (!$result) {
+    if (!$user) {
         header("location: /error/errorVerification.php");
     }
 
@@ -63,8 +62,8 @@
                     Verifica tu correo electronico
                 </h1>
                 <div class="verification__email">
-                    <p><?= $email ?></p>
-                </div>
+                    <p><?= $user->email ?></p>
+                    </div>
                 <p class="verification__wrong-mail"> <span id="wrong-email">Si has escrito mal tu correo has</span> <a class="underline" href="/pages/register.php" id="link">click aqui</a> </p>
             </div>
             <div class="verification__img">
@@ -78,7 +77,7 @@
                     <p class="verification__counterdown">0:00</p>
                     <p class="verification__timer-error" id="next-send">Proximo reenvio</p>
                 </div>
-                <!-- <a href="/auth/resendEmail.php?email=<?= $email ?>&eToken=<?= $eToken ?>" class="verification__button">
+                <!-- <a href="/auth/resendEmail.php?email=<?= $user->email ?>&eToken=<?= $eToken ?>" class="verification__button">
                         <span class="verification__button-text">Reenviar</span>
                         <span class="verification__decoration"></span>
                     </a> -->
@@ -92,13 +91,13 @@
                         </button>
 
                         <input type="text" hidden id="eToken" name="eToken" value="<?= $eToken ?>">
-                        <input type="text" hidden id="email" name="email" value="<?= $email ?>">
+                        <input type="text" hidden id="email" name="email" value="<?= $user->email ?>">
                     </form>
                 </div>
 
                 <p id="no-recive">¿No recibiste nuestro correo electrónico?</p>
                 <!-- <input type="text" hidden id="eToken" value="<?= $eToken ?>">
-                <input type="text" hidden id="email" value="<?= $email ?>"> -->
+                <input type="text" hidden id="email" value="<?= $user->email ?>"> -->
             </div>
 
         </div>

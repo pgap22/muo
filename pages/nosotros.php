@@ -18,14 +18,14 @@
     <link rel="preload" href="../css/general/general.css" as="style">
     <link rel="stylesheet" href="../css/general/general.css">
 
-    <!--General Styles for responsive Header-->
-    <link rel="preload" href="../css/header-footer/mobile.css" as="style">
-    <link rel="preload" href="../css/header-footer/tablet.css" as="style">
-    <link rel="preload" href="../css/header-footer/desktop.css" as="style">
+    <!--General Styles for responsive footer-->
+    <link rel="preload" href="../css/footer/mobile.css" as="style">
+    <link rel="preload" href="../css/footer/desktop.css" as="style">
 
-    <link rel="stylesheet" href="../css/header-footer/mobile.css" media="(max-width: 741px)">
-    <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
-    <link rel="stylesheet" href="../css/header-footer/desktop.css" media="(min-width: 1024px)">
+    <link rel="stylesheet" href="../css/footer/mobile/style.css" media="(max-width: 741px)">
+    <link rel="stylesheet" href="../css/footer/desktop/style.css" media="(min-width: 742px)">
+
+
 
     <!--About us Styles -->
     <link rel="preload" href="../css/nosotros/mobile/style.css" as="style">
@@ -39,7 +39,10 @@
 
 
 
-<?php  include "../includes/templates/header.php" ?>
+<?php 
+include "../includes/functions.php";
+showHeader();
+?>
 
 
     <main class="main">

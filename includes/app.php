@@ -1,5 +1,6 @@
 <?php
 
+use MUO\ActiveRecord;
 use MUO\NoVerifiedUser;
 use MUO\User;
 use MUO\Util;
@@ -15,6 +16,6 @@ function autoload($clase){
 spl_autoload_register("autoload");
 
 
-Util::setDB($databases);
+ActiveRecord::setDB($databases);
 
 ?>

@@ -1,19 +1,15 @@
 <?php 
 header("Access-Control-Allow-Origin: *");
+ 
+use MUO\Usuarios;
 
-include "../includes/db.php";
+include "../includes/app.php";
 
-if(isset($_GET["emailToken"]) & isset($_GET["email"])){
+if(isset($_GET["emailToken"])){
+
     $eToken = $_GET["emailToken"];
-    $email = $_GET["email"];
-    $query = "SELECT disponible_resend FROM noverifieduser WHERE email = ? AND emailToken = ?";
-    
-    $stmt = mysqli_prepare($db, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $email, $eToken);
-    mysqli_stmt_execute($stmt);
 
-    $result = mysqli_stmt_get_result($stmt);
-    $result = mysqli_fetch_assoc($result);
+    $result = Usuarios::checkValidation($eToken);
 
     echo json_encode($result);
 }

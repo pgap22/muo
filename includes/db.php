@@ -1,6 +1,6 @@
 <?php  
 
-$db = mysqli_connect("localhost", "root", "root", "muo-beta");
+$db = mysqli_connect("localhost", "root", "root", "muo-db");
 
 if(!$db){
     echo "no se conecto";
@@ -9,7 +9,8 @@ if(!$db){
 
 //POO DB
 
-$databases = new mysqli("localhost", "root", "root", "muo-beta");
+$databases = new mysqli("localhost", "root", "root", "muo-db");
+
 
 
 ?>
