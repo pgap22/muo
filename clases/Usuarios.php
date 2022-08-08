@@ -125,6 +125,47 @@ class Usuarios extends ActiveRecord{
 
         $this->sendVerification();
     }
+    
+
+    //LOGIN
+
+    public static function getUserByEmail($email){
+        
+        $user = Usuarios::where("email", $email);
+
+        if($user) return $user;
+
+        self::$errors["login"] = 'Tu email o contraseña no son validos !';
+        self::$errors["code"] = 10;
+    }
+
+    public function validateLogin($passwordUser){
+        //Ya tenemos el correo hoy falta verificar la contraseñe
+        $passwordHash = $this->password;
+
+        $isCorrect = password_verify($passwordUser, $passwordHash);
+
+        if($isCorrect) return true;
+
+        self::$errors["login"] = 'Tu email o contraseña no son validos !';
+        self::$errors["code"] = 10;
+
+    }
+
+    public function startSession(){
+        session_start();
+        $_SESSION["user_id"] = $this->id;
+        header("location: /home");
+    }
+
+    //Recover Password
+    public static function validatePassword($password){
+        if($password == ""){
+            self::$errors["recover-password"]  = "Tu contraseña no puede estar vacia";
+            self::$errors["code"] = 17;
+        }
+    }
+
 
 }
 ?>

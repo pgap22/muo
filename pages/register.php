@@ -5,6 +5,7 @@
     
     include "../includes/app.php";
     
+    protegerIndex();
 
     $error = [];
     $newUser = [];
@@ -31,6 +32,9 @@
 
         #Validar lo que el usuario digito
         $user->validateRegister();
+
+        #Hashear la contraseña
+        $user->setData("password", password_hash($user->password, PASSWORD_DEFAULT));
 
         #Detectar errores
         $error = Usuarios::getErrors();

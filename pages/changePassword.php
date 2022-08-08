@@ -16,7 +16,7 @@ $passToken = $_GET["token"];
 $code = Passwordcode::convert_GET_InCode();
 
 #Verificar si la peticion de resetear contraseña existe
-$currentPasswordCode = Passwordcode::getRequestByPassToken($passToken);
+$currentPasswordCode = Passwordcode::where("passToken",$passToken );
 
 if(!$currentPasswordCode){
     header("location: /pages/recoverPassword.php");
@@ -25,20 +25,21 @@ if(!$currentPasswordCode){
 
 if(isset($_GET["form-submited"])){
 
-
-        $isVerify = Passwordcode::verifyCode($code, $passToken);
+  
+    $isVerify = Passwordcode::validate($code, $passToken);
         
-        if($isVerify){
-            
-            if($currentPasswordCode->isTimeAvailable()){
-                $currentPasswordCode->setVerified();
 
-                header("location: /pages/setNewPassword.php?token=".$passToken);
-            }
-           
-        }    
-
+    if($isVerify){
+        //Checa si esta expirado
+        $currentPasswordCode->isExpired();
+    }    
+    
     $error = Passwordcode::getErrors();
+
+    if(!$error){
+        $currentPasswordCode->verify();
+        header("location: /pages/setNewPassword.php?token=".$currentPasswordCode->passToken);
+    }
 }
 
 ?>

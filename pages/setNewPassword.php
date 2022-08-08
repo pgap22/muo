@@ -1,7 +1,9 @@
 <?php
 
+use MUO\ActiveRecord;
 use MUO\Passwordcode;
 use MUO\User;
+use MUO\Usuarios;
 use MUO\Util;
 
 include "../includes/app.php";
@@ -10,42 +12,57 @@ include "../includes/app.php";
 $error = [];
 
 if(!isset($_GET["token"])){
-    header("location: /pages/recoverPassword.php");
+    header("location: /error/errorPassCode.php");
     die();
 }
 
-$token = $_GET["token"];
-
+$passToken = $_GET["token"];
 
 #Verificar si la peticion de resetear contraseña existe
-$currentPasswordCode = Passwordcode::getRequestByPassToken($token);
+$currentPasswordCode = Passwordcode::where("passToken",$passToken);
 
 if(!$currentPasswordCode || $currentPasswordCode->verified == 0){
-    header("location: /pages/recoverPassword.php");
+    header("location: /error/errorPassCode.php");
     die();
 }
+
 
 if(isset($_GET["renew-password"])){
 
-
+    #Obtener datos de entrada
     $password = $_GET["renew-password"];
-  
-    User::validatePassword($password);
-    $error = User::getErrors();
+
+    #Validamos contraseña
+    Usuarios::validatePassword($password);
+
+    #Detectamos errores
+    $error = Usuarios::getErrors();
 
     if(!$error){
-        $user = User::getUserById($currentPasswordCode->user_id);
-        $user->setNewPassword($password);
-        $currentPasswordCode->destroyAllUserRequest();
-        
+        #Obtengo el id del usuario por el registro de la request de cambiar contraseña
+        $userID = $currentPasswordCode->getData("user_id");
+
+        #Encuentro el usuario que debo modificar su contraseña
+        $user = Usuarios::find($userID);
+
+        #Hashear contraseña
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        #Cambio la contraseña
+        $user->setData("password", $password);
+
+        #Actualizo el objeto
+        $user->update();
+
+
+        #Borrar todos los request del usuario porque no se van a ocupar
+        ActiveRecord::executeSQL("DELETE FROM passwordcode WHERE user_id = $userID");
+     
         session_start();
         $_SESSION["verification"] = true;
         header("location: /pages/renewPassComplete.php");
     }
-    
-
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -113,7 +130,7 @@ if(isset($_GET["renew-password"])){
                         <span class="verification__button-text" id="btn">Enviar</span>
                         <span class="verification__decoration"></span> 
                 </button>
-                <input type="hidden" value="<?=$token?>" name="token">
+                <input type="hidden" value="<?=$passToken?>" name="token">
             </form>
           
         </div>

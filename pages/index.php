@@ -1,6 +1,7 @@
 <?php
 include "../includes/functions.php";
-session_start();
+// session_start();
+// $_SESSION["user_id"] = 1;
 protegerIndex();
 ?>
 <!DOCTYPE html>
@@ -25,14 +26,9 @@ protegerIndex();
     <link rel="preload" href="../css/general/general.css" as="style">
     <link rel="stylesheet" href="../css/general/general.css">
 
-    <!--General Styles for responsive Header-->
-    <link rel="preload" href="../css/header-footer/mobile.css" as="style">
-    <link rel="preload" href="../css/header-footer/tablet.css" as="style">
-    <link rel="preload" href="../css/header-footer/desktop.css" as="style">
-
-    <link rel="stylesheet" href="../css/header-footer/mobile.css" media="(max-width: 741px)">
-    <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
-    <link rel="stylesheet" href="../css/header-footer/desktop.css" media="(min-width: 1024px)">
+    <!-- Footer -->
+    <link rel="stylesheet" href="../css/footer/mobile/style.css" media='(max-width: 741px)'>
+    <link rel="stylesheet" href="../css/footer/desktop/style.css" media='(min-width: 742px)'>
 
     <!--Home Style-->
     <link rel="preload" href="../css/home/mobile/style.css" as="style">
@@ -289,6 +285,7 @@ protegerIndex();
     
 
     <script src="../js/app.js"></script>
+    <script src="../js/general.js" type="module"></script>
 
     <!--Termine el home :D-->
     <!--ola-->
