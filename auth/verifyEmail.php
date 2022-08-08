@@ -16,7 +16,7 @@
         if($user){
             $user->setData("verified", 1);    
 
-            $user->update();
+            $user->save();
 
             #Borrar todos los emails que no son verificados
             Usuarios::executeSQL("DELETE FROM usuarios WHERE email = '$user->email' AND verified = 0");

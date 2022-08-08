@@ -52,7 +52,7 @@ if(isset($_GET["renew-password"])){
         $user->setData("password", $password);
 
         #Actualizo el objeto
-        $user->update();
+        $user->save();
 
 
         #Borrar todos los request del usuario porque no se van a ocupar
