@@ -62,7 +62,7 @@ class ActiveRecord {
         $reg = self::getSqlValue(self::sanitize($reg));
 
         //Crear query
-        $query = "SELECT * FROM " . static::$table ." WHERE $column = $reg"; 
+        $query = "SELECT * FROM " . static::$table ." WHERE $column = $reg "; 
 
         //Detectar si hay limites añadirlos al query
         $query.= (!$limit) ? "" : " LIMIT $limit";
@@ -226,7 +226,9 @@ class ActiveRecord {
 
     public static function executeSQL($query){
 
-        $result = self::$db->query($query);
+        $stmt= self::$db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         return $result;
         
@@ -246,6 +248,10 @@ class ActiveRecord {
 
     public static function fetchResultSQL($result){
         return $result->fetch_assoc();
+    }
+
+    public function getData($property){
+        return $this->$property;
     }
 }
 

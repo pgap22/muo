@@ -1,0 +1,20 @@
+@import url("../tablet/style.css");
+
+.header__img{
+    width: 160px;
+}
+.header__search-ico{
+    width: 30px;
+}
+.header__input-search{
+    width: 100%;
+}
+.header__search-bar{
+    justify-self: center;
+    max-width: 80rem;
+    width: 75%;
+    justify-content: start;
+}
+.header__user-data{
+    font-size: 18px;
+}

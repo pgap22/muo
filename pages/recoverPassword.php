@@ -1,7 +1,9 @@
 <?php
 
+use MUO\ActiveRecord;
 use MUO\Passwordcode;
-use MUO\User;
+use MUO\Usuarios;
+use MUO\Util;
 
 include "../includes/app.php";
 
@@ -16,27 +18,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     #Recolectar el email digitado por el usuario
     $email = $_POST["email-recover"];
 
-    #Validar si el email digitado existe en la BD (Por si esta registrado a la pagina)
-    $user = Passwordcode::validateEmail($email);
-    
+    $user = Passwordcode::getUser($email);
+
     #Si la validacion da errores se guardan en un arreglo
     $errors = Passwordcode::getErrors();
     
-    if(!$errors){
-        #Recolectar Datos para instanciar el objeto
-        
-        $passCode["user_id"] = $user->id; //Este objeto solo necesita el user id para instanciarlo
 
-        #Si no hay errores se instancia un objeto para crear una peticion
-        $passCode = new Passwordcode($passCode);
-        
-        #Esa peticion se guarda en la base de datos
-        $passCode->saveRequest();
+    if(!$errors){
+        #Recolectar Datos para instanciar el objeto Password
+
+        $passCode["code"] = rand(10000, 99999);
+        $passCode["user_id"] = $user->getData("id");
+        $passCode["limit_time"] = Util::addTimeFromNow(900)->format("Y/m/d H:i:s");
+        $passCode["resend_code"] = Util::createDate()->format("Y/m/d H:i:s");
+        $passCode["passToken"] = Util::generateToken(8);
+        $passCode["verified"] = 0;
+
+        $passwordcode = new Passwordcode($passCode);
+
+        $passwordcode->save();
         
         #Se envia el codigo de para completar la peticion de cambio de contraseña
-        $passCode->sendCode();
+        $passwordcode->sendCode();
         
-        header("location: /pages/changePassword.php?token=$passCode->passToken");
+        header("location: /pages/changePassword.php?token=$passwordcode->passToken");
     }else{
         #Si hay errores en el arreglo se le da valor y si no existe ese determinado error se guardar falso por determinado
         $wrongEmail = $errors["wrongEmail"] ?? false;

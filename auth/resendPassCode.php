@@ -1,7 +1,8 @@
 <?php
 
 use MUO\Passwordcode;
-use MUO\User;
+use MUO\Usuarios;
+use MUO\Util;
 
 include "../includes/app.php";
 
@@ -12,17 +13,13 @@ if(!isset($_GET["token"])){
 $passToken = $_GET["token"];
 
 #Verificar si la peticion de resetear contraseña existe
-$currentPasswordCode = Passwordcode::getRequestByPassToken($passToken);
+$currentPasswordCode = Passwordcode::where("passToken",$passToken );
 
-#Obtener el user id de la peticion de PasswordCode
-$userId = $currentPasswordCode->getUserId();
+
 
 #Obtener datos del usuario atraves del id
-$user = User::getUserById($userId);
-
-#Detectar si se el tiempo es el adecuado para reenviar el codigo
-$isTimeResend = $currentPasswordCode->isTimeResend();
-
+$userId = $currentPasswordCode->getData("user_id");
+$user = Usuarios::find($userId);
 
 if(!$user){
     header("location: /pages/recoverPassword.php");
@@ -30,14 +27,25 @@ if(!$user){
 }
 
 
+#Detectar si se el tiempo es el adecuado para reenviar el codigo
+$isTimeResend = $currentPasswordCode->isResend();
+
+
 if($isTimeResend){
 
     #Cambia el tiempo para volver a enviar el codigo y para su expiracion
-    $currentPasswordCode->changeTimes();
+    $newResend = Util::addTimeFromNow(60)->format("Y/m/d H:i:s");
+    $newCode = rand(10000, 99999);
+    $newLimit = Util::addTimeFromNow(900)->format("Y/m/d H:i:s");
 
-    #Se cambia a un nuevo codigo
-    $currentPasswordCode->setNewCode();
-     
+    #Actualizamos el objeto
+    $currentPasswordCode->setData("resend_code", $newResend);
+    $currentPasswordCode->setData("limit_time", $newLimit);
+    $currentPasswordCode->setData("code", $newCode);
+
+    #Lo Actualizamos en la base de datos
+    $currentPasswordCode->update();
+
     #Se envia ese nuevo codigo
     $currentPasswordCode->sendCode();
   

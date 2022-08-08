@@ -30,4 +30,4 @@
             </div>
         </div>
     </footer>
-    <script src="../js/general.js" type="module"></script>
+   

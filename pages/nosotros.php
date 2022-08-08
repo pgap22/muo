@@ -18,10 +18,8 @@
     <link rel="preload" href="../css/general/general.css" as="style">
     <link rel="stylesheet" href="../css/general/general.css">
 
-    <!--General Styles for responsive footer-->
-    <link rel="preload" href="../css/footer/mobile.css" as="style">
-    <link rel="preload" href="../css/footer/desktop.css" as="style">
 
+    <!-- Footer  -->
     <link rel="stylesheet" href="../css/footer/mobile/style.css" media="(max-width: 741px)">
     <link rel="stylesheet" href="../css/footer/desktop/style.css" media="(min-width: 742px)">
 
@@ -36,7 +34,6 @@
 </head>
 
 <body data-page="nosotros">
-
 
 
 <?php 

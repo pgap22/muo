@@ -1,9 +1,13 @@
 <?php
 
 use MUO\User;
+use MUO\Usuarios;
 use MUO\Util;
 
 include "../includes/app.php";
+
+protegerIndex();
+
 
 $error = [];
 $error["code"] = [];
@@ -15,18 +19,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userLogin["email"] = $_POST["email_login"] ?? '';
     $userLogin["password"] = $_POST["password_login"] ?? '';
 
-    #Crear el Objeto de Login que maneja la logica de Autentificacion
-    $user = new User($userLogin);
+
+    #Buscar un usuario que tenga el mismo email
+    $user = Usuarios::getUserByEmail($userLogin["email"]);
     
-    #Validar la informacion del usuario y marca errores
-    $user->validate();
+
+    if($user){
+        #Validar la informacion del usuario y marca errores
+        $user->validateLogin($userLogin["password"]);
+    }
+
 
     #Detectar Errores marcados y los guarda en un arreglo que nos sirve para detectarlos en el frontend
-    $error = User::getErrors();
+    $error = Usuarios::getErrors();
 
     if(!$error){
-        #Obtener todos los datos de nuestro usuarios
-        $user = User::getUserByEmail($user->email);
+        #Si no hay errores significa que los datos son correctos
         $user->startSession();
     }
 }
@@ -96,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form__field">
                             <label for="password_login" id="contrasena">Contraseña</label>
                             <div class="form__password <?= getColorError($error, "login")?>">
-                                <input type="password" name="password_login" id="password_login" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
+                                <input type="password" name="password_login" id="password_login" placeholder="Ingresa tu contraseña" required autocomplete="current-password" value="<?= restoreFormData($userLogin, "password") ?>">
                                 <img src="../img/icons/eye-off.svg" width="30" alt="" id="password_see">
                             </div>
                         </div>
