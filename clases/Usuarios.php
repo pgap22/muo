@@ -106,8 +106,7 @@ class Usuarios extends ActiveRecord{
     }
 
     public function isTimeToResend(){
-        $now = Util::createDate();
-        $now = $now->getTimestamp();
+        $now = Util::createDate()->getTimestamp();
 
         $dateForResend = $this->disponible_resend;
         $dateForResend = strtotime($dateForResend)+GMT_6;
