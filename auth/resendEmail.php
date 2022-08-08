@@ -13,7 +13,6 @@ $eToken = $_POST["eToken"];
 #Detectar si existe un usuario que se quiera verificar.
 $user = Usuarios::checkValidation($eToken);
 
-
 if(!$user){
     header("location: /");
     die();
