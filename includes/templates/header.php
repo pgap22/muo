@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/header-footer/mobile.css" media="(max-width: 741px)">
     <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
     <link rel="stylesheet" href="../css/header-footer/desktop.css" media="(min-width: 1024px)">
-
+    <script src="../js/general.js" type="module" defer></script>
 <header class="header">
 
         <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
