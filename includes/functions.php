@@ -7,13 +7,7 @@ define("TIMEZONE_GMT6", (new DateTimeZone("GMT-6")));
 
 
 
-function checkToken($db, $query, $token){
-    $stmt = mysqli_prepare($db, $query);
-    mysqli_stmt_bind_param($stmt, "s", $token);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    return mysqli_fetch_assoc($result);
-}
+
 
 function debugear($e){
     echo '<pre>';
