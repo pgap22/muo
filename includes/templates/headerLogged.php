@@ -1,4 +1,8 @@
 
+<?php  
+use MUO\Usuarios;
+$user = Usuarios::find($_SESSION["user_id"]);
+?>
     <!-- Home Css -->
     <link rel="preload" href="../css/header-home/mobile/style.css" as="style">
     <link rel="stylesheet" href="../css/header-home/mobile/style.css" media="(max-width: 520px)">
@@ -27,19 +31,19 @@
 
             <div class="header__user">
                 <div class="header__user-data">
-                    <p class="header__user-name">Nombre</p>
-                    <p class="header__user-last-name">Apellido</p>
+                    <p class="header__user-name"><?= $user->name ?></p>
+                    <p class="header__user-last-name"><?= $user->last_name ?></p>
                 </div>
                 <img class="header__icon-user header__show" src="../img/icons/user.svg" alt="">
                 
-                <img class="header__dots-menu header__show" src="../img/icons/dots-menu.svg" alt="Kebab Menu">
+                <img class="header__dots-menu header__show disabled-tablet-home " src="../img/icons/dots-menu.svg" alt="Kebab Menu">
                 
                 <div class="header__black-screen "></div>
                 
                 <div class="header__options ocultar">                    
                     
 
-                    <div class="header__close-options header__show">
+                    <div class="header__close-options home-menu-toggle">
                         <img src="../img/icons/cancel.svg" alt="">
                     </div>
 
