@@ -1,6 +1,9 @@
 <?php
-include "../includes/functions.php";
+include "../includes/app.php";
+
+
 protegerHome();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,6 +17,10 @@ protegerHome();
     <title>MUO - PAGINA PRINCIPAL</title>
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
 
+    <!-- Home css -->
+    <link rel="stylesheet" href="../css/homePage/mobile/style.css" media="(max-width: 520px)">
+    <link rel="stylesheet" href="../css/homePage/tablet/style.css" media="(min-width: 521px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/homePage/desktop/style.css" media="(min-width: 1024px)">
 
     <!--Font-->
     <link rel="preload" href="../fonts/font.css" as="style">
@@ -22,6 +29,8 @@ protegerHome();
     <!--Custom Properties-->
     <link rel="preload" href="../css/general/general.css" as="style">
     <link rel="stylesheet" href="../css/general/general.css">
+
+
 
 </head>
 
@@ -37,131 +46,155 @@ protegerHome();
             
             <aside class="main__nav no-mobile">
                 <div class="main__nav-container">
-                    <div class="main__nav-icon">
-                        <img class="main__nav-img" src="../img/icons/feed.svg" alt="Feed icon">
+                    <div class="main__nav-icon main__selected-page">
+                        <img class="main__nav-img " src="../img/icons/feed.svg" alt="Feed icon">
+                        <p class="show-only-desktop">Feed</p>
                     </div>
                     <div class="main__nav-icon">
                         <img class="main__nav-img" src="../img/icons/favorite.svg" alt="Feed icon">
+                        <p class="show-only-desktop">Favoritos</p>
                     </div>
                     <div class="main__nav-icon">
                         <img class="main__nav-img" src="../img/icons/explore.svg" alt="Feed icon">
+                        <p class="show-only-desktop">Explorar</p>
                     </div>
-                    <div class="main__nav-icon">
+                    <div class="main__nav-icon menu__setting-show home-menu-toggle">
                         <img class="main__nav-img" src="../img/icons/more-options.svg" alt="Feed icon">
+                        <p class="show-only-desktop">Ajustes</p>
                     </div>
 
                 </div>
             </aside>
 
             
-            
-            
-            <div class="main__feed">
-                
+            <div class="main__feed-wrapper">
                 <h1 class="main__title">Bienvenido a MUO</h1>
+                <div class="main__feed">
+                    
+                    
+                    <div class="main__expo-container">
+                        <div class="main__expo-photo">
+                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
+                        </div>
+                        <div class="main__expo-description">
+                            <div class="main__expo-data">
+                                <h3 class="main__expo-title">Lorem Ipsum</h3>
+                                <div class="main__expo-interactions">
+                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
+                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
+                                </div>
+                        </div>
 
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
+                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
+                            
+                        </div>
                     </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
+
+                    
+                    
+                    <div class="main__expo-container">
+                        <div class="main__expo-photo">
+                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
+                        </div>
+                        <div class="main__expo-description">
+                            <div class="main__expo-data">
+                                <h3 class="main__expo-title">Lorem Ipsum</h3>
+                                <div class="main__expo-interactions">
+                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
+                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
+                                </div>
+                        </div>
+
+                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
+
+                    
+                    
+                    <div class="main__expo-container">
+                        <div class="main__expo-photo">
+                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
+                        </div>
+                        <div class="main__expo-description">
+                            <div class="main__expo-data">
+                                <h3 class="main__expo-title">Lorem Ipsum</h3>
+                                <div class="main__expo-interactions">
+                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
+                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
+                                </div>
+                        </div>
+
+                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
+                            
+                        </div>
                     </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
+
+                    
+                    
+                    <div class="main__expo-container">
+                        <div class="main__expo-photo">
+                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
+                        </div>
+                        <div class="main__expo-description">
+                            <div class="main__expo-data">
+                                <h3 class="main__expo-title">Lorem Ipsum</h3>
+                                <div class="main__expo-interactions">
+                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
+                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
+                                </div>
+                        </div>
+
+                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
+
+                    
+                    
+                    <div class="main__expo-container">
+                        <div class="main__expo-photo">
+                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
+                        </div>
+                        <div class="main__expo-description">
+                            <div class="main__expo-data">
+                                <h3 class="main__expo-title">Lorem Ipsum</h3>
+                                <div class="main__expo-interactions">
+                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
+                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
+                                </div>
+                        </div>
+
+                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
+                            
+                        </div>
                     </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
+
+                    
+                    
+                    <div class="main__expo-container">
+                        <div class="main__expo-photo">
+                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
+                        </div>
+                        <div class="main__expo-description">
+                            <div class="main__expo-data">
+                                <h3 class="main__expo-title">Lorem Ipsum</h3>
+                                <div class="main__expo-interactions">
+                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
+                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
+                                </div>
+                        </div>
+
+                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
-                    </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
-                    </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
-                    </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
-                    </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
-                    </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
-                    </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
-                    </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
-                    </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
-                    </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
-                    </div>
-                </div>
-                <div class="main__expo">
-                    <img class="main__expo-img" src="../museos/marte/monumento_revolucion/image.jpg" alt="Imagen Museo" >
-                    <div class="main__description">
-                        <h3 class="main__expo-title">Lorem Ipsum</h3>
-                        <p class="main__expo-description">Lorem ipsum dolor sit amet consectetur...</p>
-                    </div>
-                    <div class="main__intereaction">
-                        <img src="../img/icons/comment.svg" alt="Comment icon" class="main__comment main__img--small">
-                        <img src="../img/icons/fav.svg" alt="fav icon" class="main__fav main__img--small">
-                    </div>
-                </div>
 
 
+                </div>
             </div>
+            
+            
         </div>
     </main>
 

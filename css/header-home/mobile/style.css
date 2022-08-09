@@ -55,6 +55,8 @@
     padding: 1rem;
     gap: 20px;
     max-width: max-content;
+    background-color: var(--clr-negro);
+    color: var(--clr-blanco);
 }
 .header__link:hover{
     filter: invert(1);

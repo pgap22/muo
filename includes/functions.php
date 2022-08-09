@@ -1,11 +1,6 @@
 <?php
 
-require "PHPMailer/PHPMailer.php";
-require "PHPMailer/Exception.php";
-require "PHPMailer/SMTP.php";
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use MUO\Usuarios;
 
 define("GMT_6", 21600);
 define("TIMEZONE_GMT6", (new DateTimeZone("GMT-6")));
@@ -54,36 +49,6 @@ function restoreFormData($newUser,$data){
         return htmlspecialchars($newUser[$data]);
     }
     return "";
-}
-
-//Only if laragon email is not working or avaible
-function submitMail($mail, $title, $body){
-    $mail = new PHPMailer();
-    try {
-        $mail->SMTPDebug = 0;                      
-        $mail->isSMTP();                                            
-        $mail->Host       = 'smtp.office365.com';                     
-        $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'muo.website@outlook.com';                     
-        $mail->Password   = 'basededatoslevi098';                               
-        $mail->SMTPSecure = "tls";
-        $mail->Port       = 587;                                   
-        $mail->CharSet = 'UTF-8';
-        $mail->Encoding = 'base64';
-        //Recipients
-        $mail->setFrom('muo.website@outlook.com', 'MUO Website');
-        $mail->addAddress('gerardo.saz120@gmail.com', "MUO User");     
-    
-    
-        //Content
-        $mail->Subject = $title;
-        $mail->isHTML(true);                                  
-        $mail->Body = $body;
-    
-        $mail->send();
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
 }
 
 function sendMail($email,$mailMessage){
@@ -247,7 +212,9 @@ function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
         if(!isset($_SESSION["user_id"])){
             header("location: /pages");
         }
+    }
 
-
+    function getUser(){
+        $user = new Usuarios([]); //Testing
     }
 ?>

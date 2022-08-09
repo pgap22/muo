@@ -1,4 +1,6 @@
-<?php  include "../includes/functions.php" ?>
+<?php  
+include "../includes/app.php";
+?>
 <!DOCTYPE html>
 <html lang="es">
 

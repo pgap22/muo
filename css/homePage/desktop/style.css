@@ -1,42 +1,18 @@
-.main__container{
-    padding: 1rem;
-}
+@import url("../tablet/style.css");
 
-.main__title{
-    font-size: 25px;
-}
-
-.main__expo{
-    border: 4px solid var(--clr-blanco);
-    border-radius: 7px;
+.main__nav-icon{
     display: grid;
-    grid-template-columns: max-content 1fr max-content;
-    gap: 10px;
-    padding: 1rem;
+    grid-template-columns: .6fr 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+.main__expo-container{
+    max-width: 45rem;
+}
+.main__feed-wrapper{
+    margin-left: 17.3rem;
     align-items: flex-start;
 }
-.main__expo-img{
-    width: 80px;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 5px;
-}
-.main__expo-title{
-    font-size: 18px;
-}
-.main__intereaction{
-    /* border: 1px solid green; */
-    display: flex;
-    flex-direction: column;
-    /* justify-self: flex-end; */
-    gap: 25px;
-    height: 100%;
-    justify-content:center;
-}
-.main__img--small{
-    width: 25px;
-}
-.main__expo-description{
-    color: var(--clr-gris);
-    font-size: 12px;
+.show-only-desktop{
+    display: block;
 }

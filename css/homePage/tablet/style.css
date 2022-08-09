@@ -1,17 +1,116 @@
+
 .main__nav-container{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    border-right: 4px solid var(--clr-blanco);
     display: flex;
     flex-direction: column;
+    position: fixed;
+    left: 0;
+    background-color: var(--clr-negro);
+    gap: 5.5rem;
+    height: 100%;
+    /* display: none; */
+    /* max-width: 6rem; */
 }
+.main__nav-icon{
+    padding-block: 1rem;
+    padding: 1.5rem;
+    /* border: 1px solid red; */
 
+}
+.main__selected-page{
+    border-left: 4px solid var(--clr-naranjaCard);
+}
+.main__title{
+    margin-block: 1rem;
+}
+.main__feed-wrapper{
+    margin-left: 7.3rem;
+    padding: 0rem 4rem;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .main__nav-img{
     width: 60px;
     aspect-ratio: 1;
 }
 
+.main__nav-img{
+    width: 4rem;
+}
+
+
+.main__expo-container{
+    border: 2px solid var(--clr-blanco);
+    border-radius: 5px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 40rem;
+}
+.main__expo-photo{
+
+    align-self: center;
+}
+.main__expo-img{
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.main__expo-description{
+    display: flex;
+    flex-direction: column;
+}
+.main__expo-data{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+.main__expo-text{
+    color: var(--clr-gris);
+}
+.main__expo-interactions{
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.main__expo-icons{
+    width: 4rem;
+    align-self: center;
+    padding: .2rem;
+}
+.main__expo--comment-icon{
+    margin-top: 7px;
+}
+.main__feed{
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 5rem;
+}
+
+.header__options{
+    position: absolute;
+    left: 0;
+    width: min-content;
+}
+
+
+.header__user .ocultar{
+    transform: translateX(-100%);
+    transition: none 0s;
+}
+
 .no-tablet{
     display: none;
 }
-.disabled-tablet{
+.disabled-tablet, .disabled-tablet-home{
+    display: none;
+}
+.show-only-desktop{
     display: none;
 }

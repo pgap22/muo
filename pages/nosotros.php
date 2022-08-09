@@ -1,3 +1,6 @@
+<?php  
+include "../includes/app.php";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,7 +40,6 @@
 
 
 <?php 
-include "../includes/functions.php";
 showHeader();
 ?>
 
