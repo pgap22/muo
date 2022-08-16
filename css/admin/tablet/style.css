@@ -1,0 +1,16 @@
+@import url("../mobile/style.css");
+
+.main__wrapper{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 20px;
+}
+.tablet-grid-last{
+    grid-column: 1/3;
+}
+.main__question{
+    font-size: 18px;
+}
+.main__img-option{
+    width: 75px;
+}

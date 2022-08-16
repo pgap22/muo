@@ -1,0 +1,16 @@
+.main__museum-data{
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
+max-width: 150rem;
+}
+.main__icon-stats{
+    width: 8rem;
+}
+.main__counter{
+    font-size: 28px;
+}
+.main__text-stat{
+    font-size: 20px;
+}
+

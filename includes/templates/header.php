@@ -23,10 +23,10 @@
             <ul>
                 <li class="nav__btns--center">
                     <div class=" nav__btns">
-                        <a href="register.php" class="  nav__item--active ">
+                        <a href="/pages/register.php" class="  nav__item--active ">
                             <p class="nav__item--btn1" id="btn1">Registrate</p>
                         </a>
-                        <a href="login.php" class="  nav__item--active ">
+                        <a href="/pages/login.php" class="  nav__item--active ">
                             <p class="nav__item--btn2" id="btn2">Inicia Sesion</p>
                         </a>
                     </div>
@@ -42,7 +42,7 @@
                         </a>
                     </div>
                     <div class="nav__item">
-                        <a href="nosotros.php">
+                        <a href="/pages/nosotros.php">
                             <div class="item__icon">
                                 <img src="../img/icons/about.svg" alt="Icono Sobre Nosotros" title="Sobre Nosotros">
                                 <p id="nav2">Sobre Nosotros</p>
@@ -50,7 +50,7 @@
                         </a>
                     </div>
                     <div class="nav__item">
-                        <a href="museos.php">
+                        <a href="/pages/museos.php">
                             <div class="item__icon">
                                 <img src="../img/icons/museum.svg" alt="Icono Museos" title="Museos">
                                 <p id="nav3">Museos</p>

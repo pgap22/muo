@@ -1,3 +1,4 @@
+@import url("alert.css");
 :root{
     /*Colores*/
     --clr-blanco: hsl(0, 0%, 97%);
@@ -8,9 +9,12 @@
     --clr-grisCards: hsl(45, 6%, 13%);
     --clr-amarillo: hsl(43, 100%, 51%);
     --clr-naranja: hsl(37, 100%, 50%);
+    --clr-amarilloLight: #F7CA7D;
     --clr-naranjaCard: hsl(39, 94%, 53%);
     --clr-error: #f00000;
-    --clr-errorOscuro: hsl(0, 100%, 42%);
+    --clr-errorOscuro: #d60000;
+    --clr-verde: #08FF6B;
+    --clr-rojo: #FF0202;
     /*Anchura De la Fuente*/
     --fw-regular: 400;
     --fw-black: 900;
@@ -106,6 +110,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.none{
+    display: none;
+}
 
 /*
 Preloader
@@ -185,4 +192,26 @@ Preloader
 }
 .quit-padding-up{
     padding: 0 5rem;
+}
+
+
+.undrag{
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.errorBorder{
+    border-color: hsl(0, 100%, 47%)!important;
+}
+.errorMessage{
+    display: none;
+    font-size: 1.2rem;
+    color: hsl(0, 100%, 42%);
+}
+.error{
+    display: block;
 }
