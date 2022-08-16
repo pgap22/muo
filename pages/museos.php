@@ -1,5 +1,10 @@
 <?php  
 include "../includes/app.php";
+session_start();
+if(isset($_SESSION["user_id"])){
+    $userID = $_SESSION["user_id"];
+    protegerUserPage($userID);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

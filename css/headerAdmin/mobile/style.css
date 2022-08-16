@@ -1,0 +1,24 @@
+.header{
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+.header__container{
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--clr-blanco);
+}
+.header__logo{
+    max-width: 120px;
+}
+.header__logout{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.header__logout-text{
+    font-size: 14px;
+    color: var(--clr-errorOscuro);
+    font-weight: bold;
+}

@@ -18,14 +18,47 @@ CREATE SCHEMA IF NOT EXISTS `muo-db` DEFAULT CHARACTER SET utf8 ;
 USE `muo-db` ;
 
 -- -----------------------------------------------------
+-- Table `muo-db`.`categorias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`categorias` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 40
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `muo-db`.`categoriaeng`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`categoriaeng` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `id_categoria` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_categoriaEn_idx` (`id_categoria` ASC),
+  CONSTRAINT `fk_categoriaEn`
+    FOREIGN KEY (`id_categoria`)
+    REFERENCES `muo-db`.`categorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 30
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `muo-db`.`museos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `muo-db`.`museos` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `titulo` VARCHAR(45) NULL DEFAULT NULL,
+  `nombre` VARCHAR(155) NULL DEFAULT NULL,
   `descripcion` VARCHAR(255) NULL DEFAULT NULL,
+  `imagen` VARCHAR(120) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 49
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -34,27 +67,23 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `muo-db`.`exposiciones` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `titulo` VARCHAR(45) NULL DEFAULT NULL,
-  `descripcion` VARCHAR(255) NULL DEFAULT NULL,
+  `nombre` VARCHAR(120) NULL DEFAULT NULL,
+  `informacion` VARCHAR(255) NULL DEFAULT NULL,
   `id_museos` INT(11) NULL DEFAULT NULL,
+  `id_categorias` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_museosId_idx` (`id_museos` ASC),
+  INDEX `fk_categoriaId_idx` (`id_categorias` ASC),
+  CONSTRAINT `fk_categoriaId`
+    FOREIGN KEY (`id_categorias`)
+    REFERENCES `muo-db`.`categorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_museosId`
     FOREIGN KEY (`id_museos`)
     REFERENCES `muo-db`.`museos` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `muo-db`.`roles`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo-db`.`roles` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre_rol` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 32
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -70,15 +99,11 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`usuarios` (
   `verifyToken` VARCHAR(45) NULL DEFAULT NULL,
   `disponible_resend` DATETIME NULL DEFAULT NULL,
   `emailToken` VARCHAR(16) NULL DEFAULT NULL,
-  `id_rol` INT(11) NOT NULL,
+  `isAdmin` TINYINT(1) NOT NULL,
   `verified` TINYINT(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_rol_idx` (`id_rol` ASC),
-  CONSTRAINT `fk_rol`
-    FOREIGN KEY (`id_rol`)
-    REFERENCES `muo-db`.`roles` (`id`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 41
+AUTO_INCREMENT = 45
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -102,6 +127,26 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`comentarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `muo-db`.`exposeng`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`exposeng` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `informacion` VARCHAR(255) NULL DEFAULT NULL,
+  `nombre` VARCHAR(120) NULL DEFAULT NULL,
+  `id_expo` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_expoID_idx` (`id_expo` ASC),
+  CONSTRAINT `fk_expoID`
+    FOREIGN KEY (`id_expo`)
+    REFERENCES `muo-db`.`exposiciones` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 30
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -130,6 +175,44 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `muo-db`.`imagenesexpo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`imagenesexpo` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `rutaImagen` VARCHAR(120) NULL DEFAULT NULL,
+  `id_exposicion` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_expoImg_id_idx` (`id_exposicion` ASC),
+  CONSTRAINT `fk_expoImg_id`
+    FOREIGN KEY (`id_exposicion`)
+    REFERENCES `muo-db`.`exposiciones` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 18
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `muo-db`.`museoseng`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `muo-db`.`museoseng` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(255) NULL DEFAULT NULL,
+  `id_museo` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_museo_ID_idx` (`id_museo` ASC),
+  CONSTRAINT `fk_museo_ID`
+    FOREIGN KEY (`id_museo`)
+    REFERENCES `muo-db`.`museos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 34
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `muo-db`.`passwordcode`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `muo-db`.`passwordcode` (
@@ -146,44 +229,7 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`passwordcode` (
     FOREIGN KEY (`user_id`)
     REFERENCES `muo-db`.`usuarios` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `muo-db`.`infoExpoENG`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo-db`.`infoExpoENG` (
-  `id` INT(11) NOT NULL,
-  `descripcion` VARCHAR(255) NULL,
-  `title` VARCHAR(45) NULL,
-  `id_expo` INT(11) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_expoID_idx` (`id_expo` ASC),
-  CONSTRAINT `fk_expoID`
-    FOREIGN KEY (`id_expo`)
-    REFERENCES `muo-db`.`exposiciones` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `muo-db`.`infoMuseosENG`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `muo-db`.`infoMuseosENG` (
-  `id` INT(11) NOT NULL,
-  `titulo` VARCHAR(45) NULL,
-  `descripcion` VARCHAR(255) NULL,
-  `id_museo` INT(11) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_museo_ID_idx` (`id_museo` ASC),
-  CONSTRAINT `fk_museo_ID`
-    FOREIGN KEY (`id_museo`)
-    REFERENCES `muo-db`.`museos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

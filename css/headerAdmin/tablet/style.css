@@ -1,0 +1,12 @@
+@import url("../mobile/style.css");
+
+.header__logout-text{
+    font-size: 20px;
+}
+.header__logo{
+    max-width: 150px;
+}
+
+.header__logout-img{
+    width: 50px;
+}

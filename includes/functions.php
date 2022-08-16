@@ -15,6 +15,49 @@ function debugear($e){
     echo '</pre>';
 }
 
+function restoreSelectItem($arr, $data, $id){
+    if(!isset($arr[$data])) return '';
+    
+    if($arr[$data] == $id){
+        return "main__items--selected";
+    }
+}
+
+function sendAlert($alert, $message, $title, $type){
+    if($alert == "pop"){
+        return sendAlertPop($message, $title);
+        
+    }
+    else if($alert == "simple"){
+        return sendSimpleAlert($message, $type);
+    }
+}
+
+function sendAlertPop($message, $title){
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    if(isset($_SESSION["alert"])){
+        unset($_SESSION["alert"]);
+    }
+    return "<div class='pop-up-alert' data-message='$message' data-title='$title'></div>";
+    
+}
+
+function sendSimpleAlert($message, $type){
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    if(isset($_SESSION["alert"])){
+        unset($_SESSION["alert"]);
+    }
+    return "<div class='simple-alert' data-type='$type' data-message='$message'> </div>";
+    
+}
+
+
 function sendMessage($message, $bool, $id_translate){
     if($bool){
         return "<p class='notification__message' id=$id_translate>${message}</p>";
@@ -206,9 +249,29 @@ function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
         if(!isset($_SESSION["user_id"])){
             header("location: /pages");
         }
+        else{
+            $userID = $_SESSION["user_id"];
+            $user = Usuarios::find($userID);
+            if($user->isAdmin){
+                header("location: /admin");
+            }
+        }
     }
 
-    function getUser(){
-        $user = new Usuarios([]); //Testing
+    function protegerAdmin($id){
+        $user = Usuarios::find($id);
+
+        if(!$user->isAdmin){
+            header("location: /");
+        }
     }
-?>
+
+    function protegerUserPage($id){
+        $user = Usuarios::find($id);
+        debugear($user);
+        die();
+        if($user->isAdmin){
+            header("location: /admin");
+        }
+    }
+    ?>

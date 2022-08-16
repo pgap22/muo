@@ -4,7 +4,7 @@ namespace MUO;
 
 class Usuarios extends ActiveRecord{
     protected static $table = 'usuarios';
-    protected static $dbColumn = ['id', 'email', 'password', 'name', 'last_name', 'verifyToken', 'disponible_resend', 'emailToken', 'id_rol', 'verified'];
+    protected static $dbColumn = ['id', 'email', 'password', 'name', 'last_name', 'verifyToken', 'disponible_resend', 'emailToken', 'isAdmin', 'verified'];
 
     protected $id;
     public $email;
@@ -14,7 +14,7 @@ class Usuarios extends ActiveRecord{
     public $verifyToken;
     public $disponible_resend;
     public $emailToken;
-    public $id_rol;
+    public $isAdmin;
     public $verified;
     public $confirmPassword;
 
@@ -29,7 +29,7 @@ class Usuarios extends ActiveRecord{
         $this->verifyToken = $arr['verifyToken'] ?? Util::generateToken(16); 
         $this->disponible_resend = $arr['disponible_resend'] ?? Util::createDate()->format("Y/m/d H:i:s"); 
         $this->emailToken = $arr['emailToken'] ?? Util::generateToken(8); 
-        $this->id_rol = $arr['id_rol'] ?? 1; 
+        $this->isAdmin = $arr['isAdmin'] ?? 0; 
         $this->verified = $arr['verified'] ?? 0;
     }
 

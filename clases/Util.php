@@ -20,6 +20,13 @@ class Util{
     }
 
 
+    public static function is_in_array($data, $arr2){
+        #Detectar si la data existe en un arreglo
+        foreach ($arr2 as $dataCheck) {
+            if($data == $dataCheck) return true;
+        }
+        return false;
+    }
 
 }
 

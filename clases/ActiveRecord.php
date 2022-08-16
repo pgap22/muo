@@ -14,12 +14,15 @@ class ActiveRecord {
     }
 
     public static function find($id){
-        
+        //Verificar si es un numero valido
+        if(!is_numeric($id)) return false;
+
         //Crear el query dependiendo de la tabla del objeto hijo
         $query = 'SELECT * FROM '. static::$table . " WHERE id = $id";
         
         //Preparar la declaracion de la consulta
         $stmt = self::$db->prepare($query);
+
 
         //Ejecutar el query
         $stmt->execute();

@@ -1,0 +1,86 @@
+.main__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+.main__top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__museum-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__museum-general{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__go-back{
+    font-size: 16px;
+    text-decoration: underline;
+}
+.main__image{
+    width: clamp(25rem, 10vw, 30rem);
+    border: 10px;
+}
+.main__icon-stats{
+    width: 4rem;
+}
+.main__counter{
+    font-size: 24px;
+}
+
+.main__stats-container{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    gap: 5rem;
+}
+.main__stat{
+    border-radius: 8px;
+    background-color: var(--clr-naranjaCard);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    gap: 20px;
+}
+
+.main__comments-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+.main__comment-title{
+    align-self: center;
+}
+.main__user-icon{
+    filter: invert(1);
+    width: 6rem;
+}
+.main__user-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.main__name{
+    font-size: 14px;
+    font-weight: bold;
+}
+.main__user{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+.main__comment-list{
+    display: flex;
+    flex-direction: column;
+}
+.main__comment{
+    padding-block: 3rem;
+    border-bottom: 1px solid var(--clr-naranja);
+}

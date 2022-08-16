@@ -10,7 +10,7 @@ require "functions.php";
 
 function autoload($clase){
     $clase = explode("\\", $clase);
-    include   '../clases/' . $clase[1]. ".php";
+    require  $_SERVER["DOCUMENT_ROOT"] . '/clases/' . $clase[1]. ".php";
 }
 
 spl_autoload_register("autoload");
