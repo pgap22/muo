@@ -23,8 +23,8 @@ class MuseosEn extends ActiveRecord{
             static::$errors["code"] = 24;
         }
 
-        else if(strlen($this->descripcion) > 255){
-            static::$errors["descripcion"] = "La descripcion es muy extensa !";
+        else if(strlen($this->descripcion) > 500){
+            static::$errors["descripcion"] = "La descripcion es muy extensa ! Max 500";
             static::$errors["code"] = 25;
         }
         
