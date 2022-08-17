@@ -131,7 +131,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             #Crear directorio
             $carpetaExpo = "../../../expoImg";
             if(!is_dir($carpetaExpo)){
-                echo $carpetaExpo;
                 mkdir($carpetaExpo);
             }
 
@@ -149,10 +148,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             #Crearndo Objeto
             $imageExpo = new Imagenesexpo($img);
-            
-
-            #Crear ruta del archivo
-            mkdir(dirname($rutaArchivo));
+        
 
             #Obtener la imagen desde los temporales
             move_uploaded_file($foto["tmp_name"], $rutaArchivo);
@@ -166,7 +162,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         #Obtener que imagenes se borraron y borrarlas
         foreach ($expoImagenes as $i => $img) {
-            if (isset($imagenesViejas[$i])) {
+            
+            #Verificar si no existe la imagen pero en la bd si, y esi es asi borrarla
+
+            if(!Util::is_in_array($img->getNameFile(), $imagenesViejas)){
                 #Ruta de la imagen
                 $rutaImagen = "../../.." . $img->rutaImagen;
 
@@ -181,15 +180,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         }
 
-        #Guardar los registros
-        $exposicion->save();
-        $exposicionEN->save();
-        
-        #Alerta
-        $_SESSION["alert"]["type"] = "success";
-        $_SESSION["alert"]["message"] = "Exposicion editada con exito";
-        $_SESSION["alert"]["alert"] = "simple";
-        header("location: /admin/items/expo");
+        #Verificar si hay alamenos una imagen
+        if(!Imagenesexpo::where("id_exposicion", $exposicion->id, 0)){
+            $error["imagen"] = "Debes agregar al menos una imagen !";
+            $error["code"] = 32;
+        }
+
+
+        #Si no hay errores guardar
+        if(!$error){
+            #Guardar los registros
+            $exposicion->save();
+            $exposicionEN->save();
+            
+            #Alerta
+            $_SESSION["alert"]["type"] = "success";
+            $_SESSION["alert"]["message"] = "Exposicion editada con exito";
+            $_SESSION["alert"]["alert"] = "simple";
+            header("location: /admin/items/expo");
+        }
 
     }
 }

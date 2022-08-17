@@ -27,8 +27,8 @@ class Museos extends ActiveRecord{
             static::$errors["descripcion"] = "La descripcion no puede estar vacia !";
             static::$errors["code"] = 24;
         }
-        else if(strlen($this->descripcion) > 255){
-            static::$errors["descripcion"] = "La descripcion es muy extensa ! Max 255";
+        else if(strlen($this->descripcion) > 500){
+            static::$errors["descripcion"] = "La descripcion es muy extensa ! Max 500";
             static::$errors["code"] = 25;
         }
         else if(strlen($this->nombre) > 155){
