@@ -27,9 +27,16 @@ $exposicion = Exposiciones::find($id);
 
 
 if(!$exposicion){
-    $_SESSION["alert"]["message"] = "No se encontro el item!";
-    $_SESSION["alert"]["type"] = "warning";
-    $_SESSION["alert"]["alert"] = "simple";
+    
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "No se encontro el item!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }else{
+        $_SESSION["alert"]["message"] = "Item was not found!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/expo");
     die();
 }
@@ -61,15 +68,29 @@ Exposeng::where("id_expo", $exposicion->id)->delete();
 #Borrar la exposicion
 $exposicion->delete();
 
-$_SESSION["alert"]["message"] = "La exposicion ha sido borrada exitosamente!";
-$_SESSION["alert"]["type"] = "success";
-$_SESSION["alert"]["alert"] = "simple";
+if($_SESSION["lang"] == "es"){
+    $_SESSION["alert"]["message"] = "La exposicion ha sido borrada exitosamente!";
+    $_SESSION["alert"]["type"] = "success";
+    $_SESSION["alert"]["alert"] = "simple";
+}
+else{
+    $_SESSION["alert"]["message"] = "The exhibition has been deleted successfully!";
+    $_SESSION["alert"]["type"] = "success";
+    $_SESSION["alert"]["alert"] = "simple";
+}
 header("location: /admin/items/expo");
 
 } catch (\Throwable $th) { 
-    $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
-    $_SESSION["alert"]["type"] = "error";
-    $_SESSION["alert"]["alert"] = "simple";
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
+        $_SESSION["alert"]["type"] = "error";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    else{
+        $_SESSION["alert"]["message"] = "There was a mistake, try to erase something else to try to eliminate this item!";
+        $_SESSION["alert"]["type"] = "error";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/expo");
 }
 

@@ -20,20 +20,20 @@ class Exposeng extends ActiveRecord{
 
     public function validate(){
         if(!$this->nombre){
-            static::$errors["nombre"] = "El nombre no puede estar vacio!";
-            static::$errors["code"] = 23;
+            self::$errors["nombre"] = "El nombre no puede estar vacio!";
+            self::$errors["code"] = 23;
         }
         else if(strlen($this->nombre) > 155){
-            static::$errors["nombre"] = "El nombre es muy largo ! Max 120";
-            static::$errors["code"] = 26;
+            self::$errors["nombre"] = "El nombre es muy largo ! Max 120";
+            self::$errors["code"] = 26;
         }
         else if(!$this->informacion){
-            static::$errors["informacion"] = "La informacion no puede estar vacia !";
-            static::$errors["code"] = 24;
+            self::$errors["informacion"] = "La informacion no puede estar vacia !";
+            self::$errors["code"] = 24;
         }
-        else if(strlen($this->informacion) > 255){
-            static::$errors["informacion"] = "La informacion es muy extensa ! Max 255";
-            static::$errors["code"] = 25;
+        else if(strlen($this->informacion) > 550){
+            self::$errors["informacion"] = "La informacion es muy extensa ! Max 550";
+            self::$errors["code"] = 25;
         }
     }
 }

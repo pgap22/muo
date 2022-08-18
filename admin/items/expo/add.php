@@ -1,5 +1,6 @@
 <?php
 
+use MUO\CategoriaEng;
 use MUO\Museos;
 use MUO\Categorias;
 use MUO\Exposeng;
@@ -60,93 +61,107 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $exposicion->validate();
     $error = Exposiciones::getErrors();
 
-    
-    #Segunda validacion (Ingles)
-    $exposicionEN->validate();
-    $errorEN = Exposeng::getErrors();
 
-    
 
-    #Ver si no existe ninguna imagen
-    if(!$imagenes){
-        $error["imagen"] = "Debes agregar al menos una imagen !";
-        $error["code"] = 32;
-    }
 
-    #Validar todas las imagenes
-    foreach($imagenes as $foto){
-        if($foto["type"] != "image/jpeg" && $foto["type"] != "image/png" && $foto["type"] != "image/gif"){
-            $error["imagen"] = "El archivo debe ser una imagen";
-            $error["code"] = 29;
+
+    if (!$error) {
+        #Segunda validacion (Ingles)
+        $exposicionEN->validate();
+        $errorEN = Exposeng::getErrors();
+
+        if (!$errorEN) {
+
+            #Ver si no existe ninguna imagen
+            if (!$imagenes) {
+                $error["imagen"] = "Debes agregar al menos una imagen !";
+                $error["code"] = 28;
+            } else {
+                #Validar todas las imagenes
+                foreach ($imagenes as $foto) {
+                    if ($foto["type"] != "image/jpeg" && $foto["type"] != "image/png" && $foto["type"] != "image/gif") {
+                        $error["imagen"] = "El archivo debe ser una imagen";
+                        $error["code"] = 29;
+                    } else if ($foto["size"] > 2 * 1000 * 1000) {
+                        $error["imagen"] = "El archivo debe ser menor a 2MB";
+                        $error["code"] = 30;
+                    }
+                }
+            }
         }
-        else if($foto["size"] > 2 * 1000 * 1000){
-            $error["imagen"] = "El archivo debe ser menor a 2MB";
-            $error["code"] = 30;
+        
+        
+        if(!$error && !$errorEN){
+            #Guardar datos
+            $exposicion->save();
+            
+            #Identificar exposicion id
+            $id = Exposiciones::where("nombre", $exposicion->nombre)->getData("id");
+            
+            #Determinar la exposicion id
+            $exposicionEN->setData("id_expo", $id);
+            
+            #Guardar registro
+            $exposicionEN->save();
+            
+            #Guardar imagenes
+            foreach($imagenes as $foto){
+                
+                #Crear directorio
+                $carpetaExpo = "../../../expoImg";
+                if(!is_dir($carpetaExpo)){
+                    echo $carpetaExpo;
+                    mkdir($carpetaExpo);
+                }
+                
+                $nombreArchivo = md5(uniqid()) . ".jpg";
+                
+                #Definir ruta del archivo de la imagen
+                $rutaArchivo = $carpetaExpo . "/" . $nombreArchivo;
+                
+                #Guardar ruta de la imagen para la base de datos
+                $imagenDb = "/expoImg/" . $nombreArchivo;
+                
+                #Crear arreglo para la instancia
+                $img["rutaImagen"] = $imagenDb;
+                $img["id_exposicion"] = $id;
+                
+                #Crearndo Objeto
+                $imageExpo = new Imagenesexpo($img);
+                
+                
+                #Crear ruta del archivo
+                mkdir(dirname($rutaArchivo));
+                
+                #Obtener la imagen desde los temporales
+                move_uploaded_file($foto["tmp_name"], $rutaArchivo);
+                
+                
+                #Guardar en la BD
+                $imageExpo->save();
+                
+                //Termina el proceso de la imagen
+            }
+
+            
+            if($_SESSION["lang"] == "es"){
+                $_SESSION["alert"]["message"] = "Exposicion guardada con exito";
+                $_SESSION["alert"]["type"] = "success";
+                $_SESSION["alert"]["alert"] = "simple";
+            }else{
+                $_SESSION["alert"]["message"] = "Exhibition saved with success";
+                $_SESSION["alert"]["type"] = "success";
+                $_SESSION["alert"]["alert"] = "simple";
+            }
+            header("location: /admin/items/expo");
+            
         }
-    }
-
-    if(!$error && !$errorEN){
-        #Guardar datos
-        $exposicion->save();
-
-        #Identificar exposicion id
-        $id = Exposiciones::where("nombre", $exposicion->nombre)->getData("id");
-
-        #Determinar la exposicion id
-        $exposicionEN->setData("id_expo", $id);
-
-        #Guardar registro
-        $exposicionEN->save();
-
-        #Guardar imagenes
-        foreach($imagenes as $foto){
-
-             #Crear directorio
-             $carpetaExpo = "../../../expoImg";
-             if(!is_dir($carpetaExpo)){
-                 echo $carpetaExpo;
-                 mkdir($carpetaExpo);
-             }
-
-             $nombreArchivo = md5(uniqid()) . ".jpg";
-
-             #Definir ruta del archivo de la imagen
-             $rutaArchivo = $carpetaExpo . "/" . $nombreArchivo;
-             
-             #Guardar ruta de la imagen para la base de datos
-             $imagenDb = "/expoImg/" . $nombreArchivo;
-             
-             #Crear arreglo para la instancia
-             $img["rutaImagen"] = $imagenDb;
-             $img["id_exposicion"] = $id;
-
-             #Crearndo Objeto
-             $imageExpo = new Imagenesexpo($img);
-             
-
-             #Crear ruta del archivo
-             mkdir(dirname($rutaArchivo));
-
-             #Obtener la imagen desde los temporales
-             move_uploaded_file($foto["tmp_name"], $rutaArchivo);
-
-
-             #Guardar en la BD
-             $imageExpo->save();
-             
-             //Termina el proceso de la imagen
-        }
-
-        $_SESSION["alert"]["type"] = "success";
-        $_SESSION["alert"]["message"] = "Exposicion guardada con exito";
-        $_SESSION["alert"]["alert"] = "simple";
-        header("location: /admin/items/expo");
+        
         
     }
-
-
+    debugear($errorEN);
 }
-
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -173,43 +188,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="/css/adminEdit/tablet/style.css" media="(min-width: 630px) and (max-width: 1023px)">
 </head>
 
-<body>
+<body data-page="admin-add-expo">
     <?php include "../../../includes/templates/headerAdmin.php" ?>
     <main class="main">
         <div class="main__wrapper">
-            <h1 class="main__title">Crear Exposicion</h1>
+            <h1 class="main__title" id="title">Crear Exposicion</h1>
 
 
             <form action="add.php" method="POST" class="main__data-container" enctype="multipart/form-data">
                 <div class="main__data">
                     <div class="main__data-wrapper">
-                        <h3 class="main__data-title">Datos en español</h3>
+                        <h3 class="main__data-title" id="data-esp">Datos en español</h3>
 
                         <div class="main__input-field">
-                            <label class="main__label" for="nombre">Nombre de la exposicion</label>
+                            <label class="main__label" for="nombre" id="name-expo">Nombre de la exposicion</label>
                             <?php 
                             getError($error, "nombre");
                             ?> 
-                            <input type="text" class="main__input <?= getColorError($error, "nombre")?>" id="nombre" name="nombre" placeholder="Nombre del museo" value="<?=restoreFormData($expo, "nombre")?>"> 
+                            <input type="text" class="main__input <?= getColorError($error, "nombre")?>" id="nombre" name="nombre" placeholder="Nombre de la exposicion" value="<?=restoreFormData($expo, "nombre")?>"> 
                         </div>
 
                         <div class="main__input-textarea">
-                            <label for="descripcion">Informacion de la exposicion</label>
+                            <label for="descripcion" id="info-expo">Informacion de la exposicion</label>
                             <?php 
                             getError($error, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Descripcion del museo"><?=restoreFormData($expo, "informacion")?></textarea>
+                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Informacion de la exposicion"><?=restoreFormData($expo, "informacion")?></textarea>
                         </div>
 
                         <div class="main__input-field">
-                            <label for="id_museo">Museo</label>
+                            <label for="id_museo" id="expo-museo">Museo</label>
                             <?php 
                             getError($error, "id_museos");
                             ?>
                             <div class="main__select select-museum <?= getColorError($error, "id_museos")?>">
                                 <div class="main__selected-item">
                                     <div class="main__selected-text">
-                                        <p class="main__placeholder-selected placeholder-museum">Selecciona un museo</p>
+                                        <p class="main__placeholder-selected placeholder-museum" id="choose-museo">Selecciona un museo</p>
                                         <p class="main__selected-museum main__selected--primary"></p>
                                     </div>
                                     <img class="main__expand" src="/img/icons/expand_more.svg" alt="">
@@ -228,14 +243,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
 
                         <div class="main__input-field">
-                            <label for="id_category">Categoria</label>
+                            <label for="id_category" id="expo-categoria">Categoria</label>
                             <?php 
                             getError($error, "id_categorias");
                             ?>
                             <div class="main__select select-category <?= getColorError($error, "id_categorias")?>">
                                 <div class="main__selected-item">
                                     <div class="main__selected-text">
-                                        <p class="main__placeholder-selected placeholder-category">Selecciona una categoria</p>
+                                        <p class="main__placeholder-selected placeholder-category" id="choose-categoria">Selecciona una categoria</p>
                                         <p class="main__selected-category main__selected--primary"></p>
                                     </div>
                                     <img class="main__expand" src="/img/icons/expand_more.svg" alt="">
@@ -246,7 +261,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                                 <?php foreach($categorias as $categoria){ ?>
                                     <div class="main__items category-items <?=restoreSelectItem($expo, "id_categorias", $categoria->id)?>" id="<?= $categoria->id?>">
-                                        <p><?=$categoria->nombre?></p>
+                                        <p><?=($_SESSION["lang"] == 'es') ? $categoria->nombre : CategoriaEng::where("id_categoria", $categoria->id)->nombre ?></p>
                                     </div>
                                 <?php } ?>
 
@@ -254,10 +269,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </div>
                         </div>
 
-                        <h3 class="main__data-title">Datos en Ingles</h3>
+                        <h3 class="main__data-title" id="data-eng">Datos en Ingles</h3>
 
                         <div class="main__input-field">
-                            <label class="main__label" for="nombre-en">Nombre de la exposicion</label>
+                            <label class="main__label" for="nombre-en" id="name-expo-en">Nombre de la exposicion</label>
                             <?php 
                             getError($errorEN, "nombre");
                             ?>
@@ -265,15 +280,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
 
                         <div class="main__input-textarea">
-                            <label for="descripcion-en">Informacion de la exposicion</label>
+                            <label for="descripcion-en" id="info-expo-en">Informacion de la exposicion</label>
                             <?php 
                             getError($errorEN, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Descripcion del museo"><?=restoreFormData($expoEN, "informacion")?></textarea>
+                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Informacion de la exposicion"><?=restoreFormData($expoEN, "informacion")?></textarea>
                         </div>
 
                         <div class="main__input-field main__img-container ">
-                            <p>Imagenes</p>
+                            <p id="expo-images">Imagenes</p>
                             <?php  
                             getError($error, "imagen");
                             ?>
@@ -311,13 +326,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <span class="verification__button-text" id="btn-send">Enviar</span>
                         <span class="verification__decoration"></span>
                     </button>
-                    <a href="./index.php" class="main__go-back">Volver</a>
+                    <a href="./index.php" class="main__go-back" id="volver">Volver</a>
                 </div>
             </form>
         </div>
         </div>
     </main>
     <!-- js -->
+    <script src="/js/lang.js" type="module"></script>
     <script src="/js/select.js"></script>
     <script src="/js/imgColumnAdd.js"></script>
     <script src="/js/inputError.js"></script>

@@ -26,9 +26,15 @@ $id = $_GET["id"];
 $categoria = Categorias::find($id);
 
 if(!$categoria){
-    $_SESSION["alert"]["message"] = "No se encontro el item!";
-    $_SESSION["alert"]["type"] = "warning";
-    $_SESSION["alert"]["alert"] = "simple";
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "No se encontro el item!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }else{
+        $_SESSION["alert"]["message"] = "Item was not found!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/categorias");
     die();
 }
@@ -76,9 +82,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $categoriaENG->save();
             
             #Enviando Alerta
-            $_SESSION["alert"]["type"] = "success";
-            $_SESSION["alert"]["message"] = "Categoria editada con exito";
-            $_SESSION["alert"]["alert"] = "simple";
+
+            if($_SESSION["lang"] == "es"){
+                $_SESSION["alert"]["type"] = "success";
+                $_SESSION["alert"]["message"] = "Categoria editada con exito";
+                $_SESSION["alert"]["alert"] = "simple";
+            }
+            else{
+                $_SESSION["alert"]["type"] = "success";
+                $_SESSION["alert"]["message"] = "Category edited with success";
+                $_SESSION["alert"]["alert"] = "simple";
+            }
             header("location: /admin/items/categorias");
         }
    
@@ -113,19 +127,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script defer src="/js/inputError.js"></script>
 </head>
 
-<body>
+<body data-page="admin-add-categoria">
     <?php include "../../../includes/templates/headerAdmin.php" ?>
     <main class="main">
         <div class="main__wrapper">
-            <h1 class="main__title">Editar Categoria</h1>
+            <h1 class="main__title" id="edit">Editar Categoria</h1>
 
 
             <form action="edit.php?id=<?=$id?>" method="POST" class="main__data-container">
                 <div class="main__data">
                     <div class="main__data-wrapper">
-                        <h3 class="main__data-title">Datos en español</h3>
+                        <h3 class="main__data-title" id="data-esp">Datos en español</h3>
                         <div class="main__input-field">
-                            <label class="main__label" for="name_categoria">Nombre de la categoria</label>
+                            <label class="main__label" for="name_categoria" id="name-category">Nombre de la categoria</label>
 
                             <?php 
                             getError($error, "categoria");
@@ -138,11 +152,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 <div class="main__data">
                     <div class="main__data-wrapper">
-                        <h3 class="main__data-title">Datos en Ingles</h3>
+                        <h3 class="main__data-title" id="dato-eng">Datos en Ingles</h3>
                   
 
                         <div class="main__input-field">
-                            <label class="main__label" for="name_categoria">Nombre de la categoria</label>
+                            <label class="main__label" for="name_categoria" id="name-category">Nombre de la categoria</label>
                             <?php 
                             getError($errorEN, "categoria");
                             ?>
@@ -153,16 +167,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 <div class="main__submit main__one-row main__third-column">
                     <button type="submit" class="verification__button verification__button--submit">
-                        <span class="verification__button-text" id="btn-send">Editar</span>
+                        <span class="verification__button-text" id="btn-edit">Editar</span>
                         <span class="verification__decoration"></span>
                     </button>
-                    <a href="./index.php" class="main__go-back">Volver</a>
+                    <a href="./index.php" class="main__go-back" id="volver">Volver</a>
                 </div>
             </form>
         </div>
         </div>
     </main>
-    
+    <script src="/js/lang.js" type="module"></script>
 </body>
-
 </html>

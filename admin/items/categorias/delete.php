@@ -26,9 +26,15 @@ $id = $_GET["id"];
 $categoria = Categorias::find($id);
 
 if(!$categoria){
-    $_SESSION["alert"]["message"] = "No se encontro el item!";
-    $_SESSION["alert"]["type"] = "warning";
-    $_SESSION["alert"]["alert"] = "simple";
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "No se encontro el item!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }else{
+        $_SESSION["alert"]["message"] = "Item was not found!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/categorias");
     die();
 }
@@ -41,15 +47,30 @@ try {
     #Eliminar la categoria en español
     $categoria->delete();
 
-    $_SESSION["alert"]["message"] = "La categoria ha sido borrada exitosamente!";
-    $_SESSION["alert"]["type"] = "success";
-    $_SESSION["alert"]["alert"] = "simple";
+
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "La categoria ha sido borrada exitosamente!";
+        $_SESSION["alert"]["type"] = "success";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    else{
+        $_SESSION["alert"]["message"] = "The category has been deleted successfully!";
+        $_SESSION["alert"]["type"] = "success";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/categorias");
 
 } catch (\Throwable $th) {
-    $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
-    $_SESSION["alert"]["type"] = "error";
-    $_SESSION["alert"]["alert"] = "simple";
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
+        $_SESSION["alert"]["type"] = "error";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    else{
+        $_SESSION["alert"]["message"] = "There was a mistake, try to erase something else to try to eliminate this item!";
+        $_SESSION["alert"]["type"] = "error";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/categorias");
 }
 ?>

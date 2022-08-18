@@ -39,7 +39,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $error["code"] = 28;
     }
     else if($archivo["type"] != "image/jpeg" && $archivo["type"] != "image/png" && $archivo["type"] != "image/gif"){
-        echo $archivo["type"];
         $error["imagen"] = "El archivo debe ser una imagen";
         $error["code"] = 29;
     }
@@ -106,14 +105,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
            
 
-            $_SESSION["alert"]["type"] = "success";
-            $_SESSION["alert"]["message"] = "Museo guardada con exito";
-            $_SESSION["alert"]["alert"] = "simple";
+            if($_SESSION["lang"] == "es"){
+                $_SESSION["alert"]["type"] = "success";
+                $_SESSION["alert"]["message"] = "Museo guardado con exito";
+                $_SESSION["alert"]["alert"] = "simple";
+            }else{
+                $_SESSION["alert"]["type"] = "success";
+                $_SESSION["alert"]["message"] = "Museum saved with success";
+                $_SESSION["alert"]["alert"] = "simple";
+            }
             header("location: /admin/items/museos");
         }
     }
 }
-debugear($error);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,19 +149,19 @@ debugear($error);
     <script defer src="/js/inputError.js"></script>
 </head>
 
-<body>
+<body data-page="admin-edit-museo">
     <?php include "../../../includes/templates/headerAdmin.php" ?>
     <main class="main">
         <div class="main__wrapper">
-            <h1 class="main__title">Crear Museo</h1>
+            <h1 class="main__title" id="title">Crear Museo</h1>
 
 
             <form action="" method="POST" class="main__data-container" enctype="multipart/form-data">
                 <div class="main__data">
                     <div class="main__data-wrapper">
-                        <h3 class="main__data-title">Datos en español</h3>
+                        <h3 class="main__data-title" id="datos">Datos en español</h3>
                         <div class="main__input-field">
-                            <label class="main__label" for="nombre">Nombre del museo</label>
+                            <label class="main__label" for="nombre" id="nombre-museo">Nombre del museo</label>
                             <?php  
                             getError($error, "nombre");
                             ?>
@@ -163,7 +169,7 @@ debugear($error);
                         </div>
 
                         <div class="main__input-textarea">
-                            <label for="descripcion">Descripcion del museo</label>
+                            <label for="descripcion" id="descripcion-museo">Descripcion del museo</label>
                             
                             <?php  
                             getError($error, "descripcion");
@@ -176,9 +182,9 @@ debugear($error);
 
                 <div class="main__data">
                    <div class="main__data-wrapper">
-                        <h3 class="main__data-title">Datos en ingles</h3>
+                        <h3 class="main__data-title" id="dato-ingles">Datos en ingles</h3>
                             <div class="main__input-textarea">
-                                <label for="descripcion-en">Descripcion del museo (ingles)</label>
+                                <label for="descripcion-en" id="descripcion-ingles">Descripcion del museo (ingles)</label>
                                 <?php  
                                 getError($errorEN, "descripcion");
                                 ?>
@@ -188,7 +194,7 @@ debugear($error);
                 </div>
 
                 <div class="main__data main__data--center">
-                    <h3 class="main__data-title main__data-title--center">Colocar Imagen</h3>
+                    <h3 class="main__data-title main__data-title--center" id="imagen">Colocar Imagen</h3>
                     <?php  
                     getError($error, "imagen");
                     ?>
@@ -196,9 +202,9 @@ debugear($error);
                     <label for="new_img" class="main__drag-zone img-upload <?= getColorError($error, "imagen") ?>">
                         <img class="main__preview-img" src="" id="preview-img">
                         <div class="main__drag-text">
-                                <p>Arrastra la imagen</p>
-                                <p>o</p>
-                                <p>haz click</p>
+                                <p id="p-1">Arrastra la imagen</p>
+                                <p id="p-2">o</p>
+                                <p id="p-3">haz click</p>
                         </div>
                     </label>
                     <input type="file" hidden name="new_img" id="new_img">
@@ -209,13 +215,12 @@ debugear($error);
                         <span class="verification__button-text" id="btn-send">Enviar</span>
                         <span class="verification__decoration"></span>
                     </button>
-                    <a href="./index.php" class="main__go-back">Volver</a>
+                    <a href="./index.php" class="main__go-back" id="volver">Volver</a>
                 </div>
             </form>
         </div>
         </div>
     </main>
-    
+    <script src="/js/lang.js" type="module"></script>
 </body>
-
 </html>

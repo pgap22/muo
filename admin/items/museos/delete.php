@@ -48,14 +48,30 @@ try {
     $museo->delete();
 
 
-    $_SESSION["alert"]["message"] = "El museo ha sido borrado exitosamente!";
-    $_SESSION["alert"]["type"] = "success";
-    $_SESSION["alert"]["alert"] = "simple";
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "El museo ha sido borrado exitosamente !";
+        $_SESSION["alert"]["type"] = "success";
+        $_SESSION["alert"]["alert"] = "simple";
+    }else{
+        $_SESSION["alert"]["message"] = "The museum has been deleted successfully !";
+        $_SESSION["alert"]["type"] = "success";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+
     header("location: /admin/items/museos");
 } catch (\Throwable $th) {
-    $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
-    $_SESSION["alert"]["type"] = "error";
-    $_SESSION["alert"]["alert"] = "simple";
+
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
+        $_SESSION["alert"]["type"] = "error";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    else{
+        $_SESSION["alert"]["message"] = "There was a mistake, try to erase something else to try to eliminate this item!";
+        $_SESSION["alert"]["type"] = "error";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+
     header("location: /admin/items/museos");
 }
 

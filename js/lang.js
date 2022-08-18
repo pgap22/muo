@@ -102,7 +102,14 @@ else{
 
 
 
-
+function placeHolderTranslate(lang_array, pageTranslate, placeholder){
+    if(document.querySelector("body").dataset.page == pageTranslate){
+        let inputPlaceholder = Object.keys(lang_array[placeholder]);
+        inputPlaceholder.forEach(e =>{
+            document.getElementById(e).placeholder = lang_array[placeholder][e];
+        })
+    }
+}
 
 function exceptionTranslate(lang_array, pageTranslate) {
     let exceptWords = Object.keys(lang_array[pageTranslate]);
@@ -123,6 +130,11 @@ async function translatePage(langArray, page, langID) {
     });
 
     exceptionTranslate(langArray, 'general');
+    
+    placeHolderTranslate(langArray, 'admin-edit-museo', 'admin-edit-museo-placeholder');
+    placeHolderTranslate(langArray, 'admin-add-categoria', 'admin-add-categoria-placeholder');
+    placeHolderTranslate(langArray, 'admin-add-expo', 'admin-add-expo-placeholder');
+
     // console.log(document.location.origin+"/api/changeLanguage.php?lang=" + sessionStorage.getItem("lang"));
     await fetch(document.location.origin+"/api/changeLanguage.php?lang=" + langID);
 

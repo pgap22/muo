@@ -1,8 +1,4 @@
 let item =  document.querySelector("body").dataset.item;
-let itemOne = item.slice(0,item.length-1);
-if(itemOne == "exp"){
-    itemOne = "exposicion";
-}
 
 document.querySelectorAll(".delete-btn").forEach(deleteBtn =>{
     deleteBtn.addEventListener("click", ()=>{
@@ -14,10 +10,20 @@ document.querySelectorAll(".delete-btn").forEach(deleteBtn =>{
     
 
         if(item == "museos"){
-            alerta.innerHTML = alertAction("error", "deleteItem()", "Este/a "+itemOne+" se eliminara con todas sus exposiciones y no se podran recuperar ","Desea borrar este/a "+itemOne+" ?","Borrar");
+            if(sessionStorage.getItem("lang") == "es"){
+                alerta.innerHTML = alertAction("error", "deleteItem()", "Este item se eliminara con todas sus exposiciones y no se podran recuperar ","Desea borrar este item ?","Borrar");
+            }
+            else{
+                alerta.innerHTML = alertAction("error", "deleteItem()", "This item will be eliminated with all its exhibitions and cannot be recovered","Would you like to delete this item ?","Delete", "Close");
+            }
         }
         else{
-            alerta.innerHTML = alertAction("error", "deleteItem()", "Este/a "+itemOne+" se eliminara y no se puede recuperar ","Desea borrar este/a "+itemOne+" ?","Borrar");
+            if(sessionStorage.getItem("lang") == "es"){
+                alerta.innerHTML = alertAction("error", "deleteItem()", "Este item se eliminara y no se puede recuperar ","Desea borrar este item ?","Borrar");
+            }
+            else{
+                alerta.innerHTML = alertAction("error", "deleteItem()", "This item will be eliminated and cannot be recovered","Would you like to delete this item ?","Delete", "Close"); 
+            }
         }
         readAlertEvent();
     
