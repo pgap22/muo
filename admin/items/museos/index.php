@@ -1,6 +1,7 @@
 <?php
 
 use MUO\Museos;
+use MUO\MuseosEn;
 
 include "../../../includes/app.php";
 session_start();
@@ -46,7 +47,7 @@ if(!$museos){
 
 </head>
 
-<body data-page="" data-item="museos">
+<body data-page="admin-museo" data-item="museos" data-api="museos">
     <?php include "../../../includes/templates/headerAdmin.php" ?>
 
     <?= sendAlert($alert, $msg, $title, $type) ?>
@@ -55,11 +56,11 @@ if(!$museos){
         <main class="main">
             <div class="main__container">
                 <div class="main__top">
-                    <h1 class="main__title">
+                    <h1 class="main__title" id="title">
                         Museos
                     </h1>
 
-                    <a href="/" class="main__go-back">
+                    <a href="/" class="main__go-back" id="volver">
                         Volver
                     </a>
                 </div>
@@ -67,7 +68,7 @@ if(!$museos){
                 <div class="main__items">
                     <a href="/admin/items/museos/add.php" class="main__add">
                         <img src="/img/icons/add.svg" alt="Add icon" class="main__add-icon">
-                        <p class="main__add-text">Agregar Museo</p>
+                        <p class="main__add-text" id="add">Agregar Museo</p>
                     </a>
                 </div>
                 <div class="main__table-wrapper">
@@ -77,23 +78,23 @@ if(!$museos){
                                 <p class="main__th">ID</p>
                             </th>
                             <th class="main__table-th">
-                                <p class="main__th">Nombre</p>
+                                <p class="main__th" id="name">Nombre</p>
                             </th>
                             <th class="main__table-th">
-                                <p class="main__th">Descripcion</p>
+                                <p class="main__th" id="descripcion">Descripcion</p>
                             </th>
                             <th class="main__table-th">
-                                <p class="main__th">Imagen</p>
+                                <p class="main__th" id="imagen">Imagen</p>
                             </th>
                             <th class="main__table-th">
-                                <p class="main__th">Acciones</p>
+                                <p class="main__th" id="acciones">Acciones</p>
                             </th>
                         </tr>
                         <?php foreach($museos as $museo){ ?>
                             <tr class="main__data">
                                 <td class="main__td"><?=$museo->id?></td>
                                 <td class="main__td min-w-name"><?=$museo->nombre?></td>
-                                <td class="main__td min-w-td"><p><?=$museo->descripcion?></p></td>
+                                <td class="main__td min-w-td"><p><?= ($_SESSION["lang"] == "es") ? $museo->descripcion : MuseosEn::where("id_museo", $museo->id)->descripcion?></p></td>
                                 <td class="main__td">
                                     <img src="<?=$museo->imagen?>" alt="" class="main__td-image">
                                 </td>
@@ -138,6 +139,7 @@ if(!$museos){
 
     <script src="/js/alert.js"></script>
     <script src="/js/adminIndex.js"></script>
+    <script src="/js/lang.js" type="module"></script>
 </body>
 
 </html>

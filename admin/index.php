@@ -38,43 +38,65 @@ else{
 
     <title>MUO - PANEL</title>
 </head>
-<body>
+<body data-page="admin-panel">
 
 <?php include "../includes/templates/headerAdmin.php" ?>
 
     <main class="main">
         <div class="main__container">
                 <div class="main__intro">
-                    <h1 class="main__title">Panel de administracion de MUO</h1>
+                    <h1 class="main__title" id="title">Panel de administracion de MUO</h1>
                 </div>
         
             
             <div class="main__selectors">
-                <p class="main__question">¿Que desea modificar?</p>
+                <p class="main__question" id="question">¿Que desea modificar?</p>
                 <div class="main__wrapper">
                     <a href="/admin/items/museos" class="main__option">
                         <div class="main__options-bg">
                             <img src="../img/icons/museum.svg" alt="" class="main__img-option">
                         </div>
-                        <p class="main__title-option">Museos</p>
+                        <p class="main__title-option" id="museo">Museos</p>
                     </a>
                     
                     <a href="/admin/items/categorias/" class="main__option">
                         <div class="main__options-bg">
                             <img src="../img/icons/categories.svg" alt="" class="main__img-option">
                         </div>
-                        <p class="main__title-option">Categorias</p>
+                        <p class="main__title-option" id="categoria">Categorias</p>
                     </a>
                     
                     <a href="/admin/items/expo/" class="main__option tablet-grid-last">
                         <div class="main__options-bg">
                             <img src="../img/icons/expo.svg" alt="" class="main__img-option">
                         </div>
-                        <p class="main__title-option">Exposiciones</p>
+                        <p class="main__title-option" id="expo">Exposiciones</p>
                     </a>
+                </div>
+            </div>
+
+            <div class="main__lang">
+                <h2 id="cambiar-idioma">Cambiar idioma</h2>
+                
+                <div class="lang">
+                    <div class="lang__selected">
+                        <div class="lang__data-selected">
+                            <img src="/img/icons/language.svg" alt="" class="lang__icon">
+                            <p class="lang__selected-text" id="es" data-primaryLang="es">Español</p>
+                        </div>
+                        <img src="/img/icons/expand_more.svg" alt="" class="lang__expand">
+                    </div>
+                    <div class="lang__options lang--hide">
+                        <div class="lang__lang">
+                            <img src="/img/icons/uk.svg" class="lang__flag" id="en">
+                            <p class="lang__lang-text" data-secondLang="en">Ingles</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+
+<script src="/js/lang.js" type="module"></script>
 </body>
 </html>

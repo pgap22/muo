@@ -1,4 +1,5 @@
 @import url("alert.css");
+@import url("lang.css");
 :root{
     /*Colores*/
     --clr-blanco: hsl(0, 0%, 97%);

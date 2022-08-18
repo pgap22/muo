@@ -1,5 +1,6 @@
 <?php
 
+use MUO\CategoriaEng;
 use MUO\Categorias;
 
 include "../../../includes/app.php";
@@ -46,7 +47,7 @@ if(!$categorias){
     <link rel="stylesheet" href="/css/adminRead/mobile/style.css" >
 
 </head>
-<body data-page="" data-item="categorias">
+<body data-page="admin-categoria" data-item="categorias">
 
     <?php include "../../../includes/templates/headerAdmin.php" ?>
 
@@ -57,11 +58,11 @@ if(!$categorias){
         <main class="main">
             <div class="main__container">
                 <div class="main__top">
-                    <h1 class="main__title">
+                    <h1 class="main__title" id="title">
                         Categorias
                     </h1>
                     
-                    <a href="/" class="main__go-back">
+                    <a href="/" class="main__go-back" id="goback">
                         Volver
                     </a>
                 </div>
@@ -70,7 +71,7 @@ if(!$categorias){
                 <div class="main__items">
                     <a href="/admin/items/categorias/add.php" class="main__add">
                         <img src="/img/icons/add.svg" alt="Add icon" class="main__add-icon">
-                        <p class="main__add-text">Agregar Categoria</p>
+                        <p class="main__add-text" id="add">Agregar Categoria</p>
                     </a>
                 </div>
                 <div class="main__table-wrapper">
@@ -80,17 +81,17 @@ if(!$categorias){
                                     <p class="main__th">ID</p>
                                 </th>
                                 <th class="main__table-th">
-                                    <p class="main__th">Nombre</p>
+                                    <p class="main__th" id="name">Nombre</p>
                                 </th>
                                 <th class="main__table-th">
-                                    <p class="main__th">Acciones</p>
+                                    <p class="main__th" id="actions">Acciones</p>
                                 </th>
                             </tr>
 
                             <?php foreach($categorias as $categoria){  ?>
                                 <tr class="main__data">
                                     <td class="main__td"><?= $categoria->id ?></td>
-                                    <td class="main__td min-w-name"><?=$categoria->nombre?></td>
+                                    <td class="main__td min-w-name"><?=($_SESSION["lang"] == "es") ? $categoria->nombre : CategoriaEng::where('id_categoria', $categoria->id)->nombre ?></td>
                                     <td class="main__td">
                                         <div class="main__actions-wrapper two-action">
                                             <a href="/admin/items/categorias/edit.php?id=<?=$categoria->id?>" class="main__action bc-a">
@@ -126,5 +127,6 @@ if(!$categorias){
    </div>
    <script src="/js/alert.js"></script>
    <script src="/js/adminIndex.js"></script>
+   <script src="/js/lang.js" type="module"></script>
 </body>
 </html>

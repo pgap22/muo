@@ -58,3 +58,10 @@
 .main__options-bg:hover .main__img-option{
     filter: invert(1);
 }
+.main__lang{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}

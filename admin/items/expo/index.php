@@ -1,8 +1,11 @@
 <?php
 
+use MUO\CategoriaEng;
 use MUO\Categorias;
+use MUO\Exposeng;
 use MUO\Exposiciones;
 use MUO\Museos;
+use MUO\MuseosEn;
 
 include "../../../includes/app.php";
 session_start();
@@ -46,7 +49,7 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
     <link rel="stylesheet" href="/css/adminRead/mobile/style.css" >
 
 </head>
-<body data-page="" data-item="expo">
+<body data-page="admin-expo" data-item="expo">
     <?php include "../../../includes/templates/headerAdmin.php" ?>
 
     <?= sendAlert($alert,$msg, $title ,$type)?>
@@ -56,11 +59,11 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
         <main class="main">
             <div class="main__container">
                 <div class="main__top">
-                    <h1 class="main__title">
+                    <h1 class="main__title" id="title">
                         Exposiciones
                     </h1>
 
-                    <a href="/" class="main__go-back">
+                    <a href="/" class="main__go-back" id="goback">
                         Volver
                     </a>
                 </div>
@@ -69,7 +72,7 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
                 <div class="main__items">
                     <a href="/admin/items/expo/add.php" class="main__add">
                         <img src="/img/icons/add.svg" alt="Add icon" class="main__add-icon">
-                        <p class="main__add-text">Agregar Exposicion</p>
+                        <p class="main__add-text" id="add">Agregar Exposicion</p>
                     </a>
                 </div>
                 <div class="main__table-wrapper">
@@ -79,28 +82,32 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
                                     <p class="main__th">ID</p>
                                 </th>
                                 <th class="main__table-th">
-                                    <p class="main__th">Nombre</p>
+                                    <p class="main__th" id="name">Nombre</p>
                                 </th>
                                 <th class="main__table-th">
-                                    <p class="main__th">Descripcion</p>
+                                    <p class="main__th" id="descripcion">Descripcion</p>
                                 </th>
                                 <th class="main__table-th">
-                                    <p class="main__th">Museo</p>
+                                    <p class="main__th" id="museo">Museo</p>
                                 </th>
                                 <th class="main__table-th">
-                                    <p class="main__th">Categoria</p>
+                                    <p class="main__th" id="categoria">Categoria</p>
                                 </th>
                                 <th class="main__table-th">
-                                    <p class="main__th">Acciones</p>
+                                    <p class="main__th" id="actions">Acciones</p>
                                 </th>
                             </tr>
                             <?php foreach($exposiciones as $expo){ ?>
                                 <tr class="main__data">
                                     <td class="main__td"><?=$expo->id?></td>
-                                    <td class="main__td min-w-name"><?=$expo->nombre ?></td>
-                                    <td class="main__td min-w-td"><?=$expo->informacion ?></td>
-                                    <td class="main__td min-w-name"><?=Museos::find($expo->id_museos)->nombre ?></td>
-                                    <td class="main__td"><?=Categorias::find($expo->id_categorias)->nombre ?></td>
+                                    <td class="main__td min-w-name"><?=($_SESSION["lang"]=="es") ? $expo->nombre :  Exposeng::where("id_expo", $expo->id)->nombre?></td>
+                                    
+                                    <td class="main__td min-w-td"><?=($_SESSION["lang"]=="es") ? $expo->informacion :  Exposeng::where("id_expo", $expo->id)->informacion?></td>
+                                    
+                                    <td class="main__td min-w-name"><?= Museos::find($expo->id_museos)->nombre ?></td>
+
+                                    <td class="main__td"><?=($_SESSION["lang"] == "es") ? Categorias::find($expo->id_categorias)->nombre : CategoriaEng::where("id_categoria", $expo->id_categorias)->nombre ?></td>
+                                    
                                     <td class="main__td">
                                         <div class="main__actions-wrapper">
                                             <a href="/admin/items/expo/edit.php?id=<?=$expo->id?>" class="main__action bc-a">
@@ -145,5 +152,6 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
    </div>
    <script src="/js/alert.js"></script>
    <script src="/js/adminIndex.js"></script>
+   <script src="/js/lang.js" type="module"></script>
 </body>
 </html>
