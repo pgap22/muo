@@ -35,7 +35,7 @@ protegerHome();
 </head>
 
 <body>
-    
+
 
     <?php
     showHeader();
@@ -43,7 +43,7 @@ protegerHome();
 
     <main class="main">
         <div class="main__container">
-            
+
             <aside class="main__nav no-mobile">
                 <div class="main__nav-container">
                     <div class="main__nav-icon main__selected-page">
@@ -66,135 +66,25 @@ protegerHome();
                 </div>
             </aside>
 
-            
-            <div class="main__feed-wrapper">
-                <h1 class="main__title">Bienvenido a MUO</h1>
-                <div class="main__feed">
-                    
-                    
-                    <div class="main__expo-container">
-                        <div class="main__expo-photo">
-                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
-                        </div>
-                        <div class="main__expo-description">
-                            <div class="main__expo-data">
-                                <h3 class="main__expo-title">Lorem Ipsum</h3>
-                                <div class="main__expo-interactions">
-                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
-                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
-                                </div>
-                        </div>
 
-                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
-                            
-                        </div>
-                    </div>
+            <div class="main__content">
+                <div class="main__feed-wrapper">
+                    <h1 class="main__title">Bienvenido a MUO</h1>
+                    <div class="main__feed">
 
-                    
-                    
-                    <div class="main__expo-container">
-                        <div class="main__expo-photo">
-                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
-                        </div>
-                        <div class="main__expo-description">
-                            <div class="main__expo-data">
-                                <h3 class="main__expo-title">Lorem Ipsum</h3>
-                                <div class="main__expo-interactions">
-                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
-                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
-                                </div>
-                        </div>
+                    <div class="expo-component"></div>
 
-                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
-                            
-                        </div>
-                    </div>
-
-                    
-                    
-                    <div class="main__expo-container">
-                        <div class="main__expo-photo">
-                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
-                        </div>
-                        <div class="main__expo-description">
-                            <div class="main__expo-data">
-                                <h3 class="main__expo-title">Lorem Ipsum</h3>
-                                <div class="main__expo-interactions">
-                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
-                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
-                                </div>
-                        </div>
-
-                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
-                            
-                        </div>
-                    </div>
-
-                    
-                    
-                    <div class="main__expo-container">
-                        <div class="main__expo-photo">
-                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
-                        </div>
-                        <div class="main__expo-description">
-                            <div class="main__expo-data">
-                                <h3 class="main__expo-title">Lorem Ipsum</h3>
-                                <div class="main__expo-interactions">
-                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
-                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
-                                </div>
-                        </div>
-
-                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
-                            
-                        </div>
-                    </div>
-
-                    
-                    
-                    <div class="main__expo-container">
-                        <div class="main__expo-photo">
-                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
-                        </div>
-                        <div class="main__expo-description">
-                            <div class="main__expo-data">
-                                <h3 class="main__expo-title">Lorem Ipsum</h3>
-                                <div class="main__expo-interactions">
-                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
-                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
-                                </div>
-                        </div>
-
-                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
-                            
-                        </div>
-                    </div>
-
-                    
-                    
-                    <div class="main__expo-container">
-                        <div class="main__expo-photo">
-                            <img src="../museos/marte/monumento_revolucion/image.jpg" alt="Museum Img" class="main__expo-img">
-                        </div>
-                        <div class="main__expo-description">
-                            <div class="main__expo-data">
-                                <h3 class="main__expo-title">Lorem Ipsum</h3>
-                                <div class="main__expo-interactions">
-                                    <img src="../img/icons/comment.svg" alt="comment icon" class="main__expo-icons main__expo--comment-icon">
-                                    <img src="../img/icons/favorite.svg" alt="comment icon" class="main__expo-icons">
-                                </div>
-                        </div>
-
-                            <p class="main__expo-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque officia, eum ipsam reprehenderit similique ex.</p>
-                            
-                        </div>
                     </div>
 
 
                 </div>
             </div>
-            
-            
+            <div class="show-only-desktop main__recommend">
+                <h3>Exposiciones recomendadas</h3>
+
+            </div>
+        </div>
+
         </div>
     </main>
 
@@ -214,5 +104,8 @@ protegerHome();
             </div>
         </div>
     </div>
+
+<script src="/js/componentHandler.js" type="module"></script>
 </body>
+
 </html>

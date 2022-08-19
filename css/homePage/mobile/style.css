@@ -96,7 +96,11 @@
 .main__feed{
     margin-bottom: 10rem;
 }
-
+.main__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .ocultar{
     transform: translate(100%);
     transition: none 0s;
