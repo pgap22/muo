@@ -23,8 +23,8 @@ $errorEN = [];
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     #Recoleccion de datos
-    $catg["nombre"] = htmlentities($_POST["nombre_categoria"]);
-    $catgEn["nombre"] = htmlentities($_POST["name_categoria"]);
+    $catg["nombre"] = strip_tags($_POST["nombre_categoria"]);
+    $catgEn["nombre"] = strip_tags($_POST["name_categoria"]);
 
     #Crear el objeto
     $categoria = new Categorias($catg);

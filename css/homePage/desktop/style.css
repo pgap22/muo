@@ -26,8 +26,8 @@ body{
 .main__content{
     /* border: 1px solid green; */
     display: grid;
-    width: 100%;
-    max-width: 150rem;
+    width: 60%;
+    max-width: 100rem;
     margin-left: 10rem;
     grid-template-columns: 1fr max-content;
 }
@@ -37,6 +37,8 @@ body{
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    border-left: 4px solid white;
+    min-height: 100vh;
 }
 
 
@@ -59,4 +61,7 @@ body{
     object-fit: cover;
     aspect-ratio: 1;
     border-radius: 5px;
+}
+.recommend__text{
+    word-break: break-all;
 }

@@ -72,16 +72,14 @@ protegerHome();
                     <h1 class="main__title">Bienvenido a MUO</h1>
                     <div class="main__feed">
 
-                    <div class="expo-component"></div>
-
                     </div>
 
 
                 </div>
             </div>
-            <div class="show-only-desktop main__recommend">
+            <div class="show-only-desktop no-mobile main__recommend">
                 <h3>Exposiciones recomendadas</h3>
-
+                <div class="expo-recommend"></div>
             </div>
         </div>
 
@@ -106,6 +104,7 @@ protegerHome();
     </div>
 
 <script src="/js/componentHandler.js" type="module"></script>
+<script defer src="/js/infiniteScroll.js"></script>
 </body>
 
 </html>

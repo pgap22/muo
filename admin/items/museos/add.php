@@ -24,10 +24,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     #Recoleccion de datos
     $archivo = $_FILES["new_img"];
 
-    $museoData["nombre"] = htmlentities($_POST["nombre"]);
-    $museoData["descripcion"] = htmlentities($_POST["descripcion"]);
+    $museoData["nombre"] = strip_tags($_POST["nombre"]);
+    $museoData["descripcion"] = strip_tags($_POST["descripcion"]);
 
-    $museoDataEn["descripcion"] = htmlentities($_POST["descripcion-en"]);
+    $museoDataEn["descripcion"] = strip_tags($_POST["descripcion-en"]);
 
     #Crear instancia de museo
     $museo = new Museos($museoData);

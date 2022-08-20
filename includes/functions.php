@@ -274,4 +274,10 @@ function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
             header("location: /admin");
         }
     }
+function sanitizar($data){
+    if (mb_detect_encoding($data, 'UTF-8', true))
+        return utf8_decode(stripcslashes($data));
+    else
+        return htmlspecialchars(stripcslashes($data));
+} 
     ?>

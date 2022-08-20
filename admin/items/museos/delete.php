@@ -34,33 +34,20 @@ if(!$museo){
 }
 
 try {
+    
     #Buscar la categoria en ingles para eliminarla
     $museoEn = MuseosEn::where("id_museo", $museo->id);
-    $museoEn->delete();
-
-    #Borrar directorio
-    $rutaMuseo = "../../.." . $museo->imagen;
-    if(is_file($rutaMuseo)){
-        unlink($rutaMuseo);
+    if($museoEn){
+        $backupMuseoEn = MuseosEn::where("id_museo", $museo->id);
+        $museoEn->delete();
     }
-
+    
     #Eliminar la categoria en español
-    $museo->delete();
+    $museo->delete();    
 
-
-    if($_SESSION["lang"] == "es"){
-        $_SESSION["alert"]["message"] = "El museo ha sido borrado exitosamente !";
-        $_SESSION["alert"]["type"] = "success";
-        $_SESSION["alert"]["alert"] = "simple";
-    }else{
-        $_SESSION["alert"]["message"] = "The museum has been deleted successfully !";
-        $_SESSION["alert"]["type"] = "success";
-        $_SESSION["alert"]["alert"] = "simple";
-    }
-
-    header("location: /admin/items/museos");
-} catch (\Throwable $th) {
-
+    
+} catch (mysqli_sql_exception) {
+    
     if($_SESSION["lang"] == "es"){
         $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
         $_SESSION["alert"]["type"] = "error";
@@ -69,6 +56,31 @@ try {
     else{
         $_SESSION["alert"]["message"] = "There was a mistake, try to erase something else to try to eliminate this item!";
         $_SESSION["alert"]["type"] = "error";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    if($backupMuseoEn){
+        $backupMuseoEn->setData("id", '');
+        $backupMuseoEn->save();
+    }
+
+    header("location: /admin/items/museos");
+    $error = true;
+}
+
+if(!$error){
+    #Borrar directorio
+    $rutaMuseo = "../../.." . $museo->imagen;
+    if(is_file($rutaMuseo)){
+        unlink($rutaMuseo);
+    }
+
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "El museo ha sido borrado exitosamente !";
+        $_SESSION["alert"]["type"] = "success";
+        $_SESSION["alert"]["alert"] = "simple";
+    }else{
+        $_SESSION["alert"]["message"] = "The museum has been deleted successfully !";
+        $_SESSION["alert"]["type"] = "success";
         $_SESSION["alert"]["alert"] = "simple";
     }
 

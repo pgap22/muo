@@ -9,22 +9,13 @@ document.querySelectorAll(".delete-btn").forEach(deleteBtn =>{
         document.querySelector("body").appendChild(alerta);
     
 
-        if(item == "museos"){
-            if(sessionStorage.getItem("lang") == "es"){
-                alerta.innerHTML = alertAction("error", "deleteItem()", "Este item se eliminara con todas sus exposiciones y no se podran recuperar ","Desea borrar este item ?","Borrar");
-            }
-            else{
-                alerta.innerHTML = alertAction("error", "deleteItem()", "This item will be eliminated with all its exhibitions and cannot be recovered","Would you like to delete this item ?","Delete", "Close");
-            }
-        }
-        else{
             if(sessionStorage.getItem("lang") == "es"){
                 alerta.innerHTML = alertAction("error", "deleteItem()", "Este item se eliminara y no se puede recuperar ","Desea borrar este item ?","Borrar");
             }
             else{
                 alerta.innerHTML = alertAction("error", "deleteItem()", "This item will be eliminated and cannot be recovered","Would you like to delete this item ?","Delete", "Close"); 
             }
-        }
+      
         readAlertEvent();
     
     })

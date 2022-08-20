@@ -43,7 +43,7 @@
 }
 .main__expo-data{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr max-content;
     align-items: center;
 }
 .main__expo-text{
@@ -108,6 +108,7 @@
 .show{
     display: block;
 }
+
 .no-mobile{
     display: none;
 }
