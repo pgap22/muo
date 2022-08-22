@@ -284,6 +284,10 @@
     align-items: center;
 }
 
+.header__lang{
+    margin-block: 1rem;
+}
+
 
 .no-tablet{
     display: none;

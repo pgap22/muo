@@ -1,0 +1,33 @@
+@import url("../tablet/style.css");
+.main__expo{
+    margin-left: 17rem;
+    gap: 5rem;
+}
+.carusel-expo{
+    flex-direction: row;
+    gap: 5rem;
+}
+.main__comments{
+    /* border: 1px solid red; */
+    margin: 0;
+    margin-block: 2rem;
+    width: 60%;
+}
+.main__wrapper-comments{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid blue; */
+}
+.comment-wrapper{
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.comment{
+    margin: 0;
+    width: 70%;
+}

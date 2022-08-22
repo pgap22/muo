@@ -58,10 +58,10 @@
     background-color: var(--clr-negro);
     color: var(--clr-blanco);
 }
+
 .header__link:hover{
     filter: invert(1);
 }
-
 .header__black-screen{
     background-color: rgba(0, 0, 0, 0.6);
     width: 100vw;
@@ -87,6 +87,7 @@
     transition: ease-in 150ms;
 }
 .header__link--logout:hover{
+    filter: none;
     background-color: var(--clr-error);
 }
 .header__link--logout:hover .header__logout-text{
@@ -108,7 +109,9 @@
     display: flex;
     align-items: center;
 }
-
+.header__lang{
+    margin-block: 1rem;
+}
 
 .ocultar{
     transform: translate(100%);

@@ -40,13 +40,13 @@ $imagenes = [];
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     #Recoleccion de datos
-    $expo["nombre"] = htmlentities($_POST["nombre"]);
-    $expo["informacion"] = htmlentities($_POST["descripcion"]);
+    $expo["nombre"] = strip_tags($_POST["nombre"]);
+    $expo["informacion"] = strip_tags($_POST["descripcion"]);
     $expo["id_museos"] = (is_numeric($_POST["museo-id"])) ? intval($_POST["museo-id"]) : '';
     $expo["id_categorias"] = (is_numeric($_POST["categoria-id"])) ? intval($_POST["categoria-id"]) : '';
 
-    $expoEN["nombre"] = htmlentities($_POST["nombre-en"]);
-    $expoEN["informacion"] = htmlentities($_POST["descripcion-en"]);
+    $expoEN["nombre"] = strip_tags($_POST["nombre-en"]);
+    $expoEN["informacion"] = strip_tags($_POST["descripcion-en"]);
 
     $imagenes = $_FILES;
 

@@ -27,13 +27,16 @@ document.querySelector("html").addEventListener("drop", (e)=>{
 
 //Detect new drop img
 document.querySelector(".main__img--add").addEventListener("drop", (e)=>{
+    let nothing = new DataTransfer();
     addImg(e.dataTransfer.files[0]);
-
+    document.getElementById("img-expo").files = nothing.files;
 })
 
 //Detect upload img via input
 document.getElementById("img-expo").addEventListener("change", (e)=>{
+    let nothing = new DataTransfer();
     addImg(document.getElementById("img-expo").files[0]);
+    document.getElementById("img-expo").files = nothing.files;
 })
 
 

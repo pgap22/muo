@@ -1,0 +1,8 @@
+@import url("../mobile/style.css");
+
+.result-explore{
+    /* margin-left: 9rem; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
