@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`museos` (
   `imagen` VARCHAR(120) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 55
+AUTO_INCREMENT = 69
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`exposiciones` (
     FOREIGN KEY (`id_museos`)
     REFERENCES `muo-db`.`museos` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 40
+AUTO_INCREMENT = 49
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -114,19 +114,20 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`comentarios` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `contenido` VARCHAR(255) NULL DEFAULT NULL,
   `id_exposicion` INT(11) NULL DEFAULT NULL,
-  `id_usuarios` INT(11) NULL DEFAULT NULL,
+  `id_usuario` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_exposicion_idx` (`id_exposicion` ASC),
-  INDEX `fk_usuario_idx` (`id_usuarios` ASC),
+  INDEX `fk_usuario_idx` (`id_usuario` ASC),
   CONSTRAINT `fk_exposicion`
     FOREIGN KEY (`id_exposicion`)
     REFERENCES `muo-db`.`exposiciones` (`id`),
   CONSTRAINT `fk_usuario`
-    FOREIGN KEY (`id_usuarios`)
+    FOREIGN KEY (`id_usuario`)
     REFERENCES `muo-db`.`usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 16
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -146,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`exposeng` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 38
+AUTO_INCREMENT = 47
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -171,6 +172,7 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`favoritosusuarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 44
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -189,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`imagenesexpo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 42
+AUTO_INCREMENT = 99
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -208,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`museoseng` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 40
+AUTO_INCREMENT = 56
 DEFAULT CHARACTER SET = utf8;
 
 
