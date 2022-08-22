@@ -1,5 +1,5 @@
 async function addFav(id, element) {
-    let data = await fetch('http://localhost/api/addFavorite.php?id='+id);
+    let data = await fetch(window.location.origin+'/api/addFavorite.php?id='+id);
     data.json().then(res=>{
         globalThis.spanish["home"]["alert-title"] = res.msg
         globalThis.english["home"]["alert-title"] = res.msgEn

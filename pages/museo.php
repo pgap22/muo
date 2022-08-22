@@ -6,7 +6,7 @@ use MUO\Imagenesexpo;
 use MUO\Museos;
 
 if (!isset($_GET["id"])) {
-    header("location: /");
+    header("location: /page/museos.php");
 }
 
 $id = $_GET["id"];
@@ -14,7 +14,7 @@ $id = $_GET["id"];
 $museo = Museos::find($id);
 
 if (!$museo) {
-    header("location: /");
+    header("location: /page/museos.php");
 }
 ?>
 <!DOCTYPE html>

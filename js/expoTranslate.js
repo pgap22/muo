@@ -1,6 +1,6 @@
 async function getTranslateinfo(){
     let id = document.querySelector("body").dataset.id;
-    let data = await fetch("http://localhost/api/getData.php?id_expo="+id);
+    let data = await fetch(window.location.origin+"/api/getData.php?id_expo="+id);
     return data.json();
 }
 

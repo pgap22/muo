@@ -4,7 +4,7 @@ let parentElement = document.querySelector(".main__feed");
 let parentRecommend = document.querySelector(".expo-recommend");
 //Recommend Expos
 async function getRecommendExpo(){
-    let data = await fetch('http://localhost/api/getData.php?recommend-expo');
+    let data = await fetch(window.location.origin+'/api/getData.php?recommend-expo');
     return data.json();
 }
 

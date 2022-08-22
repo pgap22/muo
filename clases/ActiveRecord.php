@@ -57,7 +57,7 @@ class ActiveRecord {
         if(isset($arr[0])){
            return $arr;
         }
-        return false;
+        return [];
     }
 
     public static function where($column, $reg ,$limit = 1){

@@ -8,7 +8,7 @@ getSelector('0').then(data => {setTags(data)})
 async function getSelector(id){
     selector = (id == '1') ? "museum" : "category";
     
-    let data  = await fetch("http://localhost/api/getData.php?selector="+selector);
+    let data  = await fetch(window.location.origin+"/api/getData.php?selector="+selector);
     return data.json();
 }
 
@@ -62,7 +62,7 @@ function setTags(data){
 
 
 async function getExpos(s, i){
-    let data = await fetch('http://localhost/api/getData.php?explore='+s+'&explore_id='+i);
+    let data = await fetch(window.location.origin+'/api/getData.php?explore='+s+'&explore_id='+i);
     return data.json();
 }
 

@@ -115,7 +115,7 @@ function placeHolderTranslate(lang_array, pageTranslate, placeholder) {
 
 async function museumTranslate() {
     let museoId = document.querySelector("body").dataset.id;
-    let dataMuseum = await fetch('http://localhost/api/getData.php?museoid=' + museoId);
+    let dataMuseum = await fetch(window.location.origin+'/api/getData.php?museoid=' + museoId);
 
     return dataMuseum.json()
 }

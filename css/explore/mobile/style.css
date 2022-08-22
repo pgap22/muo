@@ -17,6 +17,7 @@
     justify-content: space-around;
     width: 100%;
     max-width: 37rem;
+    gap: 2rem;
 }
 .switch{
     margin-block: 1rem;

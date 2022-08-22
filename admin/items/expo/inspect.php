@@ -35,6 +35,22 @@ $id = $_GET["id"];
 #Detectar si el item existe
 $exposicion = Exposiciones::find($id);
 
+if (!$exposicion) {
+
+
+    if ($_SESSION["lang"] == "es") {
+        $_SESSION["alert"]["message"] = "No se encontro el item!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    } else {
+        $_SESSION["alert"]["message"] = "Item was not found!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    header("location: /admin/items/expo");
+    die();
+}
+
 #Detectar la primer imagen 
 $imagen = Imagenesexpo::where("id_exposicion", $id)->rutaImagen;
 

@@ -9,6 +9,7 @@ if (isset($_SESSION["user_id"])) {
     protegerUserPage($userID);
 }
 $museos = Museos::all();
+
 ?>
 
 <!DOCTYPE html>
