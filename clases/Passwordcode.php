@@ -38,13 +38,13 @@ class Passwordcode extends ActiveRecord{
     public function sendCode(){
         $user = Usuarios::find($this->user_id);        
 
-        $userID = $user->getData("id");
+        $userName = $user->getData("name");
 
         $message["title-es"] = "Recupera Contraseña";
         $message["title-en"] = "Recover Password";
 
-        $message["message-es"] = templateEmailNoButton($message["title-es"], $userID, "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $this->code);
-        $message["message-en"] = templateEmailNoButton($message["title-en"], $userID, "Hello, copy and paste this verification code where you are indicated\n\n<b>Remember that in 15 minutes the code will expire", $this->code);
+        $message["message-es"] = templateEmailNoButton($message["title-es"], $userName, "Hola, copia y pega este codigo de verificacion donde se te indique\n\n<b>Recuerda que en 15 minutos el codigo se expirara", $this->code);
+        $message["message-en"] = templateEmailNoButton($message["title-en"], $userName, "Hello, copy and paste this verification code where you are indicated\n\n<b>Remember that in 15 minutes the code will expire", $this->code);
 
 
         sendMail($user->email, $message);
