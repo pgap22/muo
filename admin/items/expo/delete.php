@@ -1,5 +1,6 @@
 <?php
 
+use MUO\Comentarios;
 use MUO\Exposeng;
 use MUO\Exposiciones;
 use MUO\Imagenesexpo;
@@ -39,48 +40,61 @@ if(!$exposicion){
     }
     header("location: /admin/items/expo");
     die();
+
 }
 
 try {
-#Eliminar Imagenes
-$imagenes = Imagenesexpo::where("id_exposicion", $exposicion->id, 0);
+    if(Exposeng::where("id_expo", $exposicion->id)){
+        #Backups por si da un error
+        $expoEngBack = Exposeng::where("id_expo", $exposicion->id);
+        $expoEngBack->setData("id", '');
+        
+        #Borrar la exposicion en ingles
+        Exposeng::where("id_expo", $exposicion->id)->delete();
+        
+    }    
+    
+    #Borrar los comentarios
+    Comentarios::executeSQL("DELETE FROM comentarios WHERE id_exposicion = $exposicion->id");
 
-if(!$imagenes){
-    $imagenes = [];
-}
 
-foreach ($imagenes as $imagen) {
-    #Ruta de la imagen
-    $rutaImagen = "../../.." . $imagen->rutaImagen;
+    #Eliminar Imagenes
+    $imagenes = Imagenesexpo::where("id_exposicion", $exposicion->id, 0);
 
-    #Eliminar Imagen
-    if(is_file($rutaImagen)){
-        unlink($rutaImagen);
+    if (!$imagenes) {
+        $imagenes = [];
     }
 
-    #Borrarlo de la base de datos
-    $imagen->delete();
-}
+    foreach ($imagenes as $imagen) {
+        #Ruta de la imagen
+        $rutaImagen = "../../.." . $imagen->rutaImagen;
 
-#Borrar la exposicion en ingles
-Exposeng::where("id_expo", $exposicion->id)->delete();
+        #Eliminar Imagen
+        if (is_file($rutaImagen)) {
+            unlink($rutaImagen);
+        }
 
-#Borrar la exposicion
-$exposicion->delete();
+        #Borrarlo de la base de datos
+        $imagen->delete();
+    }
 
-if($_SESSION["lang"] == "es"){
-    $_SESSION["alert"]["message"] = "La exposicion ha sido borrada exitosamente!";
-    $_SESSION["alert"]["type"] = "success";
-    $_SESSION["alert"]["alert"] = "simple";
-}
-else{
-    $_SESSION["alert"]["message"] = "The exhibition has been deleted successfully!";
-    $_SESSION["alert"]["type"] = "success";
-    $_SESSION["alert"]["alert"] = "simple";
-}
-header("location: /admin/items/expo");
+    #Borrar la exposicion
+    $exposicion->delete();
 
-} catch (\Throwable $th) { 
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "La exposicion ha sido borrada exitosamente!";
+        $_SESSION["alert"]["type"] = "success";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    else{
+        $_SESSION["alert"]["message"] = "The exhibition has been deleted successfully!";
+        $_SESSION["alert"]["type"] = "success";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
+    header("location: /admin/items/expo");
+
+} catch (mysqli_sql_exception $e) { 
+
     if($_SESSION["lang"] == "es"){
         $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
         $_SESSION["alert"]["type"] = "error";
@@ -91,6 +105,10 @@ header("location: /admin/items/expo");
         $_SESSION["alert"]["type"] = "error";
         $_SESSION["alert"]["alert"] = "simple";
     }
+
+    $error = true;
+    $expoEngBack->save();
+
+
     header("location: /admin/items/expo");
 }
-

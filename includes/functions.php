@@ -268,16 +268,86 @@ function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
 
     function protegerUserPage($id){
         $user = Usuarios::find($id);
-        debugear($user);
-        die();
         if($user->isAdmin){
             header("location: /admin");
         }
     }
-function sanitizar($data){
-    if (mb_detect_encoding($data, 'UTF-8', true))
-        return utf8_decode(stripcslashes($data));
-    else
-        return htmlspecialchars(stripcslashes($data));
-} 
+    function sanitizar($data){
+        if (mb_detect_encoding($data, 'UTF-8', true))
+            return htmlspecialchars(stripcslashes($data));
+        else
+            return htmlentities(stripcslashes($data));
+    } 
+
+    function createAlert($type, $alert,$msgEs,$msgEn){
+        if($_SESSION["lang"] == "es"){
+            $_SESSION["alert"]["message"] = $msgEs;
+            $_SESSION["alert"]["type"] = $type;
+            $_SESSION["alert"]["alert"] = $alert;
+        }else{
+            $_SESSION["alert"]["message"] = $msgEn;
+            $_SESSION["alert"]["type"] = $type;
+            $_SESSION["alert"]["alert"] = $alert;
+        }
+        return true;
+    }
+
+    function menuHome($feed = '', $favorite = '', $explore = ''){
+        return "
+    <aside class='main__nav no-mobile'>
+        <div class='main__nav-container'>
+            <a href='/home'>
+                <div class='main__nav-icon ${feed}'>
+                    <img class='main__nav-img ' src='../img/icons/feed.svg' alt='Feed icon'>
+                    <p class='show-only-desktop'>Feed</p>
+                </div>
+            </a>
+            <a href='/home/favorites.php'>
+                <div class='main__nav-icon ${favorite}'>
+                    <img class='main__nav-img' src='../img/icons/favorite.svg' alt='Feed icon'>
+                    <p class='show-only-desktop' id='nav-fav'>Favoritos</p>
+                </div>
+            </a>
+            <a href='/home/explore.php'>
+                <div class='main__nav-icon ${explore}'>
+                <img class='main__nav-img' src='../img/icons/explore.svg' alt='Feed icon'>
+                <p class='show-only-desktop' id='nav-explore'>Explorar</p>
+                </div>
+            </a>
+            <div class='main__nav-icon menu__setting-show home-menu-toggle'>
+                <img class='main__nav-img' src='../img/icons/more-options.svg' alt='Feed icon'>
+                <p class='show-only-desktop' id='nav-setting'>Ajustes</p>
+            </div>
+
+        </div>
+    </aside>
+        ";
+    }
+
+    function menuMobilHome($feed = '', $favorite = '', $explore = ''){
+        return "
+        <div class='menu-phone no-tablet'>
+            <div class='menu-phone__container'>
+                <a href='/home'>
+                    <div class='menu-phone__icon ${feed}'>
+                        <img src='../img/icons/feed.svg' alt='' class='menu-phone__icon-img '>
+                    </div>
+                </a>
+                <a href='/home/favorites.php'>
+                    <div class='menu-phone__icon  ${favorite}'>
+                        <img src='../img/icons/favorite.svg' alt='' class='menu-phone__icon-img '>
+                    </div>
+                </a>
+                <a href='/home/explore.php'>
+                    <div class='menu-phone__icon  ${explore}'>
+                        <img src='../img/icons/explore.svg' alt='' class='menu-phone__icon-img '>
+                    </div>
+                </a>
+                <div class='menu-phone__icon'>
+                    <img src='../img/icons/search.svg' alt='' class='menu-phone__icon-img '>
+                </div>
+            </div>
+        </div>
+        ";
+    }
     ?>

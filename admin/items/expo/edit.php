@@ -20,6 +20,15 @@ if (isset($userID)) {
 
 #Detectar si no existe id en la url
 if (!isset($_GET["id"])) {
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "No se encontro el item!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }else{
+        $_SESSION["alert"]["message"] = "Item was not found!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/expo");
 }
 

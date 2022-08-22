@@ -1,5 +1,7 @@
 @import url("alert.css");
 @import url("lang.css");
+@import url("expoCarusel.css");
+@import url("comment.css");
 :root{
     /*Colores*/
     --clr-blanco: hsl(0, 0%, 97%);

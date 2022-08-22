@@ -4,10 +4,7 @@
     flex-direction: row;
     gap: 3rem;
 }
-.hero__wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr
-}
+
 .hero__img-wrapper{
     height: 40rem;
 }
