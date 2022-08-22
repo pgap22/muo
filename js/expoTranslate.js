@@ -5,11 +5,11 @@ async function getTranslateinfo(){
 }
 
 getTranslateinfo().then(expo =>{
-    globalThis.spanish["expo"] = [];
+
     globalThis.spanish["expo"]["info"] = expo.informacion;
     globalThis.spanish["expo"]["name"] = expo.nombre;
 
-    globalThis.english["expo"] = [];
+
     globalThis.english["expo"]["info"] = expo.info_eng;
     globalThis.english["expo"]["name"] = expo.name_eng;
 

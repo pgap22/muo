@@ -1,10 +1,12 @@
 import { expoRecommend } from "./expo-recommend.js";
 import { expoComponent } from "./expoComponent.js";
+import { expoDiscoverComponent } from "./expoDiscoverComponent.js";
 import { getData, renderExpoComponent, renderRecommendComponent } from "./getData.js";
 import { english, spanish } from "./homeDictionary.js";
 import { exceptionTranslate, getLangArray, langComponent, placeHolderTranslate, startLang, translateLang } from "./langComponent.js";
 import { menuComponent } from "./menuComponent.js";
 import { settingsHomeComponent } from "./settingsHomeComponent.js";
+import { reloadTags, tagComponent } from "./tagComponent.js";
 
 console.log("Importado !");
 
@@ -23,3 +25,6 @@ globalThis.translateLang = translateLang;
 globalThis.getLangArray =  getLangArray;
 globalThis.english = english;
 globalThis.spanish = spanish;
+globalThis.tagComponent = tagComponent;
+globalThis.reloadTags = reloadTags;
+globalThis.expoDiscoverComponent = expoDiscoverComponent;

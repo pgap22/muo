@@ -128,11 +128,11 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
 
             <div class="main__wrapper-comments">
                 <div class="main__comments">
-                    <h2>Comentarios</h2>
+                    <h2 id="comment">Comentarios</h2>
                     <?= sendAlert($alert, $msg, $title, $type) ?>
                     <div class="main__comment-container">
                         <form action="addComment.php" method="POST" class="add-comment">
-                            <label for="addcomment">Enviar comentario</label>
+                            <label for="addcomment" id="label-comment">Enviar comentario</label>
                             <textarea name="comment" id="addcomment" rows="5" class="add-comment__input"></textarea>
 
                             <button class="add-comment__submit" type="submit">

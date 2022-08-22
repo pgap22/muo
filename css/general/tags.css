@@ -1,0 +1,12 @@
+.tag{
+    border: 3px solid var(--clr-blanco);
+    width: fit-content;
+    padding: .7rem 3.5rem;
+    border-radius: 30px;
+    user-select: none;
+    transition: ease-in 150ms;
+    margin: .5rem;
+}
+.tag--bg{
+    background-color: var(--clr-naranjaCard);
+}

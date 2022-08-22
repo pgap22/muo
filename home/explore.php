@@ -32,9 +32,9 @@ protegerHome();
     <link rel="stylesheet" href="../css/general/general.css">
 
     <!-- Favorite -->
-    <link rel="stylesheet" href="/css/favorite/mobile/style.css" media="(max-width: 520px)">
-    <link rel="stylesheet" href="/css/favorite/tablet/style.css" media="(min-width: 521px) and (max-width: 1023px)">
-    <link rel="stylesheet" href="/css/favorite/desktop/style.css" media="(min-width: 1024px)">
+    <link rel="stylesheet" href="/css/explore/mobile/style.css" media="(max-width: 520px)">
+    <link rel="stylesheet" href="/css/explore/tablet/style.css" media="(min-width: 521px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/explore/desktop/style.css" media="(min-width: 1024px)">
 
 
 </head>
@@ -48,13 +48,36 @@ protegerHome();
 
     <main class="main">
         <div class="main__container">
-            <?= menuHome('', '' ,'main__selected-page') ?>
+            <?= menuHome('', '', 'main__selected-page') ?>
 
-            <h1>Explora</h1>
+            <div class="wrapper flex">
+                <h1 id="title">Explora</h1>
+
+
+                <div class="selector-container">
+                    <p class="selector__name" id="category">Categorias</p>
+                    <label for="selector">
+                        <div class="switch" id="0">
+                            <div class="switch__ball"></div>
+                        </div>
+                    </label>
+                    <input type="checkbox" hidden name="selector" id="selector">
+                    <p class="selector__name" id="museum">Museos</p>
+                </div>
+
+                <div class="tags"></div>
+
+                <div class="result-explore">
+
+                </div>
+            </div>
         </div>
     </main>
 
-    <?= menuMobilHome('', '','menu-phone__icon--active') ?>
+    <?= menuMobilHome('', '', 'menu-phone__icon--active') ?>
+
+    <script defer src="/js/switch.js"></script>
+
 </body>
 
 </html>

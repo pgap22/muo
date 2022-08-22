@@ -11,32 +11,26 @@
 </head>
 <body>
     <style>
-        .comment{
-            padding-block: 1.5rem;
-            border-bottom: 1px solid var(--clr-naranja);
-            display: flex;
-            align-items: flex-start;
+        .tag{
+            border: 3px solid var(--clr-blanco);
+            width: fit-content;
+            padding: .7rem 3.5rem;
+            border-radius: 30px;
+            user-select: none;
+            transition: ease-in 150ms;
+            margin: .5rem;
         }
-        .comment__icon{
-            filter: invert(1);
-            width: 6rem;
-        }
-        .comment__data{
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
-        }
-        .comment__name{
-            font-weight: bold;
+        .tag--bg{
+            background-color: var(--clr-naranjaCard);
         }
     </style>
+
     <h1>Creador de Componentes</h1>
-    <div class="comment">
-        <img class="comment__icon" src="/img/icons/user.svg"  alt="">
-        <div class="comment__data">
-            <p class="comment__name"><span>Nombre, </span><span>Apellido</span></p>
-            <p class="commnet__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure suscipit ducimus reprehenderit fugit illum sint quidem minima, quia provident laudantium itaque assumenda, qui reiciendis, hic id voluptate cumque sunt deleniti.</p>
-        </div>
+    <div class="tag">
+        <p>Historia</p>
     </div>
+    <script>
+
+    </script>
 </body>
 </html>

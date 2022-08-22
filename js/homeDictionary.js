@@ -38,9 +38,18 @@ spanish["home"] = [];
 spanish["home"]["title"] = "Bienvenido a MUO";
 spanish["home"]["recommend"] = "Exposiciones recomendadas";
 
+spanish["expo"] = [];
+spanish["expo"]["comment"] = "Comentarios";
+spanish["expo"]["label-comment"] = "Enviar Comentarios";
+
 spanish["favorite"] = [];
 spanish["favorite"]["title"] = "Tus Favoritos";
 spanish["favorite"]["nothing"] = "No tienes exposiciones guardadas en favoritos :(";
+
+spanish["explore"] = [];
+spanish["explore"]["title"] = "Explora";
+spanish["explore"]["category"] = "Categoria";
+spanish["explore"]["museum"] = "Museo";
 
 //English Dictionary
 english["menu"] = [];
@@ -75,7 +84,16 @@ english["home"] = [];
 english["home"]["title"] = "Welcome to MUO";
 english["home"]["recommend"] = "Recommended exhibitions";
 
+english["expo"] = [];
+english["expo"]["comment"] = "Comments";
+english["expo"]["label-comment"] = "Send Comment";
+
 english["favorite"] = [];
 english["favorite"]["title"] = "Your Favorites";
 english["favorite"]["nothing"] = "You have no saved exhibitions in favorites :(";
+
+english["explore"] = [];
+english["explore"]["title"] = "Explore";
+english["explore"]["category"] = "Category";
+english["explore"]["museum"] = "Museum";
 export {english, spanish};
