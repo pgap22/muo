@@ -20,6 +20,15 @@ if (isset($userID)) {
 
 #Detectar si no existe id en la url
 if (!isset($_GET["id"])) {
+    if($_SESSION["lang"] == "es"){
+        $_SESSION["alert"]["message"] = "No se encontro el item!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }else{
+        $_SESSION["alert"]["message"] = "Item was not found!";
+        $_SESSION["alert"]["type"] = "warning";
+        $_SESSION["alert"]["alert"] = "simple";
+    }
     header("location: /admin/items/expo");
 }
 
@@ -81,13 +90,13 @@ $oldImg = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     #Recoleccion de datos
-    $expo["nombre"] = htmlentities($_POST["nombre"]);
-    $expo["informacion"] = htmlentities($_POST["descripcion"]);
+    $expo["nombre"] = strip_tags($_POST["nombre"]);
+    $expo["informacion"] = strip_tags($_POST["descripcion"]);
     $expo["id_museos"] = (is_numeric($_POST["museo-id"])) ? intval($_POST["museo-id"]) : '';
     $expo["id_categorias"] = (is_numeric($_POST["categoria-id"])) ? intval($_POST["categoria-id"]) : '';
 
-    $expoEN["nombre"] = htmlentities($_POST["nombre-en"]);
-    $expoEN["informacion"] = htmlentities($_POST["descripcion-en"]);
+    $expoEN["nombre"] = strip_tags($_POST["nombre-en"]);
+    $expoEN["informacion"] = strip_tags($_POST["descripcion-en"]);
 
     $newImagenes = $_FILES;
 
@@ -132,20 +141,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = Imagenesexpo::getErrors();
     }
 
-    if (!$imagenesViejas) {
+    if (!$imagenesViejas || !$newImagenes) {
         $error["imagen"] = "Debes agregar al menos una imagen !";
         $error["code"] = 28;
     }
 
     #Validacion de datos nuevos
     $exposicion->validate();
+
     $error = Exposiciones::getErrors();
     if (!$error) {
         $exposicionEN->validate();
         $errorEN = Exposeng::getErrors();
         if (!$errorEN) {
             #Guardar Datos
-            if (!$error && !$errorEN && $imagenesViejas) {
+            if (!$error && !$errorEN) {
 
                 #Agregar nuevas imagenes
                 foreach ($newImagenes as $foto) {
@@ -207,7 +217,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $error["code"] = 28;
                 }
 
-
                 #Si no hay errores guardar
                 if (!$error) {
                     #Guardar los registros
@@ -231,7 +240,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

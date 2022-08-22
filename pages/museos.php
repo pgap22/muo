@@ -1,11 +1,16 @@
-<?php  
+<?php
+
+use MUO\Museos;
+
 include "../includes/app.php";
 session_start();
-if(isset($_SESSION["user_id"])){
+if (isset($_SESSION["user_id"])) {
     $userID = $_SESSION["user_id"];
     protegerUserPage($userID);
 }
+$museos = Museos::all();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,8 +22,7 @@ if(isset($_SESSION["user_id"])){
     <meta name="description" content="Un sitio web de museos">
     <title>MUO - MUSEOS</title>
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-    <!--Js-->
-    <link rel="preload" href="../js/app.js" as="script">
+
 
     <!--Font-->
     <link rel="preload" href="../fonts/font.css" as="style">
@@ -39,9 +43,10 @@ if(isset($_SESSION["user_id"])){
     <link rel="stylesheet" href="../css/museos/desktop/style.css" media="(min-width: 1024px)">
 
 </head>
-<body data-page="museos" >
-    
-    
+
+<body data-page="museos">
+
+
     <?php
     showHeader();
     ?>
@@ -65,51 +70,36 @@ if(isset($_SESSION["user_id"])){
                 <div class="hero__autor">
                     <p id="credits">Imagen por</p>
                     <img src="../img/home/firma-grey.svg" alt="">
-                        
+
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
 
     <main class="main">
         <div class="main__wrapper">
             <div class="main__scroll">
                 <div class="main__card-container">
-                    <section class="main__card main-1">
-                        <img src="../img/museos/main-1.jpg" alt="Imagen del Museo MARTE">
-                        <div class="main__card-text">
-                            <h2>MUSEO DE ARTE DE EL SALVADOR</h2>
-                        </div>
-                        <div class="main__card-autor">
-                            <p>Imagen por: </p>
-                            <img src="../img/home/firma-grey.svg" alt="Firma del fotografo @Camaro27">
-                        </div>
-                    </section>
-                    <section class="main__card main-2 " >
-                        <img src="../img/museos/main-2.jpg" alt="Imagen del Museo MARTE">
-                        <div class="main__card-text">
-                            <h2>MUSEO DE HISTORIA NATURAL .</h2>
-                        </div>
-                        <div class="main__card-autor">
-                            <p>Imagen por: </p>
-                            <img src="../img/home/firma-grey.svg" alt="Firma del fotografo @Camaro27">
-                        </div>
-                    </section>
-                    <section class="main__card main-3">
-                        <img src="../img/museos/main-3.jpg" alt="Imagen del Museo MARTE">
-                        <div class="main__card-text">
-                            <h2>MUSEO MILITAR DE LA FUERZA ARMADA .</h2>
-                        </div>
-                        <div class="main__card-autor">
-                            <p>Imagen por: </p>
-                            <img src="../img/home/firma-grey.svg" alt="Firma del fotografo @Camaro27">
-                        </div>
-                    </section>
+                    <?php foreach ($museos as $museo) { ?>
+                        <a href="./museo.php?id=<?=$museo->id ?>">
+                        <section class="main__card main-scroll">
+                            <img class="main__card-img" src="<?=$museo->imagen ?>" alt="Imagen del Museo MARTE">
+                            <div class="main__card-text">
+                                <h2><?= $museo->nombre ?></h2>
+                            </div>
+                            <div class="main__card-autor">
+                                <p id="credits">Imagen por: </p>
+                                <img src="../img/home/firma-grey.svg" alt="Firma del fotografo @Camaro27">
+                            </div>
+                        </section>
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </main>
 
-    <?php  include "../includes/templates/footer.php"?>
+    <?php include "../includes/templates/footer.php" ?>
 </body>
+
 </html>

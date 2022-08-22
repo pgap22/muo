@@ -1,0 +1,19 @@
+.comment{
+    padding-block: 2.5rem;
+    border-bottom: 1px solid var(--clr-naranja);
+    display: flex;
+    align-items: flex-start;
+}
+.comment__icon{
+    filter: invert(1);
+    user-select: none;  
+    min-width: 6rem;
+}
+.comment__data{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.comment__name{
+    font-weight: bold;
+}

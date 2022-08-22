@@ -1,0 +1,23 @@
+@import url("../mobile/style.css");
+.main__expo{
+    margin: 0rem 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carusel-expo__info{
+    max-width: 40rem;
+    align-self: flex-start;
+}
+.main__comments{
+    margin-block: 5rem;
+    margin-left:  9rem;
+}
+.comment{
+    margin-left: 9rem;
+    border: none;
+}
+.comment-wrapper{
+    border-bottom: 1px solid var(--clr-naranja);
+}

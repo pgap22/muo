@@ -20,8 +20,8 @@
         
         <div class="alert-pop">
             <img src="/img/alerta/info.svg" alt="Alerta Info" class="alert-pop__icon">
-            <h2 class="alert-pop-title">${title}</h2>
-            <p class="alert-pop__text">${message}</p>
+            <h2 class="alert-pop-title" id="alert-title">${title}</h2>
+            <p class="alert-pop__text" id="alert-info">${message}</p>
             <div class="alert-pop__btn close-btn">
                 <p class="alert-pop__close">Close</p>
             </div>

@@ -1,0 +1,71 @@
+.main__expo-title{
+    text-align: center;
+}
+.center{
+    flex-direction: column;
+    align-items: center;
+}
+.main__expo{
+    margin: 0rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.carusel-expo__img{
+    border-radius: 5px;
+}
+
+
+
+/*COMMENTS ONLY IN EXPO*/
+.main__comments{
+    /* border: 1px solid red; */
+    margin: 1rem 2rem;
+}
+.add-comment{
+    display: flex;
+    flex-direction: column;
+}
+.add-comment__submit{
+    justify-self: end;
+    background-color: var(--clr-naranja);
+    border: none;
+    outline: none;
+    width: 6rem;
+    margin-block: 0.5rem;
+    border-radius: 5px;
+    align-self: flex-end;
+    cursor: pointer;
+
+}
+.add-comment__input{
+    background-color: var(--clr-negro);
+    border-radius: 10px;
+    color: var(--clr-blanco);
+    border: 4px solid var(--clr-blanco);
+    padding: 1.5rem;
+    font-family: inherit;
+    outline: none;
+    resize: none;
+}
+.add-comment__icon{
+    aspect-ratio: 1;
+    width: 4rem;
+}
+
+/*ADD FAV ONLY IN EXPO*/
+.main__expo-top{
+    /* border: 1px solid red; */
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.btn-fav{
+    background-color: var(--clr-naranjaCard);
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

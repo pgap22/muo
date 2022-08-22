@@ -123,6 +123,12 @@ spanish["admin-add-expo"]["29-e"] = "El archivo debe ser una imagen";
 spanish["admin-add-expo"]["30-e"] = "El archivo debe ser menor a 2MB";
 
 
+spanish["admin-inspect"] = [];
+spanish["admin-inspect"]["comment"] = "Comentarios";
+spanish["admin-inspect"]["comment-title"] = "Comentarios";
+spanish["admin-inspect"]["fav"] = "Añadidos a Favoritos";
+spanish["admin-inspect"]["back"] = "Volver";
+
 spanish["general"] = [];
 spanish["general"]["logout"] = "Cerrar sesion";
 
@@ -241,6 +247,12 @@ english["admin-add-expo"]["41-e"] = "The category is invalid!";
 english["admin-add-expo"]["28-e"] = "You must add an image";
 english["admin-add-expo"]["29-e"] = "The file must be an image";
 english["admin-add-expo"]["30-e"] = "The file must be less than 2MB";
+
+english["admin-inspect"] = [];
+english["admin-inspect"]["comment"] = "Comments";
+english["admin-inspect"]["comment-title"] = "Comments";
+english["admin-inspect"]["fav"] = "Added to favorites";
+english["admin-inspect"]["back"] = "Go back";
 
 english["general"] = [];
 english["general"]["logout"] = "Log out";

@@ -47,5 +47,23 @@ class Exposiciones extends ActiveRecord{
             self::$errors["code"] = 41;
         }
     }
+
+    public static function getRecommend(){
+        $crazyQuery = "SELECT id_exposicion,sum(expoPoint) FROM (
+            SELECT id_exposicion, count(*) AS expoPoint FROM favoritosusuarios GROUP BY id_exposicion 
+            UNION ALL 
+            SELECT id_exposicion, count(*) AS xd FROM comentarios GROUP BY id_exposicion
+            ) 
+        expoPoints GROUP BY id_exposicion ORDER BY sum(expoPoint) DESC LIMIT 3";
+
+        $recommendedResult = Exposiciones::executeSQL($crazyQuery);
+        $recommend = [];
+        while($row = $recommendedResult->fetch_assoc()){
+            $recommend[] = Exposiciones::find($row["id_exposicion"]);
+        }
+
+        return $recommend;
+
+    }
 }
 ?>

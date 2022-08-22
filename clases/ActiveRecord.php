@@ -143,7 +143,6 @@ class ActiveRecord {
 
             //Asignando a la consulta quien se va actualizar
             $query .= " WHERE id = $this->id";
-
             //Ejecutar query
             self::$db->query($query);
         }
@@ -198,7 +197,7 @@ class ActiveRecord {
 
          if($dataType == 'string'){
              //Si es string agregar las comillas
-             $data = " '$data'";
+             $data = '"'.self::$db->escape_string($data).'"';
             
         }
         return $data;
@@ -220,7 +219,8 @@ class ActiveRecord {
 
 
         $query = "DELETE FROM ".static::$table." WHERE id =  $this->id";
-        self::$db->query($query);
+        if(self::$db->query($query)) return true;
+        return false;
     }
 
     public static function executeSQL($query){

@@ -1,7 +1,4 @@
 @import url("../mobile/style.css");
-.main__card{
-    max-width: 50rem;
-}
-.main__card-container{
-    gap: 5rem;
+.main__scroll{
+ max-width: max-content;   
 }

@@ -80,7 +80,7 @@ h2{
 .main__card-container{
     margin-top: 5rem;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     gap: 1.5rem;
 }
@@ -94,7 +94,6 @@ h2{
     justify-content: space-between;
     gap: 2rem;
     padding: 2rem;
-    /* max-width: 50rem; */
 }
 .main__card img{
     border-radius: 2rem;
@@ -107,8 +106,12 @@ h2{
 .main__card-autor img{
     width: clamp(10rem, 25vw, 15rem);
 }
-
-@media (max-width: 741px){
+.main__card-img{
+    max-width: 32rem;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    height: max-content;
+}
 
 
 /*Scroll*/
@@ -135,23 +138,8 @@ h2{
     max-width: 40rem;
 }
 
-.main__card-container{
-    flex-direction: row;
-    width: 280%;
-}
-.main__card{
-    width: calc(100%/3);
-}
-.main-1{
+.main-scroll{
     scroll-snap-align: center;
     scroll-snap-stop: always ;
 }
-.main-2{
-    scroll-snap-align: center;
-    scroll-snap-stop: always ;
-}
-.main-3{
-    scroll-snap-align: center;
-    scroll-snap-stop: always ;
-}
-}
+

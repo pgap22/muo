@@ -10,15 +10,27 @@
     <script defer src="/js/alert.js"></script>
 </head>
 <body>
-    <h1>Prueba Alertas</h1>
+    <style>
+        .tag{
+            border: 3px solid var(--clr-blanco);
+            width: fit-content;
+            padding: .7rem 3.5rem;
+            border-radius: 30px;
+            user-select: none;
+            transition: ease-in 150ms;
+            margin: .5rem;
+        }
+        .tag--bg{
+            background-color: var(--clr-naranjaCard);
+        }
+    </style>
 
-    <div class="simple-alert" data-type="success" data-message="La Alerta funciona"> </div>
-    
-    <!-- <div class="action-alert" data-type="error" data-function="example" data-message="Este es el mensaje de la alerta" data-title="El titulo" data-btn="Borrar"></div> -->
-    <div class="pop-up-alert" data-message="XD" data-type="success"></div>
+    <h1>Creador de Componentes</h1>
+    <div class="tag">
+        <p>Historia</p>
+    </div>
+    <script>
 
-    <div class="action-alert" data-type="warning" data-function="derivar" data-message="AMARILLO AMARILLO LOS PLATANOS" data-title="PLATANOS" data-btn="VIVAN LOS PLATANOS"></div>
-    
-<script src="prueba.js"></script>
+    </script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+@import url("../tablet/style.css");
+.wrapper{
+    margin-left: 17rem;
+}
+.favorite__container{
+    gap: 5rem;
+}

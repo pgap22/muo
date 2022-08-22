@@ -14,8 +14,9 @@ $user = Usuarios::find($_SESSION["user_id"]);
     <link rel="stylesheet" href="../css/header-home/desktop/style.css" media="(min-width: 1024px)">
 
 
+    <script src="../../js/componentHandler.js" type="module"></script>
     <script src="../../js/menuHome.js" defer></script>
-    
+
     <header class="header">
        <div class="header__container">
             
@@ -48,39 +49,13 @@ $user = Usuarios::find($_SESSION["user_id"]);
                     </div>
 
                     <div class="header__pages">
-                    
-                        <div class="header__page-container">
-                            <div class="header__link">
-                                <img src="../img/icons/settings.svg" class="header__page-icon" alt="settings Icon">
-                                <p>Configurar mi perfil</p>
-                            </div>
-
-                            <a href="/home" class="header__link">
-                                <img src="../img/icons/Home.svg" alt="" class="header__page-icon">
-                                <p>Pagina principal</p>
-                            </a>
-
-                            <a href="/pages/nosotros.php" class="header__link">
-                                <img src="../img/icons/about.svg" alt="" class="header__page-icon">
-                                <p>Sobre Nosotros</p>
-                            </a>
-
-                            <a href="/pages/museos.php" class="header__link" >
-                                    <img src="../img/icons/museum.svg" alt="" class="header__page-icon">
-                                    <p>Museos</p>
-                            </a>
-                        </div>    
-
-                        <a href="/auth/logoutUser.php">
-                            <div class="header__link header__link--logout">
-                                <img src="../img/icons/logout.svg" alt="Logout Icon" class="header__logout-icon">
-                                <p class="header__logout-text">Cerrar Sesion</p>
-                            </div>
-                        </a>
+                         
                     </div>
 
 
                 </div>
+
+
             </div>
        </div>
     </header>

@@ -16,12 +16,12 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         #Recoleccion de datos ingresados por el usuario 
-        $newUser["name"] = htmlentities($_POST["new_name"]);
-        $newUser["last_name"] = htmlentities($_POST["new_last-name"]);
-        $newUser["email"] = htmlentities($_POST["new_email"]);
-        $newUser["password"] = htmlentities($_POST["new_password"]);
-        $newUser["confirmPassword"] = htmlentities($_POST["confirm_password"]);
-        $newUser["emailToken"] = htmlentities($emailToken);
+        $newUser["name"] = strip_tags($_POST["new_name"]);
+        $newUser["last_name"] = strip_tags($_POST["new_last-name"]);
+        $newUser["email"] = strip_tags($_POST["new_email"]);
+        $newUser["password"] = strip_tags($_POST["new_password"]);
+        $newUser["confirmPassword"] = strip_tags($_POST["confirm_password"]);
+        $newUser["emailToken"] = strip_tags($emailToken);
 
 
         #Crear el objeto de Usuario no verificado 
