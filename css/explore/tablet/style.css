@@ -6,3 +6,9 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.expo-discover__title{
+    font-size: 17px;
+}
+.expo-discover__image{
+    width: 8rem;
+}

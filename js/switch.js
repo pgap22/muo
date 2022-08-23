@@ -79,12 +79,26 @@ function showData(e) {
 
         if(data){
             data.forEach(expo =>{
+                let title = '';
+                
+                globalThis.spanish["explore"]["name-"+expo.id] = expo.nombre;
+                globalThis.english["explore"]["name-"+expo.id] = expo.nombre_en;
+
+
+                if(sessionStorage.getItem("lang") == "es"){
+                        title = expo.nombre;
+                }
+                else{
+                    title = expo.nombre_en;
+                }
+
+
                 let expoDiscover = document.createElement("a");
 
 
                 expoDiscover.href = "/home/expo.php?id="+expo.id;
 
-                expoDiscover.innerHTML = globalThis.expoDiscoverComponent(expo.id, expo.nombre, expo.imagen);
+                expoDiscover.innerHTML = globalThis.expoDiscoverComponent(expo.id, title, expo.imagen);
 
                 resultContainer.appendChild(expoDiscover);
             })

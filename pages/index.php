@@ -12,7 +12,7 @@ protegerIndex();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="black">
-    <meta name="description" content="Un sitio web de museos">
+    <meta name="description" co ntent="Un sitio web de museos">
     <title>MUO - INICIO</title>
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <!--Js-->

@@ -2,3 +2,9 @@
 .result-explore{
     margin-left: 9rem;
 }
+.expo-discover__title{
+    font-size: 22px;
+}
+.expo-discover__image{
+    width: 12rem;
+}
