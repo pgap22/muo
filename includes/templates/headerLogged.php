@@ -15,7 +15,9 @@ $user = Usuarios::find($_SESSION["user_id"]);
 
 
     <script src="../../js/componentHandler.js" type="module"></script>
+    
     <script src="../../js/menuHome.js" defer></script>
+    <script src="../../js/searchMobil.js" defer></script>
 
     <header class="header">
        <div class="header__container">
@@ -25,10 +27,10 @@ $user = Usuarios::find($_SESSION["user_id"]);
             </a>
           
 
-            <div class="header__search-bar no-mobile">
+            <form action="/home/search.php" class="header__search-bar no-mobile">
                 <img src="/img/icons/search.svg" alt="Search Icon" class="header__search-ico">
-                <input type="text" id="search-expo" name="search-expo" class="header__input-search">
-            </div>
+                <input type="text" id="expo-search" name="expo-search" class="header__input-search">
+            </form>
 
             <div class="header__user">
                 <div class="header__user-data">

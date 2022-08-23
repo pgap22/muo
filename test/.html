@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,28 +10,86 @@
     <link rel="stylesheet" href="/fonts/font.css">
     <script defer src="/js/alert.js"></script>
 </head>
+
 <body>
+    <h1>Creador de Componentes</h1>
+
     <style>
-        .tag{
-            border: 3px solid var(--clr-blanco);
-            width: fit-content;
-            padding: .7rem 3.5rem;
-            border-radius: 30px;
-            user-select: none;
-            transition: ease-in 150ms;
-            margin: .5rem;
+        body {
+            height: 100vh;
         }
-        .tag--bg{
-            background-color: var(--clr-naranjaCard);
+
+        .search-pop {
+            border: 3px solid var(--clr-blanco);
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            z-index: 999999999999;
+            background-color: var(--clr-negro);
+            max-width: 30rem;
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .search-pop__quit {
+            align-self: flex-end;
+        }
+
+        .search-pop__black-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .search-pop__container {
+            position: fixed;
+            /* border: 1px solid green; */
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .search-pop__input {
+            background-color: transparent;
+            border-bottom: 2px solid var(--clr-blanco);
+            color: var(--clr-blanco);
+            font-size: 18px;
+            margin-block: 1rem;
+        }
+
+        .search-pop__send {
+            background-color: var(--clr-naranja);
+            color: var(--clr-blanco);
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
         }
     </style>
 
-    <h1>Creador de Componentes</h1>
-    <div class="tag">
-        <p>Historia</p>
+<div class="search-pop-wrapper">
+    <div class="search-pop__black-screen"></div>
+    <div class="search-pop__container">
+        <div class="search-pop">
+            <img src="/img/icons/cancel.svg" alt="" class="search-pop__quit">
+            <h4 class="search-pop__text">Buscar: </h4>
+            <input type="search" name="expo-search" id="" class="search-pop__input">
+            <input type="submit" value="Buscar" class="search-pop__send">
+        </div>
     </div>
-    <script>
+</div>
 
+    <script>
+        let quit = document.querySelector(".search-pop__quit");
+        quit.addEventListener("click", ()=>{
+            document.querySelector(".search-pop-wrapper").remove();
+        })
     </script>
 </body>
+
 </html>

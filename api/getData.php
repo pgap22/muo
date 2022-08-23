@@ -25,6 +25,8 @@ $selector = $_GET["selector"] ?? '';
 $explore_selector = $_GET["explore"] ?? '';
 $explore_id = $_GET["explore_id"] ?? '';
 
+$search = $_GET["expo-search"] ?? '';
+
 if($item == 'expo' && $limit && $page){
     #Obtener todas las expo
     $exposiciones = Exposiciones::all();
@@ -138,6 +140,25 @@ if($explore_selector & $explore_id){
     
         echo json_encode($data);
     }
+}
+
+if($search){
+    $array  = Exposiciones::executeSQL("SELECT * FROM exposiciones WHERE nombre LIKE '%$search%' OR informacion LIKE '%$search%'");
+   
+    $data = [];
+
+    while ($row = $array->fetch_assoc()){
+// $row->setData("info_eng", Exposeng::where("id_expo", $row->id)->informacion);
+// $row->setData("name_eng", Exposeng::where("id_expo", $row->id)->nombre);
+// $row->setData("imagen", Imagenesexpo::where("id_exposicion", $row->id)->rutaImagen);
+        $row["info_eng"] = Exposeng::where("id_expo", $row["id"])->informacion;
+        $row["name_eng"] = Exposeng::where("id_expo", $row["id"])->nombre;
+        $row["imagen"] = Imagenesexpo::where("id_exposicion", $row["id"])->rutaImagen;
+        $data[] = $row;
+    }
+
+    echo json_encode($data);
+
 }
 
 ?>

@@ -51,6 +51,8 @@ spanish["explore"]["title"] = "Explora";
 spanish["explore"]["category"] = "Categoria";
 spanish["explore"]["museum"] = "Museo";
 
+spanish["search"] = '';
+
 //English Dictionary
 english["menu"] = [];
 english["menu"]["setting"] = "Settings";
@@ -96,4 +98,6 @@ english["explore"] = [];
 english["explore"]["title"] = "Explore";
 english["explore"]["category"] = "Category";
 english["explore"]["museum"] = "Museum";
+
+english["search"] = '';
 export {english, spanish};

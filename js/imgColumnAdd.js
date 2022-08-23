@@ -5,7 +5,7 @@ let imgColumnComponent = document.getElementById("img-column").content
 let imgGallery = document.querySelector(".main__img-container");
 
 let imgID = -1;
-
+    
 function setNewAdd(){
     let galley = document.querySelector(".main__column-image");
     galley.appendChild(addImgComponent.cloneNode(1));

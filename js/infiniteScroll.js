@@ -8,30 +8,32 @@ async function getRecommendExpo(){
     return data.json();
 }
 
-getRecommendExpo().then(expos =>{
-    expos.forEach(item => {
-
-        //Identificar cual se va a renderizar
-        if (sessionStorage.getItem("lang") == "en") {
-            nameTranslated = item.name_eng;
-            infoTranslated = item.info_eng;
-        } else {
-            nameTranslated = item.nombre;
-            infoTranslated = item.informacion;
-        }
-
-
-
-        //Añadir info en ingles y español ademas de acortarla para el home
-        globalThis.spanish["home"]["info-" + item.id] = infoShortener(item.informacion);
-        globalThis.spanish["home"]["name-" + item.id] = item.nombre;
-
-        globalThis.english["home"]["info-" + item.id] = infoShortener(item.info_eng);
-        globalThis.english["home"]["name-" + item.id] = item.name_eng;
-        
-        globalThis.renderRecommendComponent(item.id, parentRecommend, item.imagen, nameTranslated, infoShortener(infoTranslated));
+if(parentRecommend){
+    getRecommendExpo().then(expos =>{
+        expos.forEach(item => {
+    
+            //Identificar cual se va a renderizar
+            if (sessionStorage.getItem("lang") == "en") {
+                nameTranslated = item.name_eng;
+                infoTranslated = item.info_eng;
+            } else {
+                nameTranslated = item.nombre;
+                infoTranslated = item.informacion;
+            }
+    
+    
+    
+            //Añadir info en ingles y español ademas de acortarla para el home
+            globalThis.spanish["home"]["info-" + item.id] = infoShortener(item.informacion);
+            globalThis.spanish["home"]["name-" + item.id] = item.nombre;
+    
+            globalThis.english["home"]["info-" + item.id] = infoShortener(item.info_eng);
+            globalThis.english["home"]["name-" + item.id] = item.name_eng;
+            
+            globalThis.renderRecommendComponent(item.id, parentRecommend, item.imagen, nameTranslated, infoShortener(infoTranslated));
+        })
     })
-})
+}
 
 globalThis.getData('expo', page, limit).then(expos => {
     page++
