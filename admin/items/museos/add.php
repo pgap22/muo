@@ -139,12 +139,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- css -->
     <link rel="stylesheet" href="/css/headerAdmin/mobile/style.css" media="(max-width: 480px)">
-    <link rel="stylesheet" href="/css/headerAdmin/tablet/style.css" media="(min-width: 481px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/headerAdmin/tablet/style.css" media="(min-width: 480px) and (max-width: 1024px)">
     <link rel="stylesheet" href="/css/headerAdmin/desktop/style.css" media="(min-width: 1024px)">
 
     <link rel="stylesheet" href="/css/adminEdit/mobile/style.css">
     <link rel="stylesheet" href="/css/adminEdit/desktop/style.css" media="(min-width: 1024px)">
-    <link rel="stylesheet" href="/css/adminEdit/tablet/style.css" media="(min-width: 630px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/adminEdit/tablet/style.css" media="(min-width: 630px) and (max-width: 1024px)">
 
     <script defer src="/js/inputError.js"></script>
 </head>

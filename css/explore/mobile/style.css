@@ -82,3 +82,7 @@
 .expo-discover__title{
     font-size: 14px;
 }
+
+.hide-tags{
+    display: none;
+}

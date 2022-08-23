@@ -8,7 +8,7 @@ $user = Usuarios::find($_SESSION["user_id"]);
     <link rel="stylesheet" href="../css/header-home/mobile/style.css" media="(max-width: 520px)">
 
     <link rel="preload" href="../css/header-home/tablet/style.css" as="style">
-    <link rel="stylesheet" href="../css/header-home/tablet/style.css" media="(min-width: 521px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/header-home/tablet/style.css" media="(min-width: 520px) and (max-width: 1024px)">
 
     <link rel="preload" href="../css/header-home/desktop/style.css" as="style">
     <link rel="stylesheet" href="../css/header-home/desktop/style.css" media="(min-width: 1024px)">

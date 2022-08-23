@@ -46,6 +46,7 @@
     padding: 2rem;
     z-index: 999;
     transition: cubic-bezier(0.55, 0.055, 0.675, 0.19) 250ms;
+    width: 26rem;
 }
 .header__link{
     user-select: none;

@@ -10,6 +10,7 @@
     grid-template-columns: max-content 1fr max-content;
     align-items: center;
     gap: 10px;
+
 }
 .header__img{
     width: 140px;
@@ -64,6 +65,7 @@
     padding: 2rem;
     z-index: 999;
     transition: cubic-bezier(0.55, 0.055, 0.675, 0.19) 250ms;
+    width: 40rem;
 }
 .header__link{
     background-color: var(--clr-negro);

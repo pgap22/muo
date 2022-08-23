@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 session_start();
 
 use MUO\CategoriaEng;
@@ -92,29 +94,11 @@ if(isset($_GET["recommend-expo"])){
     echo json_encode($array);
 }
 
-if($selector == "museum"){
-    $array = Museos::all();
-    $data = [];
-    foreach($array as $museo){
-        $data[] = $museo;
-    }
-    echo json_encode($data);
-}
-
-if($selector == "category"){
-    $array = Categorias::all();
-    $data = [];
-    foreach($array as $categoria){
-        $categoriaEn = CategoriaEng::where("id_categoria", $categoria->id)->nombre;
-        $categoria->setData("nombre_en", $categoriaEn);
-        $data[] = $categoria;
-    }
-    echo json_encode($data);
-}
 
 
 
 if($explore_selector & $explore_id){
+
     function listAll($row){
         $expo = new Exposiciones($row);
         $img = Imagenesexpo::where("id_exposicion", $expo->id)->rutaImagen;
@@ -124,7 +108,7 @@ if($explore_selector & $explore_id){
         return $expo;
     }
 
-    if($explore_selector == "category"){
+    if($explore_selector == "categorias"){
         $array = Categorias::executeSQL("SELECT * FROM exposiciones WHERE id_categorias = $explore_id");
         $data = [];
         if(!$array->num_rows) {
@@ -139,7 +123,7 @@ if($explore_selector & $explore_id){
     
         echo json_encode($data);
     }
-    else if($explore_selector == "museum"){
+    else if($explore_selector == "museos"){
         $array = Museos::executeSQL("SELECT * FROM exposiciones WHERE id_museos = $explore_id");
         $data = [];
         if(!$array->num_rows) {

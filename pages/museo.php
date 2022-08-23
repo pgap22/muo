@@ -40,7 +40,7 @@ if (!$museo) {
 
     <!-- explore  -->
     <link rel="stylesheet" href="/css/expo/mobile/style.css" media="(max-width: 520px)">
-    <link rel="stylesheet" href="/css/expo/tablet/style.css" media="(min-width: 521px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/expo/tablet/style.css" media="(min-width: 520px) and (max-width: 1024px)">
     <link rel="stylesheet" href="/css/expo/desktop/style.css" media="(min-width: 1024px)">
 
 </head>

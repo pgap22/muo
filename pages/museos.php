@@ -40,7 +40,7 @@ $museos = Museos::all();
 
     <!--Museum Style-->
     <link rel="stylesheet" href="../css/museos/mobile/style.css" media="(max-width:741px)">
-    <link rel="stylesheet" href="../css/museos/tablet/style.css" media="(min-width:742px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/museos/tablet/style.css" media="(min-width:742px) and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/museos/desktop/style.css" media="(min-width: 1024px)">
 
 </head>

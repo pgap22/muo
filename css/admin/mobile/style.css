@@ -27,11 +27,12 @@
     gap: 20px;
 }
 .main__option{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 10px; */
     cursor: pointer;
+    width: fit-content;
 }
 .main__options-bg{
     display: flex;

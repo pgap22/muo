@@ -4,7 +4,7 @@
     <link rel="preload" href="../css/header-footer/desktop.css" as="style">
 
     <link rel="stylesheet" href="../css/header-footer/mobile.css" media="(max-width: 741px)">
-    <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/header-footer/tablet.css" media="(min-width: 742px) and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/header-footer/desktop.css" media="(min-width: 1024px)">
     <script src="../js/general.js" type="module" defer></script>
 <header class="header">
@@ -12,7 +12,7 @@
         <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
         <a href="index.php" class="header__logo">
            <picture>
-                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1023px)">
+                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1024px)">
 
                 <img src="../img/logo/logo.svg" alt="Logo de MUO" title="MUO"class="header__logo">
            </picture>

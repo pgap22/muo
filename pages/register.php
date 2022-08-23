@@ -92,7 +92,7 @@
                 </div>
                 <a href="/">
                     <picture class="header__logo">
-                        <source srcset="../img/logo/logo.svg" media="(min-width:1023px)">
+                        <source srcset="../img/logo/logo.svg" media="(min-width:1024px)">
                         <img src="../img/logo/logo-mobile.svg" alt="">
                     </picture>
                 </a>

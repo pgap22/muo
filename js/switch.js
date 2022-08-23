@@ -1,110 +1,60 @@
-let switchSelector = document.querySelector(".switch");
-let ball = document.querySelector(".switch__ball");
-let parentElement = document.querySelector(".tags");
+let allTags = document.querySelectorAll(".tag");
+let switchBtn = document.querySelector(".switch"); 
+let switchBall = document.querySelector(".switch__ball");
+let tagsContainer = document.querySelectorAll(".tags");
+let selector = switchBtn.id;
 let resultContainer = document.querySelector(".result-explore");
-let selector = '';
-getSelector('0').then(data => {setTags(data)})
 
-async function getSelector(id){
-    selector = (id == '1') ? "museum" : "category";
+switchBtn.addEventListener("click", ()=>{
+    switchBall.classList.toggle("switch__ball--true");
     
-    let data  = await fetch(window.location.origin+"/api/getData.php?selector="+selector);
-    return data.json();
-}
-
-
-switchSelector.addEventListener("click", ()=>{
-    ball.classList.toggle("switch__ball--true");
-
-    if(parseInt(switchSelector.id)){
-        switchSelector.id = 0;
-    }else{
-        switchSelector.id = 1;
-    }
-    getSelector(switchSelector.id).then(data =>{setTags(data)})
-})
-
-function setTags(data){
-    //Limpiar tags antiguas
-    parentElement.innerHTML = ''
-    data.forEach((element, i) => {
-
-        //Translate
-        let nombre = '';
-        globalThis.spanish["explore"]["tag-"+element.id] = element.nombre;
-        if(element.nombre_en){
-            
-            globalThis.english["explore"]["tag-"+element.id] = element.nombre_en;
-
-            if(sessionStorage.getItem("lang") == 'en'){
-                nombre = element.nombre_en;
-            }else{
-                nombre = element.nombre
-            }
+    tagsContainer.forEach(tag => {
+        if(tag.classList.contains("hide-tags")){
+            tag.classList.remove("hide-tags");
         }
         else{
-            nombre = element.nombre;
+            tag.classList.add("hide-tags");
         }
-
-        //Render
-        let tag = document.createElement("div");
-        tag.classList.add("tag");
-        tag.innerHTML = globalThis.tagComponent(nombre, element.id, selector);
-        parentElement.appendChild(tag);
-        
-        //Click Event
-        if(i == data.length-1){
-            globalThis.reloadTags(showData);
-        }
-    
-    });
-}
+    })
 
 
-async function getExpos(s, i){
-    let data = await fetch(window.location.origin+'/api/getData.php?explore='+s+'&explore_id='+i);
+});
+
+
+async function getData(selector, id){
+    let data = await fetch(window.location.origin+"/api/getData.php?explore="+selector+"&explore_id="+id);
     return data.json();
 }
 
-function showData(e) {
-    let selector = e.dataset.selector;
-    let id = e.dataset.id;
 
-    getExpos(selector, id).then(data =>{
-        resultContainer.innerHTML = '';
-        if(!data){
-            resultContainer.innerHTML = "No data :(";
-            return true;
-        }
+allTags.forEach(tag => {
+    tag.addEventListener("click", ()=> {
+        allTags.forEach(element => {
+            element.classList.remove("tag--bg");
+        })
 
-        if(data){
-            data.forEach(expo =>{
-                let title = '';
-                
-                globalThis.spanish["explore"]["name-"+expo.id] = expo.nombre;
-                globalThis.english["explore"]["name-"+expo.id] = expo.nombre_en;
+        tag.classList.add("tag--bg");
 
+        let exploreSelector = tag.children[0].dataset.selector;
+        let exploreId = tag.children[0].dataset.id;
 
-                if(sessionStorage.getItem("lang") == "es"){
-                        title = expo.nombre;
-                }
-                else{
-                    title = expo.nombre_en;
-                }
+        getData(exploreSelector, exploreId).then(results => {
+            resultContainer.innerHTML = '';
+            
+            if(!results) {
+                resultContainer.innerHTML = "No data :(";
+                return true;
+            }
 
+            results.forEach(discoverExpo => {
+                let expo = document.createElement("a");
+                expo.href = "/home/expo.php?id="+discoverExpo.id;
 
-                let expoDiscover = document.createElement("a");
+                expo.innerHTML = globalThis.expoDiscoverComponent(discoverExpo.id, discoverExpo.nombre, discoverExpo.imagen);
 
-
-                expoDiscover.href = "/home/expo.php?id="+expo.id;
-
-                expoDiscover.innerHTML = globalThis.expoDiscoverComponent(expo.id, title, expo.imagen);
-
-                resultContainer.appendChild(expoDiscover);
+                resultContainer.appendChild(expo);
             })
-        }
-        
+        });
 
     })
-   
-}
+}) 
