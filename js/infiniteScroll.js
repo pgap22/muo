@@ -24,11 +24,11 @@ if(parentRecommend){
     
     
             //Añadir info en ingles y español ademas de acortarla para el home
-            globalThis.spanish["home"]["info-" + item.id] = infoShortener(item.informacion);
-            globalThis.spanish["home"]["name-" + item.id] = item.nombre;
+            globalThis.spanish["home"]["recommend-" + item.id] = infoShortener(item.informacion);
+            globalThis.spanish["home"]["recommend-title-" + item.id] = item.nombre;
     
-            globalThis.english["home"]["info-" + item.id] = infoShortener(item.info_eng);
-            globalThis.english["home"]["name-" + item.id] = item.name_eng;
+            globalThis.english["home"]["recommend-" + item.id] = infoShortener(item.info_eng);
+            globalThis.english["home"]["recommend-title-" + item.id] = item.name_eng;
             
             globalThis.renderRecommendComponent(item.id, parentRecommend, item.imagen, nameTranslated, infoShortener(infoTranslated));
         })
@@ -38,7 +38,6 @@ if(parentRecommend){
 globalThis.getData('expo', page, limit).then(expos => {
     page++
     expos.forEach(item => {
-
         //Identificar cual se va a renderizar
         if (sessionStorage.getItem("lang") == "en") {
             nameTranslated = item.name_eng;
@@ -67,8 +66,7 @@ window.addEventListener("scroll", (e) => {
     if (Math.ceil((window.scrollY + window.innerHeight)) >= document.querySelector("body").clientHeight) {
 
         globalThis.getData('expo', page, limit).then(expos => {
-            if(expos){
-                console.log(expos.length);
+            if(expos.length){
                 page++
             }
             expos.forEach(item => {

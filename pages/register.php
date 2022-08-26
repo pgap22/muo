@@ -3,9 +3,9 @@
     use MUO\NoVerifiedUser;
     use MUO\Usuarios;
     
-    include "../includes/app.php";
+    include "../includes/app.php"; //Clases, Funciones, Colocando Mi Base de datos.
     
-    protegerIndex();
+    protegerIndex(); // ...
 
     $error = [];
     $newUser = [];
@@ -13,6 +13,7 @@
     #Crea un token para tener guardada una sesion
     $emailToken = bin2hex(openssl_random_pseudo_bytes(8));
 
+    //Si el usuario envio los datos hago los procedimientos
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         #Recoleccion de datos ingresados por el usuario 

@@ -1,7 +1,9 @@
 <?php
 
+use MUO\CategoriaEng;
 use MUO\Categorias;
 use MUO\Museos;
+use MUO\MuseosEn;
 
 include "../includes/app.php";
 
@@ -76,15 +78,15 @@ $museos = Museos::all();
 
                     <div class="tags">
                         <?php foreach ($categorias as $categoria) { ?>
-                                <div class="tag"> 
-                                    <p  id="tag-<?= $categoria->id?>" data-selector="categorias" data-id=<?= $categoria->id?>><?= $categoria->nombre?></p>
+                                <div class="tag tag-category"> 
+                                    <p data-esp="<?= $categoria->nombre?>" data-eng="<?= CategoriaEng::where("id_categoria", $categoria->id)->nombre?>"  id="category-<?= $categoria->id?>" data-selector="categorias" data-id=<?= $categoria->id?>><?= $categoria->nombre?></p>
                                 </div>
                         <?php } ?>
                     </div>
                     <div class="tags hide-tags">
                         <?php foreach ($museos as $museo) { ?>
                                 <div class="tag"> 
-                                    <p  id="tag-<?= $museo->id?>" data-selector="museos" data-id=<?= $museo->id?>><?= $museo->nombre?></p>
+                                    <p id="museums-<?= $museo->id?>" data-selector="museos" data-id=<?= $museo->id?>><?= $museo->nombre?></p>
                                 </div>
                         <?php } ?>
                     </div>
@@ -105,7 +107,7 @@ $museos = Museos::all();
     <?= menuMobilHome('', '', 'menu-phone__icon--active') ?>
 
     <script defer src="/js/switch.js"></script>
-
+    <script defer src="/js/translateTags.js"></script>
 </body>
 
 </html>

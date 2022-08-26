@@ -12,14 +12,12 @@ globalThis.getSearch(search).then(data => {
             infoTranslated = expo.informacion;
         }
 
-
-
         //Añadir info en ingles y español ademas de acortarla para el home
-        globalThis.spanish["search"]["info-" + expo.id] = infoShortener(expo.informacion);
-        globalThis.spanish["search"]["name-" + expo.id] = expo.nombre;
+        globalThis.spanish["search"]["recommend-" + expo.id] = infoShortener(expo.informacion);
+        globalThis.spanish["search"]["recommend-title-" + expo.id] = expo.nombre;
 
-        globalThis.english["search"]["info-" + expo.id] = infoShortener(expo.info_eng);
-        globalThis.english["search"]["name-" + expo.id] = expo.name_eng;
+        globalThis.english["search"]["recommend-" + expo.id] = infoShortener(expo.info_eng);
+        globalThis.english["search"]["recommend-title-" + expo.id] = expo.name_eng;
         
         globalThis.renderRecommendComponent(expo.id, parentElement, expo.imagen, nameTranslated, infoShortener(infoTranslated));
     });

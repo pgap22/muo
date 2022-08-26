@@ -150,7 +150,7 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
                         <div class="comment">
                             <img class="comment__icon" src="/img/icons/user.svg" alt="">
                             <div class="comment__data">
-                                <p class="comment__name"><span><?= Usuarios::find($comentario->id_usuario)->name ?></span><span><?= Usuarios::find($comentario->id_usuario)->last_name ?></span></p>
+                                <p class="comment__name"><span><?= Usuarios::find($comentario->id_usuario)->name ?> </span><span><?= Usuarios::find($comentario->id_usuario)->last_name ?></span></p>
                                 <p class="commnet__text"><?= $comentario->contenido?></p>
                             </div>
                         </div>

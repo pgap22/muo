@@ -71,7 +71,7 @@ $search = $_GET["expo-search"];
 
             <div class="main__content wrapper">
                 <div class="search-container">
-                    <h1>Resultados</h1>
+                    <h1 id="result">Resultados</h1>
                     <div class="search-result">
                         
                     </div>

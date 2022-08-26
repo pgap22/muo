@@ -148,9 +148,7 @@ if($search){
     $data = [];
 
     while ($row = $array->fetch_assoc()){
-// $row->setData("info_eng", Exposeng::where("id_expo", $row->id)->informacion);
-// $row->setData("name_eng", Exposeng::where("id_expo", $row->id)->nombre);
-// $row->setData("imagen", Imagenesexpo::where("id_exposicion", $row->id)->rutaImagen);
+
         $row["info_eng"] = Exposeng::where("id_expo", $row["id"])->informacion;
         $row["name_eng"] = Exposeng::where("id_expo", $row["id"])->nombre;
         $row["imagen"] = Imagenesexpo::where("id_exposicion", $row["id"])->rutaImagen;

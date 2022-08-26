@@ -1,7 +1,6 @@
 <?php
 include "../includes/app.php";
 
-
 protegerHome();
 
 ?>

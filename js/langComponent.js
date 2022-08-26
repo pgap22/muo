@@ -88,10 +88,10 @@ function startLang(spanish, english) {
     } else {
         console.log("Start Auto Traduction...")
         if (language == "es") {
-            translateLang(spanish, page);
+            translateLang(spanish, page, "es");
             sessionStorage.setItem("lang", "es");
         } else {
-            translateLang(english, page);
+            translateLang(english, page, "en");
             sessionStorage.setItem("lang", "en");
         }
 
