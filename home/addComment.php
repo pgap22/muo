@@ -12,9 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     $comentario = new Comentarios($commentData);
-
-    debugear($comentario);
-
+    
     $comentario->validate();
 
     $error = Comentarios::getErrors();

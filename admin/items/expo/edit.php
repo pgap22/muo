@@ -291,7 +291,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php 
                             getError($error, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Descripcion del museo"><?=$exposicion->informacion?></textarea>
+                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Informacion de la exposicion"><?=br2nl($exposicion->informacion)?></textarea>
                         </div>
 
                         <div class="main__input-field">
@@ -362,7 +362,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php 
                             getError($errorEN, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Descripcion del museo"><?=$exposicionEN->informacion?></textarea>
+                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Informacion de la exposicion"><?=br2nl($exposicionEN->informacion)?></textarea>
                         </div>
 
                         <div class="main__input-field main__img-container ">

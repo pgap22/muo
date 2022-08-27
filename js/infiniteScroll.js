@@ -63,12 +63,10 @@ globalThis.getData('expo', page, limit).then(expos => {
 
 
 window.addEventListener("scroll", (e) => {
-    if (Math.ceil((window.scrollY + window.innerHeight)) >= document.querySelector("body").clientHeight) {
+    if ((window.innerHeight + window.scrollY) >= document.querySelector("html").offsetHeight) {
 
         globalThis.getData('expo', page, limit).then(expos => {
-            if(expos.length){
-                page++
-            }
+            page++
             expos.forEach(item => {
                 if (sessionStorage.getItem("lang") == "en") {
                     nameTranslated = item.name_eng;

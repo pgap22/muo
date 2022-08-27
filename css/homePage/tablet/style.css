@@ -114,3 +114,6 @@
 .show-only-desktop{
     display: none;
 }
+.no-mobile{
+    display: block!important;
+}

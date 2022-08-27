@@ -36,7 +36,7 @@
 }
 .header__search-bar{
     border: 2px solid var(--clr-blanco);
-    display: flex;
+    display: flex!important;
     border-radius: 25px;
     align-items: center;
     justify-content: center;

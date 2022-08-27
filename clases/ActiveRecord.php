@@ -197,7 +197,7 @@ class ActiveRecord {
 
          if($dataType == 'string'){
              //Si es string agregar las comillas
-             $data = '"'.self::$db->escape_string($data).'"';
+             $data = '"'.self::sanitize($data).'"';
             
         }
         return $data;
@@ -234,7 +234,7 @@ class ActiveRecord {
     }
 
     public static function sanitize($dato){
-        if(gettype($dato) == 'string') return self::$db->escape_string($dato);
+        if(gettype($dato) == 'string') return addslashes($dato);
         return $dato;
     }
 

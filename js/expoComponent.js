@@ -7,7 +7,6 @@ function expoComponent(imgSrc, titulo, info, id, fav) {
     else{
         img = "/img/icons/favorite.svg";
     }
-    console.log(fav);
     return `
         <div class="main__expo-container">
             <div class="main__expo-photo">

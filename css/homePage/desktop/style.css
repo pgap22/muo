@@ -3,6 +3,9 @@
 body{
     overflow-x: hidden;
 }
+.main{
+    padding-bottom: 2rem;
+}
 .main__nav-icon{
     display: grid;
     grid-template-columns: max-content 1fr;

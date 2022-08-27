@@ -350,4 +350,12 @@ function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
         </div>
         ";
     }
+
+    function lineBreaks($text){
+    $result = preg_replace("/\r\n|\r|\n/", '<br/>', $text);
+    return $result;
+    }
+    function br2nl($text) {
+        return preg_replace('/<br\s?\/?>/i', "\r\n", $text);
+    }
     ?>

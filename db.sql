@@ -14,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema muo-db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `muo-db` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `muo-db` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 USE `muo-db` ;
 
 -- -----------------------------------------------------
@@ -25,7 +25,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`categorias` (
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -43,7 +45,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`categoriaeng` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -56,7 +60,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`museos` (
   `imagen` VARCHAR(120) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -65,7 +71,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `muo-db`.`exposiciones` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(120) NULL DEFAULT NULL,
-  `informacion` VARCHAR(550) NULL DEFAULT NULL,
+  `informacion` VARCHAR(1555) NULL DEFAULT NULL,
   `id_museos` INT(11) NULL DEFAULT NULL,
   `id_categorias` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -80,7 +86,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`exposiciones` (
     FOREIGN KEY (`id_museos`)
     REFERENCES `muo-db`.`museos` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -99,7 +107,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`usuarios` (
   `verified` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -122,7 +132,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`comentarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -130,7 +142,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `muo-db`.`exposeng` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `informacion` VARCHAR(550) NULL DEFAULT NULL,
+  `informacion` VARCHAR(1555) NULL DEFAULT NULL,
   `nombre` VARCHAR(120) NULL DEFAULT NULL,
   `id_expo` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -141,8 +153,8 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`exposeng` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -166,8 +178,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`favoritosusuarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 66
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -185,8 +198,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`imagenesexpo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 40
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -204,8 +218,9 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`museoseng` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 -- -----------------------------------------------------
@@ -225,7 +240,8 @@ CREATE TABLE IF NOT EXISTS `muo-db`.`passwordcode` (
     FOREIGN KEY (`user_id`)
     REFERENCES `muo-db`.`usuarios` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
