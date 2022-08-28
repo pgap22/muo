@@ -145,6 +145,10 @@ if($explore_selector & $explore_id){
 if($search){
     $array  = Exposiciones::executeSQL("SELECT * FROM exposiciones WHERE nombre LIKE '%$search%' OR informacion LIKE '%$search%'");
    
+    if(!$array->num_rows){
+        $array = Exposeng::executeSQL("SELECT * FROM exposeng WHERE nombre LIKE '%$search%' OR informacion LIKE '%$search%'");
+    }
+
     $data = [];
 
     while ($row = $array->fetch_assoc()){
