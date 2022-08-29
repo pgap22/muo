@@ -9,7 +9,6 @@ user-select: none;
     padding: .7rem;
     gap: 15px;
     border-radius: 5px;
-    max-width: 15rem;
 }
 .lang__data-selected{
     display: flex;
@@ -37,7 +36,6 @@ user-select: none;
     justify-content: space-between;
     border-radius: 5px;
     width: 100%;
-    max-width: 15rem;
     /* padding: .7rem; */
 }
 .lang--hide{

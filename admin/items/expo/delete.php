@@ -3,6 +3,7 @@
 use MUO\Comentarios;
 use MUO\Exposeng;
 use MUO\Exposiciones;
+use MUO\Favoritos;
 use MUO\Imagenesexpo;
 
 include "../../../includes/app.php";
@@ -56,7 +57,8 @@ try {
     
     #Borrar los comentarios
     Comentarios::executeSQL("DELETE FROM comentarios WHERE id_exposicion = $exposicion->id");
-
+    #Borrar los favoritos
+    Favoritos::executeSQL("DELETE FROM favoritosusuarios WHERE id_exposicion = $exposicion->id");
 
     #Eliminar Imagenes
     $imagenes = Imagenesexpo::where("id_exposicion", $exposicion->id, 0);
@@ -105,9 +107,10 @@ try {
         $_SESSION["alert"]["type"] = "error";
         $_SESSION["alert"]["alert"] = "simple";
     }
-
     $error = true;
-    $expoEngBack->save();
+    if($expoEngBack){
+        $expoEngBack->save();
+    }
 
 
     header("location: /admin/items/expo");

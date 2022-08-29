@@ -234,7 +234,7 @@ class ActiveRecord {
     }
 
     public static function sanitize($dato){
-        if(gettype($dato) == 'string') return addslashes($dato);
+        if(gettype($dato) == 'string') return self::$db->escape_string($dato);
         return $dato;
     }
 

@@ -1,4 +1,6 @@
-
+h1,h2,h3,h4,h5,p{
+    word-break: break-word;
+}
 .main__nav-container{
     /* border: 1px solid red; */
     border-right: 4px solid var(--clr-blanco);

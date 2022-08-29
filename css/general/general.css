@@ -55,6 +55,7 @@ html{
      scrollbar-width: thin;
      scrollbar-color: var(--clr-naranja) var(--clr-grisOscuro);
 }
+
 body{
 
     font-size: 1.6rem;
