@@ -64,7 +64,7 @@ globalThis.getData('expo', page, limit).then(expos => {
 
 
 window.addEventListener("scroll", (e) => {
-    if ( ((window.innerHeight + window.scrollY) >= document.querySelector("html").offsetHeight) & avaibleScroll ) {
+    if ( (Math.ceil((window.innerHeight + window.scrollY)) >= document.querySelector("html").offsetHeight) & avaibleScroll ) {
         avaibleScroll = false
         globalThis.getData('expo', page, limit).then(expos => {
             page++

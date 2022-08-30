@@ -36,7 +36,7 @@ protegerHome();
     <script src="/js/componentHandler.js" type="module"></script>
     <script src="/js/alert.js"></script>
     <script src="/js/addFav.js"></script>
-
+    
 </head>
 
 <body data-page="home">

@@ -222,3 +222,8 @@ Preloader
 .error{
     display: block;
 }
+@media (max-width: 1023px) {
+    .show-only-desktop{
+        display: none!important;
+    }
+}
