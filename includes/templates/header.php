@@ -12,7 +12,7 @@
         <img src="../img/icons/hamburguer.svg" alt="menu" class="header__menu">
         <a href="index.php" class="header__logo">
            <picture>
-                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1024px)">
+                <source srcset="../img/logo/logo-mobile.svg" media="(max-width: 1023px)">
 
                 <img src="../img/logo/logo.svg" alt="Logo de MUO" title="MUO"class="header__logo">
            </picture>
