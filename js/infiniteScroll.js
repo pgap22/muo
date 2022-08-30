@@ -2,6 +2,7 @@ let page = 1;
 let limit = 3;
 let parentElement = document.querySelector(".main__feed");
 let parentRecommend = document.querySelector(".expo-recommend");
+let avaibleScroll = true;
 //Recommend Expos
 async function getRecommendExpo(){
     let data = await fetch(window.location.origin+'/api/getData.php?recommend-expo');
@@ -63,11 +64,12 @@ globalThis.getData('expo', page, limit).then(expos => {
 
 
 window.addEventListener("scroll", (e) => {
-    if ((window.innerHeight + window.scrollY) >= document.querySelector("html").offsetHeight) {
-
+    if ( ((window.innerHeight + window.scrollY) >= document.querySelector("html").offsetHeight) & avaibleScroll ) {
+        avaibleScroll = false
         globalThis.getData('expo', page, limit).then(expos => {
             page++
             expos.forEach(item => {
+
                 if (sessionStorage.getItem("lang") == "en") {
                     nameTranslated = item.name_eng;
                     infoTranslated = item.info_eng;
@@ -85,6 +87,7 @@ window.addEventListener("scroll", (e) => {
                 globalThis.english["home"]["name-" + item.id] = item.name_eng;
 
                 globalThis.renderExpoComponent(item.id, parentElement, item.imagen, nameTranslated, infoShortener(infoTranslated),item.isFav);
+                avaibleScroll = true;
             });
         })
 
