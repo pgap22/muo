@@ -57,7 +57,7 @@ if($item == 'expo' && $limit && $page){
     $end = $page  * $limit;
 
     #Mostrar datos;
-    echo json_encode(array_slice($array, $start,$limit ));
+    echo json_encode(array_slice($array, $start,$limit ), JSON_INVALID_UTF8_SUBSTITUTE);
 }
 
 if($id_expo){
