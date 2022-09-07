@@ -3,6 +3,7 @@ let limit = 3;
 let parentElement = document.querySelector(".main__feed");
 let parentRecommend = document.querySelector(".expo-recommend");
 let avaibleScroll = true;
+let scrollFixer = 0;
 //Recommend Expos
 async function getRecommendExpo(){
     let data = await fetch(window.location.origin+'/api/getData.php?recommend-expo');
@@ -64,7 +65,13 @@ globalThis.getData('expo', page, limit).then(expos => {
 
 
 window.addEventListener("scroll", (e) => {
-    if ( (Math.ceil((window.innerHeight + window.scrollY)) >= document.querySelector("html").offsetHeight) & avaibleScroll ) {
+    if((Math.ceil((window.innerHeight + window.scrollY)) >= document.querySelector("html").offsetHeight)+1 & avaibleScroll ){
+        scrollFixer = 1;
+    }
+
+    console.log((Math.ceil((window.innerHeight + window.scrollY)) >= document.querySelector("html").offsetHeight)+scrollFixer & avaibleScroll );
+    
+    if ( (Math.ceil((window.innerHeight + window.scrollY))+scrollFixer >= document.querySelector("html").offsetHeight) & avaibleScroll ) {
         avaibleScroll = false
         globalThis.getData('expo', page, limit).then(expos => {
             page++
