@@ -19,6 +19,7 @@ ingles["general"]["credits"] = "Image by";
 ingles["general"]["nav1"] = "Home";
 ingles["general"]["nav2"] = "About us";
 ingles["general"]["nav3"] = "Museums";
+ingles["general"]["credits-m"] = "Acknowledgement for the use of your images:";
 
 ingles["general"]["btn1"] = "Sign up";
 ingles["general"]["btn2"] = "Log In";
@@ -184,6 +185,7 @@ ingles["error-renew"]["btn"] = "Back to home";
 esp["general"] = [];
 esp["index"] = [];
 esp["general"]["credits"] = "Imagen por";
+esp["general"]["credits-m"] = "Agredicimiento por el uso de sus imagenes:";
 esp["general"]["nav1"] = "Inicio";
 esp["general"]["nav2"] = "Sobre nosotros";
 esp["general"]["nav3"] = "Museos";

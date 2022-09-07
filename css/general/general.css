@@ -100,6 +100,11 @@ header{
     z-index: 999999;
     background-color: var(--clr-negro);
 }
+.center-div{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
 h1{font-size: 3.2rem;}
 h2{font-size: 2.6rem;}
 h3{font-size: 2rem;}

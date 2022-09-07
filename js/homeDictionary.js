@@ -5,6 +5,11 @@ let spanish = [];
 
 
 //Spanish Dictionary
+spanish["general"] = [];
+spanish["general"]["credits"] = "Imagen por: ";
+spanish["general"]["footer-text"] = "MUO - Todos los derechos reservados";
+spanish["general"]["credits-m"] = "Agredicimiento por el uso de sus imagenes:";
+
 spanish["menu"] = [];
 spanish["menu"]["setting"] = "Configuraciones";
 spanish["menu"]["home-page"] = "Pagina Principal";
@@ -55,6 +60,11 @@ spanish["search"] = [];
 spanish["search"]["result"] = "Resultados";
 
 //English Dictionary
+english["general"] = [];
+english["general"]["credits"] = "Image by: ";
+english["general"]["footer-text"] = "MUO - All rights reserved";
+english["general"]["credits-m"] = "Acknowledgement for the use of your images:";
+
 english["menu"] = [];
 english["menu"]["setting"] = "Settings";
 english["menu"]["home-page"] = "Home Page";

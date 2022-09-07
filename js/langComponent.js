@@ -124,9 +124,21 @@ async function museumTranslate() {
     return dataMuseum.json()
 }
 
+function generalTranslate(lang_array){
+    let generalWords = Object.keys(lang_array["general"]);
+    generalWords.forEach((e)=>{
+        let c = document.querySelectorAll("#"+e)
+        if(c){
+            c.forEach(a =>{
+                a.innerHTML = lang_array["general"][e];
+            })
+        }
+    })
+}
 
 
 async function translateLang(langArray, page, langID) {
+    generalTranslate(langArray);
     if(langArray[page]){
         let words = Object.keys(langArray[page]);
         words.forEach(element => {
