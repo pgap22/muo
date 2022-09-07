@@ -89,6 +89,7 @@ ingles["register"]["5-e"] = "The email cannot be empty";
 ingles["register"]["6-e"] = "The email is invalid";
 ingles["register"]["7-e"] = "The password cannot be empty";
 ingles["register"]["8-e"] = "The password cannot be empty";
+ingles["register"]["50-e"] = "Your password must be longer than 4 characters";
 ingles["register"]["9-e"] = "Passwords do not match";
 ingles["register"]["11-e"] = "Email is already in use";
 
@@ -261,6 +262,7 @@ esp["register"]["5-e"] = "El email no puede quedar vacío";
 esp["register"]["6-e"] = "El email es inválido";
 esp["register"]["7-e"] = "La contraseña no puede estar vacía";
 esp["register"]["8-e"] = "La contraseña no puede estar vacía";
+esp["register"]["50-e"] = "Tu contraseña debe ser mayor a 4 caracteres";
 esp["register"]["9-e"] = "Las contraseñas no coinciden";
 esp["register"]["11-e"] = "El email ya está en uso";
 

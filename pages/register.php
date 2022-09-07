@@ -28,10 +28,7 @@
         #Crear el objeto de Usuario no verificado 
         $user = new Usuarios($newUser);
 
-        #Detectar si el email ya esta en uso
-        $user->checkDuplicateEmail();
-
-        #Validar lo que el usuario digito
+        #Validar lo que el usuario digito y si el email ya esta en uso
         $user->validateRegister();
 
         #Hashear la contraseña
