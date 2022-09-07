@@ -87,7 +87,7 @@ class Usuarios extends ActiveRecord{
     }
 
     public function sendVerification(){
-        $ip = getHostByName(getHostName());
+        $ip = $_SERVER["HTTP_HOST"];
         $url = "http://${ip}/auth/verifyEmail.php?verifyToken=". $this->verifyToken;
         
         $message["title-es"] = "Verificar tu cuenta de email en MUO";
