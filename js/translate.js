@@ -186,13 +186,13 @@ ingles["error-renew"]["btn"] = "Back to home";
 esp["general"] = [];
 esp["index"] = [];
 esp["general"]["credits"] = "Imagen por";
-esp["general"]["credits-m"] = "Agredicimiento por el uso de sus imagenes:";
+esp["general"]["credits-m"] = "Agradecimiento por el uso de sus imágenes:";
 esp["general"]["nav1"] = "Inicio";
 esp["general"]["nav2"] = "Sobre nosotros";
 esp["general"]["nav3"] = "Museos";
 
-esp["general"]["btn1"] = "Registrate";
-esp["general"]["btn2"] = "Inciar Sesión";
+esp["general"]["btn1"] = "Regístrate";
+esp["general"]["btn2"] = "Iniciar sesión";
 esp["general"]["footer-text"] = "MUO - Todos los derechos reservados";
 
 esp["index"]["h1-hero"] = "Empieza a ver la espectacular cultura que nos rodea."
@@ -207,8 +207,8 @@ esp["index"]["digital-title"] = "Digital";
 esp["index"]["free-title"] = "Gratis";
 
 esp["index"]["quality-text"] = "La información que nosotros brindamos a nuestros usuarios son de fuentes fiables. Nosotros sabemos lo que nuestra cultura vale.";
-esp["index"]["digital-text"] = "Sabemos lo difícil que puede ser ir a museo en estos tiempos, así que ofrecemos nuestro contenido de manera digital con la finalidad que sea fácil de acceder.";
-esp["index"]["free-text"] = "El contenido que nosotros vamos a ofrecer es gratuito, con tan solo una cuenta registrada en MUO tendras acceso a todo lo que ofrecemos.";
+esp["index"]["digital-text"] = "Sabemos lo difícil que puede ser ir a un museo en estos tiempos, así que ofrecemos nuestro contenido de manera digital con la finalidad que sea fácil de acceder.";
+esp["index"]["free-text"] = "El contenido que nosotros vamos a ofrecer es gratuito, con tan solo una cuenta registrada en MUO tendrás acceso a todo lo que ofrecemos.";
 
 
 esp["index"]["revive"] = "Revive la experiencia de un museo";
@@ -236,8 +236,8 @@ esp["nosotros"]["our-personal"] = "Nuestro personal";
 esp["nosotros"]["our-mision"] = "¿Cuál es nuestra misión?";
 esp["nosotros"]["our-vision"] = "¿Cuál es nuestra visión?";
 esp["nosotros"]["our-vision-text"] = "Ser un sitio web nacionalmente reconocido además de ofrecer la información cultural más acertada y verídica";
-esp["nosotros"]["our-mision-text"] = "Nuestra misión es mantener y transmitir la cultura de El Salvador para que las siguientes generaciones conozcan de nuestras raices culturales";
-esp["nosotros"]["our-personal-text"] = "Grupo 5 - Creaj - Primer Año Seccion B Desarollo de Software";
+esp["nosotros"]["our-mision-text"] = "Nuestra misión es mantener y transmitir la cultura de El Salvador para que las siguientes generaciones conozcan de nuestras raíces culturales";
+esp["nosotros"]["our-personal-text"] = "Grupo 5 - Creaj - Primer Año Sección B Desarollo de Software";
 
 esp["museos"] = []
 esp["museos"]["titulo"] = "Museos de El Salvador";
@@ -262,7 +262,7 @@ esp["register"]["5-e"] = "El email no puede quedar vacío";
 esp["register"]["6-e"] = "El email es inválido";
 esp["register"]["7-e"] = "La contraseña no puede estar vacía";
 esp["register"]["8-e"] = "La contraseña no puede estar vacía";
-esp["register"]["50-e"] = "Tu contraseña debe ser mayor a 4 caracteres";
+esp["register"]["50-e"] = "Tu contraseña debe ser mayor a 4 carácteres";
 esp["register"]["9-e"] = "Las contraseñas no coinciden";
 esp["register"]["11-e"] = "El email ya está en uso";
 
@@ -312,7 +312,7 @@ esp["recover-pass"]= [];
 esp["recover-pass"]["title"] = "Cambiar contraseña"
 esp["recover-pass"]["text"] = "¡Ingresa tu correo para cambiar la contraseña!";
 esp["recover-pass"]["btn"] = "Enviar";
-esp["recover-pass"]["wrong-email"] = "El email no esta registrado con una cuenta en MUO";
+esp["recover-pass"]["wrong-email"] = "El email no está registrado con una cuenta en MUO";
 esp["recover-pass"]["empty-email"] = "El email está vacio";
 
 esp["recover-pass-placeholder"] = [];
@@ -322,8 +322,8 @@ esp["change-password"] = [];
 esp["change-password"]["title"] = "Ingresa el código de verificación";
 esp["change-password"]["text"] = "Verifica en tu correo el código de verificación que te hemos enviado";
 esp["change-password"]["resend"] = "Proximo reenvio";
-esp["change-password"]["resend-pass-code"] = "Reenviar codigo";
-esp["change-password"]["btn"] = "Verificar codigo";
+esp["change-password"]["resend-pass-code"] = "Reenviar código";
+esp["change-password"]["btn"] = "Verificar código";
 esp["change-password"]["15-e"] = "El código ya ha expirado, intenta reenviar el código";
 esp["change-password"]["16-e"] = "El código es incorrecto";
 
@@ -339,7 +339,7 @@ esp["new-password-placeholder"]["password_new"]= "Ingresa tu contraseña";
 
 esp["renew-completed"] = [];
 esp["renew-completed"]["title"] = "Verificacion completada";
-esp["renew-completed"]["text"] = "Tu contraseña ha sido restablecida correctamente !";
+esp["renew-completed"]["text"] = "¡Tu contraseña ha sido restablecida correctamente!";
 esp["renew-completed"]["close"] = "Puedes cerrar esta ventana o iniciar sesión";
 esp["renew-completed"]["button"] = "Iniciar sesión";
 
