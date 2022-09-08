@@ -148,11 +148,16 @@ class Usuarios extends ActiveRecord{
     public function validateLogin($passwordUser){
         //Ya tenemos el correo hoy falta verificar la contraseñe
         $passwordHash = $this->password;
-
-        $isCorrect = password_verify($passwordUser, $passwordHash);
-
-        if($isCorrect) return true;
-
+        
+        if(!$this->verified){
+            self::$errors["login"] = 'Tu email o contraseña no son validos !';
+            self::$errors["code"] = 10;
+        }
+        
+                $isCorrect = password_verify($passwordUser, $passwordHash);
+        
+                if($isCorrect) return true;
+        
         self::$errors["login"] = 'Tu email o contraseña no son validos !';
         self::$errors["code"] = 10;
 
