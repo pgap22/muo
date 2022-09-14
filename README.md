@@ -1,5 +1,11 @@
 # MUO Website
 **Setup**
+REQUERIMENTS
+-PHP 8.1.5>=
+-MySql 5.7
+-Apache2 (Better Perfomance)
+
+
 Primero instalen laragon, si tienen peresa de configurar todo el entorno en laragon para que funcione
 acá hay un enlace a drive con laragon portable y ya configurado **[Link Descarga](https://drive.google.com/file/d/1GcoHoFWLEA_cgut_3CeY-jUhxwfxac_o/view?usp=sharing)**
 **Laragon**
