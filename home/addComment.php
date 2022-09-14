@@ -11,11 +11,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $commentData["id_exposicion"] = $_SESSION["id_expo"];
 
 
-
     $comentario = new Comentarios($commentData);
-
-    debugear($comentario);
-
+    
     $comentario->validate();
 
     $error = Comentarios::getErrors();

@@ -62,7 +62,7 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
 
     <!-- Home css -->
     <link rel="stylesheet" href="../css/homePage/mobile/style.css" media="(max-width: 520px)">
-    <link rel="stylesheet" href="../css/homePage/tablet/style.css" media="(min-width: 521px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/homePage/tablet/style.css" media="(min-width: 520px) and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/homePage/desktop/style.css" media="(min-width: 1024px)">
 
     <!--Font-->
@@ -75,7 +75,7 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
 
     <!-- explore  -->
     <link rel="stylesheet" href="/css/expo/mobile/style.css" media="(max-width: 520px)">
-    <link rel="stylesheet" href="/css/expo/tablet/style.css" media="(min-width: 521px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/expo/tablet/style.css" media="(min-width: 520px) and (max-width: 1024px)">
     <link rel="stylesheet" href="/css/expo/desktop/style.css" media="(min-width: 1024px)">
 
     <!-- add fav -->
@@ -150,7 +150,7 @@ $alert = $_SESSION["alert"]["alert"] ?? '';
                         <div class="comment">
                             <img class="comment__icon" src="/img/icons/user.svg" alt="">
                             <div class="comment__data">
-                                <p class="comment__name"><span><?= Usuarios::find($comentario->id_usuario)->name ?></span><span><?= Usuarios::find($comentario->id_usuario)->last_name ?></span></p>
+                                <p class="comment__name"><span><?= Usuarios::find($comentario->id_usuario)->name ?> </span><span><?= Usuarios::find($comentario->id_usuario)->last_name ?></span></p>
                                 <p class="commnet__text"><?= $comentario->contenido?></p>
                             </div>
                         </div>

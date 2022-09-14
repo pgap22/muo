@@ -40,7 +40,7 @@ $museos = Museos::all();
 
     <!--Museum Style-->
     <link rel="stylesheet" href="../css/museos/mobile/style.css" media="(max-width:741px)">
-    <link rel="stylesheet" href="../css/museos/tablet/style.css" media="(min-width:742px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="../css/museos/tablet/style.css" media="(min-width:742px) and (max-width: 1024px)">
     <link rel="stylesheet" href="../css/museos/desktop/style.css" media="(min-width: 1024px)">
 
 </head>
@@ -82,24 +82,24 @@ $museos = Museos::all();
             <div class="main__scroll">
                 <div class="main__card-container">
                     <?php foreach ($museos as $museo) { ?>
-                        <a href="./museo.php?id=<?=$museo->id ?>">
-                        <section class="main__card main-scroll">
-                            <img class="main__card-img" src="<?=$museo->imagen ?>" alt="Imagen del Museo MARTE">
-                            <div class="main__card-text">
-                                <h2><?= $museo->nombre ?></h2>
-                            </div>
-                            <div class="main__card-autor">
-                                <p id="credits">Imagen por: </p>
-                                <img src="../img/home/firma-grey.svg" alt="Firma del fotografo @Camaro27">
-                            </div>
-                        </section>
+                        <a href="./museo.php?id=<?= $museo->id ?>">
+                            <section class="main__card main-scroll">
+                                <img class="main__card-img" src="<?= $museo->imagen ?>" alt="Imagen del Museo MARTE">
+                                <div class="main__card-text">
+                                    <h2><?= $museo->nombre ?></h2>
+                                </div>
+                            </section>
                         </a>
                     <?php } ?>
                 </div>
             </div>
         </div>
     </main>
-
+    <div class="main__card-autor center-div">
+        <p id="credits-m">Agredicimiento por el uso de sus imagenes: </p>
+        <img src="../img/home/firma-grey.svg" alt="Firma del fotografo @Camaro27">
+    </div>
+    <script defer src="../js/museo.js"></script>
     <?php include "../includes/templates/footer.php" ?>
 </body>
 

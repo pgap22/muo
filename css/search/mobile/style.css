@@ -1,0 +1,8 @@
+.search-result{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.recommend{
+    width: 100%;
+}

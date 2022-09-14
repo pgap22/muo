@@ -1,110 +1,72 @@
-let switchSelector = document.querySelector(".switch");
-let ball = document.querySelector(".switch__ball");
-let parentElement = document.querySelector(".tags");
+let allTags = document.querySelectorAll(".tag");
+let switchBtn = document.querySelector(".switch");
+let switchBall = document.querySelector(".switch__ball");
+let tagsContainer = document.querySelectorAll(".tags");
+let selector = switchBtn.id;
 let resultContainer = document.querySelector(".result-explore");
-let selector = '';
-getSelector('0').then(data => {setTags(data)})
 
-async function getSelector(id){
-    selector = (id == '1') ? "museum" : "category";
-    
-    let data  = await fetch(window.location.origin+"/api/getData.php?selector="+selector);
+switchBtn.addEventListener("click", () => {
+    switchBall.classList.toggle("switch__ball--true");
+
+    tagsContainer.forEach(tag => {
+        if (tag.classList.contains("hide-tags")) {
+            tag.classList.remove("hide-tags");
+        } else {
+            tag.classList.add("hide-tags");
+        }
+    })
+
+
+});
+
+
+async function getData(selector, id) {
+    let data = await fetch(window.location.origin + "/api/getData.php?explore=" + selector + "&explore_id=" + id);
     return data.json();
 }
 
 
-switchSelector.addEventListener("click", ()=>{
-    ball.classList.toggle("switch__ball--true");
+allTags.forEach(tag => {
+    tag.addEventListener("click", () => {
+        allTags.forEach(element => {
+            element.classList.remove("tag--bg");
+        })
 
-    if(parseInt(switchSelector.id)){
-        switchSelector.id = 0;
-    }else{
-        switchSelector.id = 1;
-    }
-    getSelector(switchSelector.id).then(data =>{setTags(data)})
-})
+        tag.classList.add("tag--bg");
 
-function setTags(data){
-    //Limpiar tags antiguas
-    parentElement.innerHTML = ''
-    data.forEach((element, i) => {
+        let exploreSelector = tag.children[0].dataset.selector;
+        let exploreId = tag.children[0].dataset.id;
 
-        //Translate
-        let nombre = '';
-        globalThis.spanish["explore"]["tag-"+element.id] = element.nombre;
-        if(element.nombre_en){
-            
-            globalThis.english["explore"]["tag-"+element.id] = element.nombre_en;
+        getData(exploreSelector, exploreId).then(results => {
+            resultContainer.innerHTML = '';
 
-            if(sessionStorage.getItem("lang") == 'en'){
-                nombre = element.nombre_en;
-            }else{
-                nombre = element.nombre
+            if (!results) {
+                resultContainer.innerHTML = "No data :(";
+                return true;
             }
-        }
-        else{
-            nombre = element.nombre;
-        }
 
-        //Render
-        let tag = document.createElement("div");
-        tag.classList.add("tag");
-        tag.innerHTML = globalThis.tagComponent(nombre, element.id, selector);
-        parentElement.appendChild(tag);
-        
-        //Click Event
-        if(i == data.length-1){
-            globalThis.reloadTags(showData);
-        }
-    
-    });
-}
+            results.forEach(discoverExpo => {
+                let expo = document.createElement("a");
+                expo.href = "/home/expo.php?id=" + discoverExpo.id;
 
-
-async function getExpos(s, i){
-    let data = await fetch(window.location.origin+'/api/getData.php?explore='+s+'&explore_id='+i);
-    return data.json();
-}
-
-function showData(e) {
-    let selector = e.dataset.selector;
-    let id = e.dataset.id;
-
-    getExpos(selector, id).then(data =>{
-        resultContainer.innerHTML = '';
-        if(!data){
-            resultContainer.innerHTML = "No data :(";
-            return true;
-        }
-
-        if(data){
-            data.forEach(expo =>{
-                let title = '';
-                
-                globalThis.spanish["explore"]["name-"+expo.id] = expo.nombre;
-                globalThis.english["explore"]["name-"+expo.id] = expo.nombre_en;
-
-
-                if(sessionStorage.getItem("lang") == "es"){
-                        title = expo.nombre;
-                }
-                else{
-                    title = expo.nombre_en;
+                //Identificar cual se va a renderizar
+                if (sessionStorage.getItem("lang") == "en") {
+                    nameTranslated = discoverExpo.nombre_en;
+                } else {
+                    nameTranslated = discoverExpo.nombre;
                 }
 
 
-                let expoDiscover = document.createElement("a");
 
+                //Añadir info en ingles y español ademas de acortarla para el home
+                globalThis.spanish["explore"]["discover-" + discoverExpo.id] = discoverExpo.nombre;
+                globalThis.english["explore"]["discover-" + discoverExpo.id] = discoverExpo.nombre_en;
 
-                expoDiscover.href = "/home/expo.php?id="+expo.id;
+                expo.innerHTML = globalThis.expoDiscoverComponent(discoverExpo.id, nameTranslated, discoverExpo.imagen);
 
-                expoDiscover.innerHTML = globalThis.expoDiscoverComponent(expo.id, title, expo.imagen);
-
-                resultContainer.appendChild(expoDiscover);
+                resultContainer.appendChild(expo);
             })
-        }
-        
+        });
 
     })
-   
-}
+})

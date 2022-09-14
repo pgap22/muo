@@ -6,12 +6,14 @@ async function getTranslateinfo(){
 
 getTranslateinfo().then(expo =>{
 
-    globalThis.spanish["expo"]["info"] = expo.informacion;
-    globalThis.spanish["expo"]["name"] = expo.nombre;
+    globalThis.spanish["expo"]["info"] = expo.informacion.replaceAll("\\", "");
+    globalThis.spanish["expo"]["name"] = expo.nombre.replaceAll("\\", "");
+
+    globalThis.ae = expo.informacion;
 
 
-    globalThis.english["expo"]["info"] = expo.info_eng;
-    globalThis.english["expo"]["name"] = expo.name_eng;
+    globalThis.english["expo"]["info"] = expo.info_eng.replaceAll("\\", "");
+    globalThis.english["expo"]["name"] = expo.name_eng.replaceAll("\\", "");
 
     globalThis.exceptionTranslate(globalThis.getLangArray(), "expo");
 })

@@ -11,7 +11,7 @@ document.querySelector(".home-menu-toggle").addEventListener("click", toggleMenu
 //Dots Button
 showMenuBtns.forEach(btn =>{
     btn.addEventListener("click", ()=>{
-        if(document.querySelector(".menu__setting-show") && window.innerWidth >= 519) return; 
+        if(document.querySelector(".menu__setting-show") && window.innerWidth >= 520) return; 
         
         document.querySelector(".header__pages").innerHTML = globalThis.menuComponent();
         globalThis.startLang(globalThis.spanish, globalThis.english);

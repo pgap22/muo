@@ -343,11 +343,19 @@ function templateEmailNoButton($title, $usuario, $texto, $code, $lang = "es"){
                         <img src='../img/icons/explore.svg' alt='' class='menu-phone__icon-img '>
                     </div>
                 </a>
-                <div class='menu-phone__icon'>
+                <div class='menu-phone__icon menu-phone-search'>
                     <img src='../img/icons/search.svg' alt='' class='menu-phone__icon-img '>
                 </div>
             </div>
         </div>
         ";
+    }
+
+    function lineBreaks($text){
+    $result = preg_replace("/\r\n|\r|\n/", '<br/>', $text);
+    return $result;
+    }
+    function br2nl($text) {
+        return preg_replace('/<br\s?\/?>/i', "\r\n", $text);
     }
     ?>

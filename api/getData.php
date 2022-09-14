@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 session_start();
 
 use MUO\CategoriaEng;
@@ -22,6 +24,8 @@ $selector = $_GET["selector"] ?? '';
 
 $explore_selector = $_GET["explore"] ?? '';
 $explore_id = $_GET["explore_id"] ?? '';
+
+$search = $_GET["expo-search"] ?? '';
 
 if($item == 'expo' && $limit && $page){
     #Obtener todas las expo
@@ -53,7 +57,7 @@ if($item == 'expo' && $limit && $page){
     $end = $page  * $limit;
 
     #Mostrar datos;
-    echo json_encode(array_slice($array, $start,$limit ));
+    echo json_encode(array_slice($array, $start,$limit ), JSON_INVALID_UTF8_SUBSTITUTE);
 }
 
 if($id_expo){
@@ -92,29 +96,11 @@ if(isset($_GET["recommend-expo"])){
     echo json_encode($array);
 }
 
-if($selector == "museum"){
-    $array = Museos::all();
-    $data = [];
-    foreach($array as $museo){
-        $data[] = $museo;
-    }
-    echo json_encode($data);
-}
-
-if($selector == "category"){
-    $array = Categorias::all();
-    $data = [];
-    foreach($array as $categoria){
-        $categoriaEn = CategoriaEng::where("id_categoria", $categoria->id)->nombre;
-        $categoria->setData("nombre_en", $categoriaEn);
-        $data[] = $categoria;
-    }
-    echo json_encode($data);
-}
 
 
 
 if($explore_selector & $explore_id){
+
     function listAll($row){
         $expo = new Exposiciones($row);
         $img = Imagenesexpo::where("id_exposicion", $expo->id)->rutaImagen;
@@ -124,7 +110,7 @@ if($explore_selector & $explore_id){
         return $expo;
     }
 
-    if($explore_selector == "category"){
+    if($explore_selector == "categorias"){
         $array = Categorias::executeSQL("SELECT * FROM exposiciones WHERE id_categorias = $explore_id");
         $data = [];
         if(!$array->num_rows) {
@@ -139,7 +125,7 @@ if($explore_selector & $explore_id){
     
         echo json_encode($data);
     }
-    else if($explore_selector == "museum"){
+    else if($explore_selector == "museos"){
         $array = Museos::executeSQL("SELECT * FROM exposiciones WHERE id_museos = $explore_id");
         $data = [];
         if(!$array->num_rows) {
@@ -154,6 +140,27 @@ if($explore_selector & $explore_id){
     
         echo json_encode($data);
     }
+}
+
+if($search){
+    $array  = Exposiciones::executeSQL("SELECT * FROM exposiciones WHERE nombre LIKE '%$search%' OR informacion LIKE '%$search%'");
+   
+    if(!$array->num_rows){
+        $array = Exposeng::executeSQL("SELECT * FROM exposeng WHERE nombre LIKE '%$search%' OR informacion LIKE '%$search%'");
+    }
+
+    $data = [];
+
+    while ($row = $array->fetch_assoc()){
+
+        $row["info_eng"] = Exposeng::where("id_expo", $row["id"])->informacion;
+        $row["name_eng"] = Exposeng::where("id_expo", $row["id"])->nombre;
+        $row["imagen"] = Imagenesexpo::where("id_exposicion", $row["id"])->rutaImagen;
+        $data[] = $row;
+    }
+
+    echo json_encode($data);
+
 }
 
 ?>

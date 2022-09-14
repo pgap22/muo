@@ -1,6 +1,6 @@
 <?php
 
-    use MUO\NoVerifiedUser;
+use MUO\NoVerifiedUser;
 use MUO\Usuarios;
 
     include "../includes/app.php";

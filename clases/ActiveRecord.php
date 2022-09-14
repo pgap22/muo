@@ -197,7 +197,7 @@ class ActiveRecord {
 
          if($dataType == 'string'){
              //Si es string agregar las comillas
-             $data = '"'.self::$db->escape_string($data).'"';
+             $data = '"'.self::sanitize($data).'"';
             
         }
         return $data;

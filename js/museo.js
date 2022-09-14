@@ -1,0 +1,1 @@
+document.querySelector(".main__scroll").scrollTo(0,0)

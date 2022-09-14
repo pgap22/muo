@@ -14,7 +14,7 @@ class Comentarios extends ActiveRecord{
     public function __construct($arr = [])
     {
         $this->id = $arr["id"] ?? '';
-        $this->contenido = $arr["contenido"] ?? '';
+        $this->contenido = str_replace("\r\n","",$arr["contenido"] )?? '';
         $this->id_exposicion = $arr["id_exposicion"] ?? '';
         $this->id_usuario = $arr["id_usuario"] ?? '';
     }

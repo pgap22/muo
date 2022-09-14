@@ -40,7 +40,7 @@ protegerIndex();
 
 <body data-page="index">
 
-    <?php  include "../includes/templates/header.php" ?>
+    <?php include "../includes/templates/header.php" ?>
 
 
     <section class="hero">

@@ -7,7 +7,6 @@ function expoComponent(imgSrc, titulo, info, id, fav) {
     else{
         img = "/img/icons/favorite.svg";
     }
-    console.log(fav);
     return `
         <div class="main__expo-container">
             <div class="main__expo-photo">
@@ -17,13 +16,13 @@ function expoComponent(imgSrc, titulo, info, id, fav) {
             </div>
             <div class="main__expo-description">
                 <div class="main__expo-data">
-                    <h3 class="main__expo-title" id="name-${id}">${titulo}</h3>
+                    <h3 class="main__expo-title" id="name-${id}">${titulo.replaceAll("\\", "")}</h3>
                     <div class="main__expo-interactions" onclick="addFav(${id}, this)">
                         <img src="${img}" alt="Favorite icon" class="main__expo-icons">                                       
                     </div>
             </div>
             
-            <p class="main__expo-text" id="info-${id}">${info}</p>
+            <p class="main__expo-text" id="info-${id}">${info.replaceAll("\\", "")}</p>
             
             </div>
         </div>

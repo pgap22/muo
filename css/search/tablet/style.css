@@ -1,0 +1,11 @@
+.search-result{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.recommend{
+    width: 30rem;
+}
+.recommend__image{
+    width: 12rem;
+}

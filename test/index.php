@@ -1,12 +1,14 @@
 <?php
 
-include "../includes/app.php";
+// include "../includes/app.php";
 
-use MUO\ActiveRecord;
-use MUO\Exposiciones;
-use MUO\User;
-use MUO\Usuarios;
+// use MUO\ActiveRecord;
+// use MUO\Exposiciones;
+// use MUO\User;
+// use MUO\Usuarios;
 
-debugear(Exposiciones::getRecommend());
 
+echo "<pre>";
+var_dump($_SERVER);
+echo "</pre>";
 ?>

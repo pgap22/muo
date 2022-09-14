@@ -132,28 +132,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-
-    #Validar si hay nuevas fotos
-    if ($newImagenes) {
-        foreach ($newImagenes as $imagen) {
-            Imagenesexpo::validateImg($imagen);
-        }
-        $error = Imagenesexpo::getErrors();
-    }
-
-    if (!$imagenesViejas || !$newImagenes) {
-        $error["imagen"] = "Debes agregar al menos una imagen !";
-        $error["code"] = 28;
-    }
-
     #Validacion de datos nuevos
     $exposicion->validate();
 
     $error = Exposiciones::getErrors();
     if (!$error) {
+
         $exposicionEN->validate();
+
         $errorEN = Exposeng::getErrors();
+        
         if (!$errorEN) {
+
+            #Validar si hay nuevas fotos
+            if ($newImagenes) {
+                foreach ($newImagenes as $imagen) {
+                    Imagenesexpo::validateImg($imagen);
+                }
+                $error = Imagenesexpo::getErrors();
+            }
+
+            if (!$imagenesViejas && !$newImagenes) {
+                $error["imagen"] = "Debes agregar al menos una imagen !";
+                $error["code"] = 28;
+            }
+
             #Guardar Datos
             if (!$error && !$errorEN) {
 
@@ -211,11 +214,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 }
 
-                #Verificar si hay alamenos una imagen
-                if (!Imagenesexpo::where("id_exposicion", $exposicion->id, 0)) {
-                    $error["imagen"] = "Debes agregar al menos una imagen !";
-                    $error["code"] = 28;
-                }
+                // #Verificar si hay alamenos una imagen
+                // if (!Imagenesexpo::where("id_exposicion", $exposicion->id, 0)) {
+                //     $error["imagen"] = "Debes agregar al menos una imagen !";
+                //     $error["code"] = 28;
+                // }
 
                 #Si no hay errores guardar
                 if (!$error) {
@@ -258,12 +261,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- css -->
     <link rel="stylesheet" href="/css/headerAdmin/mobile/style.css" media="(max-width: 480px)">
-    <link rel="stylesheet" href="/css/headerAdmin/tablet/style.css" media="(min-width: 481px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/headerAdmin/tablet/style.css" media="(min-width: 480px) and (max-width: 1024px)">
     <link rel="stylesheet" href="/css/headerAdmin/desktop/style.css" media="(min-width: 1024px)">
 
     <link rel="stylesheet" href="/css/adminEdit/mobile/style.css">
     <link rel="stylesheet" href="/css/adminEdit/desktop/style.css" media="(min-width: 1024px)">
-    <link rel="stylesheet" href="/css/adminEdit/tablet/style.css" media="(min-width: 630px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/adminEdit/tablet/style.css" media="(min-width: 630px) and (max-width: 1024px)">
 </head>
 
 <body data-page="admin-add-expo">
@@ -291,7 +294,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php 
                             getError($error, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Descripcion del museo"><?=$exposicion->informacion?></textarea>
+                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Informacion de la exposicion"><?=br2nl($exposicion->informacion)?></textarea>
                         </div>
 
                         <div class="main__input-field">
@@ -362,7 +365,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php 
                             getError($errorEN, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Descripcion del museo"><?=$exposicionEN->informacion?></textarea>
+                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Informacion de la exposicion"><?=br2nl($exposicionEN->informacion)?></textarea>
                         </div>
 
                         <div class="main__input-field main__img-container ">

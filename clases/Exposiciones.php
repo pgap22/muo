@@ -15,11 +15,11 @@ class Exposiciones extends ActiveRecord{
     {
         $this->id = $arr["id"] ?? '';
         $this->nombre = $arr["nombre"] ?? '';
-        $this->informacion = $arr["informacion"] ?? '';
+        $this->informacion = lineBreaks($arr["informacion"]) ?? '';
         $this->id_museos = $arr["id_museos"] ?? '';
         $this->id_categorias = $arr["id_categorias"] ?? '';
     }
-
+    
     
     public function validate(){
         if(!$this->nombre){
@@ -34,8 +34,8 @@ class Exposiciones extends ActiveRecord{
             self::$errors["informacion"] = "La informacion no puede estar vacia !";
             self::$errors["code"] = 24;
         }
-        else if(strlen($this->informacion) > 550){
-            self::$errors["informacion"] = "La informacion es muy extensa ! Max 550";
+        else if(strlen($this->informacion) > 1555){
+            self::$errors["informacion"] = "La informacion es muy extensa ! Max 1555";
             self::$errors["code"] = 25;
         }
         else if(!Museos::find($this->id_museos)){

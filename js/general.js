@@ -60,7 +60,7 @@ divTranslate.classList.add("translate");
 imgTransalte.src = "../img/translate/en.webp";
 imgTransalte.classList.add("translate__icon");
 divTranslate.appendChild(imgTransalte);
-document.querySelector("body").insertBefore(divTranslate, document.querySelector("main"));
+document.querySelector("body").insertBefore(divTranslate, document.querySelector("main")); 
 
 
 let translateClick = document.querySelector(".translate img");

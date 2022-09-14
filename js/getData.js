@@ -1,6 +1,6 @@
 async function getData(item,page,limit){
     let data = await fetch(window.location.origin + `/api/getData.php?item=${item}&page=${page}&limit=${limit}`);
-    return data.json();
+    return data.json(); 
 }
 function renderExpoComponent(id,parent,imgSrc,titulo,info,fav ){
     let render = document.createElement("div");
@@ -21,4 +21,9 @@ function renderRecommendComponent(id, parent, imgSrc, titulo, info){
 
     parent.appendChild(render);
 }
-export {getData, renderExpoComponent, renderRecommendComponent}
+
+async function getSearch(search){
+    let data = await fetch(window.location.origin+'/api/getData.php?expo-search='+search);
+    return data.json();
+}
+export {getData, renderExpoComponent, renderRecommendComponent, getSearch}

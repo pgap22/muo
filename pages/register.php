@@ -3,9 +3,9 @@
     use MUO\NoVerifiedUser;
     use MUO\Usuarios;
     
-    include "../includes/app.php";
+    include "../includes/app.php"; //Clases, Funciones, Colocando Mi Base de datos.
     
-    protegerIndex();
+    protegerIndex(); // ...
 
     $error = [];
     $newUser = [];
@@ -13,6 +13,7 @@
     #Crea un token para tener guardada una sesion
     $emailToken = bin2hex(openssl_random_pseudo_bytes(8));
 
+    //Si el usuario envio los datos hago los procedimientos
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         #Recoleccion de datos ingresados por el usuario 
@@ -27,10 +28,7 @@
         #Crear el objeto de Usuario no verificado 
         $user = new Usuarios($newUser);
 
-        #Detectar si el email ya esta en uso
-        $user->checkDuplicateEmail();
-
-        #Validar lo que el usuario digito
+        #Validar lo que el usuario digito y si el email ya esta en uso
         $user->validateRegister();
 
         #Hashear la contraseña
@@ -92,7 +90,7 @@
                 </div>
                 <a href="/">
                     <picture class="header__logo">
-                        <source srcset="../img/logo/logo.svg" media="(min-width:1023px)">
+                        <source srcset="../img/logo/logo.svg" media="(min-width:1024px)">
                         <img src="../img/logo/logo-mobile.svg" alt="">
                     </picture>
                 </a>

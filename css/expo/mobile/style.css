@@ -56,7 +56,7 @@
 /*ADD FAV ONLY IN EXPO*/
 .main__expo-top{
     /* border: 1px solid red; */
-    margin-top: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
     gap: 2rem;

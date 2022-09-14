@@ -13,7 +13,7 @@ class Exposeng extends ActiveRecord{
     public function __construct($arr = [])
     {
         $this->id = $arr["id"] ?? '';
-        $this->informacion = $arr["informacion"] ?? '';
+        $this->informacion = lineBreaks($arr["informacion"]) ?? '';
         $this->nombre = $arr["nombre"] ?? '';
         $this->id_expo = $arr["id_expo"] ?? '';
     }
@@ -31,8 +31,8 @@ class Exposeng extends ActiveRecord{
             self::$errors["informacion"] = "La informacion no puede estar vacia !";
             self::$errors["code"] = 24;
         }
-        else if(strlen($this->informacion) > 550){
-            self::$errors["informacion"] = "La informacion es muy extensa ! Max 550";
+        else if(strlen($this->informacion) > 1555){
+            self::$errors["informacion"] = "La informacion es muy extensa ! Max 1555";
             self::$errors["code"] = 25;
         }
     }

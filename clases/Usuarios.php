@@ -42,52 +42,58 @@ class Usuarios extends ActiveRecord{
         if($isEmailUsing){
             self::$errors["email"] = "El email ya esta en uso";
             self::$errors["code"]  = 11;
+            return true;
         }
+        return false;
     }
 
     public function validateRegister(){
-       
-        if($this->name == ""){
-           self::$errors["name"]  = "El nombre no puede estar vacio";
-           self::$errors["code"] = 1;
-        }
-        else if($this->last_name == ""){
-            self::$errors["last-name"]  = "El apellido no puede estar vacio";
-            self::$errors["code"] = 2;
-        } 
-        else if(strlen($this->name) > 30){
-            self::$errors["name"]  = "El nombre no puede ser muy largo";
-            self::$errors["code"] = 3;
-        }
-        else if(strlen($this->last_name) > 30){
-            self::$errors["last-name"]  = "El apellido no puede ser muy largo";
-            self::$errors["code"] = 4;
-        }
-        else if($this->email == ""){
-            self::$errors["email"]  = "El email no puede quedar vacio";
-            self::$errors["code"] = 5;
-        }
-        else if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
-            self::$errors["email"]  = "El email es invalido";
-            self::$errors["code"] = 6;
-        }
-        else if($this->password == ""){
-            self::$errors["password"]  = "La contraseña no puede estar vacia";
-            self::$errors["code"] = 7;
-        }
-        else if($this->confirmPassword == ""){
-            echo $this->confirmPassword;
-            self::$errors["password"]  = "La contraseña no puede estar vacia";
-            self::$errors["code"] = 8;
-        }
-        else if($this->password != $this->confirmPassword){
-            self::$errors["password"]  = "Las contraseñas no coinciden";
-            self::$errors["code"] = 9;
-        }
+       if(!$this->checkDuplicateEmail()){
+            if($this->name == ""){
+                self::$errors["name"]  = "El nombre no puede estar vacio";
+                self::$errors["code"] = 1;
+            }
+            else if($this->last_name == ""){
+                self::$errors["last-name"]  = "El apellido no puede estar vacio";
+                self::$errors["code"] = 2;
+            } 
+            else if(strlen($this->name) > 30){
+                self::$errors["name"]  = "El nombre no puede ser muy largo";
+                self::$errors["code"] = 3;
+            }
+            else if(strlen($this->last_name) > 30){
+                self::$errors["last-name"]  = "El apellido no puede ser muy largo";
+                self::$errors["code"] = 4;
+            }
+            else if($this->email == ""){
+                self::$errors["email"]  = "El email no puede quedar vacio";
+                self::$errors["code"] = 5;
+            }
+            else if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+                self::$errors["email"]  = "El email es invalido";
+                self::$errors["code"] = 6;
+            }
+            else if($this->password == ""){
+                self::$errors["password"]  = "La contraseña no puede estar vacia";
+                self::$errors["code"] = 7;
+            }
+            else if(strlen($this->password) < 4){
+                self::$errors["password"]  = "Tu contraseña debe ser mayor a 4 caracteres";
+                self::$errors["code"] = 50;
+            }
+            else if($this->confirmPassword == ""){
+                self::$errors["password"]  = "La contraseña no puede estar vacia";
+                self::$errors["code"] = 8;
+            }
+            else if($this->password != $this->confirmPassword){
+                self::$errors["password"]  = "Las contraseñas no coinciden";
+                self::$errors["code"] = 9;
+            }
+       }
     }
 
     public function sendVerification(){
-        $ip = getHostByName(getHostName());
+        $ip = $_SERVER["HTTP_HOST"];
         $url = "http://${ip}/auth/verifyEmail.php?verifyToken=". $this->verifyToken;
         
         $message["title-es"] = "Verificar tu cuenta de email en MUO";
@@ -142,11 +148,16 @@ class Usuarios extends ActiveRecord{
     public function validateLogin($passwordUser){
         //Ya tenemos el correo hoy falta verificar la contraseñe
         $passwordHash = $this->password;
-
-        $isCorrect = password_verify($passwordUser, $passwordHash);
-
-        if($isCorrect) return true;
-
+        
+        if(!$this->verified){
+            self::$errors["login"] = 'Tu email o contraseña no son validos !';
+            self::$errors["code"] = 10;
+        }
+        
+                $isCorrect = password_verify($passwordUser, $passwordHash);
+        
+                if($isCorrect) return true;
+        
         self::$errors["login"] = 'Tu email o contraseña no son validos !';
         self::$errors["code"] = 10;
 

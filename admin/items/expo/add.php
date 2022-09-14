@@ -159,7 +159,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         
     }
-    debugear($errorEN);
+
 }
     
 ?>
@@ -180,12 +180,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- css -->
     <link rel="stylesheet" href="/css/headerAdmin/mobile/style.css" media="(max-width: 480px)">
-    <link rel="stylesheet" href="/css/headerAdmin/tablet/style.css" media="(min-width: 481px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/headerAdmin/tablet/style.css" media="(min-width: 480px) and (max-width: 1024px)">
     <link rel="stylesheet" href="/css/headerAdmin/desktop/style.css" media="(min-width: 1024px)">
 
     <link rel="stylesheet" href="/css/adminEdit/mobile/style.css">
     <link rel="stylesheet" href="/css/adminEdit/desktop/style.css" media="(min-width: 1024px)">
-    <link rel="stylesheet" href="/css/adminEdit/tablet/style.css" media="(min-width: 630px) and (max-width: 1023px)">
+    <link rel="stylesheet" href="/css/adminEdit/tablet/style.css" media="(min-width: 630px) and (max-width: 1024px)">
 </head>
 
 <body data-page="admin-add-expo">
@@ -213,7 +213,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <?php 
                             getError($error, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Informacion de la exposicion"><?=restoreFormData($expo, "informacion")?></textarea>
+                            <textarea class="main__textarea <?= getColorError($error, "informacion")?>" name="descripcion" id="descripcion" rows="4" placeholder="Informacion de la exposicion"><?=br2nl(restoreFormData($expo, "informacion"))?></textarea>
                         </div>
 
                         <div class="main__input-field">
@@ -284,7 +284,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <?php 
                             getError($errorEN, "informacion");
                             ?>
-                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Informacion de la exposicion"><?=restoreFormData($expoEN, "informacion")?></textarea>
+                            <textarea class="main__textarea <?= getColorError($errorEN, "informacion")?>" name="descripcion-en" id="descripcion-en" rows="4" placeholder="Informacion de la exposicion"><?=br2nl(restoreFormData($expoEN, "informacion"))?></textarea>
                         </div>
 
                         <div class="main__input-field main__img-container ">

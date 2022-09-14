@@ -11,7 +11,6 @@
 
         $user = Usuarios::where("verifyToken", $tokenToVerify);
 
-        debugear($user);
 
         if($user){
             $user->setData("verified", 1);    

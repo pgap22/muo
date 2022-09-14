@@ -3,6 +3,7 @@
 use MUO\Comentarios;
 use MUO\Exposeng;
 use MUO\Exposiciones;
+use MUO\Favoritos;
 use MUO\Imagenesexpo;
 
 include "../../../includes/app.php";
@@ -44,19 +45,18 @@ if(!$exposicion){
 }
 
 try {
-    if(Exposeng::where("id_expo", $exposicion->id)){
-        #Backups por si da un error
-        $expoEngBack = Exposeng::where("id_expo", $exposicion->id);
-        $expoEngBack->setData("id", '');
-        
-        #Borrar la exposicion en ingles
-        Exposeng::where("id_expo", $exposicion->id)->delete();
-        
-    }    
+
+    #Backups por si da un error
+    $expoEngBack = Exposeng::where("id_expo", $exposicion->id);
+    $expoEngBack->setData("id", '');
+    
+    #Borrar la exposicion en ingles
+    Exposeng::where("id_expo", $exposicion->id)->delete();
     
     #Borrar los comentarios
     Comentarios::executeSQL("DELETE FROM comentarios WHERE id_exposicion = $exposicion->id");
-
+    #Borrar los favoritos
+    Favoritos::executeSQL("DELETE FROM favoritosusuarios WHERE id_exposicion = $exposicion->id");
 
     #Eliminar Imagenes
     $imagenes = Imagenesexpo::where("id_exposicion", $exposicion->id, 0);
@@ -94,7 +94,6 @@ try {
     header("location: /admin/items/expo");
 
 } catch (mysqli_sql_exception $e) { 
-
     if($_SESSION["lang"] == "es"){
         $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
         $_SESSION["alert"]["type"] = "error";
@@ -105,9 +104,10 @@ try {
         $_SESSION["alert"]["type"] = "error";
         $_SESSION["alert"]["alert"] = "simple";
     }
-
     $error = true;
-    $expoEngBack->save();
+    if($expoEngBack){
+        $expoEngBack->save();
+    }
 
 
     header("location: /admin/items/expo");
