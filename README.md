@@ -1,6 +1,7 @@
 # MUO Website
 **Setup**
 REQUERIMENTS
+
 -PHP 8.1.5 >=
 
 -MySql 5.7
