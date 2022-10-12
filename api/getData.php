@@ -36,6 +36,11 @@ if($item == 'expo' && $limit && $page){
         $expo->setData("info_eng", Exposeng::where("id_expo", $expo->id)->informacion);
         $expo->setData("name_eng", Exposeng::where("id_expo", $expo->id)->nombre);
 
+        #Decodificar UTF8 para las tildes
+        $expo->nombre = utf8_decode($expo->nombre);
+        $expo->informacion = utf8_decode($expo->informacion);
+
+
         #Detectar si el usuario lo añadio en favoritos
         $isFav = Favoritos::executeSQL("SELECT * FROM favoritosusuarios WHERE id_usuario = $id_usuario AND id_exposicion = $expo->id");
         $isFav = Favoritos::fetchResultSQL($isFav);
@@ -65,7 +70,12 @@ if($id_expo){
     if($expo){
         $expo->setData("info_eng", Exposeng::where("id_expo", $expo->id)->informacion);
         $expo->setData("name_eng", Exposeng::where("id_expo", $expo->id)->nombre);
+        
+        #Decodificar UTF8 para las tildes
+        $expo->nombre = utf8_decode($expo->nombre);
+        $expo->informacion = utf8_decode($expo->informacion);
     }
+
 
     echo json_encode($expo);
 }
@@ -77,6 +87,7 @@ if($museoid){
         $array->setData("info_en", MuseosEn::where("id_museo", $array->id)->descripcion);
     }
 
+    $array->descripcion = utf8_decode($array->descripcion);
     echo json_encode($array);
 }
 
@@ -89,11 +100,14 @@ if(isset($_GET["recommend-expo"])){
             $expo->setData("info_eng", Exposeng::where("id_expo", $expo->id)->informacion);
             $expo->setData("name_eng", Exposeng::where("id_expo", $expo->id)->nombre);
             $expo->setData("imagen", Imagenesexpo::where("id_exposicion", $expo->id)->rutaImagen);
+            // #Decodificar UTF8 para las tildes
+            $expo->nombre = utf8_decode($expo->nombre);
+            $expo->informacion = utf8_decode($expo->informacion);
             $array[] = $expo;
         }
     }
 
-    echo json_encode($array);
+    echo json_encode($array, JSON_INVALID_UTF8_SUBSTITUTE);
 }
 
 
@@ -105,8 +119,13 @@ if($explore_selector & $explore_id){
         $expo = new Exposiciones($row);
         $img = Imagenesexpo::where("id_exposicion", $expo->id)->rutaImagen;
         $en = Exposeng::where("id_expo", $expo->id)->nombre;
+        #Decodificar UTF8 para las tildes
+        $expo->nombre = utf8_decode($expo->nombre);
+        $expo->informacion = utf8_decode($expo->informacion);
+
         $expo->setData("imagen",$img);
         $expo->setData("nombre_en", $en);
+
         return $expo;
     }
 
@@ -122,8 +141,8 @@ if($explore_selector & $explore_id){
             
             $data[] = listAll($row);
         }
-    
-        echo json_encode($data);
+        
+        echo json_encode($data, JSON_INVALID_UTF8_SUBSTITUTE);
     }
     else if($explore_selector == "museos"){
         $array = Museos::executeSQL("SELECT * FROM exposiciones WHERE id_museos = $explore_id");
@@ -156,10 +175,13 @@ if($search){
         $row["info_eng"] = Exposeng::where("id_expo", $row["id"])->informacion;
         $row["name_eng"] = Exposeng::where("id_expo", $row["id"])->nombre;
         $row["imagen"] = Imagenesexpo::where("id_exposicion", $row["id"])->rutaImagen;
+        #Decodificar UTF8 para las tildes
+        $row["nombre"] = utf8_decode($row["nombre"]);
+        $row["informacion"] = utf8_decode($row["informacion"]);
         $data[] = $row;
     }
 
-    echo json_encode($data);
+    echo json_encode($data, JSON_INVALID_UTF8_SUBSTITUTE);
 
 }
 

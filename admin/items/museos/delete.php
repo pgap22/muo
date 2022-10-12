@@ -46,7 +46,7 @@ try {
     $museo->delete();    
 
     
-} catch (mysqli_sql_exception) {
+} catch (mysqli_sql_exception $e) {
     
     if($_SESSION["lang"] == "es"){
         $_SESSION["alert"]["message"] = "Hubo un error, trata de borrar otra cosa para intentar eliminar este item!";
@@ -63,8 +63,9 @@ try {
         $backupMuseoEn->save();
     }
 
-    header("location: /admin/items/museos");
     $error = true;
+    header("location: /admin/items/museos");
+    exit();
 }
 
 if(!$error){

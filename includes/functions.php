@@ -3,11 +3,6 @@
 use MUO\Usuarios;
 
 define("GMT_6", 21600);
-define("TIMEZONE_GMT6", (new DateTimeZone("GMT-6")));
-
-
-
-
 
 function debugear($e){
     echo '<pre>';

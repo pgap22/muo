@@ -4,5 +4,6 @@
 //djceijsecushijtn
 
 //POO DB
-$databases = new mysqli("localhost", "root", "", "muo-db");
+$databases = new mysqli("localhost", "root", "root", "muo-db");
+
 ?>
